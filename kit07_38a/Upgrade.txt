@@ -1,0 +1,13 @@
+プロジェクト名 : kit07_38a
+
+5.45.00をRenesas M16C Standard Toolchain -> 6.00.00にアップグレードしました。
+
+ビルドフェーズの順序:
+  "Renesas M16C C/C++ Library Generator" を追加しました。
+ビルド時の中間ファイルのマッピング:
+  "Renesas M16C Linker|Absolute file|Renesas M16C Stype Converter" を削除しました。
+  "Renesas M16C C/C++ Library Generator|Library file|Renesas OptLinker" を追加しました。
+備考:
+   オブジェクトフォーマットがELF/DWARF2に変わります。
+[デバッグ -> デバッグの設定]メニューを選択して表示する[デバッグの設定]ダイアログボックスの[デバッグフォーマット]をELF/DWARF2に変更してください。
+つぎに、変更ボタンを選択してダウンロードモジュールで指定しているファイルのファイルフォーマットを ELF/DWARF2に変更し、ファイル名の拡張子をx30からabsに変更してください。

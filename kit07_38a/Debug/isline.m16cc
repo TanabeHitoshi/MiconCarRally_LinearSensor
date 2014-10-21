@@ -1,0 +1,8 @@
+-lang=c
+-I"..\..\..\common_r8c38a"
+-D__UART0__
+-c
+-finfo
+-dir "E:\program\2014\kit07_38aLineSensor\kit07_38a\Debug"
+-R8CE
+"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.c"
