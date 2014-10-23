@@ -12,6 +12,7 @@
 #include "isCheck.h"
 /************************************************************************/
 /* ライン検出処理                                                 */
+/* 引数　 start位置　stop位置                                       */
 /* 戻り値 0:ラインなし 1:あり                                     */
 /************************************************************************/
 int check( int start, int stop)
@@ -22,7 +23,7 @@ int check( int start, int stop)
 		n += bi_sensor[i];
 	}
 
-	return n;	
+	return n;
 }
 
 /************************************************************************/
@@ -32,17 +33,12 @@ int check( int start, int stop)
 int check_crossline( void )
 {
 	int i;
-	int n = 0;
+	int n;
 	
-	for(i = 0; i < 2; i++){
-		n += bi_sensor[i];
-	}
-	
-	for(i = 14; i > 16; i++){
-		n += bi_sensor[i];
-	}
+	n = check(0,1);
+	n *= check(14,15);
 
-	if( n >= 4 ) {
+	if( n >= 3 ) {
         return 1;	/* クロスライン発見！ */
     }else{
 		return 0;	/* クロスラインなし  */
@@ -56,11 +52,9 @@ int check_crossline( void )
 int check_rightline( void )
 {
 	int i;
-	int n = 0;
+	int n;
 	
-	for(i = 14; i < 16; i++){
-		n += bi_sensor[i];
-	}
+	n = check(14,15);
 
 	if( n >= 2 ) {
         return 1;	/* 右ハーフライン発見！ */
@@ -76,11 +70,10 @@ int check_rightline( void )
 int check_leftline( void )
 {
 	int i;
-	int n = 0;
+	int n;
+	
+	n = check(0,1);
 
-	for(i = 0; i < 2; i++){
-		n += bi_sensor[i];
-	}
 	if( n >= 2 ) {
         return 1;	/* 左ハーフライン発見！ */
     }else{
@@ -94,11 +87,9 @@ int check_leftline( void )
 int check_black( void )
 {
 	int i;
-	int n = 0;
+	int n;
 	
-	for(i = 0; i < 16; i++){
-		n += bi_sensor[i];
-	}
+	n = check(0,15);
 	if( n == 0 ) {
         return 1;	
     }else{
@@ -112,11 +103,9 @@ int check_black( void )
 int check_center( void )
 {
 	int i;
-	int n = 0;
+	int n;
 	
-	for(i = 6; i < 10; i++){
-		n += bi_sensor[i];
-	}
+	n = check(6,9);
 
 	if( n >= 2 ) {
         return 1;	/* 中心発見！ */
