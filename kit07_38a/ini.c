@@ -143,18 +143,13 @@ void intTRB( void )
             p += 3;
             *p++ = ',';
             // 4 センサ
-            convertHexToStr( (sensor16>>12), 1, p );
-            p += 1;
-            *p++ = ',';
-            convertHexToStr( (sensor16>>8), 1, p );
-            p += 1;
-            *p++ = ',';
             convertHexToStr( (sensor16>>4), 1, p );
             p += 1;
             *p++ = ',';
-            convertHexToStr( sensor8, 1, p );
+            convertHexToStr( sensor16, 1, p );
             p += 1;
             *p++ = ',';
+
             // 8 ハンドル
             convertDecimalToStr( handleBuff, 3, p );
             p += 3;
@@ -168,8 +163,8 @@ void intTRB( void )
             p += 4;
             *p++ = ',';
 			// 22
- //           *p++ = ' ';
- //           *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
             *p++ = ' ';
             *p++ = ' ';
             *p++ = ' ';

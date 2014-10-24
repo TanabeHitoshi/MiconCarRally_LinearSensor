@@ -7,23 +7,17 @@
 [GENERAL_DATA]
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\ini.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isCheck.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isCheck.h" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.h" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\kit07_38a.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\switch_lib.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\switch_lib.h" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\ini.c" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.c" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.h" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isline.c" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\kit07_38a.c" 
 [WORKSPACE_FILE_STATES]
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\ini.c" 110 145 914 462 0 4 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isCheck.c" 154 203 914 462 0 5 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isCheck.h" 88 116 914 462 0 3 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.c" 22 29 914 462 0 1 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.h" 44 58 914 462 0 2 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\kit07_38a.c" -4 -30 1076 699 1 0 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\switch_lib.c" 44 58 914 462 0 6 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\switch_lib.h" 66 87 914 462 0 7 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\ini.c" 110 145 910 458 0 0 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.c" -4 -30 1076 699 1 4 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.h" 66 87 914 462 0 3 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isline.c" 132 174 914 462 0 1 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\kit07_38a.c" 154 203 914 462 0 2 
 [LOADED_PROJECTS]
 "kit07_38a" 
 [END]

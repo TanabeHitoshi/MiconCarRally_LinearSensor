@@ -3,12 +3,12 @@
 [DATABASE_VERSION]
 "11.0" 
 [WORKSPACE_DETAILS]
-"kit07_38a" "E:\program\2014\kit07_38aLineSensor" "E:\program\2014\kit07_38aLineSensor\kit07_38a.hws" "M16C" "Renesas M16C Standard" 
+"kit07_38a" "E:\program\MCR\MiconCarRally_LinearSensor" "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a.hws" "M16C" "Renesas M16C Standard" 
 [SHARED_WORKSPACE_CONTROL_STATUS]
 "" "" "" 
 "" "" "" 
 [PROJECTS]
-"kit07_38a" "E:\program\2014\kit07_38aLineSensor\kit07_38a" "E:\program\2014\kit07_38aLineSensor\kit07_38a\kit07_38a.hwp" 0 
+"kit07_38a" "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a" "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\kit07_38a.hwp" 0 
 [INFORMATION]
 "ワークスペース情報がありません" 
 [SCRAP]

@@ -55,14 +55,11 @@
 [WINDOW_POSITION_STATE_DATA_VD3]
 [WINDOW_POSITION_STATE_DATA_VD4]
 [WINDOW_Z_ORDER]
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\kit07_38a.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isCheck.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\ini.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isCheck.h" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\switch_lib.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\switch_lib.h" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.c" 
-"E:\program\2014\kit07_38aLineSensor\kit07_38a\isline.h" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.c" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.h" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\kit07_38a.c" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\ini.c" 
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isline.c" 
 [TARGET_NAME]
 "" "" 0 
 [STATUSBAR_STATEINFO_VD1]

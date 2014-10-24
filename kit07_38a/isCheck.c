@@ -17,6 +17,7 @@
 /************************************************************************/
 int check( int start, int stop)
 {
+	int i;
 	int n = 0;
 	
 	for(i = start; i <= stop; i++){
@@ -54,9 +55,9 @@ int check_rightline( void )
 	int i;
 	int n;
 	
-	n = check(14,15);
+	n = check(12,15);
 
-	if( n >= 2 ) {
+	if( n >= 4 ) {
         return 1;	/* 右ハーフライン発見！ */
     }else{
 		return 0;	/* 右ハーフラインなし  */
@@ -72,9 +73,9 @@ int check_leftline( void )
 	int i;
 	int n;
 	
-	n = check(0,1);
+	n = check(0,3);
 
-	if( n >= 2 ) {
+	if( n >= 4 ) {
         return 1;	/* 左ハーフライン発見！ */
     }else{
 		return 0;	/* 左ハーフラインなし  */
@@ -105,9 +106,9 @@ int check_center( void )
 	int i;
 	int n;
 	
-	n = check(6,9);
+	n = check(7,8);
 
-	if( n >= 2 ) {
+	if( n >= 1 ) {
         return 1;	/* 中心発見！ */
     }else{
 		return 0;	/* 中心なし  */

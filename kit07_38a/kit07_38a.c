@@ -98,6 +98,7 @@ void main( void )
         }
     }
     /* マイコンカーの状態初期化 */
+	printf("Hello!!\n");
     handle( 0 );
     motor( 0, 0 );
 	pattern = 1000;		/* モニター画面 */
@@ -222,7 +223,14 @@ void main( void )
 		}
         led_out( 0x0 );
 		break;
-    case 5:
+	case 5:
+		if( pushsw_get()){
+			timer(1000);
+			pattern = 6;
+		}
+        led_out( 0x3 );
+		break;
+    case 6:
         /* スタートバーが開いたかチェック */
         if( !startbar_get() || pushsw_get() ) {
             /* スタート！！ */
@@ -282,16 +290,18 @@ void main( void )
         /* １本目のクロスライン検出時の処理 */
         led_out( 0x3 );
         handle( 0 );
-		if(data_buff[DF_crank_motorS] < iEncoder){//エンコーダによる速度制御
-			motor((data_buff[DF_crank_motorS] - iEncoder),(data_buff[DF_crank_motorS] - iEncoder));
-		}else{
-			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-		}
+//		if(data_buff[DF_crank_motorS] < iEncoder){//エンコーダによる速度制御
+//			motor((data_buff[DF_crank_motorS] - iEncoder),(data_buff[DF_crank_motorS] - iEncoder));
+			motor(-100,-100);
+//		}else{
+//			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
+//		}
 		pattern = 22;
         break;
 
     case 22:
         /* ２本目を読み飛ばす */
+//		motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
 		if( lEncoderTotal-lEncoderCrank >= 150 ) {   /* 約10cmたったか？ */				
 			pattern = 23;
 		}
@@ -358,10 +368,20 @@ void main( void )
         /* 左クランククリア処理　外側の白線と見間違わないようにする */
         /* ！追加・変更！ ここから */
         if( check_center() ) {
-            pattern = 11;
+			lEncoderCrank = lEncoderTotal;
+            pattern = 35;
         }
         /* ！追加・変更！ ここまで */
         break;
+	case 35:
+		if( lEncoderTotal - lEncoderCrank > 500 ){
+            led_out( 0x0 );
+            pattern = 11;
+            cnt1 = 0;
+		}
+		handle( PID());
+		motor(50,50);
+		break;
 
     case 41:
         /* 右クランククリア処理　安定するまで少し待つ */
@@ -401,20 +421,30 @@ void main( void )
         /* 右クランククリア処理　外側の白線と見間違わないようにする */
         /* ！追加・変更！ ここから */
         if( check_center() ) {
-            pattern = 11;
+			lEncoderCrank = lEncoderTotal;
+            pattern = 45;
         }
         /* ！追加・変更！ ここまで */
         break;
+	case 45:
+		if( lEncoderTotal - lEncoderCrank > 500 ){
+            led_out( 0x0 );
+            pattern = 11;
+            cnt1 = 0;
+		}
+		handle( PID());
+		motor(50,50);
+		break;
 
     case 51:
         /* １本目の右ハーフライン検出時の処理 */
         led_out( 0x2 );
-        handle( 0 );
-		if(data_buff[DF_lane_motorS] < iEncoder){//エンコーダによる速度制御
-			motor((data_buff[DF_lane_motorS] - iEncoder)*70,(data_buff[DF_lane_motorS] - iEncoder)*70);
-		}else{
-	        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
-		}
+//		if(data_buff[DF_crank_motorS] < iEncoder){//エンコーダによる速度制御
+//			motor((data_buff[DF_crank_motorS] - iEncoder),(data_buff[DF_crank_motorS] - iEncoder));
+			motor(-100,-100);
+//		}else{
+//			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
+//		}
         pattern = 53;
         cnt1 = 0;
         break;
@@ -482,11 +512,12 @@ void main( void )
         /* １本目の左ハーフライン検出時の処理 */
         led_out( 0x1 );
         handle( 0 );
-		if(data_buff[DF_lane_motorS] < iEncoder){//エンコーダによる速度制御
-			motor((data_buff[DF_lane_motorS] - iEncoder)*70,(data_buff[DF_lane_motorS] - iEncoder)*70);
-		}else{
-	        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
-		}
+//		if(data_buff[DF_crank_motorS] < iEncoder){//エンコーダによる速度制御
+//			motor((data_buff[DF_crank_motorS] - iEncoder),(data_buff[DF_crank_motorS] - iEncoder));
+			motor(-100,-100);
+//		}else{
+//			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
+//		}
         pattern = 63;
         cnt1 = 0;
         break;
