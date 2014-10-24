@@ -33,13 +33,7 @@ int check( int start, int stop)
 /************************************************************************/
 int check_crossline( void )
 {
-	int i;
-	int n;
-	
-	n = check(0,1);
-	n *= check(14,15);
-
-	if( n >= 3 ) {
+	if( White >= 10 ) {
         return 1;	/* クロスライン発見！ */
     }else{
 		return 0;	/* クロスラインなし  */
@@ -52,12 +46,7 @@ int check_crossline( void )
 /************************************************************************/
 int check_rightline( void )
 {
-	int i;
-	int n;
-	
-	n = check(12,15);
-
-	if( n >= 4 ) {
+	if( White >= 6 && pos > 0 ) {
         return 1;	/* 右ハーフライン発見！ */
     }else{
 		return 0;	/* 右ハーフラインなし  */
@@ -70,12 +59,7 @@ int check_rightline( void )
 /************************************************************************/
 int check_leftline( void )
 {
-	int i;
-	int n;
-	
-	n = check(0,3);
-
-	if( n >= 4 ) {
+	if( White >= 6 && pos < 0 ) {
         return 1;	/* 左ハーフライン発見！ */
     }else{
 		return 0;	/* 左ハーフラインなし  */
@@ -87,11 +71,8 @@ int check_leftline( void )
 /************************************************************************/
 int check_black( void )
 {
-	int i;
-	int n;
 	
-	n = check(0,15);
-	if( n == 0 ) {
+	if( White == 0 ) {
         return 1;	
     }else{
 		return 0;	
@@ -104,9 +85,11 @@ int check_black( void )
 int check_center( void )
 {
 	int i;
-	int n;
+	int n = 0;
 	
-	n = check(7,8);
+	for(i = 7; i <= 8; i++){
+		n += bi_sensor[i];
+	}
 
 	if( n >= 1 ) {
         return 1;	/* 中心発見！ */

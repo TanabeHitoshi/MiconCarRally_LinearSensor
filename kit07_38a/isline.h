@@ -4,12 +4,13 @@
 extern signed char     data_buff[ DF_PARA_SIZE ];
 
 extern int ImageData[16];		/* センサーの値 */
-extern int val_ImageData[16];	/* センターの値 */
+extern int val_ImageData[16];	/* センサーの値 */
 extern int ad_white[16];		/* ライン白 */
 extern int ad_black[16];		/* 黒 */
 extern float sval[16];			/* 正規化センサ値 */
 extern int bi_sensor[16];			/* ２値化 */
 extern int sensor8,sensor16;
+extern int	White;					/* 白色の数 */
 extern float pos,pre_pos;			/* 中心位置からのずれ */
 
 void get_ad( void );

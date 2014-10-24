@@ -19,6 +19,7 @@ int ad_black[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		/* 黒 */
 float sval[16];				/* 正規化センサ値 */
 int bi_sensor[16];			/* ２値化 */
 int sensor8,sensor16;
+int	White;					/* 白色の数 */
 float pos,pre_pos;			/* 中心位置からのずれ */
 
 /************************************************************************/
@@ -264,10 +265,13 @@ void binarization(void)
 {
 	int i;
 	sensor16 = 0;
+	White = 0;
+	
 	for(i = 0; i < 16; i++){
 		if(sval[i] > white){
 			bi_sensor[i] = 1;
 			sensor16++;
+			White++;
 		}else{
 			bi_sensor[i] = 0;
 		}
