@@ -16,14 +16,6 @@ int             handleBuff;             /* 現在のハンドル角度記録       */
 int             leftMotorBuff;          /* 現在の左モータPWM値記録      */
 int             rightMotorBuff;         /* 現在の右モータPWM値記録      */
 int             angle_buff;             /* 現在ハンドル角度保持用   */
-/* エンコーダ関連 */
-int				iTimer10;			   	/* 10msカウント用		  	*/
-int   			iEncoder;			   	/* 10ms毎の最新値		   	*/
-unsigned long   lEncoderTotal;		  	/* 積算値保存用				*/
-unsigned int	uEncoderBuff;		   	/* 計算用　割り込み内で使用 */
-unsigned long	lEncoderCrank;		  	/* クロスライン検出時の積算値 	*/
-unsigned long 	lEncoderCrank2;			/* クロスライン検出時の積算値2 	*/
-unsigned long	lEncoderHarf;		  	/* ハーフライン検出時の積算値 	*/
 
 int             servo_center;           /* サーボセンタ値               */
 

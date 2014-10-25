@@ -174,8 +174,13 @@ void main( void )
             // 60000ms‚È‚çAx = 60000 * 64 / 10 = 384000
             // Œ‹‰Ê‚Í512‚Ì”{”‚É‚È‚é‚æ‚¤‚ÉŒJ‚èã‚°‚·‚éB
              ret = writeFile( fileName, 384000 );
-             if( ret != 0x00 ) msdError = 11;
-         }
+			 if( ret != 0x00 ) msdError = 11;
+			/*
+			 msdPrintf( "[Your Car Name] Log Data\n" );
+			 while( checkMsdPrintf() ); // msdPrintfˆ—Š®—¹‘Ò‚¿
+			*/
+
+		}
          pattern = 1;
          cnt1 = 0;
  		lcdPosition( 0, 0 );lcdPrintf( "AutoCalibration");

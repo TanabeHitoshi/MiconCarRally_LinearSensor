@@ -268,6 +268,7 @@ void binarization(void)
 	White = 0;
 	
 	for(i = 0; i < 16; i++){
+		sensor16 << 1;
 		if(sval[i] > white){
 			bi_sensor[i] = 1;
 			sensor16++;
@@ -275,7 +276,6 @@ void binarization(void)
 		}else{
 			bi_sensor[i] = 0;
 		}
-		sensor16 << 1;
 	}
 
 }

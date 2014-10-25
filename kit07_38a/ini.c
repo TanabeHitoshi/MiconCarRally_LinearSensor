@@ -24,6 +24,16 @@ signed char     msdBuff[ 512+32 ];      /* 一時保存バッファ(32は予備)   */
 int             msdFlag;                /* 1:データ記録 0:記録しない    */
 int             msdTimer;               /* 取得間隔計算用               */
 int             msdError;               /* エラー番号記録               */
+/* エンコーダ関連 */
+int				iTimer10;			   	/* 10msカウント用		  	*/
+int   			iEncoder;			   	/* 10ms毎の最新値		   	*/
+int				pre_iEncoder;			/* 前の速度					*/
+int				Acceleration;			/* 加速度					*/
+unsigned long   lEncoderTotal;		  	/* 積算値保存用				*/
+unsigned int	uEncoderBuff;		   	/* 計算用　割り込み内で使用 */
+unsigned long	lEncoderCrank;		  	/* クロスライン検出時の積算値 	*/
+unsigned long 	lEncoderCrank2;			/* クロスライン検出時の積算値2 	*/
+unsigned long	lEncoderHarf;		  	/* ハーフライン検出時の積算値 	*/
 
 
 /************************************************************************/
@@ -120,6 +130,8 @@ void intTRB( void )
 		i = trg;
 		iEncoder = i - uEncoderBuff;
 		lEncoderTotal += iEncoder;
+		Acceleration = pre_iEncoder - iEncoder;
+		pre_iEncoder = iEncoder;
 		uEncoderBuff = i;
 	}	
     /* 拡張スイッチ用関数(1msごとに実行)    */
@@ -140,59 +152,61 @@ void intTRB( void )
             /* 空きはスペースで埋めてください                */
             // 0 パターン
             convertDecimalToStr( pattern, 3, p );
-            p += 3;
-            *p++ = ',';
+            p += 3;*p++ = ',';
             // 4 センサ
-            convertHexToStr( (sensor16>>4), 1, p );
+            convertHexToStr( bi_sensor[0], 1, p );
             p += 1;
-            *p++ = ',';
-            convertHexToStr( sensor16, 1, p );
+            convertHexToStr( bi_sensor[1], 1, p );
             p += 1;
-            *p++ = ',';
-
-            // 8 ハンドル
-            convertDecimalToStr( iEncoder, 3, p );
-            p += 3;
-            *p++ = ',';
-            // 12 左モータPWM値
+            convertHexToStr( bi_sensor[2], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[3], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[4], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[5], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[6], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[7], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[8], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[9], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[10], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[11], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[12], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[13], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[14], 1, p );
+            p += 1;
+            convertHexToStr( bi_sensor[15], 1, p );
+            p += 1;*p++ = ',';
+            // 21 白
+            convertDecimalToStr( White, 2, p );
+            p += 2;*p++ = ',';
+            // 24 位置
+            convertDecimalToStr( (int)(pos * 10.0), 4, p );
+            p += 4;*p++ = ',';
+            // 29 速度
+            convertDecimalToStr( iEncoder, 2, p );
+            p += 2;*p++ = ',';
+            // 32 加速度
+            convertDecimalToStr( Acceleration, 3, p );
+            p += 3;*p++ = ',';
+            // 36 ハンドル
+            convertDecimalToStr( handleBuff, 3, p );
+            p += 3;*p++ = ',';
+            // 40 左モータPWM値
             convertDecimalToStr( leftMotorBuff, 4, p );
-            p += 4;
-            *p++ = ',';
-            // 17 右モータPWM値
+            p += 4;*p++ = ',';
+            // 45 右モータPWM値
             convertDecimalToStr( rightMotorBuff, 4, p );
-            p += 4;
-            *p++ = ',';
-			// 22
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            // 30
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            // 40
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
-            *p++ = ' ';
+            p += 4;*p++ = ',';
             // 50
             *p++ = ' ';
             *p++ = ' ';
