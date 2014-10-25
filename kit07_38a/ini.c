@@ -151,7 +151,7 @@ void intTRB( void )
             *p++ = ',';
 
             // 8 ハンドル
-            convertDecimalToStr( handleBuff, 3, p );
+            convertDecimalToStr( iEncoder, 3, p );
             p += 3;
             *p++ = ',';
             // 12 左モータPWM値

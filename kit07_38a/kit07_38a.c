@@ -290,19 +290,19 @@ void main( void )
         /* １本目のクロスライン検出時の処理 */
         led_out( 0x3 );
         handle( 0 );
-//		if(data_buff[DF_crank_motorS] < iEncoder){//エンコーダによる速度制御
+		if(10 < iEncoder){//エンコーダによる速度制御
 //			motor((data_buff[DF_crank_motorS] - iEncoder),(data_buff[DF_crank_motorS] - iEncoder));
-			motor(-100,-100);
-//		}else{
-//			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-//		}
+			motor(-70,-70);
+		}else{
+			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
+		}
 		pattern = 22;
         break;
 
     case 22:
         /* ２本目を読み飛ばす */
 //		motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-		if( lEncoderTotal-lEncoderCrank >= 150 ) {   /* 約10cmたったか？ */				
+		if( lEncoderTotal-lEncoderCrank >= 100 ) {   /* 約10cmたったか？ */				
 			pattern = 23;
 		}
         break;
@@ -374,7 +374,7 @@ void main( void )
         /* ！追加・変更！ ここまで */
         break;
 	case 35:
-		if( lEncoderTotal - lEncoderCrank > 500 ){
+		if( lEncoderTotal - lEncoderCrank > 300 ){
             led_out( 0x0 );
             pattern = 11;
             cnt1 = 0;
@@ -466,7 +466,7 @@ void main( void )
             cnt1 = 0;
         }
         /* ！追加・変更！ ここから */
-        if( check_leftline() ) {
+        if( check_crossline() ) {
             pattern = 21;
 			lEncoderCrank = lEncoderTotal;
             break;
@@ -539,7 +539,7 @@ void main( void )
             cnt1 = 0;
         }
         /* ！追加・変更！ ここから */
-        if( check_rightline() ) {
+        if( check_crossline() ) {
             pattern = 21;
 			lEncoderCrank = lEncoderTotal;
             break;

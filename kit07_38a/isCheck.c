@@ -33,7 +33,7 @@ int check( int start, int stop)
 /************************************************************************/
 int check_crossline( void )
 {
-	if( White >= 10 ) {
+	if( White >= 14 ) {
         return 1;	/* クロスライン発見！ */
     }else{
 		return 0;	/* クロスラインなし  */
@@ -46,7 +46,7 @@ int check_crossline( void )
 /************************************************************************/
 int check_rightline( void )
 {
-	if( White >= 6 && pos > 0 ) {
+	if( White > 6 && pos > 0 ) {
         return 1;	/* 右ハーフライン発見！ */
     }else{
 		return 0;	/* 右ハーフラインなし  */
@@ -59,7 +59,7 @@ int check_rightline( void )
 /************************************************************************/
 int check_leftline( void )
 {
-	if( White >= 6 && pos < 0 ) {
+	if( White > 6 && pos < 0 ) {
         return 1;	/* 左ハーフライン発見！ */
     }else{
 		return 0;	/* 左ハーフラインなし  */

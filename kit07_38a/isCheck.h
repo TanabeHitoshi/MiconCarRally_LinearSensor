@@ -1,7 +1,7 @@
 #ifndef	ISCHECK_H
 #define	ISCHECK_H
 
-#define white 0.5		/* 白色の閾値 */
+#define white 0.75		/* 白色の閾値 */
  
 int check_crossline( void );	/* クロスライン検出処理 */
 int check_rightline( void );	/* 右ハーフライン検出処理 */
