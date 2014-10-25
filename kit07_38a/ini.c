@@ -154,59 +154,43 @@ void intTRB( void )
             convertDecimalToStr( pattern, 3, p );
             p += 3;*p++ = ',';
             // 4 センサ
-            convertHexToStr( bi_sensor[0], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[1], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[2], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[3], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[4], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[5], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[6], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[7], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[8], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[9], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[10], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[11], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[12], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[13], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[14], 1, p );
-            p += 1;
-            convertHexToStr( bi_sensor[15], 1, p );
-            p += 1;*p++ = ',';
-            // 21 白
+            convertHexToStr( sensor16, 4, p );
+            p += 4;*p++ = ',';
+            // 9 白
             convertDecimalToStr( White, 2, p );
             p += 2;*p++ = ',';
-            // 24 位置
+            // 12 位置
             convertDecimalToStr( (int)(pos * 10.0), 4, p );
             p += 4;*p++ = ',';
-            // 29 速度
+            // 17 速度
             convertDecimalToStr( iEncoder, 2, p );
             p += 2;*p++ = ',';
-            // 32 加速度
+            // 20 加速度
             convertDecimalToStr( Acceleration, 3, p );
             p += 3;*p++ = ',';
-            // 36 ハンドル
+            // 24 ハンドル
             convertDecimalToStr( handleBuff, 3, p );
             p += 3;*p++ = ',';
-            // 40 左モータPWM値
+            // 28 左モータPWM値
             convertDecimalToStr( leftMotorBuff, 4, p );
             p += 4;*p++ = ',';
-            // 45 右モータPWM値
+            // 33 右モータPWM値
             convertDecimalToStr( rightMotorBuff, 4, p );
             p += 4;*p++ = ',';
+            // 38
+            *p++ = ' ';
+            *p++ = ' ';
+            // 40
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
+            *p++ = ' ';
             // 50
             *p++ = ' ';
             *p++ = ' ';
