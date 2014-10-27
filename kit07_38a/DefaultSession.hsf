@@ -55,14 +55,7 @@
 [WINDOW_POSITION_STATE_DATA_VD3]
 [WINDOW_POSITION_STATE_DATA_VD4]
 [WINDOW_Z_ORDER]
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\ini.c" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\microsd_lib.c" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\LcdProcess.c" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\isline.c" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\ini.h" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\isCheck.h" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\kit07_38a.c" 
-"C:\WorkSpace\MiconCarRally_LinearSensor\kit07_38a\isCheck.c" 
+"D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\ini.c" 
 [TARGET_NAME]
 "" "" 0 
 [STATUSBAR_STATEINFO_VD1]
