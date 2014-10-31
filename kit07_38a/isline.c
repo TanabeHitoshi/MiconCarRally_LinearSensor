@@ -271,7 +271,6 @@ void binarization(void)
 	
 	for(i = 0; i < 16; i++){
 		sensor16 = sensor16 << 1;
-//		if(sval[i] > white){
 		if(ImageData[i] < ((ad_white[i]+ad_black[i])/2) ){
 			bi_sensor[i] = 1;
 			sensor16++;
@@ -280,10 +279,9 @@ void binarization(void)
 			bi_sensor[i] = 0;
 		}
 	}
-
 }
 /************************************************************************/
-/* カメラより重心位置の掲出                                             */
+/* センサーより重心位置の掲出                                             */
 /* 引数　 なし                                                          */
 /* 戻り値 重心値                                                        */
 /************************************************************************/
@@ -321,7 +319,7 @@ int PID(void)
 {
 	static float i_pos = 0.0;
 	i_pos +=  pos - pre_pos;
-	if(pos < 25 || pos > -25)
+	if(pos < 20 && pos > -20)
 		return pos * (float)data_buff[DF_KP]/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
 	else
 		return pos * (float)data_buff[DF_KP]*3.0/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;

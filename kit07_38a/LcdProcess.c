@@ -144,7 +144,7 @@ int lcdProcess( void )
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
 
-        if( lcd_pattern == 0 ) lcd_pattern = 11;
+        if( lcd_pattern == 0 ) lcd_pattern = 15;
     }
 
     /* LCD、スイッチ処理 */
