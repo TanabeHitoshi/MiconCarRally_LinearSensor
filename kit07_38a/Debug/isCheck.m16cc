@@ -3,6 +3,6 @@
 -D__UART0__
 -c
 -finfo
--dir "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug"
+-dir "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug"
 -R8CE
-"D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.c"
+"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\isCheck.c"

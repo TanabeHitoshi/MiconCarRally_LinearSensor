@@ -316,7 +316,7 @@ int lcdProcess( void )
 		i = data_buff[DF_crank_handlepwm];
         if( getSwFlag(SW_1) ) {
             i++;
-            if( i > 40 ) i = 40;
+            if( i > 45 ) i = 45;
         }
         if( getSwFlag(SW_0) ) {
            	i--;

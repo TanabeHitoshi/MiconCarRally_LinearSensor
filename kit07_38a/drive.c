@@ -28,7 +28,11 @@ int             servo_center;           /* サーボセンタ値               */
 /************************************************************************/
 void motor( int accele_l, int accele_r )
 {
-    int    sw_data;
+	if( accele_l >= 100) accele_l = 100;
+	if( accele_r >= 100) accele_r = 100;
+	if( accele_l <= -100) accele_l = -100;
+	if( accele_r <= -100) accele_r = -100;
+		
 
     accele_l = accele_l * data_buff[DF_PWM] / 100;
     accele_r = accele_r * data_buff[DF_PWM] / 100;

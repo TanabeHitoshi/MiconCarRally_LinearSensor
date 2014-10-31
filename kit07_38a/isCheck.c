@@ -33,10 +33,16 @@ int check( int start, int stop)
 /************************************************************************/
 int check_crossline( void )
 {
-	if( White >= 14 ) {
-        return 1;	/* クロスライン発見！ */
-    }else{
-		return 0;	/* クロスラインなし  */
+	if( White >= 12){
+		return 1;
+	}else if( White >= 12 ) {
+		if(check(0,1) && check(14,15)){
+        	return 1;	/* クロスライン発見！ */
+    	}else{
+			return 0;	/* クロスラインなし  */
+		}
+	}else{
+		return 0;
 	}
 }
 
@@ -46,10 +52,19 @@ int check_crossline( void )
 /************************************************************************/
 int check_rightline( void )
 {
-	if( White > 6 && pos > 0 ) {
-        return 1;	/* 右ハーフライン発見！ */
-    }else{
-		return 0;	/* 右ハーフラインなし  */
+//	if( White >= 8 && White <= 10 && pos > 0 ) {
+//        return 1;	/* 右ハーフライン発見！ */
+//    }else{
+//		return 0;	/* 右ハーフラインなし  */
+//	}
+	if( pos  < 30 && pos > -30 && White >= 8){
+		if(check(12,13)){
+        	return 1;	/* クロスライン発見！ */
+    	}else{
+			return 0;	/* クロスラインなし  */
+		}
+	}else{
+		return 0;
 	}
 }
 
@@ -59,11 +74,21 @@ int check_rightline( void )
 /************************************************************************/
 int check_leftline( void )
 {
-	if( White > 6 && pos < 0 ) {
-        return 1;	/* 左ハーフライン発見！ */
-    }else{
-		return 0;	/* 左ハーフラインなし  */
+//	if( White >= 8 && White <= 10 && pos < 0 ) {
+//        return 1;	/* 左ハーフライン発見！ */
+//    }else{
+//		return 0;	/* 左ハーフラインなし  */
+//	}
+	if( pos  < 30 && pos > -30 && White >= 8){
+		if(check(2,3)){
+        	return 1;	/* クロスライン発見！ */
+    	}else{
+			return 0;	/* クロスラインなし  */
+		}
+	}else{
+		return 0;
 	}
+
 }
 /************************************************************************/
 /* 全黒検出処理   			                                            */

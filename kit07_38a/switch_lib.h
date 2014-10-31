@@ -11,7 +11,7 @@
 /* シンボル定義                         */
 /*======================================*/
 /* 定数設定 */
-#define PWM_CYCLE       19999           /* モータPWMの周期       4mS     */
+#define PWM_CYCLE       9999           /* モータPWMの周期       4mS     */
 #define SERVO_CENTER    3863            /* サーボのセンタ値             */
 #define HANDLE_STEP     22              /* 1゜分の値                    */
 
