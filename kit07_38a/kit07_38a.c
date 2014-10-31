@@ -39,18 +39,6 @@ const char *C_TIME = __TIME__;          /* コンパイルした時間           */
 /* DataFlash関係 */
 signed char     data_buff[ DF_PARA_SIZE ];
 
-const int revolution_difference[] = {   /* 角度から内輪、外輪回転差計算 */
-    100, 99, 97, 96, 95,
-    93, 92, 91, 89, 88,
-    87, 86, 84, 83, 82,
-    81, 79, 78, 77, 76,
-    75, 73, 72, 71, 70,
-    69, 67, 66, 65, 64,
-    62, 61, 60, 59, 58,
-    56, 55, 54, 52, 51,
-    50, 48, 47, 46, 44,
-    43 };
-
 /************************************************************************/
 /* メインプログラム                                                     */
 /************************************************************************/
@@ -267,6 +255,7 @@ void main( void )
 		if( stop_timer >= ((unsigned long)(t)*10) ){
 			msdFlag = 0;
 			motor( 0, 0 );
+			pattern = 101;
 			break;
 		}
 		if (stop_timer>300) {//通常トレース後しばらくクロス、ハーフはチェックしない
@@ -294,12 +283,14 @@ void main( void )
             	break;
         	}
 		}
-		
-		if( pos > 0)	motor(100-pos*10.0,100-pos*15.0);
-		else			motor(100+pos*15.0,100+pos*10.0);
+		if(pos < 0.0){
+			pos = -pos;
+		}	
+		run(100 - pos*15.0);
         break;
 	case 12:
 		/* 右大カーブ */
+		run(50);
 		if(!check_RightOutLine()){
 			pattern = 11;			/* 通常トレース */
 		}else{
@@ -310,6 +301,7 @@ void main( void )
 		break;
 	case 15:
 		/* 左大カーブ */
+		run(50);
 		if(!check_LeftOutLine()){
 			pattern = 11;			/* 通常トレース */
 		}else{
@@ -322,18 +314,12 @@ void main( void )
         /* １本目のクロスライン検出時の処理 */
         led_out( 0x3 );
         handle( 0 );
-//		if(10 < iEncoder){//エンコーダによる速度制御
-			motor((5 - iEncoder)*20,(5 - iEncoder)*20);
-//			motor(-70,-70);
-//		}else{
-//			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-//		}
+		motor((5 - iEncoder)*20,(5 - iEncoder)*20);
 		pattern = 22;
         break;
 
     case 22:
         /* ２本目を読み飛ばす */
-//		motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
 		motor((5 - iEncoder)*10,(5 - iEncoder)*10);
 		if( lEncoderTotal-lEncoderCrank >= 100 ) {   /* 約10cmたったか？ */				
 			pattern = 23;
@@ -361,12 +347,11 @@ void main( void )
             break;
         }
 		handle( PID());
-		motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
+		run( data_buff[DF_crank_motorS] );
         break;
 
     case 31:
         /* 左クランククリア処理　安定するまで少し待つ */
-//        if( cnt1 > 70 && check_black() ) {
         if( check_black() ) {
             pattern = 34;
             cnt1 = 0;
@@ -413,7 +398,7 @@ void main( void )
             cnt1 = 0;
 		}
 		handle( PID());
-		motor(50,50);
+		run(50);
 		break;
 
     case 41:
@@ -465,7 +450,7 @@ void main( void )
             cnt1 = 0;
 		}
 		handle( PID());
-		motor(50,50);
+		run(50);
 		break;
 
     case 51:
@@ -484,6 +469,7 @@ void main( void )
        break;
     case 52:
         /* ２本目を読み飛ばす */
+		motor((5 - iEncoder)*5,(5 - iEncoder)*5);
 		if( lEncoderTotal - lEncoderHarf > 100 ){
             pattern = 53;
             cnt1 = 0;
@@ -501,13 +487,15 @@ void main( void )
         /* 右ハーフライン後のトレース、レーンチェンジ */
         if( check_black() ) {
            	handle( data_buff[DF_laneR_PWM] );
-			motor(data_buff[DF_lane_motorL],data_buff[DF_lane_motorR]);
+//			motor(data_buff[DF_lane_motorL],data_buff[DF_lane_motorR]);
+			run( data_buff[DF_lane_motorS] );
             pattern = 54;
             cnt1 = 0;
             break;
         }
 		handle( PID() + 5);
-        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
+//        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
+		run( data_buff[DF_lane_motorS] );
         break;
 
     case 54:
@@ -528,7 +516,7 @@ void main( void )
             cnt1 = 0;
 		}
 		handle( PID());
-		motor(50,50);
+		run(50);
 		break;
 
     case 61:
@@ -547,6 +535,7 @@ void main( void )
 		break;
     case 62:
         /* ２本目を読み飛ばす */
+		motor((5 - iEncoder)*5,(5 - iEncoder)*5);
 		if( lEncoderTotal - lEncoderHarf > 80 ){
             pattern = 63;
             cnt1 = 0;
@@ -564,13 +553,15 @@ void main( void )
         /* 左ハーフライン後のトレース、レーンチェンジ */
         if( check_black() ) {
 			handle( -data_buff[DF_laneL_PWM] );
-			motor(data_buff[DF_lane_motorR],data_buff[DF_lane_motorL]);
+//			motor(data_buff[DF_lane_motorR],data_buff[DF_lane_motorL]);
+			run( data_buff[DF_lane_motorS] );
             pattern = 64;
             cnt1 = 0;
             break;
         }
 		handle( PID() - 5);
-        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
+//        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
+		run( data_buff[DF_lane_motorS] );
         break;
 
     case 64:
@@ -592,13 +583,13 @@ void main( void )
             cnt1 = 0;
 		}
 		handle( PID());
-		motor(50,50);
+		run(50);
 		break;
 
     case 101:
         /* microSDの停止処理 */
         /* 脱輪した際の自動停止処理後は、必ずこの処理を行ってください */
-        handle( 0 );
+		handle( PID());
         motor( 0, 0 );
         msdFlag = 0;
         pattern = 102;
@@ -606,6 +597,7 @@ void main( void )
 
     case 102:
         /* 最後のデータが書き込まれるまで待つ*/
+		handle( PID());
         if( microSDProcessEnd() == 0 ) {
             pattern = 103;
         }
@@ -613,7 +605,8 @@ void main( void )
 
     case 103:
         /* 書き込み終了 */
-        led_out( 0x3 );
+ 		handle( PID());
+       led_out( 0x3 );
         break;
 		
 	case 500:
@@ -732,27 +725,7 @@ void led_out( unsigned char led )
     p2 = data | led;
 }
 
-/************************************************************************/
-/* 外輪のPWMから、内輪のPWMを割り出す　ハンドル角度は現在の値を使用     */
-/* 引数　 外輪PWM                                                       */
-/* 戻り値 内輪PWM                                                       */
-/************************************************************************/
-int diff( int pwm )
-{
-    int ret;
 
-    if( pwm >= 0 ) {
-        /* PWM値が正の数なら */
-        if( angle_buff < 0 ) {
-            angle_buff = -angle_buff;
-        }
-        ret = revolution_difference[angle_buff] * pwm / 100;
-    } else {
-        /* PWM値が負の数なら */
-        ret = pwm;                      /* そのまま返す             */
-    }
-    return ret;
-}
 
 /************************************************************************/
 /* end of file                                                          */
