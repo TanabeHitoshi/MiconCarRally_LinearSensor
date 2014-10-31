@@ -1,0 +1,2656 @@
+	._LANG	'C','6.00.02.000','REV.F'
+;%% mac30 V.3.44.01.000  WN-PC
+;%% Copyright(C) 1995 (1996 - 2010) Renesas Electronics Corporation and
+;%% Renesas Solutions Corp. All Rights Reserved.
+;%%  Fri Oct 31 22:10:49 2014
+__R8C__	.equ	01h
+.FB	0
+._aopt	OFF
+._inspect	'M', "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess.c", "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess"
+._inspect	'M', "c:\program files\renesas\hew_001\tools\renesas\nc30wa\v600r00\inc30\stdio.h", "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess"
+._inspect	'V', 'e', "_iob", 'G', 82, 0, 0, 0, 00h
+._inspect	'F', 'p', "getc", "_getc", 'G', 125, 0, 00h, 0
+._inspect	'F', 'p', "getchar", "_getchar", 'G', 126, 0, 00h, 0
+._inspect	'F', 'p', "putc", "$putc", 'G', 127, 0, 00h, 0
+._inspect	'F', 'p', "putchar", "$putchar", 'G', 128, 0, 00h, 0
+._inspect	'F', 'p', "feof", "_feof", 'G', 129, 0, 00h, 0
+._inspect	'F', 'p', "ferror", "_ferror", 'G', 130, 0, 00h, 0
+._inspect	'F', 'p', "fgetc", "_fgetc", 'G', 131, 0, 00h, 0
+._inspect	'F', 'p', "fgets", "$fgets", 'G', 132, 0, 00h, 0
+._inspect	'F', 'p', "fputc", "$fputc", 'G', 133, 0, 00h, 0
+._inspect	'F', 'p', "fputs", "_fputs", 'G', 134, 0, 00h, 0
+._inspect	'F', 'p', "fread", "_fread", 'G', 135, 0, 00h, 0
+._inspect	'F', 'p', "fwrite", "_fwrite", 'G', 136, 0, 00h, 0
+._inspect	'F', 'p', "gets", "_gets", 'G', 137, 0, 00h, 0
+._inspect	'F', 'p', "puts", "_puts", 'G', 138, 0, 00h, 0
+._inspect	'F', 'p', "ungetc", "$ungetc", 'G', 139, 0, 00h, 0
+._inspect	'F', 'p', "printf", "_printf", 'G', 140, 0, 00h, 0
+._inspect	'F', 'p', "fprintf", "_fprintf", 'G', 141, 0, 00h, 0
+._inspect	'F', 'p', "sprintf", "_sprintf", 'G', 142, 0, 00h, 0
+._inspect	'F', 'p', "vprintf", "$vprintf", 'G', 143, 0, 00h, 0
+._inspect	'F', 'p', "vfprintf", "_vfprintf", 'G', 144, 0, 00h, 0
+._inspect	'F', 'p', "vsprintf", "_vsprintf", 'G', 145, 0, 00h, 0
+._inspect	'F', 'p', "fscanf", "_fscanf", 'G', 146, 0, 00h, 0
+._inspect	'F', 'p', "scanf", "_scanf", 'G', 147, 0, 00h, 0
+._inspect	'F', 'p', "sscanf", "_sscanf", 'G', 148, 0, 00h, 0
+._inspect	'F', 'p', "fflush", "_fflush", 'G', 149, 0, 00h, 0
+._inspect	'F', 'p', "clearerr", "_clearerr", 'G', 150, 0, 00h, 0
+._inspect	'F', 'p', "perror", "_perror", 'G', 151, 0, 00h, 0
+._inspect	'F', 'p', "init_dev", "$init_dev", 'G', 167, 0, 00h, 0
+._inspect	'F', 'p', "speed", "$speed", 'G', 168, 0, 00h, 0
+._inspect	'F', 'p', "init_prn", "_init_prn", 'G', 169, 0, 00h, 0
+._inspect	'F', 'p', "_sget", "__sget", 'G', 170, 0, 00h, 0
+._inspect	'F', 'p', "_sput", "$_sput", 'G', 171, 0, 00h, 0
+._inspect	'F', 'p', "_pput", "$_pput", 'G', 172, 0, 00h, 0
+._inspect	'F', 'p', "_print", "__print", 'G', 173, 0, 00h, 0
+._inspect	'M', "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\lcd_lib.h", "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess"
+._inspect	'F', 'p', "initLcd", "_initLcd", 'G', 4, 0, 00h, 0
+._inspect	'F', 'p', "lcdShowProcess", "_lcdShowProcess", 'G', 5, 0, 00h, 0
+._inspect	'F', 'p', "lcdPrintf", "_lcdPrintf", 'G', 6, 0, 00h, 0
+._inspect	'F', 'p', "lcdPosition", "$lcdPosition", 'G', 7, 0, 00h, 0
+._inspect	'M', "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\switch_lib.h", "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess"
+._inspect	'F', 'p', "initSwitch", "_initSwitch", 'G', 21, 0, 00h, 0
+._inspect	'F', 'p', "getSwNow", "_getSwNow", 'G', 22, 0, 00h, 0
+._inspect	'F', 'p', "getSwFlag", "$getSwFlag", 'G', 23, 0, 00h, 0
+._inspect	'F', 'p', "switchProcess", "_switchProcess", 'G', 24, 0, 00h, 0
+._inspect	'M', "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\data_flash_lib.h", "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess"
+._inspect	'F', 'p', "readDataFlash", "$readDataFlash", 'G', 4, 0, 00h, 0
+._inspect	'F', 'p', "writeDataFlash", "$writeDataFlash", 'G', 5, 0, 00h, 0
+._inspect	'F', 'p', "blockEraseDataFlash", "$blockEraseDataFlash", 'G', 6, 0, 00h, 0
+._inspect	'M', "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess.c", "D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess"
+._inspect	'F', 'p', "handle", "$handle", 'G', 17, 0, 00h, 0
+._inspect	'V', 'e', "data_buff", 'G', 20, 64, 0, 0, 00h
+._inspect	'V', 'e', "cnt_lcd", 'G', 21, 4, 0, 0, 00h
+._inspect	'V', 'e', "pattern", 'G', 22, 2, 0, 0, 00h
+._inspect	'V', 'e', "servo_center", 'G', 23, 2, 0, 0, 00h
+._inspect	'V', 'e', "sensor8", 'G', 24, 2, 0, 0, 00h
+._inspect	'V', 'd', "lcd_pattern", "_lcd_pattern", 'G', 27, 2, 0, 0, 00h
+	.SECTION	program,CODE,align
+._inspect	'U', 2, "program", "program", 0
+	._file	'D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\LcdProcess.c'
+._type	256,'v'
+._type	257,'v'
+._type	258,'x',256,1
+._type	258,'m','',5,257
+._func	'readDataFlashParameter','G',3,258,_readDataFlashParameter,0
+._inspect	'F', 's', "readDataFlashParameter", "_readDataFlashParameter", 'G', 8
+._block	4h,7h
+	._line	35
+.glb	_readDataFlashParameter
+_readDataFlashParameter:
+enter	#03H
+._block	2h,3h
+._block	3h,5h
+._var	'i','A',16,-3
+._var	'st','A',18,-3
+._var	'c','A',19,-1
+	._line	37
+mov.w	#33c0H,-3[FB]
+	._line	40
+L1:
+mov.w	#0001H,R0
+jeq	L3
+	._line	42
+push.w	#0001H
+._inspect	'S', 'p', 2
+mova	-1[FB],R2
+mov.w	-3[FB],R1
+._inspect	'S', 'c', "readDataFlash", "$readDataFlash", 'G', 0, 42
+._block	5h,8h
+jsr	$readDataFlash
+._eblock	5h,9h
+._inspect	'S', 'p', -2
+add.b	#02H,SP
+	._line	43
+cmp.b	#11H,-1[FB]
+jne	L5
+	._line	44
+push.w	#0040H
+._inspect	'S', 'p', 2
+mov.w	#_data_buff,R2
+mov.w	-3[FB],R1
+._inspect	'S', 'c', "readDataFlash", "$readDataFlash", 'G', 0, 44
+._block	6h,0ah
+jsr	$readDataFlash
+._eblock	6h,0bh
+._inspect	'S', 'p', -2
+add.b	#02H,SP
+	._line	45
+jmp	L43
+L5:
+	._line	47
+sub.w	#0040H,-3[FB]
+	._line	49
+cmp.w	#3000H,-3[FB]
+jgeu	L1
+	._line	51
+mov.w	#0000H,-3[FB]
+._eblock	2h,4h
+._block	1h,1h
+L15:
+	._line	51
+cmp.w	#0040H,-3[FB]
+jge	L19
+mov.w	-3[FB],A0
+mov.b	#00H,_data_buff[A0]
+add.w	#0001H,-3[FB]
+jmp	L15
+L19:
+	._line	52
+mov.b	#11H,_data_buff
+	._line	53
+mov.b	#0fH,_data_buff+1
+	._line	54
+mov.b	#17H,_data_buff+2
+	._line	55
+mov.b	#64H,_data_buff+3
+	._line	56
+mov.b	#28H,_data_buff+5
+	._line	57
+mov.b	#00H,_data_buff+12
+	._line	58
+mov.b	#00H,_data_buff+13
+	._line	59
+mov.b	#00H,_data_buff+14
+	._line	60
+mov.b	#00H,_data_buff+18
+	._line	61
+mov.b	#00H,_data_buff+15
+	._line	62
+mov.b	#00H,_data_buff+16
+	._line	63
+mov.b	#00H,_data_buff+17
+	._line	64
+mov.b	#00H,_data_buff+19
+	._line	65
+mov.w	#0bb8H,-3[FB]
+	._line	66
+mov.b	-2[FB],_data_buff+9
+	._line	67
+mov.w	-3[FB],A0
+and.w	#00ffH,A0
+mov.b	A0,_data_buff+10
+	._line	69
+mov.w	#3000H,R1
+._inspect	'S', 'c', "blockEraseDataFlash", "$blockEraseDataFlash", 'G', 0, 69
+._block	7h,0ch
+jsr	$blockEraseDataFlash
+._eblock	7h,0dh
+	._line	70
+push.w	#0040H
+._inspect	'S', 'p', 2
+mov.w	#_data_buff,R2
+mov.w	#3000H,R1
+._inspect	'S', 'c', "writeDataFlash", "$writeDataFlash", 'G', 0, 70
+._block	8h,0eh
+jsr	$writeDataFlash
+._eblock	8h,0fh
+._inspect	'S', 'p', -2
+add.b	#02H,SP
+	._line	73
+L43:
+L3:
+	._line	74
+exitd	
+._eblock	1h,2h
+._eblock	3h,6h
+E1:
+M1:
+._efunc	M1
+.align
+._eblock	4h,10h
+._inspect	'F', 'd', "readDataFlashParameter", "_readDataFlashParameter", 'G', 35, 0, 00h, 0
+._inspect	'F', 't', "readDataFlashParameter", 'G', 258
+._inspect	'F', 'r', "readDataFlash", "$readDataFlash", 'G', 42, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 44, 64, 0, 0, 00h
+._inspect	'F', 'r', "readDataFlash", "$readDataFlash", 'G', 44, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 51, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 52, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 53, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 54, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 55, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 56, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 57, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 58, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 59, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 60, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 61, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 62, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 63, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 64, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 66, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 67, 64, 0, 0, 00h
+._inspect	'F', 'r', "blockEraseDataFlash", "$blockEraseDataFlash", 'G', 69, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 70, 64, 0, 0, 00h
+._inspect	'F', 'r', "writeDataFlash", "$writeDataFlash", 'G', 70, 0, 00h, 0
+._inspect	'F', 'e', "readDataFlashParameter", "_readDataFlashParameter", 'G', 2, 0
+._type	259,'v'
+._type	260,'v'
+._type	261,'x',259,1
+._type	261,'m','',5,260
+._func	'writeDataFlashParameter','G',3,261,_writeDataFlashParameter,0
+._inspect	'F', 's', "writeDataFlashParameter", "_writeDataFlashParameter", 'G', 8
+._block	0ah,13h
+	._line	81
+.glb	_writeDataFlashParameter
+_writeDataFlashParameter:
+enter	#03H
+._block	9h,11h
+._var	'st','A',18,-3
+._var	'c','A',19,-1
+	._line	82
+mov.w	#3000H,-3[FB]
+	._line	85
+L45:
+mov.w	#0001H,R0
+jeq	L47
+	._line	87
+push.w	#0001H
+._inspect	'S', 'p', 2
+mova	-1[FB],R2
+mov.w	-3[FB],R1
+._inspect	'S', 'c', "readDataFlash", "$readDataFlash", 'G', 0, 87
+._block	0bh,14h
+jsr	$readDataFlash
+._eblock	0bh,15h
+._inspect	'S', 'p', -2
+add.b	#02H,SP
+	._line	88
+cmp.b	#0ffH,-1[FB]
+jne	L49
+	._line	89
+push.w	#0040H
+._inspect	'S', 'p', 2
+mov.w	#_data_buff,R2
+mov.w	-3[FB],R1
+._inspect	'S', 'c', "writeDataFlash", "$writeDataFlash", 'G', 0, 89
+._block	0ch,16h
+jsr	$writeDataFlash
+._eblock	0ch,17h
+._inspect	'S', 'p', -2
+add.b	#02H,SP
+	._line	90
+jmp	L73
+L49:
+	._line	93
+add.w	#0040H,-3[FB]
+	._line	95
+cmp.w	#33ffH,-3[FB]
+jleu	L45
+	._line	97
+mov.w	#3000H,R1
+._inspect	'S', 'c', "blockEraseDataFlash", "$blockEraseDataFlash", 'G', 0, 97
+._block	0dh,18h
+jsr	$blockEraseDataFlash
+._eblock	0dh,19h
+	._line	98
+push.w	#0040H
+._inspect	'S', 'p', 2
+mov.w	#_data_buff,R2
+mov.w	#3000H,R1
+._inspect	'S', 'c', "writeDataFlash", "$writeDataFlash", 'G', 0, 98
+._block	0eh,1ah
+jsr	$writeDataFlash
+._eblock	0eh,1bh
+._inspect	'S', 'p', -2
+add.b	#02H,SP
+	._line	101
+L73:
+L47:
+	._line	102
+exitd	
+._eblock	9h,12h
+E2:
+M2:
+._efunc	M2
+.align
+._eblock	0ah,1ch
+._inspect	'F', 'd', "writeDataFlashParameter", "_writeDataFlashParameter", 'G', 81, 0, 00h, 0
+._inspect	'F', 't', "writeDataFlashParameter", 'G', 261
+._inspect	'F', 'r', "readDataFlash", "$readDataFlash", 'G', 87, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 89, 64, 0, 0, 00h
+._inspect	'F', 'r', "writeDataFlash", "$writeDataFlash", 'G', 89, 0, 00h, 0
+._inspect	'F', 'r', "blockEraseDataFlash", "$blockEraseDataFlash", 'G', 97, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 98, 64, 0, 0, 00h
+._inspect	'F', 'r', "writeDataFlash", "$writeDataFlash", 'G', 98, 0, 00h, 0
+._inspect	'F', 'e', "writeDataFlashParameter", "_writeDataFlashParameter", 'G', 2, 0
+._type	262,'v'
+._type	263,'x',16,1
+._type	263,'m','',5,262
+._func	'lcdProcess','G',4,263,_lcdProcess,0
+._inspect	'F', 's', "lcdProcess", "_lcdProcess", 'G', 9
+._block	10h,1fh
+	._line	109
+.glb	_lcdProcess
+_lcdProcess:
+enter	#04H
+._block	0fh,1dh
+._var	'i','A',16,-2
+._var	'n','A',16,-4
+	._line	112
+cmp.w	#0001H,_pattern
+jeq	L85
+	._line	113
+cmp.w	#0000H,_cnt_lcd+2
+jltu	L75
+jgtu	M3
+cmp.w	#00faH,_cnt_lcd
+jltu	L75
+M3:
+	._line	114
+mov.w	#0000H,_cnt_lcd
+mov.w	#0000H,_cnt_lcd+2
+	._line	115
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 115
+._block	11h,20h
+jsr	$lcdPosition
+._eblock	11h,21h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	117
+push.w	_pattern
+._inspect	'S', 'p', 2
+push.w	#___T0>>16
+push.w	#(___T0&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 117
+._block	12h,22h
+jsr	_lcdPrintf
+._eblock	12h,23h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	120
+._inspect	'S', 'c', "startbar_get", "_startbar_get", 'G', 0, 120
+._block	13h,24h
+jsr	_startbar_get
+._eblock	13h,25h
+push.w	R0
+._inspect	'S', 'p', 2
+push.w	_sensor8
+._inspect	'S', 'p', 2
+push.w	#___T1>>16
+push.w	#(___T1&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 120
+._block	14h,26h
+jsr	_lcdPrintf
+._eblock	14h,27h
+._inspect	'S', 'p', -8
+add.b	#08H,SP
+L75:
+	._line	122
+exitd	
+L85:
+	._line	126
+mov.b	#10H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 126
+._block	15h,28h
+jsr	$getSwFlag
+._eblock	15h,29h
+mov.b	R0L,R0H
+jeq	L95
+	._line	128
+._inspect	'S', 'c', "writeDataFlashParameter", "_writeDataFlashParameter", 'G', 0, 128
+._block	16h,2ah
+jsr	_writeDataFlashParameter
+._eblock	16h,2bh
+L95:
+	._line	132
+mov.b	#08H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 132
+._block	17h,2ch
+jsr	$getSwFlag
+._eblock	17h,2dh
+mov.b	R0L,R0H
+jeq	L109
+	._line	133
+add.w	#0001H,_lcd_pattern
+	._line	134
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 134
+._block	18h,2eh
+jsr	$lcdPosition
+._eblock	18h,2fh
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	135
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T2>>16
+push.w	#(___T2&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 135
+._block	19h,30h
+jsr	_lcdPrintf
+._eblock	19h,31h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	136
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T2>>16
+push.w	#(___T2&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 136
+._block	1ah,32h
+jsr	_lcdPrintf
+._eblock	1ah,33h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	137
+cmp.w	#0010H,_lcd_pattern
+jne	L687
+mov.w	#0001H,_lcd_pattern
+L687:
+L109:
+	._line	141
+mov.b	#04H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 141
+._block	1bh,34h
+jsr	$getSwFlag
+._eblock	1bh,35h
+mov.b	R0L,R0H
+jeq	L123
+	._line	142
+add.w	#-1,_lcd_pattern
+	._line	143
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 143
+._block	1ch,36h
+jsr	$lcdPosition
+._eblock	1ch,37h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	144
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T2>>16
+push.w	#(___T2&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 144
+._block	1dh,38h
+jsr	_lcdPrintf
+._eblock	1dh,39h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	145
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T2>>16
+push.w	#(___T2&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 145
+._block	1eh,3ah
+jsr	_lcdPrintf
+._eblock	1eh,3bh
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	147
+cmp.w	#0000H,_lcd_pattern
+jne	L689
+mov.w	#000bH,_lcd_pattern
+L689:
+L123:
+	._line	151
+mov.w	_lcd_pattern,A0
+sub.w	#0001H,A0
+cmp.w	#0010H,A0
+jnc	M4
+mov.w	#000fH,A0
+M4:
+sha.w	#1,A0
+S1:
+jmpi.w	L609[A0]
+._block	1fh,3ch
+L609:
+.words	L129-S1
+.words	L159-S1
+.words	L189-S1
+.words	L229-S1
+.words	L269-S1
+.words	L309-S1
+.words	L339-S1
+.words	L369-S1
+.words	L399-S1
+.words	L429-S1
+.words	L459-S1
+.words	L489-S1
+.words	L519-S1
+.words	L549-S1
+.words	L579-S1
+.words	L127-S1
+._eblock	1fh,3dh
+	._line	152
+L129:
+	._line	154
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 154
+._block	20h,3eh
+jsr	$getSwFlag
+._eblock	20h,3fh
+mov.b	R0L,R0H
+jeq	L141
+	._line	155
+add.w	#0001H,_servo_center
+	._line	156
+cmp.w	#2710H,_servo_center
+jle	L691
+mov.w	#2710H,_servo_center
+L691:
+L141:
+	._line	158
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 158
+._block	21h,40h
+jsr	$getSwFlag
+._eblock	21h,41h
+mov.b	R0L,R0H
+jeq	L155
+	._line	159
+add.w	#-1,_servo_center
+	._line	160
+cmp.w	#03e8H,_servo_center
+jge	L693
+mov.w	#03e8H,_servo_center
+L693:
+L155:
+	._line	162
+mov.b	_servo_center+1,_data_buff+1
+	._line	163
+mov.w	_servo_center,A0
+and.w	#00ffH,A0
+mov.b	A0,_data_buff+2
+	._line	164
+mov.w	#0000H,R1
+._inspect	'S', 'c', "handle", "$handle", 'G', 0, 164
+._block	22h,42h
+jsr	$handle
+._eblock	22h,43h
+	._line	167
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 167
+._block	23h,44h
+jsr	$lcdPosition
+._eblock	23h,45h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	169
+push.w	_servo_center
+._inspect	'S', 'p', 2
+push.w	#___T3>>16
+push.w	#(___T3&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 169
+._block	24h,46h
+jsr	_lcdPrintf
+._eblock	24h,47h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	172
+._inspect	'S', 'c', "startbar_get", "_startbar_get", 'G', 0, 172
+._block	25h,48h
+jsr	_startbar_get
+._eblock	25h,49h
+push.w	R0
+._inspect	'S', 'p', 2
+push.w	_sensor8
+._inspect	'S', 'p', 2
+push.w	#___T1>>16
+push.w	#(___T1&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 172
+._block	26h,4ah
+jsr	_lcdPrintf
+._eblock	26h,4bh
+._inspect	'S', 'p', -8
+add.b	#08H,SP
+	._line	173
+jmp	L685
+	._line	175
+L159:
+	._line	177
+mov.b	_data_buff+3,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	178
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 178
+._block	27h,4ch
+jsr	$getSwFlag
+._eblock	27h,4dh
+mov.b	R0L,R0H
+jeq	L171
+	._line	179
+add.w	#0001H,-2[FB]
+	._line	180
+cmp.w	#0064H,-2[FB]
+jle	L695
+mov.w	#0064H,-2[FB]
+L695:
+L171:
+	._line	182
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 182
+._block	28h,4eh
+jsr	$getSwFlag
+._eblock	28h,4fh
+mov.b	R0L,R0H
+jeq	L185
+	._line	183
+add.w	#-1,-2[FB]
+	._line	184
+jpz	L697
+mov.w	#0000H,-2[FB]
+L697:
+L185:
+	._line	186
+mov.b	-2[FB],_data_buff+3
+	._line	189
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 189
+._block	29h,50h
+jsr	$lcdPosition
+._eblock	29h,51h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	191
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T4>>16
+push.w	#(___T4&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 191
+._block	2ah,52h
+jsr	_lcdPrintf
+._eblock	2ah,53h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	193
+jmp	L685
+	._line	195
+L189:
+	._line	197
+mov.b	_data_buff+6,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	198
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 198
+._block	2bh,54h
+jsr	$getSwFlag
+._eblock	2bh,55h
+mov.b	R0L,R0H
+jeq	L201
+	._line	199
+add.w	#0001H,-2[FB]
+	._line	200
+cmp.w	#0064H,-2[FB]
+jle	L699
+mov.w	#0064H,-2[FB]
+L699:
+L201:
+	._line	202
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 202
+._block	2ch,56h
+jsr	$getSwFlag
+._eblock	2ch,57h
+mov.b	R0L,R0H
+jeq	L215
+	._line	203
+add.w	#-1,-2[FB]
+	._line	204
+cmp.w	#0ff9cH,-2[FB]
+jge	L701
+mov.w	#0ff9cH,-2[FB]
+L701:
+L215:
+	._line	206
+mov.b	-2[FB],_data_buff+6
+	._line	208
+cmp.w	#0000H,-2[FB]
+jle	L219
+	._line	209
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R2,-4[FB]
+	._line	210
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R0,-2[FB]
+	._line	211
+jmp	L221
+L219:
+	._line	212
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+neg.w	R2
+mov.w	R2,-4[FB]
+	._line	213
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R0,-2[FB]
+	._line	214
+L221:
+	._line	217
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 217
+._block	2dh,58h
+jsr	$lcdPosition
+._eblock	2dh,59h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	219
+push.w	-4[FB]
+._inspect	'S', 'p', 2
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T5>>16
+push.w	#(___T5&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 219
+._block	2eh,5ah
+jsr	_lcdPrintf
+._eblock	2eh,5bh
+._inspect	'S', 'p', -8
+add.b	#08H,SP
+	._line	221
+jmp	L685
+	._line	223
+L229:
+	._line	225
+mov.b	_data_buff+7,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	226
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 226
+._block	2fh,5ch
+jsr	$getSwFlag
+._eblock	2fh,5dh
+mov.b	R0L,R0H
+jeq	L241
+	._line	227
+add.w	#0001H,-2[FB]
+	._line	228
+cmp.w	#0064H,-2[FB]
+jle	L703
+mov.w	#0064H,-2[FB]
+L703:
+L241:
+	._line	230
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 230
+._block	30h,5eh
+jsr	$getSwFlag
+._eblock	30h,5fh
+mov.b	R0L,R0H
+jeq	L255
+	._line	231
+add.w	#-1,-2[FB]
+	._line	232
+cmp.w	#0ff9cH,-2[FB]
+jge	L705
+mov.w	#0ff9cH,-2[FB]
+L705:
+L255:
+	._line	234
+mov.b	-2[FB],_data_buff+7
+	._line	236
+cmp.w	#0000H,-2[FB]
+jle	L259
+	._line	237
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R2,-4[FB]
+	._line	238
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R0,-2[FB]
+	._line	239
+jmp	L261
+L259:
+	._line	240
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+neg.w	R2
+mov.w	R2,-4[FB]
+	._line	241
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R0,-2[FB]
+	._line	242
+L261:
+	._line	245
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 245
+._block	31h,60h
+jsr	$lcdPosition
+._eblock	31h,61h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	247
+push.w	-4[FB]
+._inspect	'S', 'p', 2
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T6>>16
+push.w	#(___T6&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 247
+._block	32h,62h
+jsr	_lcdPrintf
+._eblock	32h,63h
+._inspect	'S', 'p', -8
+add.b	#08H,SP
+	._line	249
+jmp	L685
+	._line	251
+L269:
+	._line	253
+mov.b	_data_buff+8,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	254
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 254
+._block	33h,64h
+jsr	$getSwFlag
+._eblock	33h,65h
+mov.b	R0L,R0H
+jeq	L281
+	._line	255
+add.w	#0001H,-2[FB]
+	._line	256
+cmp.w	#0064H,-2[FB]
+jle	L707
+mov.w	#0064H,-2[FB]
+L707:
+L281:
+	._line	258
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 258
+._block	34h,66h
+jsr	$getSwFlag
+._eblock	34h,67h
+mov.b	R0L,R0H
+jeq	L295
+	._line	259
+add.w	#-1,-2[FB]
+	._line	260
+cmp.w	#0ff9cH,-2[FB]
+jge	L709
+mov.w	#0ff9cH,-2[FB]
+L709:
+L295:
+	._line	262
+mov.b	-2[FB],_data_buff+8
+	._line	264
+cmp.w	#0000H,-2[FB]
+jle	L299
+	._line	265
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R2,-4[FB]
+	._line	266
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R0,-2[FB]
+	._line	267
+jmp	L301
+L299:
+	._line	268
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+neg.w	R2
+mov.w	R2,-4[FB]
+	._line	269
+mov.w	-2[FB],R0
+exts.w	R0
+div.w	#000aH
+mov.w	R0,-2[FB]
+	._line	270
+L301:
+	._line	273
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 273
+._block	35h,68h
+jsr	$lcdPosition
+._eblock	35h,69h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	275
+push.w	-4[FB]
+._inspect	'S', 'p', 2
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T7>>16
+push.w	#(___T7&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 275
+._block	36h,6ah
+jsr	_lcdPrintf
+._eblock	36h,6bh
+._inspect	'S', 'p', -8
+add.b	#08H,SP
+	._line	277
+jmp	L685
+	._line	279
+L309:
+	._line	281
+mov.b	_data_buff+9,R0L
+mov.b	#00H,R0H
+shl.w	#08H,R0
+mov.b	_data_buff+10,R1L
+mov.b	#00H,R1H
+or.w	R1,R0
+mov.w	R0,-2[FB]
+	._line	282
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 282
+._block	37h,6ch
+jsr	$getSwFlag
+._eblock	37h,6dh
+mov.b	R0L,R0H
+jeq	L321
+	._line	283
+add.w	#0064H,-2[FB]
+	._line	284
+cmp.w	#2328H,-2[FB]
+jle	L711
+mov.w	#2328H,-2[FB]
+L711:
+L321:
+	._line	286
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 286
+._block	38h,6eh
+jsr	$getSwFlag
+._eblock	38h,6fh
+mov.b	R0L,R0H
+jeq	L335
+	._line	287
+sub.w	#0064H,-2[FB]
+	._line	288
+jpz	L713
+mov.w	#0000H,-2[FB]
+L713:
+L335:
+	._line	290
+mov.b	-1[FB],_data_buff+9
+	._line	291
+mov.w	-2[FB],A0
+and.w	#00ffH,A0
+mov.b	A0,_data_buff+10
+	._line	294
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 294
+._block	39h,70h
+jsr	$lcdPosition
+._eblock	39h,71h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	296
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T8>>16
+push.w	#(___T8&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 296
+._block	3ah,72h
+jsr	_lcdPrintf
+._eblock	3ah,73h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	297
+jmp	L685
+	._line	298
+L339:
+	._line	299
+mov.b	_data_buff+11,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	300
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 300
+._block	3bh,74h
+jsr	$getSwFlag
+._eblock	3bh,75h
+mov.b	R0L,R0H
+jeq	L351
+	._line	301
+add.w	#0001H,-2[FB]
+	._line	302
+cmp.w	#0064H,-2[FB]
+jle	L715
+mov.w	#0064H,-2[FB]
+L715:
+L351:
+	._line	304
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 304
+._block	3ch,76h
+jsr	$getSwFlag
+._eblock	3ch,77h
+mov.b	R0L,R0H
+jeq	L365
+	._line	305
+add.w	#-1,-2[FB]
+	._line	306
+jpz	L717
+mov.w	#0000H,-2[FB]
+L717:
+L365:
+	._line	308
+mov.b	-2[FB],_data_buff+11
+	._line	311
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 311
+._block	3dh,78h
+jsr	$lcdPosition
+._eblock	3dh,79h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	313
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T9>>16
+push.w	#(___T9&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 313
+._block	3eh,7ah
+jsr	_lcdPrintf
+._eblock	3eh,7bh
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	314
+jmp	L685
+	._line	315
+L369:
+	._line	316
+mov.b	_data_buff+19,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	317
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 317
+._block	3fh,7ch
+jsr	$getSwFlag
+._eblock	3fh,7dh
+mov.b	R0L,R0H
+jeq	L381
+	._line	318
+add.w	#0001H,-2[FB]
+	._line	319
+cmp.w	#002dH,-2[FB]
+jle	L719
+mov.w	#002dH,-2[FB]
+L719:
+L381:
+	._line	321
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 321
+._block	40h,7eh
+jsr	$getSwFlag
+._eblock	40h,7fh
+mov.b	R0L,R0H
+jeq	L395
+	._line	322
+add.w	#-1,-2[FB]
+	._line	323
+jpz	L721
+mov.w	#0000H,-2[FB]
+L721:
+L395:
+	._line	325
+mov.b	-2[FB],_data_buff+19
+	._line	328
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 328
+._block	41h,80h
+jsr	$lcdPosition
+._eblock	41h,81h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	330
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T10>>16
+push.w	#(___T10&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 330
+._block	42h,82h
+jsr	_lcdPrintf
+._eblock	42h,83h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	331
+jmp	L685
+	._line	332
+L399:
+	._line	333
+mov.b	_data_buff+12,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	334
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 334
+._block	43h,84h
+jsr	$getSwFlag
+._eblock	43h,85h
+mov.b	R0L,R0H
+jeq	L411
+	._line	335
+add.w	#0001H,-2[FB]
+	._line	336
+cmp.w	#0064H,-2[FB]
+jle	L723
+mov.w	#0064H,-2[FB]
+L723:
+L411:
+	._line	338
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 338
+._block	44h,86h
+jsr	$getSwFlag
+._eblock	44h,87h
+mov.b	R0L,R0H
+jeq	L425
+	._line	339
+add.w	#-1,-2[FB]
+	._line	340
+jpz	L725
+mov.w	#0000H,-2[FB]
+L725:
+L425:
+	._line	342
+mov.b	-2[FB],_data_buff+12
+	._line	345
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 345
+._block	45h,88h
+jsr	$lcdPosition
+._eblock	45h,89h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	347
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T11>>16
+push.w	#(___T11&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 347
+._block	46h,8ah
+jsr	_lcdPrintf
+._eblock	46h,8bh
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	348
+jmp	L685
+	._line	349
+L429:
+	._line	350
+mov.b	_data_buff+13,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	351
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 351
+._block	47h,8ch
+jsr	$getSwFlag
+._eblock	47h,8dh
+mov.b	R0L,R0H
+jeq	L441
+	._line	352
+add.w	#0001H,-2[FB]
+	._line	353
+cmp.w	#0064H,-2[FB]
+jle	L727
+mov.w	#0064H,-2[FB]
+L727:
+L441:
+	._line	355
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 355
+._block	48h,8eh
+jsr	$getSwFlag
+._eblock	48h,8fh
+mov.b	R0L,R0H
+jeq	L455
+	._line	356
+add.w	#-1,-2[FB]
+	._line	357
+cmp.w	#0ff9cH,-2[FB]
+jge	L729
+mov.w	#0ff9cH,-2[FB]
+L729:
+L455:
+	._line	359
+mov.b	-2[FB],_data_buff+13
+	._line	362
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 362
+._block	49h,90h
+jsr	$lcdPosition
+._eblock	49h,91h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	364
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T12>>16
+push.w	#(___T12&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 364
+._block	4ah,92h
+jsr	_lcdPrintf
+._eblock	4ah,93h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	365
+jmp	L685
+	._line	367
+L459:
+	._line	368
+mov.b	_data_buff+17,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	369
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 369
+._block	4bh,94h
+jsr	$getSwFlag
+._eblock	4bh,95h
+mov.b	R0L,R0H
+jeq	L471
+	._line	370
+add.w	#0001H,-2[FB]
+	._line	371
+cmp.w	#0064H,-2[FB]
+jle	L731
+mov.w	#0064H,-2[FB]
+L731:
+L471:
+	._line	373
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 373
+._block	4ch,96h
+jsr	$getSwFlag
+._eblock	4ch,97h
+mov.b	R0L,R0H
+jeq	L485
+	._line	374
+add.w	#-1,-2[FB]
+	._line	375
+jpz	L733
+mov.w	#0000H,-2[FB]
+L733:
+L485:
+	._line	377
+mov.b	-2[FB],_data_buff+17
+	._line	380
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 380
+._block	4dh,98h
+jsr	$lcdPosition
+._eblock	4dh,99h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	382
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T13>>16
+push.w	#(___T13&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 382
+._block	4eh,9ah
+jsr	_lcdPrintf
+._eblock	4eh,9bh
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	383
+jmp	L685
+	._line	384
+L489:
+	._line	385
+mov.b	_data_buff+14,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	386
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 386
+._block	4fh,9ch
+jsr	$getSwFlag
+._eblock	4fh,9dh
+mov.b	R0L,R0H
+jeq	L501
+	._line	387
+add.w	#0001H,-2[FB]
+	._line	388
+cmp.w	#001eH,-2[FB]
+jle	L735
+mov.w	#001eH,-2[FB]
+L735:
+L501:
+	._line	390
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 390
+._block	50h,9eh
+jsr	$getSwFlag
+._eblock	50h,9fh
+mov.b	R0L,R0H
+jeq	L515
+	._line	391
+add.w	#-1,-2[FB]
+	._line	392
+jpz	L737
+mov.w	#0000H,-2[FB]
+L737:
+L515:
+	._line	394
+mov.b	-2[FB],_data_buff+14
+	._line	397
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 397
+._block	51h,0a0h
+jsr	$lcdPosition
+._eblock	51h,0a1h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	399
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T14>>16
+push.w	#(___T14&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 399
+._block	52h,0a2h
+jsr	_lcdPrintf
+._eblock	52h,0a3h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	400
+jmp	L685
+	._line	401
+L519:
+	._line	402
+mov.b	_data_buff+18,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	403
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 403
+._block	53h,0a4h
+jsr	$getSwFlag
+._eblock	53h,0a5h
+mov.b	R0L,R0H
+jeq	L531
+	._line	404
+add.w	#0001H,-2[FB]
+	._line	405
+cmp.w	#001eH,-2[FB]
+jle	L739
+mov.w	#001eH,-2[FB]
+L739:
+L531:
+	._line	407
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 407
+._block	54h,0a6h
+jsr	$getSwFlag
+._eblock	54h,0a7h
+mov.b	R0L,R0H
+jeq	L545
+	._line	408
+add.w	#-1,-2[FB]
+	._line	409
+jpz	L741
+mov.w	#0000H,-2[FB]
+L741:
+L545:
+	._line	411
+mov.b	-2[FB],_data_buff+18
+	._line	414
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 414
+._block	55h,0a8h
+jsr	$lcdPosition
+._eblock	55h,0a9h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	416
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T15>>16
+push.w	#(___T15&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 416
+._block	56h,0aah
+jsr	_lcdPrintf
+._eblock	56h,0abh
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	417
+jmp	L685
+	._line	418
+L549:
+	._line	419
+mov.b	_data_buff+15,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	420
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 420
+._block	57h,0ach
+jsr	$getSwFlag
+._eblock	57h,0adh
+mov.b	R0L,R0H
+jeq	L561
+	._line	421
+add.w	#0001H,-2[FB]
+	._line	422
+cmp.w	#0064H,-2[FB]
+jle	L743
+mov.w	#0064H,-2[FB]
+L743:
+L561:
+	._line	424
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 424
+._block	58h,0aeh
+jsr	$getSwFlag
+._eblock	58h,0afh
+mov.b	R0L,R0H
+jeq	L575
+	._line	425
+add.w	#-1,-2[FB]
+	._line	426
+jpz	L745
+mov.w	#0000H,-2[FB]
+L745:
+L575:
+	._line	428
+mov.b	-2[FB],_data_buff+15
+	._line	431
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 431
+._block	59h,0b0h
+jsr	$lcdPosition
+._eblock	59h,0b1h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	433
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T16>>16
+push.w	#(___T16&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 433
+._block	5ah,0b2h
+jsr	_lcdPrintf
+._eblock	5ah,0b3h
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	434
+jmp	L685
+	._line	435
+L579:
+	._line	436
+mov.b	_data_buff+16,R0L
+exts.b	R0L
+mov.w	R0,-2[FB]
+	._line	437
+mov.b	#02H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 437
+._block	5bh,0b4h
+jsr	$getSwFlag
+._eblock	5bh,0b5h
+mov.b	R0L,R0H
+jeq	L591
+	._line	438
+add.w	#0001H,-2[FB]
+	._line	439
+cmp.w	#0064H,-2[FB]
+jle	L747
+mov.w	#0064H,-2[FB]
+L747:
+L591:
+	._line	441
+mov.b	#01H,R1L
+._inspect	'S', 'c', "getSwFlag", "$getSwFlag", 'G', 0, 441
+._block	5ch,0b6h
+jsr	$getSwFlag
+._eblock	5ch,0b7h
+mov.b	R0L,R0H
+jeq	L605
+	._line	442
+add.w	#-1,-2[FB]
+	._line	443
+jpz	L749
+mov.w	#0000H,-2[FB]
+L749:
+L605:
+	._line	445
+mov.b	-2[FB],_data_buff+16
+	._line	448
+push.b	#00H
+._inspect	'S', 'p', 1
+mov.b	#00H,R1L
+._inspect	'S', 'c', "lcdPosition", "$lcdPosition", 'G', 0, 448
+._block	5dh,0b8h
+jsr	$lcdPosition
+._eblock	5dh,0b9h
+._inspect	'S', 'p', -1
+add.b	#01H,SP
+	._line	450
+push.w	-2[FB]
+._inspect	'S', 'p', 2
+push.w	#___T17>>16
+push.w	#(___T17&0FFFFH)
+._inspect	'S', 'p', 4
+._inspect	'S', 'c', "lcdPrintf", "_lcdPrintf", 'G', 0, 450
+._block	5eh,0bah
+jsr	_lcdPrintf
+._eblock	5eh,0bbh
+._inspect	'S', 'p', -6
+add.b	#06H,SP
+	._line	453
+L685:
+L127:
+	._line	454
+exitd	
+._eblock	0fh,1eh
+E3:
+M6:
+._efunc	M6
+.align
+._eblock	10h,0bch
+._inspect	'F', 'd', "lcdProcess", "_lcdProcess", 'G', 109, 0, 00h, 0
+._inspect	'F', 't', "lcdProcess", 'G', 263
+._inspect	'V', 'r', "pattern", 'G', 112, 2, 0, 0, 00h
+._inspect	'V', 'r', "cnt_lcd", 'G', 113, 4, 0, 0, 00h
+._inspect	'V', 'r', "cnt_lcd", 'G', 114, 4, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 115, 0, 00h, 0
+._inspect	'V', 'r', "pattern", 'G', 117, 2, 0, 0, 00h
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 117, 0, 00h, 0
+._inspect	'F', 'r', "startbar_get", "_startbar_get", 'G', 120, 0, 00h, 0
+._inspect	'V', 'r', "sensor8", 'G', 120, 2, 0, 0, 00h
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 120, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 126, 0, 00h, 0
+._inspect	'F', 'r', "writeDataFlashParameter", "_writeDataFlashParameter", 'G', 128, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 132, 0, 00h, 0
+._inspect	'V', 'r', "lcd_pattern", 'G', 133, 2, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 134, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 135, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 136, 0, 00h, 0
+._inspect	'V', 'r', "lcd_pattern", 'G', 137, 2, 0, 0, 00h
+._inspect	'V', 'r', "lcd_pattern", 'G', 137, 2, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 141, 0, 00h, 0
+._inspect	'V', 'r', "lcd_pattern", 'G', 142, 2, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 143, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 144, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 145, 0, 00h, 0
+._inspect	'V', 'r', "lcd_pattern", 'G', 147, 2, 0, 0, 00h
+._inspect	'V', 'r', "lcd_pattern", 'G', 147, 2, 0, 0, 00h
+._inspect	'V', 'r', "lcd_pattern", 'G', 151, 2, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 154, 0, 00h, 0
+._inspect	'V', 'r', "servo_center", 'G', 155, 2, 0, 0, 00h
+._inspect	'V', 'r', "servo_center", 'G', 156, 2, 0, 0, 00h
+._inspect	'V', 'r', "servo_center", 'G', 156, 2, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 158, 0, 00h, 0
+._inspect	'V', 'r', "servo_center", 'G', 159, 2, 0, 0, 00h
+._inspect	'V', 'r', "servo_center", 'G', 160, 2, 0, 0, 00h
+._inspect	'V', 'r', "servo_center", 'G', 160, 2, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 162, 64, 0, 0, 00h
+._inspect	'V', 'r', "servo_center", 'G', 162, 2, 0, 0, 00h
+._inspect	'V', 'r', "servo_center", 'G', 163, 2, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 163, 64, 0, 0, 00h
+._inspect	'F', 'r', "handle", "$handle", 'G', 164, 0, 00h, 0
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 167, 0, 00h, 0
+._inspect	'V', 'r', "servo_center", 'G', 169, 2, 0, 0, 00h
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 169, 0, 00h, 0
+._inspect	'F', 'r', "startbar_get", "_startbar_get", 'G', 172, 0, 00h, 0
+._inspect	'V', 'r', "sensor8", 'G', 172, 2, 0, 0, 00h
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 172, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 177, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 178, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 182, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 186, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 189, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 191, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 197, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 198, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 202, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 206, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 217, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 219, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 225, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 226, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 230, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 234, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 245, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 247, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 253, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 254, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 258, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 262, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 273, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 275, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 281, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 281, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 282, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 286, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 290, 64, 0, 0, 00h
+._inspect	'V', 'r', "data_buff", 'G', 291, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 294, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 296, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 299, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 300, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 304, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 308, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 311, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 313, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 316, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 317, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 321, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 325, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 328, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 330, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 333, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 334, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 338, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 342, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 345, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 347, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 350, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 351, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 355, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 359, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 362, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 364, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 368, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 369, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 373, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 377, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 380, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 382, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 385, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 386, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 390, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 394, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 397, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 399, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 402, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 403, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 407, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 411, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 414, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 416, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 419, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 420, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 424, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 428, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 431, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 433, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 436, 64, 0, 0, 00h
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 437, 0, 00h, 0
+._inspect	'F', 'r', "getSwFlag", "$getSwFlag", 'G', 441, 0, 00h, 0
+._inspect	'V', 'r', "data_buff", 'G', 445, 64, 0, 0, 00h
+._inspect	'F', 'r', "lcdPosition", "$lcdPosition", 'G', 448, 0, 00h, 0
+._inspect	'F', 'r', "lcdPrintf", "_lcdPrintf", 'G', 450, 0, 00h, 0
+._inspect	'F', 'e', "lcdProcess", "_lcdProcess", 'G', 8, 0
+.glb	__iob
+.glb	_getc
+.glb	_getchar
+.glb	$putc
+.glb	$putchar
+.glb	_feof
+.glb	_ferror
+.glb	_fgetc
+.glb	$fgets
+.glb	$fputc
+.glb	_fputs
+.glb	_fread
+.glb	_fwrite
+.glb	_gets
+.glb	_puts
+.glb	$ungetc
+.glb	_printf
+.glb	_fprintf
+.glb	_sprintf
+.glb	$vprintf
+.glb	_vfprintf
+.glb	_vsprintf
+.glb	_fscanf
+.glb	_scanf
+.glb	_sscanf
+.glb	_fflush
+.glb	_clearerr
+.glb	_perror
+.glb	$init_dev
+.glb	$speed
+.glb	_init_prn
+.glb	__sget
+.glb	$_sput
+.glb	$_pput
+.glb	__print
+.glb	_initLcd
+.glb	_lcdShowProcess
+.glb	_lcdPrintf
+.glb	$lcdPosition
+.glb	_initSwitch
+.glb	_getSwNow
+.glb	$getSwFlag
+.glb	_switchProcess
+.glb	$readDataFlash
+.glb	$writeDataFlash
+.glb	$blockEraseDataFlash
+.glb	$handle
+.glb	_data_buff
+.glb	_cnt_lcd
+.glb	_pattern
+.glb	_servo_center
+.glb	_sensor8
+.glb	_startbar_get
+	.SECTION	data_NE,DATA,align
+._inspect	'U', 1, "data_NE", "data_NE", 0
+.glb	_lcd_pattern
+_lcd_pattern:
+.blkb	2
+	.SECTION	data_NEI,ROMDATA
+._inspect	'U', 1, "data_NEI", "data_NEI", 0
+.word	0002H
+	.SECTION	rom_FO,ROMDATA
+._inspect	'U', 4, "rom_FO", "rom_FO", 0
+___T17:
+.byte	31H
+.byte	35H
+.byte	20H
+.byte	4cH
+.byte	61H
+.byte	6eH
+.byte	65H
+.byte	43H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	67H
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	4dH
+.byte	6fH
+.byte	74H
+.byte	6fH
+.byte	72H
+.byte	20H
+.byte	49H
+.byte	4eH
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T16:
+.byte	31H
+.byte	34H
+.byte	20H
+.byte	4cH
+.byte	61H
+.byte	6eH
+.byte	65H
+.byte	43H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	67H
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	4dH
+.byte	6fH
+.byte	74H
+.byte	6fH
+.byte	72H
+.byte	20H
+.byte	4fH
+.byte	55H
+.byte	54H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T15:
+.byte	31H
+.byte	33H
+.byte	20H
+.byte	4cH
+.byte	61H
+.byte	6eH
+.byte	65H
+.byte	43H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	67H
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	52H
+.byte	20H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	64H
+.byte	6cH
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T14:
+.byte	31H
+.byte	32H
+.byte	20H
+.byte	4cH
+.byte	61H
+.byte	6eH
+.byte	65H
+.byte	43H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	67H
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	4cH
+.byte	20H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	64H
+.byte	6cH
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T13:
+.byte	31H
+.byte	31H
+.byte	20H
+.byte	4cH
+.byte	61H
+.byte	6eH
+.byte	65H
+.byte	43H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	67H
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	53H
+.byte	70H
+.byte	65H
+.byte	65H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	33H
+.byte	64H
+.byte	00H
+___T12:
+.byte	31H
+.byte	30H
+.byte	20H
+.byte	43H
+.byte	72H
+.byte	61H
+.byte	6eH
+.byte	6bH
+.byte	20H
+.byte	6dH
+.byte	6fH
+.byte	74H
+.byte	6fH
+.byte	72H
+.byte	20H
+.byte	20H
+.byte	49H
+.byte	4eH
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T11:
+.byte	30H
+.byte	39H
+.byte	20H
+.byte	43H
+.byte	72H
+.byte	61H
+.byte	6eH
+.byte	6bH
+.byte	20H
+.byte	6dH
+.byte	6fH
+.byte	74H
+.byte	6fH
+.byte	72H
+.byte	20H
+.byte	20H
+.byte	4fH
+.byte	55H
+.byte	54H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T10:
+.byte	30H
+.byte	38H
+.byte	20H
+.byte	43H
+.byte	72H
+.byte	61H
+.byte	6eH
+.byte	6bH
+.byte	20H
+.byte	68H
+.byte	61H
+.byte	6eH
+.byte	64H
+.byte	6cH
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T9:
+.byte	30H
+.byte	37H
+.byte	20H
+.byte	43H
+.byte	72H
+.byte	61H
+.byte	6eH
+.byte	6bH
+.byte	20H
+.byte	53H
+.byte	70H
+.byte	65H
+.byte	65H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	00H
+___T8:
+.byte	30H
+.byte	36H
+.byte	20H
+.byte	20H
+.byte	73H
+.byte	74H
+.byte	6fH
+.byte	70H
+.byte	20H
+.byte	74H
+.byte	69H
+.byte	6dH
+.byte	65H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	34H
+.byte	64H
+.byte	20H
+.byte	6dH
+.byte	53H
+.byte	00H
+___T7:
+.byte	30H
+.byte	35H
+.byte	20H
+.byte	4bH
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	64H
+.byte	2eH
+.byte	25H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	00H
+___T6:
+.byte	30H
+.byte	34H
+.byte	20H
+.byte	4bH
+.byte	69H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	64H
+.byte	2eH
+.byte	25H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	00H
+___T5:
+.byte	30H
+.byte	33H
+.byte	20H
+.byte	4bH
+.byte	70H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	64H
+.byte	2eH
+.byte	25H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	00H
+___T4:
+.byte	30H
+.byte	32H
+.byte	20H
+.byte	4dH
+.byte	61H
+.byte	78H
+.byte	20H
+.byte	53H
+.byte	50H
+.byte	45H
+.byte	45H
+.byte	44H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	33H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	00H
+___T3:
+.byte	30H
+.byte	31H
+.byte	20H
+.byte	73H
+.byte	65H
+.byte	72H
+.byte	76H
+.byte	6fH
+.byte	20H
+.byte	3dH
+.byte	20H
+.byte	25H
+.byte	30H
+.byte	35H
+.byte	64H
+.byte	00H
+___T2:
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	00H
+___T1:
+.byte	73H
+.byte	65H
+.byte	6eH
+.byte	73H
+.byte	6fH
+.byte	72H
+.byte	3dH
+.byte	25H
+.byte	30H
+.byte	32H
+.byte	78H
+.byte	20H
+.byte	62H
+.byte	61H
+.byte	72H
+.byte	3dH
+.byte	25H
+.byte	64H
+.byte	20H
+.byte	00H
+___T0:
+.byte	70H
+.byte	61H
+.byte	74H
+.byte	74H
+.byte	65H
+.byte	72H
+.byte	6eH
+.byte	20H
+.byte	3dH
+.byte	20H
+.byte	25H
+.byte	33H
+.byte	64H
+.byte	20H
+.byte	20H
+.byte	20H
+.byte	00H
+._type	265,'v'
+._type	266,'x',16,1
+._type	266,'m','',0,265
+._type	267,'P',266
+._type	268,'x',16,1
+._type	268,'m','',0,16
+._type	269,'P',268
+._type	264,'S','_iobuf',15
+._type	264,'m','_buff',3,0
+._type	264,'m','_cnt',16,1
+._type	264,'m','_flag',16,3
+._type	264,'m','_mod',16,5
+._type	264,'m','_func_in',267,7
+._type	264,'m','_func_out',269,11
+._type	270,'T','FILE',264
+._type	271,'T','fpos_t',20
+._type	272,'T','size_t',7
+._type	273,'Z',-1,270
+._var	'_iob','E',273
+._type	274,'O',3
+._type	275,'T','__va_list',274
+._type	276,'P',270
+._type	277,'x',16,1
+._type	277,'m','st',0,276
+._var	'getc','F',277
+._type	278,'v'
+._type	279,'x',16,1
+._type	279,'m','',0,278
+._var	'getchar','F',279
+._type	280,'P',270
+._type	281,'x',16,2
+._type	281,'m','c',0,16
+._type	281,'m','st',0,280
+._var	'putc','F',281
+._type	282,'x',16,1
+._type	282,'m','c',0,16
+._var	'putchar','F',282
+._type	283,'P',270
+._type	284,'x',16,1
+._type	284,'m','st',0,283
+._var	'feof','F',284
+._type	285,'P',270
+._type	286,'x',16,1
+._type	286,'m','st',0,285
+._var	'ferror','F',286
+._type	287,'P',270
+._type	288,'x',16,1
+._type	288,'m','st',0,287
+._var	'fgetc','F',288
+._type	289,'P',3
+._type	290,'P',3
+._type	291,'P',270
+._type	292,'x',289,3
+._type	292,'m','s',0,290
+._type	292,'m','n',0,16
+._type	292,'m','st',0,291
+._var	'fgets','F',292
+._type	293,'P',270
+._type	294,'x',16,2
+._type	294,'m','c',0,16
+._type	294,'m','st',0,293
+._var	'fputc','F',294
+._type	295,'P',3
+._type	296,'P',270
+._type	297,'x',16,2
+._type	297,'m','s',0,295
+._type	297,'m','st',0,296
+._var	'fputs','F',297
+._type	298,'v'
+._type	299,'P',298
+._type	300,'P',270
+._type	301,'x',272,4
+._type	301,'m','ptr',0,299
+._type	301,'m','size',0,272
+._type	301,'m','nelem',0,272
+._type	301,'m','st',0,300
+._var	'fread','F',301
+._type	302,'v'
+._type	303,'P',302
+._type	304,'P',270
+._type	305,'x',272,4
+._type	305,'m','ptr',0,303
+._type	305,'m','size',0,272
+._type	305,'m','nelem',0,272
+._type	305,'m','st',0,304
+._var	'fwrite','F',305
+._type	306,'P',3
+._type	307,'P',3
+._type	308,'x',306,1
+._type	308,'m','s',0,307
+._var	'gets','F',308
+._type	309,'P',3
+._type	310,'x',16,1
+._type	310,'m','s',0,309
+._var	'puts','F',310
+._type	311,'P',270
+._type	312,'x',16,2
+._type	312,'m','c',0,16
+._type	312,'m','st',0,311
+._var	'ungetc','F',312
+._type	313,'P',3
+._type	314,'x',16,2
+._type	314,'m','format',0,313
+._type	314,'m','',0,32
+._var	'printf','F',314
+._type	315,'P',270
+._type	316,'P',3
+._type	317,'x',16,3
+._type	317,'m','st',0,315
+._type	317,'m','format',0,316
+._type	317,'m','',0,32
+._var	'fprintf','F',317
+._type	318,'P',3
+._type	319,'P',3
+._type	320,'x',16,3
+._type	320,'m','s',0,318
+._type	320,'m','format',0,319
+._type	320,'m','',0,32
+._var	'sprintf','F',320
+._type	321,'P',3
+._type	322,'x',16,2
+._type	322,'m','format',0,321
+._type	322,'m','ap',0,275
+._var	'vprintf','F',322
+._type	323,'P',270
+._type	324,'P',3
+._type	325,'x',16,3
+._type	325,'m','st',0,323
+._type	325,'m','format',0,324
+._type	325,'m','ap',0,275
+._var	'vfprintf','F',325
+._type	326,'P',3
+._type	327,'P',3
+._type	328,'x',16,3
+._type	328,'m','s',0,326
+._type	328,'m','format',0,327
+._type	328,'m','ap',0,275
+._var	'vsprintf','F',328
+._type	329,'P',270
+._type	330,'P',3
+._type	331,'x',16,3
+._type	331,'m','st',0,329
+._type	331,'m','format',0,330
+._type	331,'m','',0,32
+._var	'fscanf','F',331
+._type	332,'P',3
+._type	333,'x',16,2
+._type	333,'m','format',0,332
+._type	333,'m','',0,32
+._var	'scanf','F',333
+._type	334,'P',3
+._type	335,'P',3
+._type	336,'x',16,3
+._type	336,'m','s',0,334
+._type	336,'m','format',0,335
+._type	336,'m','',0,32
+._var	'sscanf','F',336
+._type	337,'P',270
+._type	338,'x',16,1
+._type	338,'m','stream',0,337
+._var	'fflush','F',338
+._type	339,'v'
+._type	340,'P',270
+._type	341,'x',339,1
+._type	341,'m','stream',0,340
+._var	'clearerr','F',341
+._type	342,'v'
+._type	343,'P',3
+._type	344,'x',342,1
+._type	344,'m','s',0,343
+._var	'perror','F',344
+._type	345,'P',270
+._type	346,'x',16,2
+._type	346,'m','',0,345
+._type	346,'m','',0,16
+._var	'init_dev','F',346
+._type	347,'x',16,4
+._type	347,'m','',0,16
+._type	347,'m','',0,16
+._type	347,'m','',0,16
+._type	347,'m','',0,16
+._var	'speed','F',347
+._type	348,'v'
+._type	349,'x',16,1
+._type	349,'m','',0,348
+._var	'init_prn','F',349
+._type	350,'v'
+._type	351,'x',16,1
+._type	351,'m','',0,350
+._var	'_sget','F',351
+._type	352,'x',16,1
+._type	352,'m','',0,16
+._var	'_sput','F',352
+._type	353,'x',16,1
+._type	353,'m','',0,16
+._var	'_pput','F',353
+._type	354,'P',3
+._type	355,'x',16,1
+._type	355,'m','',0,16
+._type	356,'P',355
+._type	357,'P',3
+._type	358,'O',16
+._type	359,'O',358
+._type	360,'O',16
+._type	361,'x',354,4
+._type	361,'m','',0,356
+._type	361,'m','',0,357
+._type	361,'m','',0,359
+._type	361,'m','',0,360
+._var	'_print','F',361
+._type	362,'v'
+._type	363,'x',16,1
+._type	363,'m','',0,362
+._var	'initLcd','F',363
+._type	364,'v'
+._type	365,'v'
+._type	366,'x',364,1
+._type	366,'m','',0,365
+._var	'lcdShowProcess','F',366
+._type	367,'P',3
+._type	368,'x',16,2
+._type	368,'m','format',0,367
+._type	368,'m','',0,32
+._var	'lcdPrintf','F',368
+._type	369,'v'
+._type	370,'x',369,2
+._type	370,'m','x',0,3
+._type	370,'m','y',0,3
+._var	'lcdPosition','F',370
+._type	371,'v'
+._type	372,'v'
+._type	373,'x',371,1
+._type	373,'m','',0,372
+._var	'initSwitch','F',373
+._type	374,'v'
+._type	375,'x',3,1
+._type	375,'m','',0,374
+._var	'getSwNow','F',375
+._type	376,'x',3,1
+._type	376,'m','flag',0,3
+._var	'getSwFlag','F',376
+._type	377,'v'
+._type	378,'v'
+._type	379,'x',377,1
+._type	379,'m','',0,378
+._var	'switchProcess','F',379
+._type	380,'v'
+._type	381,'O',19
+._type	382,'x',380,3
+._type	382,'m','r_address',0,18
+._type	382,'m','w_address',0,381
+._type	382,'m','count',0,16
+._var	'readDataFlash','F',382
+._type	383,'O',19
+._type	384,'x',16,3
+._type	384,'m','w_address',0,18
+._type	384,'m','r_address',0,383
+._type	384,'m','count',0,16
+._var	'writeDataFlash','F',384
+._type	385,'x',16,1
+._type	385,'m','address',0,18
+._var	'blockEraseDataFlash','F',385
+._type	386,'v'
+._type	387,'x',386,1
+._type	387,'m','angle',0,16
+._var	'handle','F',387
+._type	388,'Z',64,19
+._var	'data_buff','E',388
+._var	'cnt_lcd','E',7
+._var	'pattern','E',16
+._var	'servo_center','E',16
+._var	'sensor8','E',16
+._var	'lcd_pattern','G',16,_lcd_pattern
+._type	389,'x',16,0
+._var	'startbar_get','F',389
+._inspect	'V', 't', "FILE", 'O', 264
+._inspect	'V', 't', "fpos_t", 'O', 20
+._inspect	'V', 't', "size_t", 'O', 7
+._inspect	'V', 't', "_iob", 'G', 273
+._inspect	'V', 't', "__va_list", 'O', 274
+._inspect	'F', 't', "getc", 'G', 277
+._inspect	'F', 't', "getchar", 'G', 279
+._inspect	'F', 't', "putc", 'G', 281
+._inspect	'F', 't', "putchar", 'G', 282
+._inspect	'F', 't', "feof", 'G', 284
+._inspect	'F', 't', "ferror", 'G', 286
+._inspect	'F', 't', "fgetc", 'G', 288
+._inspect	'F', 't', "fgets", 'G', 292
+._inspect	'F', 't', "fputc", 'G', 294
+._inspect	'F', 't', "fputs", 'G', 297
+._inspect	'F', 't', "fread", 'G', 301
+._inspect	'F', 't', "fwrite", 'G', 305
+._inspect	'F', 't', "gets", 'G', 308
+._inspect	'F', 't', "puts", 'G', 310
+._inspect	'F', 't', "ungetc", 'G', 312
+._inspect	'F', 't', "printf", 'G', 314
+._inspect	'F', 't', "fprintf", 'G', 317
+._inspect	'F', 't', "sprintf", 'G', 320
+._inspect	'F', 't', "vprintf", 'G', 322
+._inspect	'F', 't', "vfprintf", 'G', 325
+._inspect	'F', 't', "vsprintf", 'G', 328
+._inspect	'F', 't', "fscanf", 'G', 331
+._inspect	'F', 't', "scanf", 'G', 333
+._inspect	'F', 't', "sscanf", 'G', 336
+._inspect	'F', 't', "fflush", 'G', 338
+._inspect	'F', 't', "clearerr", 'G', 341
+._inspect	'F', 't', "perror", 'G', 344
+._inspect	'F', 't', "init_dev", 'G', 346
+._inspect	'F', 't', "speed", 'G', 347
+._inspect	'F', 't', "init_prn", 'G', 349
+._inspect	'F', 't', "_sget", 'G', 351
+._inspect	'F', 't', "_sput", 'G', 352
+._inspect	'F', 't', "_pput", 'G', 353
+._inspect	'F', 't', "_print", 'G', 361
+._inspect	'F', 't', "initLcd", 'G', 363
+._inspect	'F', 't', "lcdShowProcess", 'G', 366
+._inspect	'F', 't', "lcdPrintf", 'G', 368
+._inspect	'F', 't', "lcdPosition", 'G', 370
+._inspect	'F', 't', "initSwitch", 'G', 373
+._inspect	'F', 't', "getSwNow", 'G', 375
+._inspect	'F', 't', "getSwFlag", 'G', 376
+._inspect	'F', 't', "switchProcess", 'G', 379
+._inspect	'F', 't', "readDataFlash", 'G', 382
+._inspect	'F', 't', "writeDataFlash", 'G', 384
+._inspect	'F', 't', "blockEraseDataFlash", 'G', 385
+._inspect	'F', 't', "handle", 'G', 387
+._inspect	'V', 't', "data_buff", 'G', 388
+._inspect	'V', 't', "cnt_lcd", 'G', 7
+._inspect	'V', 't', "pattern", 'G', 16
+._inspect	'V', 't', "servo_center", 'G', 16
+._inspect	'V', 't', "sensor8", 'G', 16
+._inspect	'V', 't', "lcd_pattern", 'G', 16
+._inspect	'F', 't', "startbar_get", 'G', 389
+	._error	0,0
+	.END
+;%% Fri Oct 31 22:10:50 2014

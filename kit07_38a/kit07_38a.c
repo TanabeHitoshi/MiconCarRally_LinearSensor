@@ -285,15 +285,39 @@ void main( void )
             	pattern = 61;
             	break;
         	}
+        	if( check_RightOutLine() ) {        /* 右アウトラインチェック       */
+            	pattern = 12;
+            	break;
+        	}
+        	if( check_LeftOutLine() ) {        /* 左アウトラインチェック       */
+            	pattern = 15;
+            	break;
+        	}
 		}
 		
 		if( pos > 0)	motor(100-pos*10.0,100-pos*15.0);
 		else			motor(100+pos*15.0,100+pos*10.0);
-		if(check(0,1))	motor(0,0);
-		if(check(14,15))motor(0,0);
-
         break;
-
+	case 12:
+		/* 右大カーブ */
+		if(!check_RightOutLine()){
+			pattern = 11;			/* 通常トレース */
+		}else{
+			for(i = 12;i < 16;i++) sval[i] = 0.0;	/* マスクする */
+			potition();			/* ライン位置の再計算 */
+			handle( PID());
+		}
+		break;
+	case 15:
+		/* 左大カーブ */
+		if(!check_LeftOutLine()){
+			pattern = 11;			/* 通常トレース */
+		}else{
+			for(i = 0;i < 4;i++) sval[i] = 0.0;	/* マスクする */
+			potition();			/* ライン位置の再計算 */
+			handle( PID());
+		}
+		break;
     case 21:
         /* １本目のクロスライン検出時の処理 */
         led_out( 0x3 );

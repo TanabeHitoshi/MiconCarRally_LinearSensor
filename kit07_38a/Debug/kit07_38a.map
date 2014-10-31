@@ -1,31 +1,31 @@
-Optimizing Linkage Editor (V.10.01.00.000)        31-Oct-2014 19:27:36
+Optimizing Linkage Editor (V.10.01.00.000)        31-Oct-2014 22:11:29
 
 *** Options ***
 
--subcommand=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.m16cl
+-subcommand=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.m16cl
 -noprelink
 -nomessage
--list="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.map"
+-list="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.map"
 -show=symbol,total_size
 -start=data_SE,bss_SE,data_SO,bss_SO,data_NE,bss_NE,data_NO,bss_NO,stack,istack,heap_NE/0400,rom_NE,rom_NO,data_SEI,data_SOI,data_NEI,data_NOI,switch_table,program,interrupt/04000,vector/0FED8,rom_FE,rom_FO/010000
 -nologo
 -stack
 -total_size
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj"
--input="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj"
--library="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.lib"
--output="E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.abs"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj"
+-input="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj"
+-library="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.lib"
+-output="D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.abs"
 -change_message=information=1100,1322,1410
 -end
 
@@ -66,9 +66,9 @@ data_NEI
 data_NOI
                                   00004078  0000407d         6   1
 program
-                                  0000407e  0000d71b      969e   2
+                                  0000407e  0000d7c1      9744   2
 interrupt
-                                  0000d71c  0000d71c         0   2
+                                  0000d7c2  0000d7c2         0   2
 vector
                                   0000fed8  0000ffd7       100   2
 fvector
@@ -82,7 +82,7 @@ rom_FO
 
 RAMDATA SECTION:  00000efb Byte(s)
 ROMDATA SECTION:  000006ca Byte(s)
-PROGRAM SECTION:  0000969e Byte(s)
+PROGRAM SECTION:  00009744 Byte(s)
 
 *** ID code information ***
 
@@ -107,11 +107,11 @@ FILE=                               START        END    SIZE
   SYMBOL                            ADDR        SIZE    INFO      COUNTS  OPT
 
 SECTION=data_NE
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   00000400  00000401         2
   ___S0_p
                                   00000400         2   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   00000402  0000044d        4c
   _ad_white
                                   00000402        20   data ,g         * 
@@ -121,23 +121,23 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   00000442         8   data ,l         * 
   ___S1_i_pos
                                   0000044a         4   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
                                   0000044e  00000455         8
   _C_DATE
                                   0000044e         4   data ,g         * 
   _C_TIME
                                   00000452         4   data ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
                                   00000456  00000459         4
   _lcdMode
                                   00000456         2   data ,l         * 
   _lcdConnect
                                   00000458         2   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
                                   0000045a  0000045b         2
   _lcd_pattern
                                   0000045a         2   data ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
                                   0000045c  00000465         a
   _send_w
                                   0000045c         2   data ,l         * 
@@ -161,7 +161,7 @@ FILE=errno
                                   00000476         2   data ,g         * 
 
 SECTION=bss_NE
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
                                   00000478  00000481         a
   _handleBuff
                                   00000478         2   data ,g         * 
@@ -173,7 +173,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
                                   0000047e         2   data ,g         * 
   _servo_center
                                   00000480         2   data ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
                                   00000482  00000499        18
   _write_mode
                                   00000482         2   data ,l         * 
@@ -185,7 +185,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.ob
                                   00000488        10   data ,l         * 
   _write_buff_p
                                   00000498         2   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   0000049a  000006ed       254
   _cnt0
                                   0000049a         4   data ,g         * 
@@ -225,7 +225,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   000006ea         2   data ,g         * 
   ___S1_line_no
                                   000006ec         2   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   000006ee  000007bb        ce
   _ImageData
                                   000006ee        20   data ,g         * 
@@ -247,11 +247,11 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   00000798         4   data ,g         * 
   _pre_ImageData
                                   0000079c        20   data ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
                                   000007bc  000007fb        40
   _data_buff
                                   000007bc        40   data ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
                                   000007fc  00000853        58
   _buffLcdData
                                   000007fc        20   data ,l         * 
@@ -267,7 +267,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
                                   0000084e         2   data ,l         * 
   _lcdCnt
                                   00000850         4   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   00000854  00000aa9       256
   _msdlibBuff
                                   00000854       202   data ,l         * 
@@ -321,7 +321,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   00000aa2         4   data ,l         * 
   _writeSectorWork
                                   00000aa6         4   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
                                   00000aaa  00000b45        9c
   __iob
                                   00000aaa        3c   data ,g         * 
@@ -329,11 +329,11 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
                                   00000ae6        40   data ,l         * 
   _recv_buff
                                   00000b26        20   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
                                   00000b46  00000c45       100
   _heap_area
                                   00000b46       100   data ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj
                                   00000c46  00000c6f        2a
   _iSwitchIntervalCount
                                   00000c46         2   data ,l         * 
@@ -361,7 +361,7 @@ FILE=fprintf_sub
                                   00000d84         4   data ,g         * 
 
 SECTION=data_NO
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   00000d88  00000d8d         6
   _fileYear
                                   00000d88         1   data ,l         * 
@@ -377,13 +377,13 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   00000d8d         1   data ,l         * 
 
 SECTION=bss_NO
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
                                   00000d8e  00000d8f         2
   _eep_address
                                   00000d8e         1   data ,l         * 
   _write_eep_address
                                   00000d8f         1   data ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   00000d90  00000d90         1
   _led_port_bit
                                   00000d90         1   data ,l         * 
@@ -395,35 +395,35 @@ FILE=print
                                   00000ec6       135   data ,l         * 
 
 SECTION=stack
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
                                   00000ffb  000011fa       200
   __stack_top
                                   000011fb         0   none ,g         * 
 
 SECTION=istack
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
                                   000011fb  000012fa       100
   __istack_top
                                   000012fb         0   none ,g         * 
 
 SECTION=heap_NE
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
                                   000012fc  000012fc         0
   __heap_NE_top
                                   000012fc         0   none ,l         * 
 
 SECTION=data_NEI
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   00004000  00004001         2
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   00004002  0000404d        4c
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
                                   0000404e  00004055         8
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
                                   00004056  00004059         4
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
                                   0000405a  0000405b         2
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
                                   0000405c  00004065         a
 FILE=mdata
                                   00004066  00004075        10
@@ -431,11 +431,11 @@ FILE=errno
                                   00004076  00004077         2
 
 SECTION=data_NOI
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   00004078  0000407d         6
 
 SECTION=program
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.obj
                                   0000407e  0000430b       28e
   $readDataFlash
                                   0000407e        34   func ,g         * 
@@ -447,13 +447,13 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.ob
                                   00004290        24   func ,g         * 
   $checkBlockAddress
                                   000042b4        58   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
                                   0000430c  00004455       14a
   $motor
                                   0000430c       10c   func ,g         * 
   $handle
                                   00004418        3e   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
                                   00004456  00004781       32c
   _i2c_start
                                   00004456        1a   func ,g         * 
@@ -479,7 +479,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.ob
                                   000046d4        7c   func ,g         * 
   _checkI2CEeprom
                                   00004750        32   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   00004782  00004b97       416
   _init
                                   00004782        c6   func ,g         * 
@@ -487,445 +487,449 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   00004848       332   func ,g         * 
   _timer
                                   00004b7a        1e   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj
-                                  00004b98  00004cd3       13c
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj
+                                  00004b98  00004cf3       15c
   $check
                                   00004b98        2c   func ,g         * 
+  _check_RightOutLine
+                                  00004bc4         e   func ,g         * 
+  _check_LeftOutLine
+                                  00004bd2        12   func ,g         * 
   _check_crossline
-                                  00004bc4        38   func ,g         * 
+                                  00004be4        38   func ,g         * 
   _check_rightline
-                                  00004bfc        52   func ,g         * 
+                                  00004c1c        52   func ,g         * 
   _check_leftline
-                                  00004c4e        4e   func ,g         * 
+                                  00004c6e        4e   func ,g         * 
   _check_black
-                                  00004c9c         a   func ,g         * 
+                                  00004cbc         a   func ,g         * 
   _check_center
-                                  00004ca6        2e   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
-                                  00004cd4  00005675       9a2
+                                  00004cc6        2e   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
+                                  00004cf4  00005695       9a2
   _get_ad
-                                  00004cd4       200   func ,g         * 
+                                  00004cf4       200   func ,g         * 
   _LPF
-                                  00004ed4        dc   func ,g         * 
+                                  00004ef4        dc   func ,g         * 
   _Normanaization
-                                  00004fb0        a4   func ,g         * 
+                                  00004fd0        a4   func ,g         * 
   _binarization
-                                  00005054        62   func ,g         * 
+                                  00005074        62   func ,g         * 
   _potition
-                                  000050b6        d4   func ,g         * 
+                                  000050d6        d4   func ,g         * 
   _PID
-                                  0000518a       2de   func ,g         * 
+                                  000051aa       2de   func ,g         * 
   _AutoCalibration
-                                  00005468        5e   func ,g         * 
+                                  00005488        5e   func ,g         * 
   _allBlack
-                                  000054c6        54   func ,g         * 
+                                  000054e6        54   func ,g         * 
   _startbar_get
-                                  0000551a        54   func ,g         * 
+                                  0000553a        54   func ,g         * 
   $float_printf
-                                  0000556e       108   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
-                                  00005676  0000663b       fc6
+                                  0000558e       108   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+                                  00005696  000066e1      104c
   _main
-                                  00005676       f4c   func ,g         * 
+                                  00005696       fd2   func ,g         * 
   _dipsw_get
-                                  000065c2        12   func ,g         * 
+                                  00006668        12   func ,g         * 
   _pushsw_get
-                                  000065d4        16   func ,g         * 
+                                  0000667a        16   func ,g         * 
   $led_out
-                                  000065ea        1e   func ,g         * 
+                                  00006690        1e   func ,g         * 
   $diff
-                                  00006608        34   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
-                                  0000663c  00006a29       3ee
+                                  000066ae        34   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
+                                  000066e2  00006acf       3ee
   $lcd_nop
-                                  0000663c        12   func ,l         * 
+                                  000066e2        12   func ,l         * 
   _lcdTimer
-                                  0000664e        2a   func ,l         * 
+                                  000066f4        2a   func ,l         * 
   _lcdBusyStart
-                                  00006678         e   func ,l         * 
+                                  0000671e         e   func ,l         * 
   $lcdOut2
-                                  00006686        3c   func ,l         * 
+                                  0000672c        3c   func ,l         * 
   $lcdOut
-                                  000066c2        2a   func ,l         * 
+                                  00006768        2a   func ,l         * 
   $lcdLocate
-                                  000066ec        52   func ,l         * 
+                                  00006792        52   func ,l         * 
   _checkLcdBusy
-                                  0000673e        b8   func ,l         * 
+                                  000067e4        b8   func ,l         * 
   _initLcd
-                                  000067f6        e0   func ,g         * 
+                                  0000689c        e0   func ,g         * 
   _lcdShowProcess
-                                  000068d6        c4   func ,g         * 
+                                  0000697c        c4   func ,g         * 
   _lcdPrintf
-                                  0000699a        6a   func ,g         * 
+                                  00006a40        6a   func ,g         * 
   $lcdPosition
-                                  00006a04        26   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
-                                  00006a2a  00007295       86c
+                                  00006aaa        26   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
+                                  00006ad0  0000733b       86c
   _readDataFlashParameter
-                                  00006a2a        b8   func ,g         * 
+                                  00006ad0        b8   func ,g         * 
   _writeDataFlashParameter
-                                  00006ae2        5c   func ,g         * 
+                                  00006b88        5c   func ,g         * 
   _lcdProcess
-                                  00006b3e       758   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
-                                  00007296  00009173      1ede
+                                  00006be4       758   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+                                  0000733c  00009219      1ede
   $msd_write
-                                  00007296        18   func ,l         * 
+                                  0000733c        18   func ,l         * 
   _msd_read
-                                  000072ae        20   func ,l         * 
+                                  00007354        20   func ,l         * 
   $sendCMD
-                                  000072ce        58   func ,l         * 
+                                  00007374        58   func ,l         * 
   _initMicroSD
-                                  00007326       442   func ,g         * 
+                                  000073cc       442   func ,g         * 
   _getMsdType
-                                  00007768         6   func ,g         * 
+                                  0000780e         6   func ,g         * 
   _getMsdSize
-                                  0000776e         a   func ,g         * 
+                                  00007814         a   func ,g         * 
   $readMicroSD
-                                  00007778       124   func ,g         * 
+                                  0000781e       124   func ,g         * 
   $writeMicroSD
-                                  0000789c       142   func ,g         * 
+                                  00007942       142   func ,g         * 
   $getMicroSD_CSD
-                                  000079de        92   func ,g         * 
+                                  00007a84        92   func ,g         * 
   _eraseMicroSD
-                                  00007a70       1c6   func ,g         * 
+                                  00007b16       1c6   func ,g         * 
   $setMicroSDdata
-                                  00007c36        a6   func ,g         * 
+                                  00007cdc        a6   func ,g         * 
   _microSDProcessStart
-                                  00007cdc        be   func ,g         * 
+                                  00007d82        be   func ,g         * 
   _microSDProcessEnd
-                                  00007d9a        32   func ,g         * 
+                                  00007e40        32   func ,g         * 
   _microSDProcess
-                                  00007dcc       188   func ,g         * 
+                                  00007e72       188   func ,g         * 
   _checkMicroSDProcess
-                                  00007f54         6   func ,g         * 
+                                  00007ffa         6   func ,g         * 
   _intS1T
-                                  00007f5a        28   func ,g         * 
+                                  00008000        28   func ,g         * 
   $setMicroSDLedPort
-                                  00007f82        2e   func ,g         * 
+                                  00008028        2e   func ,g         * 
   $convertBinaryToLong
-                                  00007fb0        48   func ,l         * 
+                                  00008056        48   func ,l         * 
   _mountMicroSD_FAT32
-                                  00007ff8       1aa   func ,g         * 
+                                  0000809e       1aa   func ,g         * 
   _ClusterToSector
-                                  000081a2        30   func ,l         * 
+                                  00008248        30   func ,l         * 
   _nextCluster
-                                  000081d2       290   func ,l         * 
+                                  00008278       290   func ,l         * 
   _writeFile
-                                  00008462       97e   func ,g         * 
+                                  00008508       97e   func ,g         * 
   $convertDecimalToStr
-                                  00008de0        62   func ,g         * 
+                                  00008e86        62   func ,g         * 
   $convertHexToStr
-                                  00008e42        52   func ,g         * 
+                                  00008ee8        52   func ,g         * 
   $convertBinaryToStr
-                                  00008e94        44   func ,g         * 
+                                  00008f3a        44   func ,g         * 
   _getCompileYear
-                                  00008ed8        40   func ,g         * 
+                                  00008f7e        40   func ,g         * 
   _getCompileMonth
-                                  00008f18        50   func ,g         * 
+                                  00008fbe        50   func ,g         * 
   _getCompileDay
-                                  00008f68        3c   func ,g         * 
+                                  0000900e        3c   func ,g         * 
   _getCompileHour
-                                  00008fa4        32   func ,g         * 
+                                  0000904a        32   func ,g         * 
   _getCompilerMinute
-                                  00008fd6        38   func ,g         * 
+                                  0000907c        38   func ,g         * 
   _getCompilerSecond
-                                  0000900e        38   func ,g         * 
+                                  000090b4        38   func ,g         * 
   $setDateStamp
-                                  00009046        5c   func ,g         * 
+                                  000090ec        5c   func ,g         * 
   $setTimeStamp
-                                  000090a2        54   func ,g         * 
+                                  00009148        54   func ,g         * 
   _readMicroSDNumber
-                                  000090f6        34   func ,g         * 
+                                  0000919c        34   func ,g         * 
   $writeMicroSDNumber
-                                  0000912a        4a   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
-                                  00009174  0000943f       2cc
+                                  000091d0        4a   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
+                                  0000921a  000094e5       2cc
   $init_uart0_printf
-                                  00009174        dc   func ,g         * 
+                                  0000921a        dc   func ,g         * 
   $write
-                                  00009250        4c   func ,g         * 
+                                  000092f6        4c   func ,g         * 
   _read
-                                  0000929c        92   func ,g         * 
+                                  00009342        92   func ,g         * 
   $setSendBuff
-                                  0000932e        32   func ,g         * 
+                                  000093d4        32   func ,g         * 
   $getSendBuff
-                                  00009360        3a   func ,g         * 
+                                  00009406        3a   func ,g         * 
   __uart0_trance
-                                  0000939a        2a   func ,g         * 
+                                  00009440        2a   func ,g         * 
   $get_uart0
-                                  000093c4        46   func ,g         * 
+                                  0000946a        46   func ,g         * 
   $put_uart0
-                                  0000940a        1a   func ,g         * 
+                                  000094b0        1a   func ,g         * 
   __sget
-                                  00009424         4   func ,g         * 
+                                  000094ca         4   func ,g         * 
   $_sput
-                                  00009428         c   func ,g         * 
+                                  000094ce         c   func ,g         * 
   $_pput
-                                  00009434         c   func ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
-                                  00009440  000094e9        aa
+                                  000094da         c   func ,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+                                  000094e6  0000958f        aa
   __dummy_int
-                                  00009440         6   func ,g         * 
+                                  000094e6         6   func ,g         * 
   _initsct
-                                  00009446        66   func ,g         * 
+                                  000094ec        66   func ,g         * 
   __program_top
-                                  00009446         0   none ,l         * 
+                                  000094ec         0   none ,l         * 
   _start
-                                  000094ac        3e   entry,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj
-                                  000094ea  00009737       24e
+                                  00009552        3e   entry,g         * 
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj
+                                  00009590  000097dd       24e
   _initSwitch
-                                  000094ea        46   func ,g         * 
+                                  00009590        46   func ,g         * 
   _getSwNow
-                                  00009530        3c   func ,g         * 
+                                  000095d6        3c   func ,g         * 
   $getSwFlag
-                                  0000956c        62   func ,g         * 
+                                  00009612        62   func ,g         * 
   _switchProcess
-                                  000095ce       16a   func ,g         * 
+                                  00009674       16a   func ,g         * 
 FILE=_f4adds
-                                  00009738  00009870       139
+                                  000097de  00009916       139
   __f4sub
-                                  00009762         0   none ,g         * 
+                                  00009808         0   none ,g         * 
   __f4add
-                                  00009768         0   none ,g         * 
+                                  0000980e         0   none ,g         * 
 FILE=_f4divs
-                                  00009872  00009943        d2
+                                  00009918  000099e9        d2
   __f4div
-                                  00009894         0   none ,g         * 
+                                  0000993a         0   none ,g         * 
 FILE=_f4muls
-                                  00009944  000099f3        b0
+                                  000099ea  00009a99        b0
   __f4mul
-                                  00009968         0   none ,g         * 
+                                  00009a0e         0   none ,g         * 
 FILE=_f4ge
-                                  000099f4  00009a75        82
+                                  00009a9a  00009b1b        82
   __f4ge
-                                  000099f4        82   func ,g         * 
+                                  00009a9a        82   func ,g         * 
 FILE=_f4le
-                                  00009a76  00009af7        82
+                                  00009b1c  00009b9d        82
   __f4le
-                                  00009a76        82   func ,g         * 
+                                  00009b1c        82   func ,g         * 
 FILE=_f4lt
-                                  00009af8  00009b79        82
+                                  00009b9e  00009c1f        82
   __f4lt
-                                  00009af8        82   func ,g         * 
+                                  00009b9e        82   func ,g         * 
 FILE=_f4tof8
-                                  00009b7a  00009bff        86
+                                  00009c20  00009ca5        86
   __f4tof8
-                                  00009b7a        86   func ,g         * 
+                                  00009c20        86   func ,g         * 
 FILE=_f4toi4
-                                  00009c00  00009c25        26
+                                  00009ca6  00009ccb        26
   __f4toi4
-                                  00009c00        26   func ,g         * 
+                                  00009ca6        26   func ,g         * 
 FILE=_f8add
-                                  00009c26  0000a53f       91a
+                                  00009ccc  0000a5e5       91a
   __f8add
-                                  00009c26       6dc   func ,g         * 
+                                  00009ccc       6dc   func ,g         * 
   $_asr_n
-                                  0000a302       23e   func ,l         * 
+                                  0000a3a8       23e   func ,l         * 
 FILE=_f8div
-                                  0000a540  0000a809       2ca
+                                  0000a5e6  0000a8af       2ca
   __f8div
-                                  0000a540       2ca   func ,g         * 
+                                  0000a5e6       2ca   func ,g         * 
 FILE=_f8ge
-                                  0000a80a  0000a8b1        a8
+                                  0000a8b0  0000a957        a8
   __f8ge
-                                  0000a80a        a8   func ,g         * 
+                                  0000a8b0        a8   func ,g         * 
 FILE=_f8le
-                                  0000a8b2  0000a959        a8
+                                  0000a958  0000a9ff        a8
   __f8le
-                                  0000a8b2        a8   func ,g         * 
+                                  0000a958        a8   func ,g         * 
 FILE=_f8mul
-                                  0000a95a  0000ac21       2c8
+                                  0000aa00  0000acc7       2c8
   __f8mul
-                                  0000a95a       2c8   func ,g         * 
+                                  0000aa00       2c8   func ,g         * 
 FILE=_f8sub
-                                  0000ac22  0000ac49        28
+                                  0000acc8  0000acef        28
   __f8sub
-                                  0000ac22        28   func ,g         * 
+                                  0000acc8        28   func ,g         * 
 FILE=_f8tof4
-                                  0000ac4a  0000acfd        b4
+                                  0000acf0  0000ada3        b4
   __f8tof4
-                                  0000ac4a        b4   func ,g         * 
+                                  0000acf0        b4   func ,g         * 
 FILE=_f8toi4
-                                  0000acfe  0000ad23        26
+                                  0000ada4  0000adc9        26
   __f8toi4
-                                  0000acfe        26   func ,g         * 
+                                  0000ada4        26   func ,g         * 
 FILE=_i4div
-                                  0000ad24  0000ada6        83
+                                  0000adca  0000ae4c        83
   __i4div
-                                  0000ad24         0   none ,g         * 
+                                  0000adca         0   none ,g         * 
 FILE=_i4divu
-                                  0000ada8  0000adf4        4d
+                                  0000ae4e  0000ae9a        4d
   __i4divU
-                                  0000ada8         0   none ,g         * 
+                                  0000ae4e         0   none ,g         * 
 FILE=_i4i2mul
-                                  0000adf6  0000ae08        13
+                                  0000ae9c  0000aeae        13
   __i4i2mul
-                                  0000adf6         0   none ,g         * 
+                                  0000ae9c         0   none ,g         * 
 FILE=_i4i2mulu
-                                  0000ae0a  0000ae16         d
+                                  0000aeb0  0000aebc         d
   __i4i2mulU
-                                  0000ae0a         0   none ,g         * 
+                                  0000aeb0         0   none ,g         * 
 FILE=_i4modu
-                                  0000ae18  0000ae62        4b
+                                  0000aebe  0000af08        4b
   __i4modU
-                                  0000ae18         0   none ,g         * 
+                                  0000aebe         0   none ,g         * 
 FILE=_i4tof4
-                                  0000ae64  0000ae85        22
+                                  0000af0a  0000af2b        22
   __i4tof4
-                                  0000ae64        22   func ,g         * 
+                                  0000af0a        22   func ,g         * 
 FILE=vsprintf
-                                  0000ae86  0000af2b        a6
+                                  0000af2c  0000afd1        a6
   _vsprintf
-                                  0000ae86        a6   func ,g         * 
+                                  0000af2c        a6   func ,g         * 
 FILE=printf
-                                  0000af2c  0000afe9        be
+                                  0000afd2  0000b08f        be
   _printf
-                                  0000af2c        be   func ,g         * 
+                                  0000afd2        be   func ,g         * 
 FILE=sprintf
-                                  0000afea  0000b0a9        c0
+                                  0000b090  0000b14f        c0
   _sprintf
-                                  0000afea        c0   func ,g         * 
+                                  0000b090        c0   func ,g         * 
 FILE=memset
-                                  0000b0aa  0000b0e9        40
+                                  0000b150  0000b18f        40
   $memset
-                                  0000b0aa        40   func ,g         * 
+                                  0000b150        40   func ,g         * 
 FILE=strtol
-                                  0000b0ea  0000b3ab       2c2
+                                  0000b190  0000b451       2c2
   _strtol
-                                  0000b0ea       2c2   func ,g         * 
+                                  0000b190       2c2   func ,g         * 
 FILE=memcmp
-                                  0000b3ac  0000b403        58
+                                  0000b452  0000b4a9        58
   _memcmp
-                                  0000b3ac        58   func ,g         * 
+                                  0000b452        58   func ,g         * 
 FILE=strncmp
-                                  0000b404  0000b465        62
+                                  0000b4aa  0000b50b        62
   _strncmp
-                                  0000b404        62   func ,g         * 
+                                  0000b4aa        62   func ,g         * 
 FILE=_f4rets
-                                  0000b466  0000b495        30
+                                  0000b50c  0000b53b        30
   __f4retNaN
-                                  0000b466         0   none ,g         * 
+                                  0000b50c         0   none ,g         * 
   __f4retZero
-                                  0000b46c         0   none ,g         * 
+                                  0000b512         0   none ,g         * 
   __f4retInf
-                                  0000b46e         0   none ,g         * 
+                                  0000b514         0   none ,g         * 
   __f4retNum
-                                  0000b47e         0   none ,g         * 
+                                  0000b524         0   none ,g         * 
 FILE=_f4ltor
-                                  0000b496  0000b4db        46
+                                  0000b53c  0000b581        46
   $_f4ltor
-                                  0000b496        46   func ,g         * 
+                                  0000b53c        46   func ,g         * 
 FILE=_f4rtol
-                                  0000b4dc  0000b519        3e
+                                  0000b582  0000b5bf        3e
   $_f4rtol
-                                  0000b4dc        3e   func ,g         * 
+                                  0000b582        3e   func ,g         * 
 FILE=_f8ltor
-                                  0000b51a  0000b56d        54
+                                  0000b5c0  0000b613        54
   $_f8ltor
-                                  0000b51a        54   func ,g         * 
+                                  0000b5c0        54   func ,g         * 
 FILE=_f8rtol
-                                  0000b56e  0000b5af        42
+                                  0000b614  0000b655        42
   $_f8rtol
-                                  0000b56e        42   func ,g         * 
+                                  0000b614        42   func ,g         * 
 FILE=_ftol
-                                  0000b5b0  0000b6bf       110
+                                  0000b656  0000b765       110
   $_ftol
-                                  0000b5b0       110   func ,g         * 
+                                  0000b656       110   func ,g         * 
 FILE=_ltof
-                                  0000b6c0  0000b793        d4
+                                  0000b766  0000b839        d4
   $_ltof
-                                  0000b6c0        d4   func ,g         * 
+                                  0000b766        d4   func ,g         * 
 FILE=print
-                                  0000b794  0000d0f3      1960
+                                  0000b83a  0000d199      1960
   __print
-                                  0000b794       f3a   func ,g         * 
+                                  0000b83a       f3a   func ,g         * 
   __f8prn
-                                  0000c6ce       55a   func ,l         * 
+                                  0000c774       55a   func ,l         * 
   $henkan1
-                                  0000cc28        42   func ,l         * 
+                                  0000ccce        42   func ,l         * 
   $henkan2
-                                  0000cc6a        54   func ,l         * 
+                                  0000cd10        54   func ,l         * 
   __pri
-                                  0000ccbe       10e   func ,l         * 
+                                  0000cd64       10e   func ,l         * 
   $_f8geti
-                                  0000cdcc       20c   func ,l         * 
+                                  0000ce72       20c   func ,l         * 
   $_inmod
-                                  0000cfd8       11c   func ,l         * 
+                                  0000d07e       11c   func ,l         * 
 FILE=fputc
-                                  0000d0f4  0000d173        80
+                                  0000d19a  0000d219        80
   $fputc
-                                  0000d0f4        80   func ,g         * 
+                                  0000d19a        80   func ,g         * 
 FILE=printf_sub
-                                  0000d174  0000d183        10
+                                  0000d21a  0000d229        10
   $__pc
-                                  0000d174        10   func ,g         * 
+                                  0000d21a        10   func ,g         * 
 FILE=sprintf_sub
-                                  0000d184  0000d19b        18
+                                  0000d22a  0000d241        18
   $__sp
-                                  0000d184        18   func ,g         * 
+                                  0000d22a        18   func ,g         * 
 FILE=_f8eq
-                                  0000d19c  0000d217        7c
+                                  0000d242  0000d2bd        7c
   __f8eq
-                                  0000d19c        7c   func ,g         * 
+                                  0000d242        7c   func ,g         * 
 FILE=_f8lt
-                                  0000d218  0000d2bf        a8
+                                  0000d2be  0000d365        a8
   __f8lt
-                                  0000d218        a8   func ,g         * 
+                                  0000d2be        a8   func ,g         * 
 FILE=_f8ne
-                                  0000d2c0  0000d33b        7c
+                                  0000d366  0000d3e1        7c
   __f8ne
-                                  0000d2c0        7c   func ,g         * 
+                                  0000d366        7c   func ,g         * 
 FILE=_i8divu
-                                  0000d33c  0000d433        f8
+                                  0000d3e2  0000d4d9        f8
   __i8divU
-                                  0000d33c         0   none ,g         * 
+                                  0000d3e2         0   none ,g         * 
 FILE=_i8modu
-                                  0000d434  0000d502        cf
+                                  0000d4da  0000d5a8        cf
   __i8modU
-                                  0000d434         0   none ,g         * 
+                                  0000d4da         0   none ,g         * 
 FILE=fgetc
-                                  0000d504  0000d70b       208
+                                  0000d5aa  0000d7b1       208
   _fgetc
-                                  0000d504       208   func ,g         * 
+                                  0000d5aa       208   func ,g         * 
 FILE=fprintf_sub
-                                  0000d70c  0000d71b        10
+                                  0000d7b2  0000d7c1        10
   $__fp
-                                  0000d70c        10   func ,g         * 
+                                  0000d7b2        10   func ,g         * 
 
 SECTION=interrupt
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
-                                  0000d71c  0000d71c         0
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+                                  0000d7c2  0000d7c2         0
   __interrupt_top
-                                  0000d71c         0   none ,l         * 
+                                  0000d7c2         0   none ,l         * 
 
 SECTION=vector
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
                                   0000fed8  0000ffd7       100
   __vector_top
                                   0000fed8         0   none ,g         * 
 
 SECTION=fvector
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
                                   0000ffd8  0000ffff        28
   __fvector_top
                                   0000ffd8         0   none ,l         * 
 
 SECTION=rom_FE
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
                                   00010000  0001005b        5c
   _revolution_difference
                                   00010000        5c   data ,g         * 
 
 SECTION=rom_FO
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   0001005c  00010064         9
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
                                   00010065  00010207       1a3
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
                                   00010208  000103f3       1ec
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   000103f4  00010418        25
   _monthStr
                                   000103f4        25   data ,l         * 
@@ -937,7 +941,7 @@ FILE=print
                                   0001051a  00010523         a
 
 Absolute value symbols
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -1882,7 +1886,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\data_flash_lib.ob
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -2827,7 +2831,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\drive.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -3772,7 +3776,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\i2c_eeprom_lib.ob
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -4717,7 +4721,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\ini.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -5662,7 +5666,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isCheck.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -6607,7 +6611,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\isline.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -7552,7 +7556,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\kit07_38a.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -8497,10 +8501,10 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\lcd_lib.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\LcdProcess.obj
   __R8C__
                                   00000001         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -9445,7 +9449,7 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\microsd_lib.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -10390,12 +10394,12 @@ FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\printf_lib.obj
                                   000001f4         0   none ,l         * 
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\startup.obj
   __R8C__
                                   00000001         0   none ,l         * 
   __SB__
                                   00000400         0   none ,g         * 
-FILE=E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj
+FILE=D:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug\switch_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
