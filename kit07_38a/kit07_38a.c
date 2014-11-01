@@ -254,37 +254,63 @@ void main( void )
             	break;
         	}
         	if( check_RightOutLine() ) {        /* 右アウトラインチェック       */
-            	pattern = 12;
-            	break;
-        	}
-        	if( check_LeftOutLine() ) {        /* 左アウトラインチェック       */
             	pattern = 15;
             	break;
         	}
+        	if( check_LeftOutLine() ) {        /* 左アウトラインチェック       */
+            	pattern = 12;
+            	break;
+        	}
 		}
-		if(pos > 0.0) run(100 - pos*15.0);
-		else run(100 + pos*15.0);
+		if(pos > 0.0) run(100 - (2.0*pos + pre_pos)*8.0);
+		else run(100 + (2.0*pos + pre_pos)*8.0);
         break;
 	case 12:
 		/* 右大カーブ */
 		run(50);
+		handle( 20 );
 		if(!check_RightOutLine()){
+			pattern = 13;			/* 通常トレース */
+//		}else{
+//			for(i = 12;i < 16;i++) sval[i] = 0.0;	/* マスクする */
+//			potition();			/* ライン位置の再計算 */
+//			handle( 20 );
+		}
+		break;
+	case 13:
+		/* 右大カーブ */
+		run(50);
+		handle( 20 );
+		if(check_center()){
 			pattern = 11;			/* 通常トレース */
-		}else{
-			for(i = 12;i < 16;i++) sval[i] = 0.0;	/* マスクする */
-			potition();			/* ライン位置の再計算 */
-			handle( PID());
+//		}else{
+//			for(i = 12;i < 16;i++) sval[i] = 0.0;	/* マスクする */
+//			potition();			/* ライン位置の再計算 */
+//			handle( 20 );
 		}
 		break;
 	case 15:
 		/* 左大カーブ */
 		run(50);
+		handle( -20 );
 		if(!check_LeftOutLine()){
+			pattern = 16;			/* 通常トレース */
+//		}else{
+//			for(i = 0;i < 4;i++) sval[i] = 0.0;	/* マスクする */
+//			potition();			/* ライン位置の再計算 */
+//			handle( -20 );
+		}
+		break;
+	case 16:
+		/* 左大カーブ */
+		run(50);
+		handle( -20 );
+		if(check_center()){
 			pattern = 11;			/* 通常トレース */
-		}else{
-			for(i = 0;i < 4;i++) sval[i] = 0.0;	/* マスクする */
-			potition();			/* ライン位置の再計算 */
-			handle( PID());
+//		}else{
+//			for(i = 0;i < 4;i++) sval[i] = 0.0;	/* マスクする */
+//			potition();			/* ライン位置の再計算 */
+//			handle( -20 );
 		}
 		break;
     case 21:
@@ -324,7 +350,11 @@ void main( void )
             break;
         }
 		handle( PID());
-		run( data_buff[DF_crank_motorS] );
+		if( iEncoder < 7 ){
+			run( data_buff[DF_crank_motorS] );
+		}else{
+			run( 0 );
+		}
         break;
 
     case 31:

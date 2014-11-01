@@ -32,7 +32,7 @@ int check( int start, int stop)
 /************************************************************************/
 int check_RightOutLine( void )
 {
-	if(check(0,1)){
+	if(check(14,15) && pos < 0){
        	return 1;	/* 右アウトライン発見！ */
    	}else{
 		return 0;	/* 右アウトラインなし  */
@@ -44,7 +44,7 @@ int check_RightOutLine( void )
 /************************************************************************/
 int check_LeftOutLine( void )
 {
-	if(check(14,15)){
+	if(check(0,1) && pos > 0){
        	return 1;	/* 左アウトライン発見！ */
    	}else{
 		return 0;	/* 左アウトラインなし  */
