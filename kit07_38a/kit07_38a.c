@@ -271,48 +271,31 @@ void main( void )
 		handle( 20 );
 		if(!check_RightOutLine()){
 			pattern = 13;			/* 通常トレース */
-//		}else{
-//			for(i = 12;i < 16;i++) sval[i] = 0.0;	/* マスクする */
-//			potition();			/* ライン位置の再計算 */
-//			handle( 20 );
 		}
 		break;
 	case 13:
 		/* 右大カーブ */
 		run(50);
-		handle( 20 );
+		handle( PID()*2 );
 		if(check_center()){
-			pattern = 11;			/* 通常トレース */
-//		}else{
-//			for(i = 12;i < 16;i++) sval[i] = 0.0;	/* マスクする */
-//			potition();			/* ライン位置の再計算 */
-//			handle( 20 );
+ 			pattern = 11;			/* 通常トレース */
 		}
 		break;
 	case 15:
 		/* 左大カーブ */
 		run(50);
-		handle( -20 );
+		handle(-20);
 		if(!check_LeftOutLine()){
 			pattern = 16;			/* 通常トレース */
-//		}else{
-//			for(i = 0;i < 4;i++) sval[i] = 0.0;	/* マスクする */
-//			potition();			/* ライン位置の再計算 */
-//			handle( -20 );
 		}
 		break;
 	case 16:
-		/* 左大カーブ */
 		run(50);
-		handle( -20 );
+		handle( PID()*2 );
 		if(check_center()){
-			pattern = 11;			/* 通常トレース */
-//		}else{
-//			for(i = 0;i < 4;i++) sval[i] = 0.0;	/* マスクする */
-//			potition();			/* ライン位置の再計算 */
-//			handle( -20 );
+ 			pattern = 11;			/* 通常トレース */
 		}
-		break;
+		break;		
     case 21:
         /* １本目のクロスライン検出時の処理 */
         led_out( 0x3 );
@@ -350,11 +333,7 @@ void main( void )
             break;
         }
 		handle( PID());
-		if( iEncoder < 7 ){
-			run( data_buff[DF_crank_motorS] );
-		}else{
-			run( 0 );
-		}
+		run( data_buff[DF_crank_motorS] );
         break;
 
     case 31:

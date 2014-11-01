@@ -322,7 +322,7 @@ int PID(void)
 	if(pos < 20 && pos > -20)
 		return pos * (float)data_buff[DF_KP]/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
 	else
-		return pos * (float)data_buff[DF_KP]*3.0/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
+		return pos * (float)data_buff[DF_KP]*5.0/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
 	
 }
 /************************************************************************/
