@@ -222,7 +222,7 @@ void LPF(void)
 {
 	int i;
 	for(i = 0; i < 16; i++) {
-		val_ImageData[i] = (float)pre_ImageData[i] * 0.9 + (float)ImageData[i] *0.1;
+		val_ImageData[i] = (float)pre_ImageData[i] * 0.3 + (float)ImageData[i] *0.7;
 		pre_ImageData[i] = val_ImageData[i];
 	}
 }
@@ -240,6 +240,7 @@ void Normanaization(void)
 		sval[i] = ((float)ImageData[i] - ad_black[i]) / (ad_white[i] - ad_black[i]);
 	}
 	/* 8bit */
+	/*
 	if(sval[1] > white)sensor8++;
 		sensor8 = sensor8 << 1;
 	if(sval[3] > white)sensor8++;
@@ -255,6 +256,7 @@ void Normanaization(void)
 	if(sval[12] > white)sensor8++;
 		sensor8 = sensor8 << 1;
 	if(sval[14] > white) sensor8++;
+	*/
 }
 /************************************************************************/
 /* ２値化                                                               */
@@ -268,8 +270,8 @@ void binarization(void)
 	White = 0;
 	
 	for(i = 0; i < 16; i++){
-		sensor16 << 1;
-		if(sval[i] > white){
+		sensor16 = sensor16 << 1;
+		if(ImageData[i] < ((ad_white[i]+ad_black[i])/2) ){
 			bi_sensor[i] = 1;
 			sensor16++;
 			White++;
@@ -277,10 +279,9 @@ void binarization(void)
 			bi_sensor[i] = 0;
 		}
 	}
-
 }
 /************************************************************************/
-/* カメラより重心位置の掲出                                             */
+/* センサーより重心位置の掲出                                             */
 /* 引数　 なし                                                          */
 /* 戻り値 重心値                                                        */
 /************************************************************************/
@@ -318,7 +319,11 @@ int PID(void)
 {
 	static float i_pos = 0.0;
 	i_pos +=  pos - pre_pos;
-	return pos * (float)data_buff[DF_KP]/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
+	if(pos < 20 && pos > -20)
+		return pos * (float)data_buff[DF_KP]/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
+	else
+		return pos * (float)data_buff[DF_KP]*5.0/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
+	
 }
 /************************************************************************/
 /* キャリブレーション                                                   */

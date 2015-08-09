@@ -10,7 +10,10 @@ extern int			angle_buff;             /* 現在ハンドル角度保持用   */
 extern int          servo_center;           /* サーボセンタ値               */
 
 /* プロトタイプ宣言                     */
+void run(int speed);						/* 走行関数 */
 void motor( int accele_l, int accele_r );
 void handle( int angle );
+int diff( int pwm );						/* ディファレンシャル */
+
 
 #endif
