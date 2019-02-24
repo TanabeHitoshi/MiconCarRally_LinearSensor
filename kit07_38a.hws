@@ -3,12 +3,12 @@
 [DATABASE_VERSION]
 "11.0" 
 [WORKSPACE_DETAILS]
-"kit07_38a" "E:\program\MCR\MiconCarRally_LinearSensor" "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a.hws" "M16C" "Renesas M16C Standard" 
+"kit07_38a" "C:\WorkSpace\atu" "C:\WorkSpace\atu\kit07_38a.hws" "M16C" "Renesas M16C Standard" 
 [SHARED_WORKSPACE_CONTROL_STATUS]
 "" "" "" 
 "" "" "" 
 [PROJECTS]
-"kit07_38a" "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a" "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\kit07_38a.hwp" 0 
+"kit07_38a" "C:\WorkSpace\atu\kit07_38a" "C:\WorkSpace\atu\kit07_38a\kit07_38a.hwp" 0 
 [INFORMATION]
 "ワークスペース情報がありません" 
 [SCRAP]
@@ -21,7 +21,7 @@
 [MAKEFILE_BUILD_INFO]
 "$(WORKSPDIR)\make\$(PROJECTNAME)_$(CONFIGNAME).mak" "" "$(WORKSPDIR)\make" 0 0 0 
 [VD_CONFIGURATION_OPTIONS]
-"ACTIVE_DESKTOP" "0" 
+"ACTIVE_DESKTOP" "1" 
 [VD_CONFIGURATIONS]
 "0" "Default1" "1" 
 "1" "Default2" "1" 

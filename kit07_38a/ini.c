@@ -11,11 +11,14 @@
 #include "isline.h"
 #include "drive.h"
 #include "ini.h"
+#include "trace.h"
+#include "isEncoder.h"
 
 unsigned long   cnt0;                   /* timer関数用                  */
 unsigned long   cnt1;                   /* main内で使用                 */
 unsigned long   cnt_lcd;                /* LCD処理で使用                */
 unsigned long   stop_timer;				/* 走行タイマー					*/
+unsigned long   cnt_AD;                 /* センサーで使用　偶数でON  奇数でOFF  */
 
 int             pattern;                /* パターン番号                 */
 
@@ -24,17 +27,19 @@ signed char     msdBuff[ 512+32 ];      /* 一時保存バッファ(32は予備)   */
 int             msdFlag;                /* 1:データ記録 0:記録しない    */
 int             msdTimer;               /* 取得間隔計算用               */
 int             msdError;               /* エラー番号記録               */
-/* エンコーダ関連 */
-int				iTimer10;			   	/* 10msカウント用		  	*/
-int   			iEncoder;			   	/* 10ms毎の最新値		   	*/
-int				pre_iEncoder;			/* 前の速度					*/
-int				Acceleration;			/* 加速度					*/
-unsigned long   lEncoderTotal;		  	/* 積算値保存用				*/
-unsigned int	uEncoderBuff;		   	/* 計算用　割り込み内で使用 */
-unsigned long	lEncoderCrank;		  	/* クロスライン検出時の積算値 	*/
-unsigned long 	lEncoderCrank2;			/* クロスライン検出時の積算値2 	*/
-unsigned long	lEncoderHarf;		  	/* ハーフライン検出時の積算値 	*/
-
+/* 内部記録 */
+struct MEM{
+	unsigned char pattern;
+	unsigned int distance;
+	unsigned int sensor;
+//	float pos;
+	int PID;
+	char white;
+	char power;
+	char speed;
+};
+int				memCnt = 0;					/* 内部記録の番号 */
+struct MEM		mem[500];					/* 内部記録の配列 */
 
 /************************************************************************/
 /* R8C/38A スペシャルファンクションレジスタ(SFR)の初期化                */
@@ -54,7 +59,7 @@ void init( void )
     /* ポートの入出力設定 */
     prc2 = 1;                           /* PD0のプロテクト解除          */
 //	pd0 = 0xfe;                         /* 0:AOのｱﾅﾛｸﾞ電圧  1:SI 2:CLK  */
-    pd0 = 0x00;                         /* A/D変換                      */
+    pd0 = 0x0f;                         /* SI -> P0_1  CLK -> p0_2  AN0 -> P0_7  Light -> P0_3*/
     pd1 = 0xd0;                         /* 5:RXD0 4:TXD0 3-0:DIP SW     */
     p2  = 0xc0;
     pd2 = 0xfe;                         /* 7-0:モータドライブ基板Ver.4  */
@@ -63,7 +68,7 @@ void init( void )
     pd4 = 0xb8;                         /* 7:XOUT 6:XIN 5:LED 2:VREF    */
     pd5 = 0x7f;                         /* 7-0:LCD/microSD基板          */
     pd6 = 0xef;                         /* 4-0:LCD/microSD基板          */
-    pd7 = 0x00;                         /* A/D変換                      */
+    pd7 = 0x0f;                         /* A/D変換                      */
     pd8 = 0xff;                         /*                              */
     pd9 = 0x3f;                         /*                              */
     pur0 = 0x04;                        /* P1_3～P1_0のプルアップON     */
@@ -116,12 +121,9 @@ void intTRB( void )
     cnt0++;
     cnt1++;
     cnt_lcd++;
-	stop_timer++;
-	
-	/*if( (pattern > 10) && (mem_ad < 5000) ){
-		mem[mem_ad] = sensor_inp(MASK4_4);
-		mem_ad++;
-	}*/
+	cnt_AD++;
+	if(pattern > 10)stop_timer++;
+					
 	// エンコーダ制御 + 走行データ制御
 	iTimer10++;
 
@@ -133,6 +135,9 @@ void intTRB( void )
 		Acceleration = pre_iEncoder - iEncoder;
 		pre_iEncoder = iEncoder;
 		uEncoderBuff = i;
+		
+		servo_Trace();
+		servo_angle = motor_Trace();
 	}	
     /* 拡張スイッチ用関数(1msごとに実行)    */
     switchProcess();
@@ -154,13 +159,13 @@ void intTRB( void )
             convertDecimalToStr( pattern, 3, p );
             p += 3;*p++ = ',';
             // 4 センサ
-            convertHexToStr( sensor16, 4, p );
+            convertHexToStr( 0, 4, p );
             p += 4;*p++ = ',';
             // 9 白
             convertDecimalToStr( White, 2, p );
             p += 2;*p++ = ',';
             // 12 位置
-            convertDecimalToStr( (int)(pos * 10.0), 4, p );
+            convertDecimalToStr( (int)(0 * 10.0), 4, p );
             p += 4;*p++ = ',';
             // 17 速度
             convertDecimalToStr( iEncoder, 2, p );
@@ -223,7 +228,32 @@ void intTRB( void )
         }
     }
 }
+/************************************************************************/
+/* 内部メモリの表示			                                                */
+/************************************************************************/
+void memPrint(void)
+{
+	int i,j;
+	printf("pattern ,distance,sensor,pos,white,power,speed\n");
 
+	for(i = 0; i < 500; i++){
+		printf("%d,",mem[i].pattern);		
+		printf("%d,",mem[i].distance);
+		printf("0x%4x,",mem[i].sensor);
+		for(j = 0; j < 16; j++){
+			if(mem[i].sensor & 0x8000)printf("1");
+			else					printf("0");
+			mem[i].sensor = mem[i].sensor << 1;
+		}
+		printf(",");
+//		float_printf(pos,3);printf(",");
+		printf("%d,",mem[i].PID);
+		printf("%d,",mem[i].white);
+		printf("%d,",mem[i].power);
+		printf("%d\n",mem[i].speed);
+	}
+
+}
 /************************************************************************/
 /* タイマ本体                                                           */
 /* 引数　 タイマ値 1=1ms                                                */
@@ -233,3 +263,6 @@ void timer( unsigned long timer_set )
     cnt0 = 0;
     while( cnt0 < timer_set );
 }
+/************************************************************************/
+/* end of file                                                          */
+/************************************************************************/

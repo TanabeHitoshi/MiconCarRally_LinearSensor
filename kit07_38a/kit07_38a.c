@@ -1,9 +1,8 @@
 /************************************************************************/
 /* 対象マイコン R8C/38A                                                 */
-/* ﾌｧｲﾙ内容     ラインセンサーを用いる。								*/
-/* バージョン   Ver.1.02                                                */
-/* Date         2014.10.22                                              */
-/* Copyright    大阪府立淀川工科高校									*/
+/* ﾌｧｲﾙ内容     熱田の森								*/
+/* Date         2019.2.17                                              */
+/* Copyright    大阪府立城東工科高校									*/
 /************************************************************************/
 #include <stdio.h>
 #include "sfr_r838a.h"                  /* R8C/38A SFRの定義ファイル    */
@@ -12,10 +11,12 @@
 #include "lcd_lib.h"                    /* LCD表示用追加                */
 #include "switch_lib.h"                 /* スイッチ追加                 */
 #include "data_flash_lib.h"             /* データフラッシュライブラリ   */
-#include "isline.h"
+#include "camera.h"
 #include "isCheck.h"
 #include "drive.h"
 #include "ini.h"
+#include "trace.h"
+#include "isEncoder.h"
 
 /*======================================*/
 /* プロトタイプ宣言                     */
@@ -25,7 +26,6 @@ void timer( unsigned long timer_set );
 unsigned char dipsw_get( void );
 unsigned char pushsw_get( void );
 void led_out( unsigned char led );
-int diff( int pwm );
 void readDataFlashParameter( void );
 void writeDataFlashParameter( void );
 int lcdProcess( void );
@@ -37,32 +37,20 @@ const char *C_DATE = __DATE__;          /* コンパイルした日付           */
 const char *C_TIME = __TIME__;          /* コンパイルした時間           */
 
 /* DataFlash関係 */
-signed char     data_buff[ DF_PARA_SIZE ];
-
-const int revolution_difference[] = {   /* 角度から内輪、外輪回転差計算 */
-    100, 99, 97, 96, 95,
-    93, 92, 91, 89, 88,
-    87, 86, 84, 83, 82,
-    81, 79, 78, 77, 76,
-    75, 73, 72, 71, 70,
-    69, 67, 66, 65, 64,
-    62, 61, 60, 59, 58,
-    56, 55, 54, 52, 51,
-    50, 48, 47, 46, 44,
-    43 };
+//signed char     data_buff[ DF_PARA_SIZE ];
 
 /************************************************************************/
 /* メインプログラム                                                     */
 /************************************************************************/
 void main( void )
 {
-    int     i, ret, sensor ,t;
+    int     i,j, ret, sensor ,t;
     char    fileName[ 8+1+3+1 ];        /* 名前＋'.'＋拡張子＋'\0'      */
-    unsigned char b;                    /* ！追加・変更！               */
+//    unsigned char b;                    /* ！追加・変更！               */
 	int CL_number,CL_BR[5],CL_SP[5],CL_BK_TM[5];
-	int	CL_BRAKE_TIME; 
-	unsigned int j;
-	CL_number = 0;
+//	int	CL_BRAKE_TIME; 
+//	int hd;
+	int SPEED,ANGLE;
 
     /* マイコン機能の初期化 */
     init();                             /* 初期化                       */
@@ -72,10 +60,13 @@ void main( void )
     initLcd();                          /* LCD初期化                    */
 	initSwitch();                       /* スイッチ初期化               */
 
+	Light_OFF;
+	
     readDataFlashParameter();           /* DataFlashパラメータ読み込み  */
     servo_center  = (unsigned char)data_buff[DF_SERVO1] * 0x100;
     servo_center |= (unsigned char)data_buff[DF_SERVO2];
-
+	nowServo = servo_center;
+	
     /* microSD初期化 */
     ret = initMicroSD();
     if( ret != 0x00 ) msdError = 1;
@@ -101,42 +92,24 @@ void main( void )
 	printf("Hello!!\n");
     handle( 0 );
     motor( 0, 0 );
-	pattern = 1000;		/* モニター画面 */
+	
+	if(pushsw_get())	pattern = 5000;
+	else				pattern = 1000;		/* モニター画面 */
 
     while( 1 ) {
     lcdProcess();		/* LCD表示、パラメータ設定処理*/
-	get_ad();			/* センサー値の読み込み */
-	LPF();				/* ローパスフィルター */
-	Normanaization();	/* 正規化 */
-	binarization();		/* ２値化 */
-	potition();			/* ライン位置の計算 */
-//	printf("pattern = %d\n",pattern);
+//	LPF();				/* ローパスフィルター */
+	camera_Caputure();
+//	printf("pattern = %d  stop_timer = %d\n",pattern,stop_timer);
+	t = data_buff[DF_STOP]*1000;
+	if( stop_timer >= ((unsigned long)t) && pattern > 100 && pattern < 1000){
+		msdFlag = 0;
+		motor( 0, 0 );
+		pattern = 900;
+	}
     switch( pattern ) {
-
-    /*****************************************************************
-    パターンについて
-     0：スイッチ入力待ち
-	 1: オートキャリブレーション
-     5：スタートバーが開いたかチェック
-    11：通常トレース
-    21：１本目のクロスライン検出時の処理
-    22：２本目を読み飛ばす
-    23：クロスライン後のトレース、クランク検出
-    31：左クランククリア処理　安定するまで少し待つ
-    32：左クランククリア処理　曲げ終わりのチェック
-    41：右クランククリア処理　安定するまで少し待つ
-    42：右クランククリア処理　曲げ終わりのチェック
-    51：１本目の右ハーフライン検出時の処理
-    52：２本目を読み飛ばす
-    53：右ハーフライン後のトレース
-    54：右レーンチェンジ終了のチェック
-    61：１本目の左ハーフライン検出時の処理
-    62：２本目を読み飛ばす
-    63：左ハーフライン後のトレース
-    64：左レーンチェンジ終了のチェック
-    *****************************************************************/
-
     case 0:
+		Light_OFF;
 		lcdPosition( 0, 0 );lcdPrintf( "init");
         led_out( 0x0 );
         // パラメータ保存
@@ -181,73 +154,45 @@ void main( void )
 			*/
 
 		}
-         pattern = 1;
+         pattern = 10;
          cnt1 = 0;
- 		lcdPosition( 0, 0 );lcdPrintf( "AutoCalibration");
+ 		lcdPosition( 0, 0 );lcdPrintf( "Calibration");
 		break;
 	case 1:/* オートキャリブレーション */
 		if( pushsw_get()){
+			printf("NOW calibration !!\n");
 			timer(1000);
-			pattern = 2;
+			pattern = 10;
 		}
 		break;
-	case 2: /* オートキャリブレーション */
-		if( pushsw_get() ) {
-			AutoCalibration();
-/*			printf("black = ");
-			for(i = 0; i < 16; i++){
-				printf("%4d ",ad_black[i]);
-			}
-			printf("\n");
-			printf("white = ");
-			for(i = 0; i < 16; i++){
-				printf("%4d ",ad_white[i]);
-			}
-			printf("\n");
-*/
-		}else{
-			if(dipsw_get() == 0){
-				pattern = 4;
-			}else{
-				pattern = 2000;
-			}
-		}			
-        if( cnt1 < 100 ) {              /* LED点滅処理                  */
-            led_out( 0x1 );
-        } else if( cnt1 < 200 ) {
-            led_out( 0x2 );
-        } else {
-            cnt1 = 0;
-        }
-        break;
-	case 4:
-        /* スタートバーまで行く */
-        if( startbar_get()) {
-			timer(1000);
-			pattern = 5;
-		}
-        led_out( 0x0 );
-		break;
-	case 5:
-		if( pushsw_get()){
-			timer(1000);
-			pattern = 6;
-		}
-        led_out( 0x3 );
-		break;
-    case 6:
-        /* スタートバーが開いたかチェック */
-        if( !startbar_get() || pushsw_get() ) {
+    case 10:/* スタート待ち */
+        if( pushsw_get() ) {
             /* スタート！！ */
             led_out( 0x0 );
-            pattern = 11;
-            if( msdError == 0 ) msdFlag = 1;    /* データ記録開始       */
+			switch(data_buff[DF_RACE]){
+				case 0:
+					pattern = 200;
+				break;
+				case 1:
+					pattern = 300;
+				break;
+				case 2:
+					pattern = 400;
+				break;
+				case 3:
+					pattern = 3000;
+				break;
+			    default:
+					pattern = 200;
+				break;
+			}
+//			pattern = 2000;
+           if( msdError == 0 ) msdFlag = 1;    /* データ記録開始       */
             cnt1 = 0;
 			timer( 100 );
-			lEncoderTotal	= 0;
-			lEncoderCrank	= 0;
-			lEncoderCrank2	= 0;			
-			lEncoderHarf	= 0;
+			odometer_ini();		/* 走行距離をリセット */
+	 		stop_timer = 0;
+			Light_ON;
             break;
         }
         if( cnt1 < 50 ) {               /* LED点滅処理                  */
@@ -257,408 +202,141 @@ void main( void )
         } else {
             cnt1 = 0;
         }
- 		stop_timer = 0;
 		//mem_ad = 0;
-        break;
-    case 11:
-        /* 通常トレース */
-		handle( PID());
-		t = ((unsigned char)data_buff[DF_STOP1]*0x100)|(unsigned char)data_buff[DF_STOP2];
-		if( stop_timer >= ((unsigned long)(t)*10) ){
-			msdFlag = 0;
-			motor( 0, 0 );
-			break;
+    break;
+/* Trace */
+	case 200:
+		/* カーブによってPIDを変える */
+		if(pid_angle > 10 || pid_angle < -10){
+			set_PID(CurvePID);
+		}else{
+			set_PID(StrightPID);
 		}
-		if (stop_timer>300) {//通常トレース後しばらくクロス、ハーフはチェックしない
-	       	if( check_crossline() ) {       /* クロスラインチェック         */
-				lEncoderCrank = lEncoderTotal;
-            	pattern = 21;
-            	break;
-        	}
-        	if( check_rightline()) {       /* 右ハーフラインチェック       */
-            	lEncoderTotal = lEncoderHarf;
-				pattern = 51;
-            	break;
-        	}
-        	if( check_leftline() ) {        /* 左ハーフラインチェック       */
-            	lEncoderTotal = lEncoderHarf;
-            	pattern = 61;
-            	break;
-        	}
+		SPEED = 100;
+		/* カメラのずれによる減速 */
+		if(pid_angle > 0){
+			SPEED -= pid_angle;
+		}else{
+			 SPEED += pid_angle;
+		}
+		/* カメラ角度による減速 */
+		if(servo_Gap > 0){
+			SPEED -= servo_Gap/20;
+		}else{
+			SPEED += servo_Gap/20;
 		}
 		
-		if( pos > 0)	motor(100-pos*10.0,100-pos*15.0);
-		else			motor(100+pos*15.0,100+pos*10.0);
-		if(check(0,1))	motor(0,0);
-		if(check(14,15))motor(0,0);
-
-        break;
-
-    case 21:
-        /* １本目のクロスライン検出時の処理 */
-        led_out( 0x3 );
-        handle( 0 );
-//		if(10 < iEncoder){//エンコーダによる速度制御
-			motor((5 - iEncoder)*20,(5 - iEncoder)*20);
-//			motor(-70,-70);
-//		}else{
-//			motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-//		}
-		pattern = 22;
-        break;
-
-    case 22:
-        /* ２本目を読み飛ばす */
-//		motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-		motor((5 - iEncoder)*10,(5 - iEncoder)*10);
-		if( lEncoderTotal-lEncoderCrank >= 100 ) {   /* 約10cmたったか？ */				
-			pattern = 23;
+		/* 姿勢制御 */
+		ANGLE = 0;
+		if(Center < 10 && Center > -10){
+			ANGLE = pid_angle + servo_angle;
+		}else{
+			ANGLE = pid_angle;
 		}
-        break;
 
-	case 23:
-        /* クロスライン後のトレース、クランク検出 */
-        if( check_leftline() ) {   /* ！追加・変更！ */
-            /* 左クランクと判断→左クランククリア処理へ */
-            led_out( 0x0 );
-            handle( -data_buff[DF_crank_handlepwm] );
-			motor( data_buff[DF_crank_motor2] ,data_buff[DF_crank_motor1] );
-            pattern = 31;
-            cnt1 = 0;
-            break;
-        }
-        if( check_rightline() ) {   /* ！追加・変更！           */
-            /* 右クランクと判断→右クランククリア処理へ */
-            led_out( 0x3 );
-            handle( data_buff[DF_crank_handlepwm] );
-			motor( data_buff[DF_crank_motor1] ,data_buff[DF_crank_motor2] );
-            pattern = 41;
-            cnt1 = 0;
-            break;
-        }
-		handle( PID());
-		motor( data_buff[DF_crank_motorS] ,data_buff[DF_crank_motorS] );
-        break;
-
-    case 31:
-        /* 左クランククリア処理　安定するまで少し待つ */
-//        if( cnt1 > 70 && check_black() ) {
-        if( check_black() ) {
-            pattern = 34;
-            cnt1 = 0;
-        }
-        break;
+		run(SPEED,ANGLE);
+	break;
+/* Sprint Left */
+	case 300:
+		if(odometer() < 300)run(100,0);
+		else pattern = 310;
+	break;
+	case 310:
+		run(0,0);
+	break;
+/* Sprint right */
+	case 400:
 	
-	case 32:
-        /* 左クランククリア処理　外側の白線と見間違わないようにする */
-        /* ！追加・変更！ ここから */
-        if( check_leftline() ) {
-            pattern = 34;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-		
-    case 33:
-        /* 左クランククリア処理　曲げ終わりのチェック */
-/*        if( sensor_inp(MASK2_0) ) {
-            led_out( 0x0 );
-            pattern = 11;
-            cnt1 = 0;
-        }
-        /* ！追加・変更！ ここから */
-/*        if( sensor_inp(MASK3_3) == 0x07 ) {
-            pattern = 34;
-            break;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-
-    case 34:
-        /* 左クランククリア処理　外側の白線と見間違わないようにする */
-        /* ！追加・変更！ ここから */
-        if( check_center() ) {
-			lEncoderCrank = lEncoderTotal;
-            pattern = 35;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-	case 35:
-		if( lEncoderTotal - lEncoderCrank > 300 ){
-            led_out( 0x0 );
-            pattern = 11;
-            cnt1 = 0;
-		}
-		handle( PID());
-		motor(50,50);
-		break;
-
-    case 41:
-        /* 右クランククリア処理　安定するまで少し待つ */
-//        if( cnt1 > 50 && check_black()) {
-        if( check_black()) {
-            pattern = 42;
-            cnt1 = 0;
-        }
-        break;
-    
-	case 42:
-        /* 右クランククリア処理　外側の白線と見間違わないようにする */
-        /* ！追加・変更！ ここから */
-        if( check(12,13) ) {
-            pattern = 44;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-		
-    case 43:
-        /* 右クランククリア処理　曲げ終わりのチェック */
-/*        if( sensor_inp(MASK0_2) ) {
-            led_out( 0x0 );
-            pattern = 11;
-            cnt1 = 0;
-        }
-        /* ！追加・変更！ ここから */
-/*        if( sensor_inp(MASK3_3) == 0xe0 ) {
-            pattern = 44;
-            break;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-
-    case 44:
-        /* 右クランククリア処理　外側の白線と見間違わないようにする */
-        /* ！追加・変更！ ここから */
-        if( check_center() ) {
-			lEncoderCrank = lEncoderTotal;
-            pattern = 45;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-	case 45:
-		if( lEncoderTotal - lEncoderCrank > 500 ){
-            led_out( 0x0 );
-            pattern = 11;
-            cnt1 = 0;
-		}
-		handle( PID());
-		motor(50,50);
-		break;
-
-    case 51:
-        /* １本目の右ハーフライン検出時の処理 */
-        led_out( 0x2 );
-        handle( 0 );
-		motor((5 - iEncoder)*5,(5 - iEncoder)*5);
-        pattern = 52;
-        cnt1 = 0;
-         /* ！追加・変更！ ここから */
-        if( check(2,3) ) {
-            pattern = 21;
-			lEncoderCrank = lEncoderTotal;
-            break;
-        }
-       break;
-    case 52:
-        /* ２本目を読み飛ばす */
-		if( lEncoderTotal - lEncoderHarf > 100 ){
-            pattern = 53;
-            cnt1 = 0;
-        }
-        /* ！追加・変更！ ここから */
-        if( check(2,3) ) {
-            pattern = 21;
-			lEncoderCrank = lEncoderTotal;
-            break;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-
-    case 53:
-        /* 右ハーフライン後のトレース、レーンチェンジ */
-        if( check_black() ) {
-           	handle( data_buff[DF_laneR_PWM] );
-			motor(data_buff[DF_lane_motorL],data_buff[DF_lane_motorR]);
-            pattern = 54;
-            cnt1 = 0;
-            break;
-        }
-		handle( PID() + 5);
-        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
-        break;
-
-    case 54:
-        /* 右レーンチェンジ終了のチェック */
-        /* ！追加・変更！ ここから */
-        if( check_center() ) {
-            led_out( 0x0 );
-			lEncoderTotal = lEncoderHarf;
-            pattern = 55;
-            cnt1 = 0;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-	case 55:
-		if( lEncoderTotal - lEncoderHarf > 500 ){
-            led_out( 0x0 );
-            pattern = 11;
-            cnt1 = 0;
-		}
-		handle( PID());
-		motor(50,50);
-		break;
-
-    case 61:
-        /* １本目の左ハーフライン検出時の処理 */
-        led_out( 0x1 );
-        handle( 0 );
-		motor((5 - iEncoder)*5,(5 - iEncoder)*5);
-        pattern = 62;
-        cnt1 = 0;
-        /* ！追加・変更！ ここから */
-        if( check(12,13) ) {
-            pattern = 21;
-			lEncoderCrank = lEncoderTotal;
-            break;
-        }
-		break;
-    case 62:
-        /* ２本目を読み飛ばす */
-		if( lEncoderTotal - lEncoderHarf > 80 ){
-            pattern = 63;
-            cnt1 = 0;
-        }
-        /* ！追加・変更！ ここから */
-        if( check(12,13) ) {
-            pattern = 21;
-			lEncoderCrank = lEncoderTotal;
-            break;
-        }
-		/* ！追加・変更！ ここまで */
-        break;
-
-    case 63:
-        /* 左ハーフライン後のトレース、レーンチェンジ */
-        if( check_black() ) {
-			handle( -data_buff[DF_laneL_PWM] );
-			motor(data_buff[DF_lane_motorR],data_buff[DF_lane_motorL]);
-            pattern = 64;
-            cnt1 = 0;
-            break;
-        }
-		handle( PID() - 5);
-        motor( data_buff[DF_lane_motorS] ,data_buff[DF_lane_motorS] );
-        break;
-
-    case 64:
-        /* 左レーンチェンジ終了のチェック */
-        /* ！追加・変更！ ここから */
-        if( check_center() ) {
-            led_out( 0x0 );
-            pattern = 65;
-			lEncoderTotal = lEncoderHarf;
-            cnt1 = 0;
-        }
-        /* ！追加・変更！ ここまで */
-        break;
-		
-	case 65:
-		if( lEncoderTotal - lEncoderHarf > 150 ){
-            led_out( 0x0 );
-            pattern = 11;
-            cnt1 = 0;
-		}
-		handle( PID());
-		motor(50,50);
-		break;
-
+	break;
+/* Spring */
+	case 500:
+	
+	break;
+	
     case 101:
         /* microSDの停止処理 */
         /* 脱輪した際の自動停止処理後は、必ずこの処理を行ってください */
-        handle( 0 );
+		handle( 0 );
         motor( 0, 0 );
         msdFlag = 0;
         pattern = 102;
-        break;
-
+ 	break;
     case 102:
         /* 最後のデータが書き込まれるまで待つ*/
+		handle( 0 );
         if( microSDProcessEnd() == 0 ) {
             pattern = 103;
         }
-        break;
-
-    case 103:
-        /* 書き込み終了 */
-        led_out( 0x3 );
-        break;
-		
-	case 500:
-		/* メモリの読み出し */
-		/*if( pushsw_get() ) {
-			for(j = 0; j < 5000; j++){
-				printf("%d\n",mem[j]);
-			}
-		}*/
-		break;
-
+	break;
+    case 103:/* 書き込み終了 */
+		handle( 0 );
+		pattern = 900;
+	break;
+	case 900: /* メモリの読み出し */
+		handle( 0 );
+        motor( 0, 0 );
+		if( pushsw_get() ) {
+			led_out( 0x3 );
+			memPrint();
+			led_out( 0x0 );
+			pattern = 501;
+		}
+        if( cnt1 < 50 ) {               /* LED点滅処理                  */
+            led_out( 0x1 );
+        } else if( cnt1 < 100 ) {
+            led_out( 0x2 );
+        } else {
+            cnt1 = 0;
+        }
+	break;
 	case 1000:
 		/* モニタ画面 */
-		printf("MiconCar parameter \n");
-		printf("   Kp %d  Ki %d  Kd  %d \n",data_buff[DF_KP],data_buff[DF_KI],data_buff[DF_KD]);
-		printf("   servo_center = %d\n",servo_center);
-		printf("   Stop Timer = %d0\n",((unsigned char)data_buff[DF_STOP1]*0x100)|(unsigned char)data_buff[DF_STOP2]);
+		printf("Machine parameter\n");
+		printf("   Stop Timer = %d s\n",data_buff[DF_STOP]);
 		printf("   Max Speed = %d\n",data_buff[DF_PWM]);
+		printf("   servo_center = %d\n",servo_center);
+		printf("   servo   KSp %d.%d  KSi %d.%d  KSd  %d.%d \n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10,data_buff[DF_KSI]/10,data_buff[DF_KSI]%10,data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
+		printf("   machine KMp %d.%d  KMi %d.%d  KMd  %d.%d \n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10,data_buff[DF_KMI]/10,data_buff[DF_KMI]%10,data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
 		printf("\n");
 
-		printf("Crank parameter\n");	
-		printf("   Speed  = %3d\n",data_buff[DF_crank_motorS]);
-		printf("   handle = %d\n",data_buff[DF_crank_handlepwm]);
-		printf("   MOTOR  OUT = %3d   IN = %3d \n",data_buff[DF_crank_motor1],data_buff[DF_crank_motor2]);
+		printf("Camera parameter \n");
+		printf("   camera Stright Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_S]/10,data_buff[DF_KP_S]%10,data_buff[DF_KI_S]/10,data_buff[DF_KI_S]%10,data_buff[DF_KD_S]/10,data_buff[DF_KD_S]%10);
+		printf("   camera Curve   Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_C]/10,data_buff[DF_KP_C]%10,data_buff[DF_KI_C]/10,data_buff[DF_KI_C]%10,data_buff[DF_KD_C]/10,data_buff[DF_KD_C]%10);
+		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 		printf("\n");
 
-		printf("LaneChange parameter\n");	
-		printf("   Speed  = %3d\n",data_buff[DF_lane_motorS]);
-		printf("   R handle = %d  L handle = %d\n",data_buff[DF_laneR_PWM],data_buff[DF_laneL_PWM]);
-		printf("   MOTOR  OUT = %3d   IN = %3d \n",data_buff[DF_lane_motorL],data_buff[DF_lane_motorR]);
+		printf("Trace parameter\n");	
+//		printf("   Speed  = %3d\n",data_buff[DF_start_motor]);
 		printf("\n");
-	
-		pattern = 0;
+
+		printf("Sprint parameter\n");	
+//		printf("   Distance  = %4d.%dm\n",data_buff[DF_distance]*100/1000,data_buff[DF_distance]*100%1000);
+//		printf("   Search_Line_Speed = %3d\n",data_buff[DF_search_motor]);
+		printf("\n");
 		
+		Light_ON;
+		pattern = 0;
+		cnt1 = 0;
+	break;
 	case 2000:
-		get_ad();
-		printf("raw: ");
-		for(i = 0; i < 16; i++){
-			printf("%4d ",ImageData[i]);
-		}
-		printf("\n");
-
-		printf("LPF: ");
-		for(i = 0; i < 16; i++){
-			printf("%4d ",val_ImageData[i]);
-		}
-		printf("\n");
-
-		printf("Nor: ");
-		for(i = 0; i < 16; i++){
-			float_printf(sval[i],2);
-			printf(" ");
-		}
-		printf("\n");
-
-		printf("bi:  ");
-		for(i = 0; i < 16; i++){
-			printf("%4d ",bi_sensor[i]);
-		}
-		printf("\n");
-
-		printf("pos = ");
-		float_printf(pos,3);
-		printf(" PID = %d  ",PID());
+//		get_ad();
 		printf("lEncoderTotal = %ld\n",lEncoderTotal);
-		printf("startbar_get = %d  allBlack = %d\n\n",startbar_get(),allBlack());
 		timer(1500);
 		break;
-		
+	case 3000:
+		if(cnt1 > 2000){
+			printf("Center = %d  nowServo = %d\n",Center,nowServo);
+
+			bi_view();
+			cnt1 = 0;
+		}
+	break;
+	case 4000:
+			printf("lEncoderTotal = %ld odometer = %ld\n",lEncoderTotal,odometer());
+	break;
+	case 5000:/* シリアル通信でパラメータを設定する */
+		sciProcess();
+	break;
     default:
         /* どれでもない場合は待機状態に戻す */
         pattern = 0;
@@ -707,29 +385,6 @@ void led_out( unsigned char led )
     data = p2 & 0x3f;
     p2 = data | led;
 }
-
-/************************************************************************/
-/* 外輪のPWMから、内輪のPWMを割り出す　ハンドル角度は現在の値を使用     */
-/* 引数　 外輪PWM                                                       */
-/* 戻り値 内輪PWM                                                       */
-/************************************************************************/
-int diff( int pwm )
-{
-    int ret;
-
-    if( pwm >= 0 ) {
-        /* PWM値が正の数なら */
-        if( angle_buff < 0 ) {
-            angle_buff = -angle_buff;
-        }
-        ret = revolution_difference[angle_buff] * pwm / 100;
-    } else {
-        /* PWM値が負の数なら */
-        ret = pwm;                      /* そのまま返す             */
-    }
-    return ret;
-}
-
 /************************************************************************/
 /* end of file                                                          */
 /************************************************************************/

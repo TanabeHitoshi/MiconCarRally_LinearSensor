@@ -10,17 +10,20 @@
 #include "data_flash_lib.h"             /* データフラッシュライブラリ   */
 #include "isline.h"
 #include "isCheck.h"
+#include "ini.h"
 
-int ImageData[16];		/* 生センサーの値 */
+int ImageData[3][16];		/* 生センサーの値 0 -> LED OFF  1 -> LED ON 2 -> rawDATA*/
 int pre_ImageData[16];	/* ひとつ前のセンサー値 */
 int val_ImageData[16];	/* センターの値 */
-int ad_white[16] = {1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024};		/* ライン白 */
-int ad_black[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		/* 黒 */
+int ad_black[16] = {1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024,1024};		/* ライン白 */
+int ad_white[16] = {0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};		/* 黒 */
 float sval[16];				/* 正規化センサ値 */
 int bi_sensor[16];			/* ２値化 */
-int sensor8,sensor16;
+unsigned int sensor8,sensor16;
 int	White;					/* 白色の数 */
 float pos,pre_pos;			/* 中心位置からのずれ */
+int buffer_PID;
+
 
 /************************************************************************/
 /* A/D値読み込み(AN7)                                                   */
@@ -29,6 +32,9 @@ float pos,pre_pos;			/* 中心位置からのずれ */
 /************************************************************************/
 void get_ad( void )
 {
+	int state;							/* LED ON -> 0 		LED OFF -> 1	*/
+	state = cnt_AD % 2;
+	
     /* A/Dコンバータの設定 */
 	/* AN7 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -39,7 +45,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[7] = ad7;
+    ImageData[state][7] = ad7;
+	ImageData[2][7] = ImageData[0][7] - ImageData[1][7];
 
 	/* AN6 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -50,7 +57,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[6] = ad6;
+    ImageData[state][6] = ad6;
+	ImageData[2][6] = ImageData[0][6] - ImageData[1][6];
 	
 		/* AN5 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -61,7 +69,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[5] = ad5;
+    ImageData[state][5] = ad5;
+	ImageData[2][5] = ImageData[0][5] - ImageData[1][5];
 	
 	
 		/* AN4 */
@@ -73,7 +82,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[4] = ad4;
+    ImageData[state][4] = ad4;
+	ImageData[2][4] = ImageData[0][4] - ImageData[1][4];
 	
 	
 		/* AN3 */
@@ -85,7 +95,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[3] = ad3;
+    ImageData[state][3] = ad3;
+	ImageData[2][3] = ImageData[0][3] - ImageData[1][3];
 	
 	
 		/* AN2 */
@@ -97,7 +108,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[2] = ad2;
+    ImageData[state][2] = ad2;
+	ImageData[2][2] = ImageData[0][2] - ImageData[1][2];
 	
 		/* AN1 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -108,7 +120,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[1] = ad1;
+    ImageData[state][1] = ad1;
+	ImageData[2][1] = ImageData[0][1] - ImageData[1][1];
 	
 	
 		/* AN0 */
@@ -120,7 +133,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[0] = ad0;
+    ImageData[state][0] = ad0;
+	ImageData[2][0] = ImageData[0][0] - ImageData[1][0];
 	
 	
 		/* AN19 */
@@ -132,7 +146,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[8] = ad7;
+    ImageData[state][8] = ad7;
+	ImageData[2][8] = ImageData[0][8] - ImageData[1][8];
 	
 	
 			/* AN18 */
@@ -144,7 +159,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[9] = ad6;
+    ImageData[state][9] = ad6;
+	ImageData[2][9] = ImageData[0][9] - ImageData[1][9];
 	
 			/* AN17 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -155,7 +171,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[10] = ad5;
+    ImageData[state][10] = ad5;
+	ImageData[2][10] = ImageData[0][10] - ImageData[1][10];
 	
 			/* AN16 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -166,7 +183,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[11] = ad4;
+    ImageData[state][11] = ad4;
+	ImageData[2][11] = ImageData[0][11] - ImageData[1][11];
 	
 			/* AN15 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -177,7 +195,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[12] = ad3;
+    ImageData[state][12] = ad3;
+	ImageData[2][12] = ImageData[0][12] - ImageData[1][12];
 	
 			/* AN14 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -188,7 +207,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[13] = ad2;
+    ImageData[state][13] = ad2;
+	ImageData[2][13] = ImageData[0][13] - ImageData[1][13];
 	
 			/* AN13 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -199,7 +219,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[14] = ad1;
+    ImageData[state][14] = ad1;
+	ImageData[2][14] = ImageData[0][14] - ImageData[1][14];
 	
 			/* AN12 */
     admod   = 0x03;                     /* 単発モードに設定             */
@@ -210,7 +231,8 @@ void get_ad( void )
 
     while( adcon0 & 0x01 );             /* A/D変換終了待ち              */
 
-    ImageData[15] = ad0;
+    ImageData[state][15] = ad0;
+	ImageData[2][15] = ImageData[0][15] - ImageData[1][15];
 	
 }
 /************************************************************************/
@@ -222,7 +244,7 @@ void LPF(void)
 {
 	int i;
 	for(i = 0; i < 16; i++) {
-		val_ImageData[i] = (float)pre_ImageData[i] * 0.3 + (float)ImageData[i] *0.7;
+		val_ImageData[i] = (float)pre_ImageData[i] * 0.9 + (float)ImageData[2][i] *0.1;
 		pre_ImageData[i] = val_ImageData[i];
 	}
 }
@@ -237,7 +259,7 @@ void Normanaization(void)
 	sensor8 = 0;
 	get_ad();
 	for(i = 0; i < 16; i++) {
-		sval[i] = ((float)ImageData[i] - ad_black[i]) / (ad_white[i] - ad_black[i]);
+		sval[i] = ((float)ImageData[2][i] - ad_black[i]) / (ad_white[i] - ad_black[i]);
 	}
 	/* 8bit */
 	/*
@@ -271,8 +293,7 @@ void binarization(void)
 	
 	for(i = 0; i < 16; i++){
 		sensor16 = sensor16 << 1;
-//		if(sval[i] > white){
-		if(ImageData[i] < ((ad_white[i]+ad_black[i])/2) ){
+		if(ImageData[2][i] > ((ad_white[i]+ad_black[i]) * 2 / 3) ){
 			bi_sensor[i] = 1;
 			sensor16++;
 			White++;
@@ -280,10 +301,9 @@ void binarization(void)
 			bi_sensor[i] = 0;
 		}
 	}
-
 }
 /************************************************************************/
-/* カメラより重心位置の掲出                                             */
+/* センサーより重心位置の掲出                                             */
 /* 引数　 なし                                                          */
 /* 戻り値 重心値                                                        */
 /************************************************************************/
@@ -317,14 +337,13 @@ void potition( void )
 /* 引数　 なし                                                          */
 /* 戻り値 なし			                                                */
 /************************************************************************/
-int PID(void)
+int PID(int KP)
 {
 	static float i_pos = 0.0;
 	i_pos +=  pos - pre_pos;
-	if(pos < 25 || pos > -25)
-		return pos * (float)data_buff[DF_KP]/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
-	else
-		return pos * (float)data_buff[DF_KP]*3.0/10.0 + i_pos * (float)data_buff[DF_KI]/10.0 + (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
+
+	buffer_PID = -pos * (float)KP/10.0 - i_pos * (float)data_buff[DF_KI]/10.0 - (pos - pre_pos) * (float)data_buff[DF_KD]/10.0;
+	return buffer_PID;
 	
 }
 /************************************************************************/
@@ -339,8 +358,9 @@ void AutoCalibration(void)
 	get_ad();
 
 	for(i = 0; i < 16; i++) {
-		if( ad_black[i] < ImageData[i])	 ad_black[i] = ImageData[i];
-		if( ImageData[i] < ad_white[i])	 ad_white[i] = ImageData[i];
+		if( ad_black[i] > ImageData[2][i] || ImageData[2][i] > 0 )	 ad_black[i] = ImageData[2][i];
+		if( ImageData[2][i] > ad_white[i])	 ad_white[i] = ImageData[2][i];
+//		ad_black[i] = 0;ad_white[i] = 600;
 	}
 }
 
@@ -362,25 +382,7 @@ unsigned int allBlack(void)
 		return 0;
 	}
 }
-/************************************************************************/
-/* スタートバー検出センサ読み込み                                       */
-/* 戻り値 センサ値 ON(バーあり):1 OFF(なし):0                           */
-/************************************************************************/
-unsigned int startbar_get( void )
-{
-	int i;
-	int n = 0;
 
-	for(i = 0; i < 16; i++){
-		if(sval[i] > 0.8) n++;
-	}
-//	printf("n = %d\n",n);
-	if( n == 16){
-		return  1;
-	}else{
-		return 0;
-	}
-}
 /************************************************************************/
 /* 実数を表示する。		                                                */
 /* 引数　 val->表示する実数　n->桁数                                    */

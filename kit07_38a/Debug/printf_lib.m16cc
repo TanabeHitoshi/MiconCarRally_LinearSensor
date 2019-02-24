@@ -3,6 +3,6 @@
 -D__UART0__
 -c
 -finfo
--dir "E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\Debug"
+-dir "C:\WorkSpace\Atuta\kit07_38a\Debug"
 -R8CE
-"E:\program\MCR\MiconCarRally_LinearSensor\kit07_38a\printf_lib.c"
+"C:\WorkSpace\Atuta\kit07_38a\printf_lib.c"
