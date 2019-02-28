@@ -238,21 +238,51 @@ void main( void )
 	break;
 /* Sprint Left */
 	case 300:
-		if(odometer() < 300)run(100,0);
-		else pattern = 310;
+		run(100,0);
+		if(Center < -25 && Wide > 10){
+			pattern = 310;
+			set_PID(CurvePID);
+		}
 	break;
 	case 310:
+		run(50,50);
+		if(Center > 0 && Wide > 10){
+			pattern = 320;
+			tripmeter_ini();
+		}		
+	break;
+	case 320:
+		run(75,pid_angle);
+		if(tripmeter() > 300){
+			set_PID(StrightPID);
+			pattern = 330;
+		}
+	break;
+	case 330:
+		run(100,pid_angle);
+		if(tripmeter() > 2000) pattern = 340;
+	break;
+	case 340:
 		run(0,0);
 	break;
 /* Sprint right */
 	case 400:
-	
+		
+	break;
+	case 410:
+		
 	break;
 /* Spring */
 	case 500:
 	
 	break;
-	
+	case 700:
+		if(odometer() < 300)run(100,0);
+		else pattern = 710;
+	break;
+	case 710:
+		run(0,0);
+	break;	
     case 101:
         /* microSD‚Ì’âŽ~ˆ— */
         /* ’E—Ö‚µ‚½Û‚ÌŽ©“®’âŽ~ˆ—Œã‚ÍA•K‚¸‚±‚Ìˆ—‚ðs‚Á‚Ä‚­‚¾‚³‚¢ */

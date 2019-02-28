@@ -21,7 +21,7 @@ unsigned long   stop_timer;				/* 走行タイマー					*/
 unsigned long   cnt_AD;                 /* センサーで使用　偶数でON  奇数でOFF  */
 
 int             pattern;                /* パターン番号                 */
-
+int				Srevo_state;			/* サーボの制御あり -> 1　なり -> 0	*/
 /* microSD関連変数 */
 signed char     msdBuff[ 512+32 ];      /* 一時保存バッファ(32は予備)   */
 int             msdFlag;                /* 1:データ記録 0:記録しない    */
@@ -136,7 +136,7 @@ void intTRB( void )
 		pre_iEncoder = iEncoder;
 		uEncoderBuff = i;
 		
-		servo_Trace();
+		if(pattern > 400 && pattern < 1000) servo_Trace();
 		servo_angle = motor_Trace();
 	}	
     /* 拡張スイッチ用関数(1msごとに実行)    */
