@@ -124,7 +124,7 @@ int lcdProcess( void )
 		lcdPosition( 0, 0 );
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
-        if( lcd_pattern == 18 ) lcd_pattern = 0;
+        if( lcd_pattern == 19 ) lcd_pattern = 0;
     }
 
     /* スイッチ2　メニュー－１ */
@@ -133,7 +133,7 @@ int lcdProcess( void )
 		lcdPosition( 0, 0 );
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
-        if( lcd_pattern < 0 ) lcd_pattern = 17;
+        if( lcd_pattern < 0 ) lcd_pattern = 18;
     }
 
     /* LCD、スイッチ処理 */
@@ -182,7 +182,6 @@ int lcdProcess( void )
                  /* 01234567..89abcde.f 1行16文字 */
         lcdPrintf( "                ");
         break;
-
     case 2:
         /* 速度調整 */
         i = data_buff[DF_PWM];
@@ -202,23 +201,24 @@ int lcdProcess( void )
         lcdPrintf( "02 Max SPEED         %03d        ", i );
                  /* 01234567..89abcde.f 1行16文字 */
         break;
-	case 3:
-        /* タイマー値調整 */
-		i = data_buff[DF_STOP];
+    case 3:
+        /* スプリント速度調整 */
+        i = data_buff[DF_PWM_S];
         if( getSwFlag(SW_1) ) {
             i++;
-            if( i > 30 ) i = 30;
+            if( i > 100 ) i = 100;
         }
         if( getSwFlag(SW_0) ) {
             i--;
             if( i < 0 ) i = 0;
         }
-        data_buff[DF_STOP] = i;
-		
+        data_buff[DF_PWM_S] = i;
+
         /* LCD処理 */
         lcdPosition( 0, 0 );
-                 /* 0123456789abcdef0123456789abcdef 1行16文字 */
-        lcdPrintf( "03  stop time       %2d s", i );
+                 /* 0123456789..bcdef0123456789..bcdef 1行16文字 */
+        lcdPrintf( "03 Sprint SPEED      %03d        ", i );
+                 /* 01234567..89abcde.f 1行16文字 */
         break;
     case 4:
         /* サーボ比例値 KSp */
@@ -559,6 +559,24 @@ int lcdProcess( void )
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
         lcdPrintf( "17 LineStop       %03d", i );
         break;
+	case 18:
+        /* タイマー値調整 */
+		i = data_buff[DF_STOP];
+        if( getSwFlag(SW_1) ) {
+            i++;
+            if( i > 30 ) i = 30;
+        }
+        if( getSwFlag(SW_0) ) {
+            i--;
+            if( i < 0 ) i = 0;
+        }
+        data_buff[DF_STOP] = i;
+		
+        /* LCD処理 */
+        lcdPosition( 0, 0 );
+                 /* 0123456789abcdef0123456789abcdef 1行16文字 */
+        lcdPrintf( "18  stop time       %2d s", i );
+        break;
 
 	}
 }
@@ -581,7 +599,7 @@ void sciProcess( void )
 	printf("   Servo  parameter KSp %d.%d   KSi %d.%d   KSd %d.%d\n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10,data_buff[DF_KSI]/10,data_buff[DF_KSI]%10,data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
 	printf("   Macine parameter KMp %d.%d   KMi %d.%d   KMd %d.%d\n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10,data_buff[DF_KMI]/10,data_buff[DF_KMI]%10,data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
 //	printf("   Log time %dms\n",data_buff[DF_log_time]);
-	printf("   Log start Number %d\n",data_buff[DF_log_potion]);
+//	printf("   Log start Number %d\n",data_buff[DF_log_potion]);
 //	printf("\n");
 
 	printf("2:Camera parameter\n");	
@@ -594,6 +612,7 @@ void sciProcess( void )
 //	printf("\n");
 
 	printf("4:Sprint parameter\n");	
+	printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
 	printf("\n");
 	;
 	printf("change parameter number? >> ");
@@ -611,7 +630,7 @@ void sciProcess( void )
 			printf("   8: Machine parameter KMi %d.%d\n",data_buff[DF_KMI]/10,data_buff[DF_KMI]%10);
 			printf("   9: Machine parameter KMd %d.%d\n",data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
 //			printf("   7: Log time %dms\n",data_buff[DF_log_time]);
-			printf("   8: Log start Number %d\n",data_buff[DF_log_potion]);
+//			printf("   8: Log start Number %d\n",data_buff[DF_log_potion]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
@@ -710,12 +729,12 @@ void sciProcess( void )
 					writeDataFlashParameter();
 				break;
 				case 11:
-					printf("8: Log start Number %d\n",data_buff[DF_log_potion]);
+//					printf("8: Log start Number %d\n",data_buff[DF_log_potion]);
 					printf("parameter value? (0 <-> 14) >> ");
 					scanf("%d",&s);
 					if(s > 14) s = 10;
 					if(s < 0) s = 0;
-			        data_buff[DF_log_potion] = s;
+//			        data_buff[DF_log_potion] = s;
 					writeDataFlashParameter();
 				break;
 				default:
@@ -873,18 +892,18 @@ void sciProcess( void )
 		break;
 		case 4:
 			printf("4:Sprint parameter\n");	
-//			printf("   5: R MOTOR = %3d \n",data_buff[DF_lane_motorR]);
+			printf("   1: Sprint Speed = %d\n",data_buff[DF_PWM_S]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
 			switch(s){
 				case 1:
-//					printf("1: Speed  = %3d\n",data_buff[DF_lane_motorS]);
+					printf("1: Speed  = %3d\n",data_buff[DF_PWM_S]);
 					printf("parameter value? (0 <-> 100) >> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;
 					if(s < 0) s = 0;
-//			        data_buff[DF_lane_motorS] = s;
+			        data_buff[DF_PWM_S] = s;
 					writeDataFlashParameter();
 				break;
 				case 2:

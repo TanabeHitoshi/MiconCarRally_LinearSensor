@@ -61,6 +61,7 @@ void main( void )
 	initSwitch();                       /* スイッチ初期化               */
 
 	Light_OFF;
+	Srevo_state = 0;
 	
     readDataFlashParameter();           /* DataFlashパラメータ読み込み  */
     servo_center  = (unsigned char)data_buff[DF_SERVO1] * 0x100;
@@ -178,6 +179,7 @@ void main( void )
 				break;
 				case 2:
 					pattern = 400;
+					set_Speed(Sprint_SPEED);
 				break;
 				case 3:
 					pattern = 3000;
@@ -206,6 +208,7 @@ void main( void )
     break;
 /* Trace */
 	case 200:
+		Srevo_state = 1;
 		/* カーブによってPIDを変える */
 		if(pid_angle > 10 || pid_angle < -10){
 			set_PID(CurvePID);
@@ -255,27 +258,69 @@ void main( void )
 		run(75,pid_angle);
 		if(tripmeter() > 300){
 			set_PID(StrightPID);
-			pattern = 330;
+			pattern = 500;
 		}
 	break;
-	case 330:
-		run(100,pid_angle);
-		if(tripmeter() > 2000) pattern = 340;
-	break;
-	case 340:
-		run(0,0);
-	break;
+
 /* Sprint right */
 	case 400:
-		
+		run(100,0);
+		if(Center > 15 && Wide > 10){
+			pattern = 410;
+			set_PID(CurvePID);
+		}		
 	break;
 	case 410:
-		
+		run(50,50);
+		if(Center > 0 && Wide > 10){
+			pattern = 420;
+			tripmeter_ini();
+		}		
 	break;
-/* Spring */
+	case 420:
+		run(75,pid_angle);
+		if(tripmeter() > 300){
+			set_Speed(MAX_SPEED);
+			set_PID(StrightPID);
+			pattern = 500;
+		}
+	break;
+
+/* Sprint */
 	case 500:
-	
+		SPEED = 100;
+		/* カメラのずれによる減速 */
+		if(pid_angle > 0){
+			SPEED -= pid_angle*3;
+		}else{
+			 SPEED += pid_angle*3;
+		}
+		run(SPEED,pid_angle);
+		
+		if(tripmeter() > 2000){
+			tripmeter_ini();
+			pattern = 510;
+		}
 	break;
+	case 510:
+		if(tripmeter() < 100) run(90,pid_angle);
+		else if(tripmeter() < 200) run(80,pid_angle);
+		else if(tripmeter() < 300) run(70,pid_angle);
+		else if(tripmeter() < 400) run(60,pid_angle);
+		else if(tripmeter() < 500) run(50,pid_angle);
+		else run(40,pid_angle);
+		if(White > 40){
+			pattern = 520;
+			tripmeter_ini();
+		}
+		break;
+	case 520:
+		if(tripmeter() < 300){
+			run(30,pid_angle);
+		}else{
+			run(0,pid_angle);
+		}
+		break;	
 	case 700:
 		if(odometer() < 300)run(100,0);
 		else pattern = 710;
@@ -340,6 +385,7 @@ void main( void )
 		printf("\n");
 
 		printf("Sprint parameter\n");	
+		printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
 //		printf("   Distance  = %4d.%dm\n",data_buff[DF_distance]*100/1000,data_buff[DF_distance]*100%1000);
 //		printf("   Search_Line_Speed = %3d\n",data_buff[DF_search_motor]);
 		printf("\n");

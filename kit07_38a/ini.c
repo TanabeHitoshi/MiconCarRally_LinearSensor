@@ -136,7 +136,7 @@ void intTRB( void )
 		pre_iEncoder = iEncoder;
 		uEncoderBuff = i;
 		
-		if(pattern > 400 && pattern < 1000) servo_Trace();
+		if(Srevo_state == 1) servo_Trace();
 		servo_angle = motor_Trace();
 	}	
     /* 拡張スイッチ用関数(1msごとに実行)    */

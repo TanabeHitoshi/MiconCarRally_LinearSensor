@@ -45,12 +45,8 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 #define DF_KI_C			0x12			/* 積分値 Ki				*/
 #define DF_KD_C			0x13			/* 微分値 Kd					*/
 
-//#define DF_lane_motorS  0x11
-
-//#define DF_crank_handlepwm 0x12
-
-//#define DF_log_time		0x13
-#define DF_log_potion	0x14
+/* スプリントの設定 */
+#define DF_PWM_S		0x14			/* スプリントの入り速度	*/
 
 #define DF_MCR_P_N	0x19
 #define DF_MCR_P00	0x20

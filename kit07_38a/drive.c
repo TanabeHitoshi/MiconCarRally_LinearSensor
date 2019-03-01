@@ -19,7 +19,17 @@ int             MotorBuff;   		    /* 現在のモータPWM値記録      */
 int             angle_buff;             /* 現在ハンドル角度保持用   */
 
 int             servo_center;           /* サーボセンタ値               */
+int				setSpeed;				/* 速度の設定	*/
 
+/************************************************************************/
+/* 走行速度の設定                                              		        */
+/* 引数　 速度:0～100                        						*/
+/* 戻り値 なし                                                          */
+/************************************************************************/
+void set_Speed(int speed)
+{
+	setSpeed = speed;
+}
 
 /************************************************************************/
 /* 走行関数                                              		        */
@@ -42,6 +52,9 @@ void run(int speed, int turn_speed)
 	if(d2 >= 100) d2 = 100;
 	else if(d2 <= -100) d2 = -100;
 
+    d1 = d1 * setSpeed / 100;
+    d2 = d2 * setSpeed / 100;
+
 	motor(d1,d2);
 
 }
@@ -59,10 +72,10 @@ void motor( int accele_l, int accele_r )
 	if( accele_l <= -100) accele_l = -100;
 	if( accele_r <= -100) accele_r = -100;
 		
-
+/*
     accele_l = accele_l * data_buff[DF_PWM] / 100;
     accele_r = accele_r * data_buff[DF_PWM] / 100;
-
+*/
  	leftMotorBuff = accele_l;
 
     /* 左モータ制御 */
