@@ -106,8 +106,8 @@ void motor( int accele_l, int accele_r )
 /************************************************************************/
 void handle( int angle )
 {
-	if(angle > 20)angle = 20;
-	if(angle < -20)angle = -20;
+	if(angle > 40)angle = 40;
+	if(angle < -40)angle = -40;
 	handleBuff = angle;
     angle_buff = angle;                 /* Œ»Ý‚ÌŠp“x•Û‘¶               */
 

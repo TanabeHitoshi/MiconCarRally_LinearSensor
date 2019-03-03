@@ -54,7 +54,6 @@ void readDataFlashParameter( void )
             data_buff[DF_SERVO1]    = SERVO_CENTER >> 8;
             data_buff[DF_SERVO2]    = SERVO_CENTER & 0xff;
             data_buff[DF_PWM]       = 100;
-//			data_buff[DF_crank_handlepwm] = 0;
             data_buff[DF_STOP] 	= 30;
 
             blockEraseDataFlash( DF_ADDR_START );
@@ -124,7 +123,7 @@ int lcdProcess( void )
 		lcdPosition( 0, 0 );
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
-        if( lcd_pattern == 19 ) lcd_pattern = 0;
+        if( lcd_pattern == 20 ) lcd_pattern = 0;
     }
 
     /* スイッチ2　メニュー－１ */
@@ -133,7 +132,7 @@ int lcdProcess( void )
 		lcdPosition( 0, 0 );
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
-        if( lcd_pattern < 0 ) lcd_pattern = 18;
+        if( lcd_pattern < 0 ) lcd_pattern = 19;
     }
 
     /* LCD、スイッチ処理 */
@@ -560,6 +559,24 @@ int lcdProcess( void )
         lcdPrintf( "17 LineStop       %03d", i );
         break;
 	case 18:
+        /* スプリント走行距離 */
+		i = data_buff[DF_DISTANCE];
+        if( getSwFlag(SW_1) ) {
+            i++;
+            if( i > 100 ) i = 100;
+        }
+        if( getSwFlag(SW_0) ) {
+            i--;
+            if( i < 20 ) i = 20;
+        }
+        data_buff[DF_DISTANCE] = i;
+		
+        /* LCD処理 */
+        lcdPosition( 0, 0 );
+                 /* 0123456789abcdef0123456789abcdef 1行16文字 */
+        lcdPrintf( "18  stop time      %2d00 mm", i );
+        break;
+	case 19:
         /* タイマー値調整 */
 		i = data_buff[DF_STOP];
         if( getSwFlag(SW_1) ) {
@@ -575,7 +592,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
-        lcdPrintf( "18  stop time       %2d s", i );
+        lcdPrintf( "19  stop time       %2d s", i );
         break;
 
 	}
@@ -613,6 +630,7 @@ void sciProcess( void )
 
 	printf("4:Sprint parameter\n");	
 	printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
+	printf("   Distance = %d00 mm\n",data_buff[DF_DISTANCE]);
 	printf("\n");
 	;
 	printf("change parameter number? >> ");
@@ -893,6 +911,7 @@ void sciProcess( void )
 		case 4:
 			printf("4:Sprint parameter\n");	
 			printf("   1: Sprint Speed = %d\n",data_buff[DF_PWM_S]);
+			printf("   2: Distance = %d00 mm\n",data_buff[DF_DISTANCE]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
@@ -907,12 +926,12 @@ void sciProcess( void )
 					writeDataFlashParameter();
 				break;
 				case 2:
-//					printf("2: L handle = %d\n",data_buff[DF_laneL_PWM]);
-					printf("parameter value? (-45 <-> 45) >> ");
+					printf("2: Distance = %d00\n",data_buff[DF_DISTANCE]);
+					printf("parameter value? (20 <-> 100) >> ");
 					scanf("%d",&s);
-					if(s > 45) s = 45;
-					if(s < -45) s = -45;
-//			        data_buff[DF_laneL_PWM] = s;
+					if(s > 100) s = 100;
+					if(s < 20) s = 20;
+			        data_buff[DF_DISTANCE] = s;
 					writeDataFlashParameter();
 				break;
 				case 3:

@@ -176,10 +176,15 @@ void main( void )
 				break;
 				case 1:
 					pattern = 300;
+					set_Speed(Sprint_SPEED);
+					handle(40);
+					timer(2000);
 				break;
 				case 2:
 					pattern = 400;
 					set_Speed(Sprint_SPEED);
+					handle(-30);
+					timer(2000);
 				break;
 				case 3:
 					pattern = 3000;
@@ -196,13 +201,6 @@ void main( void )
 	 		stop_timer = 0;
 			Light_ON;
             break;
-        }
-        if( cnt1 < 50 ) {               /* LED“_–Åˆ—                  */
-            led_out( 0x1 );
-        } else if( cnt1 < 100 ) {
-            led_out( 0x2 );
-        } else {
-            cnt1 = 0;
         }
 		//mem_ad = 0;
     break;
@@ -241,22 +239,36 @@ void main( void )
 	break;
 /* Sprint Left */
 	case 300:
-		run(100,0);
-		if(Center < -25 && Wide > 10){
+		if( pushsw_get() ) {
 			pattern = 310;
+			handle(0);
+		}
+        if( cnt1 < 50 ) {               /* LED“_–Åˆ—                  */
+            led_out( 0x1 );
+        } else if( cnt1 < 100 ) {
+            led_out( 0x2 );
+        } else {
+            cnt1 = 0;
+        }	
+	break;
+	case 310:
+		run(100,0);
+		if(Center < -15 && Wide > 10){
+			pattern = 320;
 			set_PID(CurvePID);
 		}
 	break;
-	case 310:
+	case 320:
 		run(50,50);
 		if(Center > 0 && Wide > 10){
-			pattern = 320;
+			pattern = 330;
 			tripmeter_ini();
 		}		
 	break;
-	case 320:
+	case 330:
 		run(75,pid_angle);
 		if(tripmeter() > 300){
+			set_Speed(MAX_SPEED);
 			set_PID(StrightPID);
 			pattern = 500;
 		}
@@ -264,22 +276,35 @@ void main( void )
 
 /* Sprint right */
 	case 400:
+		if( pushsw_get() ) {
+			pattern = 410;
+			handle(0);
+		}
+        if( cnt1 < 50 ) {               /* LED“_–Åˆ—                  */
+            led_out( 0x1 );
+        } else if( cnt1 < 100 ) {
+            led_out( 0x2 );
+        } else {
+            cnt1 = 0;
+        }
+	break;
+	case 410:
 		run(100,0);
 		if(Center > 15 && Wide > 10){
-			pattern = 410;
+			pattern = 420;
 			set_PID(CurvePID);
 		}		
 	break;
-	case 410:
-		run(50,50);
-		if(Center > 0 && Wide > 10){
-			pattern = 420;
+	case 420:
+		run(75,-50);
+		if(Center < 0 && Wide > 10){
+			pattern = 430;
 			tripmeter_ini();
 		}		
 	break;
-	case 420:
+	case 430:
 		run(75,pid_angle);
-		if(tripmeter() > 300){
+		if(tripmeter() > 150){
 			set_Speed(MAX_SPEED);
 			set_PID(StrightPID);
 			pattern = 500;
@@ -297,7 +322,7 @@ void main( void )
 		}
 		run(SPEED,pid_angle);
 		
-		if(tripmeter() > 2000){
+		if(tripmeter() > data_buff[DF_DISTANCE]*100){
 			tripmeter_ini();
 			pattern = 510;
 		}
@@ -306,12 +331,13 @@ void main( void )
 		if(tripmeter() < 100) run(90,pid_angle);
 		else if(tripmeter() < 200) run(80,pid_angle);
 		else if(tripmeter() < 300) run(70,pid_angle);
-		else if(tripmeter() < 400) run(60,pid_angle);
-		else if(tripmeter() < 500) run(50,pid_angle);
-		else run(40,pid_angle);
+//		else if(tripmeter() < 400) run(60,pid_angle);
+//		else if(tripmeter() < 500) run(50,pid_angle);
+		else run(60,pid_angle);
 		if(White > 40){
 			pattern = 520;
 			tripmeter_ini();
+			cnt1 = 0;
 		}
 		break;
 	case 520:
@@ -319,8 +345,24 @@ void main( void )
 			run(30,pid_angle);
 		}else{
 			run(0,pid_angle);
+			if(cnt1 > 2000){
+				pattern = 600;
+			}
 		}
 		break;	
+	case 600:
+		handle(30);
+		timer(1000);
+		handle(-30);
+		timer(1000);
+		handle(0);
+		timer(1000);
+		pattern = 610;
+	break;
+	case 610:
+		Light_OFF;
+		run(0,0);
+	break;
 	case 700:
 		if(odometer() < 300)run(100,0);
 		else pattern = 710;
@@ -386,7 +428,7 @@ void main( void )
 
 		printf("Sprint parameter\n");	
 		printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
-//		printf("   Distance  = %4d.%dm\n",data_buff[DF_distance]*100/1000,data_buff[DF_distance]*100%1000);
+		printf("   Distance  = %2d00 mm\n",data_buff[DF_DISTANCE]);
 //		printf("   Search_Line_Speed = %3d\n",data_buff[DF_search_motor]);
 		printf("\n");
 		
