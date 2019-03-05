@@ -574,7 +574,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
-        lcdPrintf( "18  stop time      %2d00 mm", i );
+        lcdPrintf( "18  Distance       %2d00 mm", i );
         break;
 	case 19:
         /* タイマー値調整 */
@@ -968,7 +968,7 @@ void sciProcess( void )
 		break;
 		case 5:
 			while(1){
-			printf(" 99: Gate 1 --> 0  Gate 2 --> %d\n",data_buff[DF_MCR_P_N]);
+//			printf(" 99: Gate 1 --> 0  Gate 2 --> %d\n",data_buff[DF_MCR_P_N]);
 			i = 0;
 			while( i < 15){
 				printf(" %2d: %c , ",i,MCR_program[i][0]);
@@ -993,7 +993,7 @@ void sciProcess( void )
 			if(s == 99){					/* ２番ゲートstart position */
 				printf("Gate 2 --> \n");
 				scanf("%d",&t);
-				data_buff[DF_MCR_P_N] = t;									
+//				data_buff[DF_MCR_P_N] = t;									
 			}else{							/* MCR program */
 				printf("1->saka  2->Clank  3->LenChange  4->Return  5->Clean  6->Insert  7->Delete\n");
 				scanf("%d",&t);

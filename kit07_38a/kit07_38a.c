@@ -303,8 +303,8 @@ void main( void )
 		}		
 	break;
 	case 430:
-		run(75,pid_angle);
-		if(tripmeter() > 150){
+		run(50,pid_angle);
+		if(tripmeter() > 250){
 			set_Speed(MAX_SPEED);
 			set_PID(StrightPID);
 			pattern = 500;
