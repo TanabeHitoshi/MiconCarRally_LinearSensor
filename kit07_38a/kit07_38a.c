@@ -200,7 +200,7 @@ void main( void )
     break;
 /* Trace */
 	case 200:
-		Srevo_state = 1;
+//		Srevo_state = 1;
 		if( pushsw_get() ) {
 			pattern = 210;
 		}

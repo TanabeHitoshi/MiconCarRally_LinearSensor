@@ -90,10 +90,10 @@
 [WINDOW_POSITION_STATE_DATA_VD4]
 [WINDOW_Z_ORDER]
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" 
-"C:\WorkSpace\Atuta\kit07_38a\drive.h" 
+"C:\WorkSpace\Atuta\kit07_38a\camera.c" 
+"C:\WorkSpace\Atuta\kit07_38a\camera.h" 
 "C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" 
 "C:\WorkSpace\Atuta\kit07_38a\lcd_lib.h" 
-"C:\WorkSpace\Atuta\kit07_38a\isline.h" 
 [TARGET_NAME]
 "" "" 0 
 [STATUSBAR_STATEINFO_VD1]

@@ -139,9 +139,7 @@
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" "User" "C source file" 2 
 "C:\WorkSpace\Atuta\kit07_38a\i2c_eeprom_lib.c" "User" "C source file" 0 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" "User" "C source file" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isCheck.c" "User" "C source file" 2 
 "C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "User" "C source file" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isline.c" "User" "C source file" 2 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "User" "C source file" 0 
 "C:\WorkSpace\Atuta\kit07_38a\lcd_lib.c" "User" "C source file" 0 
 "C:\WorkSpace\Atuta\kit07_38a\microsd_lib.c" "User" "C source file" 0 
@@ -171,9 +169,7 @@
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" "08590faacffdfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\i2c_eeprom_lib.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" "09a9e5ace41efc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isCheck.c" "0c7b3232a5edfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "0a2a6f1e46cc4d10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isline.c" "0724376ebc0b4d10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\lcd_lib.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\microsd_lib.c" "038f1b52289dfc10" 2 
@@ -184,11 +180,11 @@
 [OPTIONS_Debug_Renesas M16C C/C++ Library Generator]
 "Single Shot" "038f1b52289dfc10" 1 
 [OPTIONS_Debug_Renesas M16C Configurator]
-"Single Shot" "0a2a6f1e46cc4d10" 6 
+"Single Shot" "0dbfc5ba895d4d10" 6 
 [OPTIONS_Debug_Renesas M16C ConfiguratorR8C]
-"Single Shot" "0a2a6f1e46cc4d10" 5 
+"Single Shot" "0dbfc5ba895d4d10" 5 
 [OPTIONS_Debug_Renesas OptLinker]
-"Single Shot" "034f322e46cc4d10" 4 
+"Single Shot" "0b35b6ba895d4d10" 4 
 [OPTIONS_Debug]
 "" 0 
 "[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON3] " 6 
@@ -212,9 +208,7 @@
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" "08590faacffdfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\i2c_eeprom_lib.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" "09a9e5ace41efc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isCheck.c" "0c7b3232a5edfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "0a2a6f1e46cc4d10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isline.c" "0724376ebc0b4d10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\lcd_lib.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\microsd_lib.c" "038f1b52289dfc10" 2 
@@ -225,11 +219,11 @@
 [OPTIONS_Release_Renesas M16C C/C++ Library Generator]
 "Single Shot" "038f1b52289dfc10" 1 
 [OPTIONS_Release_Renesas M16C Configurator]
-"Single Shot" "0a2a6f1e46cc4d10" 6 
+"Single Shot" "0dbfc5ba895d4d10" 6 
 [OPTIONS_Release_Renesas M16C ConfiguratorR8C]
-"Single Shot" "0a2a6f1e46cc4d10" 5 
+"Single Shot" "0dbfc5ba895d4d10" 5 
 [OPTIONS_Release_Renesas OptLinker]
-"Single Shot" "034f322e46cc4d10" 4 
+"Single Shot" "0b35b6ba895d4d10" 4 
 [OPTIONS_Release]
 "" 0 
 "[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON3] " 6 
