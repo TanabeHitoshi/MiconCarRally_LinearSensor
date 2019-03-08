@@ -48,6 +48,9 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 /* スプリントの設定 */
 #define DF_PWM_S		0x14			/* スプリントの入り速度	*/
 #define DF_DISTANCE		0x15			/* スプリントの距離	*/
+#define DF_KP_SP		0x16			/* 比例値 Kp 				*/
+#define DF_KI_SP		0x17			/* 積分値 Ki				*/
+#define DF_KD_SP		0x18			/* 微分値 Kd					*/
 
 #define DF_MCR_P_N	0x19
 #define DF_MCR_P00	0x20
