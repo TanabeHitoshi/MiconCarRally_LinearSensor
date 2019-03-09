@@ -51,53 +51,8 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 #define DF_KP_SP		0x16			/* 比例値 Kp 				*/
 #define DF_KI_SP		0x17			/* 積分値 Ki				*/
 #define DF_KD_SP		0x18			/* 微分値 Kd					*/
+#define DF_PWM_SP		0x19			/* スプリントの速度	*/
 
-#define DF_MCR_P_N	0x19
-#define DF_MCR_P00	0x20
-#define DF_MCR_P01	0x21
-#define DF_MCR_P02	0x22
-#define DF_MCR_P10	0x23
-#define DF_MCR_P11	0x24
-#define DF_MCR_P12	0x25
-#define DF_MCR_P20	0x26
-#define DF_MCR_P21	0x27
-#define DF_MCR_P22	0x28
-#define DF_MCR_P30	0x29
-#define DF_MCR_P31	0x2a
-#define DF_MCR_P32	0x2b
-#define DF_MCR_P40	0x2c
-#define DF_MCR_P41	0x2d
-#define DF_MCR_P42	0x2e
-#define DF_MCR_P50	0x2f
-#define DF_MCR_P51	0x30
-#define DF_MCR_P52	0x31
-#define DF_MCR_P60	0x32
-#define DF_MCR_P61	0x33
-#define DF_MCR_P62	0x34
-#define DF_MCR_P70	0x35
-#define DF_MCR_P71	0x36
-#define DF_MCR_P72	0x37
-#define DF_MCR_P80	0x38
-#define DF_MCR_P81	0x39
-#define DF_MCR_P82	0x3a
-#define DF_MCR_P90	0x3b
-#define DF_MCR_P91	0x3c
-#define DF_MCR_P92	0x3d
-#define DF_MCR_P100	0x3e
-#define DF_MCR_P101	0x3f
-#define DF_MCR_P102	0x40
-#define DF_MCR_P110	0x41
-#define DF_MCR_P111	0x42
-#define DF_MCR_P112	0x43
-#define DF_MCR_P120	0x44
-#define DF_MCR_P121	0x45
-#define DF_MCR_P122	0x46
-#define DF_MCR_P130	0x47
-#define DF_MCR_P131	0x48
-#define DF_MCR_P132	0x49
-#define DF_MCR_P140	0x4a
-#define DF_MCR_P141	0x4b
-#define DF_MCR_P142	0x4c
 
 //#define DF_prgram_Address 0x20
 

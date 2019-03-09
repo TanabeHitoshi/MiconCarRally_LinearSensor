@@ -53,7 +53,6 @@ void readDataFlashParameter( void )
             data_buff[DF_CHECK]     = 0x11;
             data_buff[DF_SERVO1]    = SERVO_CENTER >> 8;
             data_buff[DF_SERVO2]    = SERVO_CENTER & 0xff;
-            data_buff[DF_PWM]       = 100;
             data_buff[DF_STOP] 	= 30;
 
             blockEraseDataFlash( DF_ADDR_START );
@@ -123,7 +122,7 @@ int lcdProcess( void )
 		lcdPosition( 0, 0 );
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
-        if( lcd_pattern == 23 ) lcd_pattern = 0;
+        if( lcd_pattern == 24 ) lcd_pattern = 0;
     }
 
     /* スイッチ2　メニュー－１ */
@@ -132,7 +131,7 @@ int lcdProcess( void )
 		lcdPosition( 0, 0 );
 		lcdPrintf( "                ", i );
 		lcdPrintf( "                ", i );
-        if( lcd_pattern < 0 ) lcd_pattern = 22;
+        if( lcd_pattern < 0 ) lcd_pattern = 23;
     }
 
     /* LCD、スイッチ処理 */
@@ -197,7 +196,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789..bcdef0123456789..bcdef 1行16文字 */
-        lcdPrintf( "02 Max SPEED         %03d        ", i );
+        lcdPrintf( "02 Trace SPEED       %03d        ", i );
                  /* 01234567..89abcde.f 1行16文字 */
         break;
     case 3:
@@ -649,8 +648,27 @@ int lcdProcess( void )
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
         lcdPrintf( "21 Sprint          Kd_SP = %d.%d ", i,n );
         break;	
+    case 22:
+        /* 速度調整 */
+        i = data_buff[DF_PWM_SP];
+        if( getSwFlag(SW_1) ) {
+            i++;
+            if( i > 100 ) i = 100;
+        }
+        if( getSwFlag(SW_0) ) {
+            i--;
+            if( i < 0 ) i = 0;
+        }
+        data_buff[DF_PWM_SP] = i;
 
-	case 22:
+        /* LCD処理 */
+        lcdPosition( 0, 0 );
+                 /* 0123456789..bcdef0123456789..bcdef 1行16文字 */
+        lcdPrintf( "22 Sprint SPEED     %03d        ", i );
+                 /* 01234567..89abcde.f 1行16文字 */
+        break;
+
+	case 23:
         /* タイマー値調整 */
 		i = data_buff[DF_STOP];
         if( getSwFlag(SW_1) ) {
@@ -666,7 +684,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
-        lcdPrintf( "22  stop time       %2d s", i );
+        lcdPrintf( "23  stop time       %2d s", i );
         break;
 
 	}
@@ -685,7 +703,6 @@ void sciProcess( void )
 	printf("\n ---- Parameter change MEMU ---- \n");
 	printf("1:Machine parameter \n");
 	printf("   servo_center = %d\n",servo_center);
-	printf("   Max Speed = %d\n",data_buff[DF_PWM]);
 	printf("   Stop Timer = %dS\n",data_buff[DF_STOP]);
 	printf("   Servo  parameter KSp %d.%d   KSi %d.%d   KSd %d.%d\n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10,data_buff[DF_KSI]/10,data_buff[DF_KSI]%10,data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
 	printf("   Macine parameter KMp %d.%d   KMi %d.%d   KMd %d.%d\n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10,data_buff[DF_KMI]/10,data_buff[DF_KMI]%10,data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
@@ -700,9 +717,11 @@ void sciProcess( void )
 //	printf("\n");
 
 	printf("3:Trace parameter\n");	
+	printf("   Trace Speed = %d\n",data_buff[DF_PWM]);
 //	printf("\n");
 
 	printf("4:Sprint parameter\n");	
+	printf("   Sprint MAX Speed = %d\n",data_buff[DF_PWM_SP]);
 	printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
 	printf("   Distance = %d00 mm\n",data_buff[DF_DISTANCE]);
 	printf("   Sprint PID  KSp %d.%d%d   KSi %d.%d   KSd %d.%d\n",data_buff[DF_KI_SP]/10,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10,data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10,data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
@@ -714,14 +733,13 @@ void sciProcess( void )
 		case 1:
 			printf(" MiconCar parameter \n");
 			printf("   1: servo_center = %d\n",servo_center);
-			printf("   2: Max Speed = %d\n",data_buff[DF_PWM]);
-			printf("   3: Stop Timer = %dS\n",data_buff[DF_STOP]);
-			printf("   4: Servo parameter KSp %d.%d\n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10);
-			printf("   5: Servo parameter KSi %d.%d\n",data_buff[DF_KSI]/10,data_buff[DF_KSI]%10);
-			printf("   6: Servo parameter KSd %d.%d\n",data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
-			printf("   7: Machine parameter KMp %d.%d\n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10);
-			printf("   8: Machine parameter KMi %d.%d\n",data_buff[DF_KMI]/10,data_buff[DF_KMI]%10);
-			printf("   9: Machine parameter KMd %d.%d\n",data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
+			printf("   2: Stop Timer = %dS\n",data_buff[DF_STOP]);
+			printf("   3: Servo parameter KSp %d.%d\n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10);
+			printf("   4: Servo parameter KSi %d.%d\n",data_buff[DF_KSI]/10,data_buff[DF_KSI]%10);
+			printf("   5: Servo parameter KSd %d.%d\n",data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
+			printf("   6: Machine parameter KMp %d.%d\n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10);
+			printf("   7: Machine parameter KMi %d.%d\n",data_buff[DF_KMI]/10,data_buff[DF_KMI]%10);
+			printf("   8: Machine parameter KMd %d.%d\n",data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
@@ -738,15 +756,7 @@ void sciProcess( void )
         			data_buff[DF_SERVO2] = s & 0xff;
 					writeDataFlashParameter();
 				break;
-				case 2:
-					printf("2: Max Speed = %d\n",data_buff[DF_PWM]);
-					printf("parameter value? (0 <-> 100) >> ");
-					scanf("%d",&s);
-					if(s > 100) s = 100;
-					if(s < 0) s = 0;
-			        data_buff[DF_PWM] = s;
-					writeDataFlashParameter();
-				break;
+
 				case 3:
 					printf("3: Stop Timer = %dS\n",data_buff[DF_STOP]);
 					printf("parameter value? (0 <-> 30)>> ");
@@ -908,29 +918,20 @@ void sciProcess( void )
 		break;
 		case 3:
 			printf("3:Trace parameter\n");	
-//			printf("   5: R MOTOR = %3d \n",data_buff[DF_lane_motorR]);
+			printf("   1: Trace Speed = %d\n",data_buff[DF_PWM]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
 			switch(s){
 				case 1:
-//					printf("1: Speed  = %3d\n",data_buff[DF_lane_motorS]);
+					printf("1: Trace Speed = %d\n",data_buff[DF_PWM]);
 					printf("parameter value? (0 <-> 100) >> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;
 					if(s < 0) s = 0;
-//			        data_buff[DF_lane_motorS] = s;
+			        data_buff[DF_PWM] = s;
 					writeDataFlashParameter();
 				break;
-				case 4:
-//					printf("4: Changing Speed = %3d \n",data_buff[DF_lane_motor]);
-					printf("parameter value? (-100 <-> 100) >> ");
-					scanf("%d",&s);
-					if(s > 100) s = 100;
-					if(s < -100) s = -100;
-//			        data_buff[DF_lane_motor] = s;
-					writeDataFlashParameter();
-					break;
 				default:
 					printf("NOT !!!\n");
 				break;
@@ -938,17 +939,27 @@ void sciProcess( void )
 		break;
 		case 4:
 			printf("4:Sprint parameter\n");	
-			printf("   1: Sprint Speed = %d\n",data_buff[DF_PWM_S]);
-			printf("   2: Distance = %d00 mm\n",data_buff[DF_DISTANCE]);
-			printf("   3: Sprint Kp %d.%d%d\n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10);
-			printf("   4: Sprint Ki %d.%d\n",data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10);
-			printf("   5: Sprint Kd %d.%d\n",data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
+			printf("   1: SprintMax Speed = %d\n",data_buff[DF_PWM_SP]);
+			printf("   2: Sprint Speed = %d\n",data_buff[DF_PWM_S]);
+			printf("   3: Distance = %d00 mm\n",data_buff[DF_DISTANCE]);
+			printf("   4: Sprint Kp %d.%d%d\n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10);
+			printf("   5: Sprint Ki %d.%d\n",data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10);
+			printf("   6: Sprint Kd %d.%d\n",data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
 			switch(s){
 				case 1:
-					printf("1: Speed  = %3d\n",data_buff[DF_PWM_S]);
+					printf("1: Sprint MaxSpeed  = %3d\n",data_buff[DF_PWM_SP]);
+					printf("parameter value? (0 <-> 100) >> ");
+					scanf("%d",&s);
+					if(s > 100) s = 100;
+					if(s < 0) s = 0;
+			        data_buff[DF_PWM_SP] = s;
+					writeDataFlashParameter();
+				break;
+				case 2:
+					printf("2: Speed  = %3d\n",data_buff[DF_PWM_S]);
 					printf("parameter value? (0 <-> 100) >> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;
@@ -956,8 +967,8 @@ void sciProcess( void )
 			        data_buff[DF_PWM_S] = s;
 					writeDataFlashParameter();
 				break;
-				case 2:
-					printf("2: Distance = %d00\n",data_buff[DF_DISTANCE]);
+				case 3:
+					printf("3: Distance = %d00\n",data_buff[DF_DISTANCE]);
 					printf("parameter value? (20 <-> 100) >> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;
@@ -965,8 +976,8 @@ void sciProcess( void )
 			        data_buff[DF_DISTANCE] = s;
 					writeDataFlashParameter();
 				break;
-				case 3:
-					printf("3: Sprint Kp %d.%d%d\n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10);
+				case 4:
+					printf("4: Sprint Kp %d.%d%d\n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10);
 					printf("parameter value? (0 <-> 100) >> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;
@@ -974,8 +985,8 @@ void sciProcess( void )
 			        data_buff[DF_KP_SP] = s;
 					writeDataFlashParameter();
 				break;
-				case 4:
-					printf("4: Sprint Ki %d.%d\n",data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10);
+				case 5:
+					printf("5: Sprint Ki %d.%d\n",data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10);
 					printf("parameter value? (0 <-> 100)>> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;
@@ -983,8 +994,8 @@ void sciProcess( void )
 			        data_buff[DF_KI_SP] = s;
 					writeDataFlashParameter();
 				break;
-				case 5:
-					printf("5: Sprint Kd %d.%d\n",data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
+				case 6:
+					printf("6: Sprint Kd %d.%d\n",data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
 					printf("parameter value? (0 <-> 100) >> ");
 					scanf("%d",&s);
 					if(s > 100) s = 100;

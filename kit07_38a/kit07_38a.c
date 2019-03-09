@@ -50,6 +50,7 @@ void main( void )
 //	int	CL_BRAKE_TIME; 
 //	int hd;
 	int SPEED,ANGLE;
+	int LR;
 
     /* マイコン機能の初期化 */
     init();                             /* 初期化                       */
@@ -211,8 +212,64 @@ void main( void )
         } else {
             cnt1 = 0;
         }
+		run(0,0);
 	break;
 	case 210:
+		/* カーブによってPIDを変える */
+//		Srevo_state = 1;
+		if(Center > 10){
+			LR = 1;
+			pattern = 220;
+			set_PID(CurvePID);
+		}else if(Center < -10){
+			LR = -1;
+			pattern = 220;
+			set_PID(CurvePID);
+		}else{
+			LR = 0;
+			set_PID(StrightPID);
+		}
+		SPEED = 100;
+		/* カメラのずれによる減速 */
+		if(pid_angle > 0){
+			SPEED -= pid_angle /4;
+		}else{
+			 SPEED += pid_angle /4;
+		}
+		run(SPEED,pid_angle);
+	break;
+	case 220:
+//		Srevo_state = 0;
+		if(Center == 999){
+			pattern = 230;
+		}else{
+			if(Center > 10){
+				LR = 1;
+			}else if(Center < -10){
+				LR = -1;
+			}else{
+				pattern = 210;
+				LR = 0;
+			}	
+		}
+		SPEED = 100;
+		/* カメラのずれによる減速 */
+		if(pid_angle > 0){
+			SPEED -= pid_angle /2;
+		}else{
+			 SPEED += pid_angle /2;
+		}
+		run(SPEED,pid_angle);
+	break;
+	case 230:
+		if(Center == 999){
+			if(LR == 1)run(70,-50);
+			else run(70,50);
+		}else{
+			pattern = 220;
+		}
+	break;
+	case 250:
 		/* カーブによってPIDを変える */
 		if(pid_angle > 10 || pid_angle < -10){
 			set_PID(CurvePID);
@@ -265,19 +322,12 @@ void main( void )
 		}
 	break;
 	case 320:
-		run(50,50);
+		run(75,50);
 		if(Center > 0 && Wide > 10){
-			pattern = 330;
+			pattern = 500;
+            cnt1 = 0;
 			tripmeter_ini();
 		}		
-	break;
-	case 330:
-		run(75,pid_angle);
-		if(tripmeter() > 300){
-			set_Speed(MAX_SPEED);
-			set_PID(StrightPID);
-			pattern = 500;
-		}
 	break;
 
 /* Sprint right */
@@ -304,51 +354,59 @@ void main( void )
 	case 420:
 		run(75,-50);
 		if(Center < 0 && Wide > 10){
-			pattern = 430;
+			pattern = 500;
+            cnt1 = 0;
 			tripmeter_ini();
 		}		
 	break;
-	case 430:
-		run(75,pid_angle);
-		if(tripmeter() > 150){
-			set_Speed(MAX_SPEED);
+/* Sprint */
+	case 500:/* 姿勢を整える */
+ 		run(75,pid_angle);
+		if(tripmeter() > 150 || cnt1 > 1000){
+			set_Speed(Sprint_MAX_SPEED);
 			set_PID(StrightPID);
-			pattern = 500;
+			pattern = 510;
 		}
 	break;
-/* Sprint */
-	case 500:/* 直線を猛スピードで爆走 */
+	case 510:
+		run(75,pid_angle);
+		if(tripmeter() > 450 || cnt1 > 2500){
+            cnt1 = 0;
+			pattern = 520;
+		}
+	break;
+	case 520:/* 直線を猛スピードで爆走 */
 		set_PID(SprintPID);
 		SPEED = 100;
 		if(Center > 20){
-			pattern = 510;
+			pattern = 530;
 		}
 		if(Center < -20){
-			pattern = 510;
+			pattern = 530;
 		}
 		/* カメラのずれによる減速 */
 		if(pid_angle > 0){
-			SPEED -= pid_angle*3;
+			SPEED -= pid_angle*10;
 		}else{
-			 SPEED += pid_angle*3;
+			 SPEED += pid_angle*10;
 		}
 		run(SPEED,pid_angle);
-		
-		if(tripmeter() > data_buff[DF_DISTANCE]*100){
+		if(tripmeter() > 3000)cnt1 = 0;
+		if(tripmeter() > data_buff[DF_DISTANCE]*100 || cnt1 > 3000){
 			tripmeter_ini();
 			pattern = 550;
 		}
 	break;
-	case 510:
+	case 530:
 		set_PID(CurvePID);
 		SPEED = 60;
 		if(Center < 10 && White > 5){
-			pattern = 500;
+			pattern = 520;
 		}
 		if(Center > -10 && White > 5){
-			pattern = 500;
+			pattern = 520;
 		}
-		run(SPEED,pid_angle);
+		run(SPEED,pid_angle/4);
 	break;
 	case 550:/* ゴール手前で減速 */
 		if(tripmeter() < 100) run(90,pid_angle);
@@ -364,13 +422,11 @@ void main( void )
 		}
 		break;
 	case 560:/* ゴールエリア内で停止 */
-		if(tripmeter() < 300 || cnt1 > 3000){
-			run(30,pid_angle);
-		}else{
+		if(tripmeter() > 300 || cnt1 > 1500){
 			run(0,pid_angle);
-			if(cnt1 > 2000){
-				pattern = 600;
-			}
+			pattern = 600;
+		}else{
+			run(50,pid_angle);
 		}
 		break;	
 	case 600:
@@ -426,7 +482,6 @@ void main( void )
 		/* モニタ画面 */
 		printf("Machine parameter\n");
 		printf("   Stop Timer = %d s\n",data_buff[DF_STOP]);
-		printf("   Max Speed = %d\n",data_buff[DF_PWM]);
 		printf("   servo_center = %d\n",servo_center);
 		printf("   servo   KSp %d.%d  KSi %d.%d  KSd  %d.%d \n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10,data_buff[DF_KSI]/10,data_buff[DF_KSI]%10,data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
 		printf("   machine KMp %d.%d  KMi %d.%d  KMd  %d.%d \n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10,data_buff[DF_KMI]/10,data_buff[DF_KMI]%10,data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
@@ -440,9 +495,11 @@ void main( void )
 
 		printf("Trace parameter\n");	
 //		printf("   Speed  = %3d\n",data_buff[DF_start_motor]);
+		printf("   Trace Speed = %d\n",data_buff[DF_PWM]);
 		printf("\n");
 
 		printf("Sprint parameter\n");	
+		printf("   Sprint Max Speed = %d\n",data_buff[DF_PWM_SP]);
 		printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
 		printf("   Distance  = %2d00 mm\n",data_buff[DF_DISTANCE]);
 		printf("   Sprint Stright Kp %d.%d%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10,data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10,data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
