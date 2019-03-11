@@ -9,7 +9,6 @@
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\data_flash_lib.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\drive.obj"
--input="C:\WorkSpace\Atuta\kit07_38a\Debug\i2c_eeprom_lib.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\isEncoder.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj"

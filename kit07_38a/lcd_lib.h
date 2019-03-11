@@ -52,7 +52,6 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 #define DF_KI_SP		0x17			/* 積分値 Ki				*/
 #define DF_KD_SP		0x18			/* 微分値 Kd					*/
 #define DF_PWM_SP		0x19			/* スプリントの速度	*/
-
-
-//#define DF_prgram_Address 0x20
-
+#define DF_KP_SP2		0x1A			/* 比例値 Kp 				*/
+#define DF_KI_SP2		0x1B			/* 積分値 Ki				*/
+#define DF_KD_SP2		0x1C			/* 微分値 Kd					*/

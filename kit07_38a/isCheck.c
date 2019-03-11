@@ -8,7 +8,6 @@
 #include "lcd_lib.h"                    /* LCD表示用追加                */
 #include "switch_lib.h"                 /* スイッチ追加                 */
 #include "data_flash_lib.h"             /* データフラッシュライブラリ   */
-#include "isline.h"
 #include "isCheck.h"
 /************************************************************************/
 /* ライン検出処理                                                 */

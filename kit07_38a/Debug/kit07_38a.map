@@ -1,4 +1,4 @@
-Optimizing Linkage Editor (V.10.01.00.000)        09-Mar-2019 16:04:08
+Optimizing Linkage Editor (V.10.01.00.000)        11-Mar-2019 17:33:22
 
 *** Options ***
 
@@ -14,7 +14,6 @@ Optimizing Linkage Editor (V.10.01.00.000)        09-Mar-2019 16:04:08
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\data_flash_lib.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\drive.obj"
--input="C:\WorkSpace\Atuta\kit07_38a\Debug\i2c_eeprom_lib.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\isEncoder.obj"
 -input="C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj"
@@ -45,43 +44,43 @@ data_SO
 bss_SO
                                   00000400  00000400         0   1
 data_NE
-                                  00000400  00000437        38   2
+                                  00000400  000004ed        ee   2
 bss_NE
-                                  00000438  00002263      1e2c   2
+                                  000004ee  00002301      1e14   2
 data_NO
-                                  00002264  00002269         6   1
+                                  00002302  00002307         6   1
 bss_NO
-                                  0000226a  00002503       29a   1
+                                  00002308  00002572       26b   1
 stack
-                                  00002504  00002703       200   1
+                                  00002573  00002772       200   1
 istack
-                                  00002704  00002803       100   1
+                                  00002773  00002872       100   1
 heap_NE
-                                  00002804  00002804         0   2
+                                  00002874  00002874         0   2
 data_SEI
                                   00004000  00004000         0   1
 data_SOI
                                   00004000  00004000         0   1
 data_NEI
-                                  00004000  00004037        38   2
+                                  00004000  000040ed        ee   2
 data_NOI
-                                  00004038  0000403d         6   1
+                                  000040ee  000040f3         6   1
 program
-                                  0000403e  0000fdf9      bdbc   2
+                                  000040f4  0000fb19      ba26   2
 interrupt
-                                  0000fdfa  0000fdfa         0   2
+                                  0000fb1a  0000fb1a         0   2
 vector
                                   0000fed8  0000ffd7       100   2
 fvector
                                   0000ffd8  0000ffff        28   1
 rom_FO
-                                  00010000  00010f75       f76   1
+                                  00010000  000110b7      10b8   1
 
 *** Total Section Size ***
 
-RAMDATA SECTION:  00002404 Byte(s)
-ROMDATA SECTION:  000010dc Byte(s)
-PROGRAM SECTION:  0000bdbc Byte(s)
+RAMDATA SECTION:  00002473 Byte(s)
+ROMDATA SECTION:  000012d4 Byte(s)
+PROGRAM SECTION:  0000ba26 Byte(s)
 
 *** ID code information ***
 
@@ -133,357 +132,341 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\lcd_lib.obj
   _lcdConnect
                                   00000418         2   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  0000041a  0000041b         2
+                                  0000041a  000004d1        b8
   _lcd_pattern
                                   0000041a         2   data ,g         * 
+  _lcd_count
+                                  0000041c         2   data ,g         * 
+  _lcd_item
+                                  0000041e        b4   data ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\printf_lib.obj
-                                  0000041c  00000425         a
+                                  000004d2  000004db         a
   _send_w
-                                  0000041c         2   data ,l         * 
+                                  000004d2         2   data ,l         * 
   _send_r
-                                  0000041e         2   data ,l         * 
+                                  000004d4         2   data ,l         * 
   _send_count
-                                  00000420         2   data ,l         * 
+                                  000004d6         2   data ,l         * 
   _recv_w
-                                  00000422         2   data ,l         * 
+                                  000004d8         2   data ,l         * 
   _recv_r
-                                  00000424         2   data ,l         * 
+                                  000004da         2   data ,l         * 
 FILE=mdata
-                                  00000426  00000435        10
+                                  000004dc  000004eb        10
   ___pool
-                                  00000426         8   data ,g         * 
+                                  000004dc         8   data ,g         * 
   ___memt
-                                  0000042e         8   data ,g         * 
+                                  000004e4         8   data ,g         * 
 FILE=errno
-                                  00000436  00000437         2
+                                  000004ec  000004ed         2
   _errno
-                                  00000436         2   data ,g         * 
+                                  000004ec         2   data ,g         * 
 
 SECTION=bss_NE
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj
-                                  00000438  00000683       24c
+                                  000004ee  00000739       24c
   _White
-                                  00000438         2   data ,g         * 
+                                  000004ee         2   data ,g         * 
   _Wide
-                                  0000043a         2   data ,g         * 
+                                  000004f0         2   data ,g         * 
   _Center
-                                  0000043c         2   data ,g         * 
+                                  000004f2         2   data ,g         * 
   _center_Weight
-                                  0000043e         4   data ,g         * 
+                                  000004f4         4   data ,g         * 
   _pre_cycle
-                                  00000442         4   data ,g         * 
+                                  000004f8         4   data ,g         * 
   _pid_angle
-                                  00000446         2   data ,g         * 
+                                  000004fc         2   data ,g         * 
   _camera_Max
-                                  00000448         2   data ,g         * 
+                                  000004fe         2   data ,g         * 
   _camera_Min
-                                  0000044a         2   data ,g         * 
+                                  00000500         2   data ,g         * 
   _camera_Ave
-                                  0000044c         2   data ,g         * 
+                                  00000502         2   data ,g         * 
   _real_Center
-                                  0000044e         2   data ,g         * 
+                                  00000504         2   data ,g         * 
   _Rsensor
-                                  00000450         2   data ,g         * 
+                                  00000506         2   data ,g         * 
   _Lsensor
-                                  00000452         2   data ,g         * 
+                                  00000508         2   data ,g         * 
   _ImageData
-                                  00000454       104   data ,g         * 
+                                  0000050a       104   data ,g         * 
   _BinarizationData
-                                  00000558       104   data ,g         * 
+                                  0000060e       104   data ,g         * 
   _LineStart
-                                  0000065c         2   data ,g         * 
+                                  00000712         2   data ,g         * 
   _LineStop
-                                  0000065e         2   data ,g         * 
+                                  00000714         2   data ,g         * 
   _Rsensor01
-                                  00000660         2   data ,g         * 
+                                  00000716         2   data ,g         * 
   _Lsensor01
-                                  00000662         2   data ,g         * 
+                                  00000718         2   data ,g         * 
   _Wide01
-                                  00000664         2   data ,g         * 
+                                  0000071a         2   data ,g         * 
   _Rsensor02
-                                  00000666         2   data ,g         * 
+                                  0000071c         2   data ,g         * 
   _Lsensor02
-                                  00000668         2   data ,g         * 
+                                  0000071e         2   data ,g         * 
   _Wide02
-                                  0000066a         2   data ,g         * 
+                                  00000720         2   data ,g         * 
   _Center01
-                                  0000066c         2   data ,g         * 
+                                  00000722         2   data ,g         * 
   _Center02
-                                  0000066e         2   data ,g         * 
+                                  00000724         2   data ,g         * 
   _Center_ctrl
-                                  00000670         2   data ,g         * 
+                                  00000726         2   data ,g         * 
   _pre_Center
-                                  00000672         2   data ,g         * 
+                                  00000728         2   data ,g         * 
   _kp
-                                  00000674         4   data ,g         * 
+                                  0000072a         4   data ,g         * 
   _ki
-                                  00000678         4   data ,g         * 
+                                  0000072e         4   data ,g         * 
   _kd
-                                  0000067c         4   data ,g         * 
+                                  00000732         4   data ,g         * 
   ___S2_h
-                                  00000680         4   data ,l         * 
+                                  00000736         4   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\drive.obj
-                                  00000684  00000691         e
+                                  0000073a  00000747         e
   _handleBuff
-                                  00000684         2   data ,g         * 
+                                  0000073a         2   data ,g         * 
   _leftMotorBuff
-                                  00000686         2   data ,g         * 
+                                  0000073c         2   data ,g         * 
   _rightMotorBuff
-                                  00000688         2   data ,g         * 
+                                  0000073e         2   data ,g         * 
   _MotorBuff
-                                  0000068a         2   data ,g         * 
+                                  00000740         2   data ,g         * 
   _angle_buff
-                                  0000068c         2   data ,g         * 
+                                  00000742         2   data ,g         * 
   _servo_center
-                                  0000068e         2   data ,g         * 
+                                  00000744         2   data ,g         * 
   _setSpeed
-                                  00000690         2   data ,g         * 
-FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\i2c_eeprom_lib.obj
-                                  00000692  000006a9        18
-  _write_mode
-                                  00000692         2   data ,l         * 
-  _write_address
-                                  00000694         2   data ,l         * 
-  _write_count
-                                  00000696         2   data ,l         * 
-  _write_buff
-                                  00000698        10   data ,l         * 
-  _write_buff_p
-                                  000006a8         2   data ,l         * 
+                                  00000746         2   data ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj
-                                  000006aa  00001c71      15c8
+                                  00000748  00001d0f      15c8
   _cnt0
-                                  000006aa         4   data ,g         * 
+                                  00000748         4   data ,g         * 
   _cnt1
-                                  000006ae         4   data ,g         * 
+                                  0000074c         4   data ,g         * 
   _cnt_lcd
-                                  000006b2         4   data ,g         * 
+                                  00000750         4   data ,g         * 
   _stop_timer
-                                  000006b6         4   data ,g         * 
-  _cnt_AD
-                                  000006ba         4   data ,g         * 
+                                  00000754         4   data ,g         * 
+  _cnt_Curve
+                                  00000758         2   data ,g         * 
+  _cnt_Stright
+                                  0000075a         2   data ,g         * 
   _pattern
-                                  000006be         2   data ,g         * 
+                                  0000075c         2   data ,g         * 
   _Srevo_state
-                                  000006c0         2   data ,g         * 
+                                  0000075e         2   data ,g         * 
   _msdBuff
-                                  000006c2       220   data ,g         * 
+                                  00000760       220   data ,g         * 
   _msdFlag
-                                  000008e2         2   data ,g         * 
+                                  00000980         2   data ,g         * 
   _msdTimer
-                                  000008e4         2   data ,g         * 
+                                  00000982         2   data ,g         * 
   _msdError
-                                  000008e6         2   data ,g         * 
+                                  00000984         2   data ,g         * 
   _mem
-                                  000008e8      1388   data ,g         * 
+                                  00000986      1388   data ,g         * 
   ___S1_line_no
-                                  00001c70         2   data ,l         * 
+                                  00001d0e         2   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\isEncoder.obj
-                                  00001c72  00001c83        12
+                                  00001d10  00001d21        12
   _iTimer10
-                                  00001c72         2   data ,g         * 
+                                  00001d10         2   data ,g         * 
   _iEncoder
-                                  00001c74         2   data ,g         * 
+                                  00001d12         2   data ,g         * 
   _pre_iEncoder
-                                  00001c76         2   data ,g         * 
+                                  00001d14         2   data ,g         * 
   _Acceleration
-                                  00001c78         2   data ,g         * 
+                                  00001d16         2   data ,g         * 
   _lEncoderTotal
-                                  00001c7a         4   data ,g         * 
+                                  00001d18         4   data ,g         * 
   _uEncoderBuff
-                                  00001c7e         2   data ,g         * 
+                                  00001d1c         2   data ,g         * 
   _tripmeter_set
-                                  00001c80         4   data ,g         * 
+                                  00001d1e         4   data ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\lcd_lib.obj
-                                  00001c84  00001cdb        58
+                                  00001d22  00001d79        58
   _buffLcdData
-                                  00001c84        20   data ,l         * 
+                                  00001d22        20   data ,l         * 
   _buffLcdData2
-                                  00001ca4        2a   data ,l         * 
+                                  00001d42        2a   data ,l         * 
   _lcdBuffPosition
-                                  00001cce         2   data ,l         * 
+                                  00001d6c         2   data ,l         * 
   _lcdNowLocate
-                                  00001cd0         2   data ,l         * 
+                                  00001d6e         2   data ,l         * 
   _lcdBusyCnt
-                                  00001cd2         4   data ,l         * 
+                                  00001d70         4   data ,l         * 
   _lcdRefreshFlag
-                                  00001cd6         2   data ,l         * 
+                                  00001d74         2   data ,l         * 
   _lcdCnt
-                                  00001cd8         4   data ,l         * 
+                                  00001d76         4   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  00001cdc  00001d1b        40
+                                  00001d7a  00001db9        40
   _data_buff
-                                  00001cdc        40   data ,g         * 
+                                  00001d7a        40   data ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00001d1c  00001f71       256
+                                  00001dba  0000200f       256
   _msdlibBuff
-                                  00001d1c       202   data ,l         * 
+                                  00001dba       202   data ,l         * 
   _msdlibMode
-                                  00001f1e         2   data ,l         * 
+                                  00001fbc         2   data ,l         * 
   _msdlibCnt
-                                  00001f20         2   data ,l         * 
+                                  00001fbe         2   data ,l         * 
   _msdlibRead
-                                  00001f22         2   data ,l         * 
+                                  00001fc0         2   data ,l         * 
   _msdlibWrite
-                                  00001f24         2   data ,l         * 
+                                  00001fc2         2   data ,l         * 
   _msdlibError
-                                  00001f26         2   data ,l         * 
+                                  00001fc4         2   data ,l         * 
   _led_port
-                                  00001f28         2   data ,l         * 
+                                  00001fc6         2   data ,l         * 
   _led_port_dim
-                                  00001f2a         2   data ,l         * 
+                                  00001fc8         2   data ,l         * 
   _msdLed
-                                  00001f2c         2   data ,l         * 
+                                  00001fca         2   data ,l         * 
   _msdType
-                                  00001f2e         2   data ,l         * 
+                                  00001fcc         2   data ,l         * 
   _msdSize
-                                  00001f30         4   data ,l         * 
+                                  00001fce         4   data ,l         * 
   _modeSector
-                                  00001f34         2   data ,l         * 
+                                  00001fd2         2   data ,l         * 
   _fFileOpen
-                                  00001f36         2   data ,l         * 
+                                  00001fd4         2   data ,l         * 
   _BPB_SctorNo
-                                  00001f38         4   data ,l         * 
+                                  00001fd6         4   data ,l         * 
   _BPB_SectorsPerFAT
-                                  00001f3c         4   data ,l         * 
+                                  00001fda         4   data ,l         * 
   _BPB_SctorsPerCluster
-                                  00001f40         2   data ,l         * 
+                                  00001fde         2   data ,l         * 
   _BPB_NumberOfFATs
-                                  00001f42         2   data ,l         * 
+                                  00001fe0         2   data ,l         * 
   _BPB_ReservedSectors
-                                  00001f44         2   data ,l         * 
+                                  00001fe2         2   data ,l         * 
   _BPB_bigTotalSectors
-                                  00001f46         4   data ,l         * 
+                                  00001fe4         4   data ,l         * 
   _BPB_RootDirCluster
-                                  00001f4a         4   data ,l         * 
+                                  00001fe8         4   data ,l         * 
   _Sec_FAT
-                                  00001f4e        10   data ,l         * 
+                                  00001fec        10   data ,l         * 
   _Sec_Data
-                                  00001f5e         4   data ,l         * 
+                                  00001ffc         4   data ,l         * 
   _Sec_Dir
-                                  00001f62         4   data ,l         * 
+                                  00002000         4   data ,l         * 
   _writeSectorStart
-                                  00001f66         4   data ,l         * 
+                                  00002004         4   data ,l         * 
   _writeSectorEnd
-                                  00001f6a         4   data ,l         * 
+                                  00002008         4   data ,l         * 
   _writeSectorWork
-                                  00001f6e         4   data ,l         * 
+                                  0000200c         4   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\printf_lib.obj
-                                  00001f72  0000200d        9c
+                                  00002010  000020ab        9c
   __iob
-                                  00001f72        3c   data ,g         * 
+                                  00002010        3c   data ,g         * 
   _send_buff
-                                  00001fae        40   data ,l         * 
+                                  0000204c        40   data ,l         * 
   _recv_buff
-                                  00001fee        20   data ,l         * 
+                                  0000208c        20   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  0000200e  0000210d       100
+                                  000020ac  000021ab       100
   _heap_area
-                                  0000200e       100   data ,g         * 
+                                  000020ac       100   data ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\switch_lib.obj
-                                  0000210e  00002137        2a
+                                  000021ac  000021d5        2a
   _iSwitchIntervalCount
-                                  0000210e         2   data ,l         * 
+                                  000021ac         2   data ,l         * 
   _sw_data
-                                  00002110        28   data ,l         * 
+                                  000021ae        28   data ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\trace.obj
-                                  00002138  00002143         c
+                                  000021d6  000021e1         c
   _nowServo
-                                  00002138         2   data ,g         * 
+                                  000021d6         2   data ,g         * 
   _servo_angle
-                                  0000213a         2   data ,g         * 
+                                  000021d8         2   data ,g         * 
   _servo_Gap
-                                  0000213c         2   data ,g         * 
+                                  000021da         2   data ,g         * 
   _pre_center
-                                  0000213e         2   data ,g         * 
+                                  000021dc         2   data ,g         * 
   ___S0_pre_servoGap
-                                  00002140         2   data ,l         * 
+                                  000021de         2   data ,l         * 
   ___S1_iGap
-                                  00002142         2   data ,l         * 
+                                  000021e0         2   data ,l         * 
 FILE=mdata
-                                  00002144  0000214b         8
+                                  000021e2  000021e9         8
   __mnext
-                                  00002144         4   data ,g         * 
+                                  000021e2         4   data ,g         * 
   __msize
-                                  00002148         4   data ,g         * 
+                                  000021e6         4   data ,g         * 
 FILE=print
-                                  0000214c  00002253       108
+                                  000021ea  000022f1       108
   ___S0_b
-                                  0000214c        88   data ,l         * 
+                                  000021ea        88   data ,l         * 
   ___S3_qt
-                                  000021d4        80   data ,l         * 
+                                  00002272        80   data ,l         * 
 FILE=sprintf_sub
-                                  00002254  00002257         4
+                                  000022f2  000022f5         4
   ___pointer
-                                  00002254         4   data ,g         * 
+                                  000022f2         4   data ,g         * 
 FILE=fprintf_sub
-                                  00002258  0000225b         4
+                                  000022f6  000022f9         4
   ___bf
-                                  00002258         4   data ,g         * 
+                                  000022f6         4   data ,g         * 
 FILE=fscanf_sub
-                                  0000225c  0000225f         4
+                                  000022fa  000022fd         4
   ___fpt
-                                  0000225c         4   data ,g         * 
+                                  000022fa         4   data ,g         * 
 FILE=sscanf_sub
-                                  00002260  00002263         4
+                                  000022fe  00002301         4
   ___string
-                                  00002260         4   data ,g         * 
+                                  000022fe         4   data ,g         * 
 
 SECTION=data_NO
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00002264  00002269         6
+                                  00002302  00002307         6
   _fileYear
-                                  00002264         1   data ,l         * 
+                                  00002302         1   data ,l         * 
   _fileMonth
-                                  00002265         1   data ,l         * 
+                                  00002303         1   data ,l         * 
   _fileDay
-                                  00002266         1   data ,l         * 
+                                  00002304         1   data ,l         * 
   _fileHour
-                                  00002267         1   data ,l         * 
+                                  00002305         1   data ,l         * 
   _fileMin
-                                  00002268         1   data ,l         * 
+                                  00002306         1   data ,l         * 
   _fileSec
-                                  00002269         1   data ,l         * 
+                                  00002307         1   data ,l         * 
 
 SECTION=bss_NO
-FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\i2c_eeprom_lib.obj
-                                  0000226a  0000226b         2
-  _eep_address
-                                  0000226a         1   data ,l         * 
-  _write_eep_address
-                                  0000226b         1   data ,l         * 
-FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  0000226c  00002298        2d
-  _MCR_program
-                                  0000226c        2d   data ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00002299  00002299         1
+                                  00002308  00002308         1
   _led_port_bit
-                                  00002299         1   data ,l         * 
+                                  00002308         1   data ,l         * 
 FILE=print
-                                  0000229a  00002503       26a
+                                  00002309  00002572       26a
   ___S1_inte
-                                  0000229a       135   data ,l         * 
+                                  00002309       135   data ,l         * 
   ___S2_deci
-                                  000023cf       135   data ,l         * 
+                                  0000243e       135   data ,l         * 
 
 SECTION=stack
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  00002504  00002703       200
+                                  00002573  00002772       200
   __stack_top
-                                  00002704         0   none ,g         * 
+                                  00002773         0   none ,g         * 
 
 SECTION=istack
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  00002704  00002803       100
+                                  00002773  00002872       100
   __istack_top
-                                  00002804         0   none ,g         * 
+                                  00002873         0   none ,g         * 
 
 SECTION=heap_NE
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  00002804  00002804         0
+                                  00002874  00002874         0
   __heap_NE_top
-                                  00002804         0   none ,l         * 
+                                  00002874         0   none ,l         * 
 
 SECTION=data_NEI
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj
@@ -495,513 +478,483 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\lcd_lib.obj
                                   00004016  00004019         4
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  0000401a  0000401b         2
+                                  0000401a  000040d1        b8
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\printf_lib.obj
-                                  0000401c  00004025         a
+                                  000040d2  000040db         a
 FILE=mdata
-                                  00004026  00004035        10
+                                  000040dc  000040eb        10
 FILE=errno
-                                  00004036  00004037         2
+                                  000040ec  000040ed         2
 
 SECTION=data_NOI
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00004038  0000403d         6
+                                  000040ee  000040f3         6
 
 SECTION=program
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj
-                                  0000403e  00004947       90a
+                                  000040f4  00004b3f       a4c
   _camera_Caputure
-                                  0000403e        30   func ,g         * 
+                                  000040f4        28   func ,g         * 
   _ImageCapture
-                                  0000406e        c0   func ,g         * 
+                                  0000411c        b8   func ,g         * 
   _binarization
-                                  0000412e        a2   func ,g         * 
+                                  000041d4        88   func ,g         * 
   _WhiteLineWide
-                                  000041d0       14c   func ,g         * 
+                                  0000425c       11c   func ,g         * 
   _WhiteLineCenter
-                                  0000431c        dc   func ,g         * 
+                                  00004378        c2   func ,g         * 
   _WhiteLineWeight
-                                  000043f8        a6   func ,g         * 
+                                  0000443a        9c   func ,g         * 
   _PID
-                                  0000449e       10a   func ,g         * 
+                                  000044d6       10a   func ,g         * 
   $set_PID
-                                  000045a8       26e   func ,g         * 
+                                  000045e0       43a   func ,g         * 
   _expose
-                                  00004816        5a   func ,g         * 
+                                  00004a1a        54   func ,g         * 
   _raw_view
-                                  00004870        3c   func ,g         * 
+                                  00004a6e        3a   func ,g         * 
   _bi_view
-                                  000048ac        7e   func ,g         * 
+                                  00004aa8        7c   func ,g         * 
   _get_ad_camera
-                                  0000492a        1e   func ,g         * 
+                                  00004b24        1c   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\data_flash_lib.obj
-                                  00004948  00004bd5       28e
+                                  00004b40  00004db1       272
   $readDataFlash
-                                  00004948        34   func ,g         * 
+                                  00004b40        2a   func ,g         * 
   $blockEraseDataFlash
-                                  0000497c        d0   func ,g         * 
+                                  00004b6a        ce   func ,g         * 
   $writeDataFlash
-                                  00004a4c       10e   func ,g         * 
+                                  00004c38       10c   func ,g         * 
   $clrStatusRegister
-                                  00004b5a        24   func ,g         * 
+                                  00004d44        20   func ,g         * 
   $checkBlockAddress
-                                  00004b7e        58   func ,g         * 
+                                  00004d64        4e   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\drive.obj
-                                  00004bd6  00004d87       1b2
+                                  00004db2  00004f17       166
   $set_Speed
-                                  00004bd6         e   func ,g         * 
+                                  00004db2         6   func ,g         * 
   $run
-                                  00004be4        7c   func ,g         * 
+                                  00004db8        64   func ,g         * 
   $motor
-                                  00004c60        ec   func ,g         * 
+                                  00004e1c        cc   func ,g         * 
   $handle
-                                  00004d4c        3c   func ,g         * 
-FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\i2c_eeprom_lib.obj
-                                  00004d88  000050b3       32c
-  _i2c_start
-                                  00004d88        1a   func ,g         * 
-  $i2c_stop
-                                  00004da2        2e   func ,g         * 
-  $i2c_write
-                                  00004dd0        2a   func ,g         * 
-  $i2c_read
-                                  00004dfa        4c   func ,g         * 
-  _initI2CEeprom
-                                  00004e46        32   func ,g         * 
-  $selectI2CEepromAddress
-                                  00004e78        18   func ,g         * 
-  _readI2CEeprom
-                                  00004e90        54   func ,g         * 
-  _writeI2CEeprom
-                                  00004ee4        42   func ,g         * 
-  $setPageWriteI2CEeprom
-                                  00004f26        52   func ,g         * 
-  _I2CEepromProcess
-                                  00004f78        8e   func ,g         * 
-  $clearI2CEeprom
-                                  00005006        7c   func ,g         * 
-  _checkI2CEeprom
-                                  00005082        32   func ,g         * 
+                                  00004ee8        30   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj
-                                  000050b4  000055ff       54c
+                                  00004f18  00005435       51e
   _init
-                                  000050b4        c8   func ,g         * 
+                                  00004f18        be   func ,g         * 
   _intTRB
-                                  0000517c       31e   func ,g         * 
+                                  00004fd6       308   func ,g         * 
   _memPrint
-                                  0000549a       148   func ,g         * 
+                                  000052de       13a   func ,g         * 
   _timer
-                                  000055e2        1e   func ,g         * 
+                                  00005418        1e   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\isEncoder.obj
-                                  00005600  0000569b        9c
+                                  00005436  00005505        d0
   _odometer_ini
-                                  00005600         a   func ,g         * 
+                                  00005436         a   func ,g         * 
   _odometer
-                                  0000560a        3a   func ,g         * 
+                                  00005440        54   func ,g         * 
   _tripmeter_ini
-                                  00005644         e   func ,g         * 
+                                  00005494         e   func ,g         * 
   _tripmeter
-                                  00005652        44   func ,g         * 
+                                  000054a2        5e   func ,g         * 
   _speedmeter
-                                  00005696         6   func ,g         * 
+                                  00005500         6   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj
-                                  0000569c  0000657f       ee4
+                                  00005506  000063ed       ee8
   _main
-                                  0000569c       e9e   func ,g         * 
+                                  00005506       eca   func ,g         * 
   _dipsw_get
-                                  0000653a        12   func ,g         * 
+                                  000063d0         6   func ,g         * 
   _pushsw_get
-                                  0000654c        16   func ,g         * 
+                                  000063d6         8   func ,g         * 
   $led_out
-                                  00006562        1e   func ,g         * 
+                                  000063de        10   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\lcd_lib.obj
-                                  00006580  0000696d       3ee
+                                  000063ee  00006761       374
   $lcd_nop
-                                  00006580        12   func ,l         * 
+                                  000063ee        12   func ,l         * 
   _lcdTimer
-                                  00006592        2a   func ,l         * 
+                                  00006400        2a   func ,l         * 
   _lcdBusyStart
-                                  000065bc         e   func ,l         * 
+                                  0000642a         e   func ,l         * 
   $lcdOut2
-                                  000065ca        3c   func ,l         * 
+                                  00006438        22   func ,l         * 
   $lcdOut
-                                  00006606        2a   func ,l         * 
+                                  0000645a        24   func ,l         * 
   $lcdLocate
-                                  00006630        52   func ,l         * 
+                                  0000647e        32   func ,l         * 
   _checkLcdBusy
-                                  00006682        b8   func ,l         * 
+                                  000064b0        7e   func ,l         * 
   _initLcd
-                                  0000673a        e0   func ,g         * 
+                                  0000652e        e0   func ,g         * 
   _lcdShowProcess
-                                  0000681a        c4   func ,g         * 
+                                  0000660e        cc   func ,g         * 
   _lcdPrintf
-                                  000068de        6a   func ,g         * 
+                                  000066da        68   func ,g         * 
   $lcdPosition
-                                  00006948        26   func ,g         * 
+                                  00006742        20   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  0000696e  000088d3      1f66
+                                  00006762  00008a4b      22ea
   _readDataFlashParameter
-                                  0000696e        84   func ,g         * 
+                                  00006762        6e   func ,g         * 
   _writeDataFlashParameter
-                                  000069f2        5c   func ,g         * 
+                                  000067d0        56   func ,g         * 
   _lcdProcess
-                                  00006a4e       d58   func ,g         * 
+                                  00006826       f3c   func ,g         * 
   _sciProcess
-                                  000077a6      112e   func ,g         * 
+                                  00007762      12ea   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  000088d4  0000a7b1      1ede
+                                  00008a4c  0000a587      1b3c
   $msd_write
-                                  000088d4        18   func ,l         * 
+                                  00008a4c        14   func ,l         * 
   _msd_read
-                                  000088ec        20   func ,l         * 
+                                  00008a60        1c   func ,l         * 
   $sendCMD
-                                  0000890c        58   func ,l         * 
+                                  00008a7c        54   func ,l         * 
   _initMicroSD
-                                  00008964       442   func ,g         * 
+                                  00008ad0       40a   func ,g         * 
   _getMsdType
-                                  00008da6         6   func ,g         * 
+                                  00008eda         6   func ,g         * 
   _getMsdSize
-                                  00008dac         a   func ,g         * 
+                                  00008ee0         a   func ,g         * 
   $readMicroSD
-                                  00008db6       124   func ,g         * 
+                                  00008eea       120   func ,g         * 
   $writeMicroSD
-                                  00008eda       142   func ,g         * 
+                                  0000900a       140   func ,g         * 
   $getMicroSD_CSD
-                                  0000901c        92   func ,g         * 
+                                  0000914a        92   func ,g         * 
   _eraseMicroSD
-                                  000090ae       1c6   func ,g         * 
+                                  000091dc       1b8   func ,g         * 
   $setMicroSDdata
-                                  00009274        a6   func ,g         * 
+                                  00009394        9e   func ,g         * 
   _microSDProcessStart
-                                  0000931a        be   func ,g         * 
+                                  00009432        be   func ,g         * 
   _microSDProcessEnd
-                                  000093d8        32   func ,g         * 
+                                  000094f0        32   func ,g         * 
   _microSDProcess
-                                  0000940a       188   func ,g         * 
+                                  00009522       170   func ,g         * 
   _checkMicroSDProcess
-                                  00009592         6   func ,g         * 
+                                  00009692         6   func ,g         * 
   _intS1T
-                                  00009598        28   func ,g         * 
+                                  00009698        28   func ,g         * 
   $setMicroSDLedPort
-                                  000095c0        2e   func ,g         * 
+                                  000096c0        26   func ,g         * 
   $convertBinaryToLong
-                                  000095ee        48   func ,l         * 
+                                  000096e6        24   func ,l         * 
   _mountMicroSD_FAT32
-                                  00009636       1aa   func ,g         * 
+                                  0000970a       1ae   func ,g         * 
   _ClusterToSector
-                                  000097e0        30   func ,l         * 
+                                  000098b8        26   func ,l         * 
   _nextCluster
-                                  00009810       290   func ,l         * 
+                                  000098de       214   func ,l         * 
   _writeFile
-                                  00009aa0       97e   func ,g         * 
+                                  00009af2       790   func ,g         * 
   $convertDecimalToStr
-                                  0000a41e        62   func ,g         * 
+                                  0000a282        50   func ,g         * 
   $convertHexToStr
-                                  0000a480        52   func ,g         * 
+                                  0000a2d2        3c   func ,g         * 
   $convertBinaryToStr
-                                  0000a4d2        44   func ,g         * 
+                                  0000a30e        32   func ,g         * 
   _getCompileYear
-                                  0000a516        40   func ,g         * 
+                                  0000a340        36   func ,g         * 
   _getCompileMonth
-                                  0000a556        50   func ,g         * 
+                                  0000a376        4c   func ,g         * 
   _getCompileDay
-                                  0000a5a6        3c   func ,g         * 
+                                  0000a3c2        32   func ,g         * 
   _getCompileHour
-                                  0000a5e2        32   func ,g         * 
+                                  0000a3f4        2c   func ,g         * 
   _getCompilerMinute
-                                  0000a614        38   func ,g         * 
+                                  0000a420        32   func ,g         * 
   _getCompilerSecond
-                                  0000a64c        38   func ,g         * 
+                                  0000a452        32   func ,g         * 
   $setDateStamp
-                                  0000a684        5c   func ,g         * 
+                                  0000a484        4e   func ,g         * 
   $setTimeStamp
-                                  0000a6e0        54   func ,g         * 
+                                  0000a4d2        4c   func ,g         * 
   _readMicroSDNumber
-                                  0000a734        34   func ,g         * 
+                                  0000a51e        28   func ,g         * 
   $writeMicroSDNumber
-                                  0000a768        4a   func ,g         * 
+                                  0000a546        42   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\printf_lib.obj
-                                  0000a7b2  0000aa7d       2cc
+                                  0000a588  0000a81d       296
   $init_uart0_printf
-                                  0000a7b2        dc   func ,g         * 
+                                  0000a588        ce   func ,g         * 
   $write
-                                  0000a88e        4c   func ,g         * 
+                                  0000a656        4a   func ,g         * 
   _read
-                                  0000a8da        92   func ,g         * 
+                                  0000a6a0        8e   func ,g         * 
   $setSendBuff
-                                  0000a96c        32   func ,g         * 
+                                  0000a72e        2a   func ,g         * 
   $getSendBuff
-                                  0000a99e        3a   func ,g         * 
+                                  0000a758        36   func ,g         * 
   __uart0_trance
-                                  0000a9d8        2a   func ,g         * 
+                                  0000a78e        32   func ,g         * 
   $get_uart0
-                                  0000aa02        46   func ,g         * 
+                                  0000a7c0        42   func ,g         * 
   $put_uart0
-                                  0000aa48        1a   func ,g         * 
+                                  0000a802        10   func ,g         * 
   __sget
-                                  0000aa62         4   func ,g         * 
+                                  0000a812         4   func ,g         * 
   $_sput
-                                  0000aa66         c   func ,g         * 
+                                  0000a816         4   func ,g         * 
   $_pput
-                                  0000aa72         c   func ,g         * 
+                                  0000a81a         4   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  0000aa7e  0000ab27        aa
+                                  0000a81e  0000a8c1        a4
   __dummy_int
-                                  0000aa7e         6   func ,g         * 
+                                  0000a81e         2   func ,g         * 
   _initsct
-                                  0000aa84        66   func ,g         * 
+                                  0000a820        66   func ,g         * 
   __program_top
-                                  0000aa84         0   none ,l         * 
+                                  0000a820         0   none ,l         * 
   _start
-                                  0000aaea        3e   entry,g         * 
+                                  0000a886        3c   entry,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\switch_lib.obj
-                                  0000ab28  0000ad75       24e
+                                  0000a8c2  0000aae3       222
   _initSwitch
-                                  0000ab28        46   func ,g         * 
+                                  0000a8c2        40   func ,g         * 
   _getSwNow
-                                  0000ab6e        3c   func ,g         * 
+                                  0000a902        22   func ,g         * 
   $getSwFlag
-                                  0000abaa        62   func ,g         * 
+                                  0000a924        5e   func ,g         * 
   _switchProcess
-                                  0000ac0c       16a   func ,g         * 
+                                  0000a982       162   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\trace.obj
-                                  0000ad76  0000ae5d        e8
+                                  0000aae4  0000abbf        dc
   _servo_Trace
-                                  0000ad76        7e   func ,g         * 
+                                  0000aae4        7e   func ,g         * 
   _motor_Trace
-                                  0000adf4        6a   func ,g         * 
+                                  0000ab62        5e   func ,g         * 
 FILE=_f4adds
-                                  0000ae5e  0000af96       139
+                                  0000abc0  0000acf8       139
   __f4sub
-                                  0000ae88         0   none ,g         * 
+                                  0000abea         0   none ,g         * 
   __f4add
-                                  0000ae8e         0   none ,g         * 
+                                  0000abf0         0   none ,g         * 
 FILE=_f4muls
-                                  0000af98  0000b047        b0
+                                  0000acfa  0000ada9        b0
   __f4mul
-                                  0000afbc         0   none ,g         * 
+                                  0000ad1e         0   none ,g         * 
 FILE=_f4tof8
-                                  0000b048  0000b0cd        86
+                                  0000adaa  0000ae2f        86
   __f4tof8
-                                  0000b048        86   func ,g         * 
+                                  0000adaa        86   func ,g         * 
 FILE=_f4toi4
-                                  0000b0ce  0000b0f3        26
+                                  0000ae30  0000ae55        26
   __f4toi4
-                                  0000b0ce        26   func ,g         * 
+                                  0000ae30        26   func ,g         * 
 FILE=_f8div
-                                  0000b0f4  0000b3bd       2ca
+                                  0000ae56  0000b11f       2ca
   __f8div
-                                  0000b0f4       2ca   func ,g         * 
+                                  0000ae56       2ca   func ,g         * 
 FILE=_f8mul
-                                  0000b3be  0000b685       2c8
+                                  0000b120  0000b3e7       2c8
   __f8mul
-                                  0000b3be       2c8   func ,g         * 
+                                  0000b120       2c8   func ,g         * 
 FILE=_f8tof4
-                                  0000b686  0000b739        b4
+                                  0000b3e8  0000b49b        b4
   __f8tof4
-                                  0000b686        b4   func ,g         * 
+                                  0000b3e8        b4   func ,g         * 
 FILE=_f8toi4
-                                  0000b73a  0000b75f        26
+                                  0000b49c  0000b4c1        26
   __f8toi4
-                                  0000b73a        26   func ,g         * 
+                                  0000b49c        26   func ,g         * 
 FILE=_i4div
-                                  0000b760  0000b7e2        83
+                                  0000b4c2  0000b544        83
   __i4div
-                                  0000b760         0   none ,g         * 
+                                  0000b4c2         0   none ,g         * 
 FILE=_i4divu
-                                  0000b7e4  0000b830        4d
+                                  0000b546  0000b592        4d
   __i4divU
-                                  0000b7e4         0   none ,g         * 
-FILE=_i4i2mul
-                                  0000b832  0000b844        13
-  __i4i2mul
-                                  0000b832         0   none ,g         * 
-FILE=_i4i2mulu
-                                  0000b846  0000b852         d
-  __i4i2mulU
-                                  0000b846         0   none ,g         * 
+                                  0000b546         0   none ,g         * 
 FILE=_i4modu
-                                  0000b854  0000b89e        4b
+                                  0000b594  0000b5de        4b
   __i4modU
-                                  0000b854         0   none ,g         * 
+                                  0000b594         0   none ,g         * 
 FILE=_i4tof4
-                                  0000b8a0  0000b8c1        22
+                                  0000b5e0  0000b601        22
   __i4tof4
-                                  0000b8a0        22   func ,g         * 
+                                  0000b5e0        22   func ,g         * 
 FILE=_i4utof4
-                                  0000b8c2  0000b8e3        22
+                                  0000b602  0000b623        22
   __i4Utof4
-                                  0000b8c2        22   func ,g         * 
+                                  0000b602        22   func ,g         * 
 FILE=vsprintf
-                                  0000b8e4  0000b989        a6
+                                  0000b624  0000b6c9        a6
   _vsprintf
-                                  0000b8e4        a6   func ,g         * 
+                                  0000b624        a6   func ,g         * 
 FILE=printf
-                                  0000b98a  0000ba47        be
+                                  0000b6ca  0000b787        be
   _printf
-                                  0000b98a        be   func ,g         * 
+                                  0000b6ca        be   func ,g         * 
 FILE=scanf
-                                  0000ba48  0000bc15       1ce
+                                  0000b788  0000b955       1ce
   _scanf
-                                  0000ba48       1ce   func ,g         * 
+                                  0000b788       1ce   func ,g         * 
 FILE=sprintf
-                                  0000bc16  0000bcd5        c0
+                                  0000b956  0000ba15        c0
   _sprintf
-                                  0000bc16        c0   func ,g         * 
-FILE=memset
-                                  0000bcd6  0000bd15        40
-  $memset
-                                  0000bcd6        40   func ,g         * 
+                                  0000b956        c0   func ,g         * 
 FILE=strtol
-                                  0000bd16  0000bfd7       2c2
+                                  0000ba16  0000bcd7       2c2
   _strtol
-                                  0000bd16       2c2   func ,g         * 
-FILE=memcmp
-                                  0000bfd8  0000c02f        58
-  _memcmp
-                                  0000bfd8        58   func ,g         * 
+                                  0000ba16       2c2   func ,g         * 
+FILE=nmemcmp
+                                  0000bcd8  0000bd11        3a
+  $_n_n_memcmp
+                                  0000bcd8        3a   func ,g         * 
+FILE=nmemset
+                                  0000bd12  0000bd3b        2a
+  $_n_memset
+                                  0000bd12        2a   func ,g         * 
 FILE=strncmp
-                                  0000c030  0000c091        62
+                                  0000bd3c  0000bd9d        62
   _strncmp
-                                  0000c030        62   func ,g         * 
+                                  0000bd3c        62   func ,g         * 
 FILE=_f4rets
-                                  0000c092  0000c0c1        30
+                                  0000bd9e  0000bdcd        30
   __f4retNaN
-                                  0000c092         0   none ,g         * 
+                                  0000bd9e         0   none ,g         * 
   __f4retZero
-                                  0000c098         0   none ,g         * 
+                                  0000bda4         0   none ,g         * 
   __f4retInf
-                                  0000c09a         0   none ,g         * 
+                                  0000bda6         0   none ,g         * 
   __f4retNum
-                                  0000c0aa         0   none ,g         * 
+                                  0000bdb6         0   none ,g         * 
 FILE=_f4ltor
-                                  0000c0c2  0000c107        46
+                                  0000bdce  0000be13        46
   $_f4ltor
-                                  0000c0c2        46   func ,g         * 
+                                  0000bdce        46   func ,g         * 
 FILE=_f4rtol
-                                  0000c108  0000c145        3e
+                                  0000be14  0000be51        3e
   $_f4rtol
-                                  0000c108        3e   func ,g         * 
+                                  0000be14        3e   func ,g         * 
 FILE=_f8ltor
-                                  0000c146  0000c199        54
+                                  0000be52  0000bea5        54
   $_f8ltor
-                                  0000c146        54   func ,g         * 
+                                  0000be52        54   func ,g         * 
 FILE=_f8rtol
-                                  0000c19a  0000c1db        42
+                                  0000bea6  0000bee7        42
   $_f8rtol
-                                  0000c19a        42   func ,g         * 
+                                  0000bea6        42   func ,g         * 
 FILE=_ftol
-                                  0000c1dc  0000c2eb       110
+                                  0000bee8  0000bff7       110
   $_ftol
-                                  0000c1dc       110   func ,g         * 
+                                  0000bee8       110   func ,g         * 
+FILE=_i4i2mul
+                                  0000bff8  0000c00a        13
+  __i4i2mul
+                                  0000bff8         0   none ,g         * 
 FILE=_ltof
-                                  0000c2ec  0000c3bf        d4
+                                  0000c00c  0000c0df        d4
   $_ltof
-                                  0000c2ec        d4   func ,g         * 
+                                  0000c00c        d4   func ,g         * 
 FILE=print
-                                  0000c3c0  0000dd1f      1960
+                                  0000c0e0  0000da3f      1960
   __print
-                                  0000c3c0       f3a   func ,g         * 
+                                  0000c0e0       f3a   func ,g         * 
   __f8prn
-                                  0000d2fa       55a   func ,l         * 
+                                  0000d01a       55a   func ,l         * 
   $henkan1
-                                  0000d854        42   func ,l         * 
+                                  0000d574        42   func ,l         * 
   $henkan2
-                                  0000d896        54   func ,l         * 
+                                  0000d5b6        54   func ,l         * 
   __pri
-                                  0000d8ea       10e   func ,l         * 
+                                  0000d60a       10e   func ,l         * 
   $_f8geti
-                                  0000d9f8       20c   func ,l         * 
+                                  0000d718       20c   func ,l         * 
   $_inmod
-                                  0000dc04       11c   func ,l         * 
+                                  0000d924       11c   func ,l         * 
 FILE=fgetc
-                                  0000dd20  0000df27       208
+                                  0000da40  0000dc47       208
   _fgetc
-                                  0000dd20       208   func ,g         * 
+                                  0000da40       208   func ,g         * 
 FILE=fputc
-                                  0000df28  0000dfa7        80
+                                  0000dc48  0000dcc7        80
   $fputc
-                                  0000df28        80   func ,g         * 
+                                  0000dc48        80   func ,g         * 
 FILE=scan
-                                  0000dfa8  0000ee0b       e64
+                                  0000dcc8  0000eb2b       e64
   $__scan
-                                  0000dfa8       e64   func ,g         * 
+                                  0000dcc8       e64   func ,g         * 
 FILE=ungetc
-                                  0000ee0c  0000ee47        3c
+                                  0000eb2c  0000eb67        3c
   $ungetc
-                                  0000ee0c        3c   func ,g         * 
+                                  0000eb2c        3c   func ,g         * 
 FILE=printf_sub
-                                  0000ee48  0000ee57        10
+                                  0000eb68  0000eb77        10
   $__pc
-                                  0000ee48        10   func ,g         * 
+                                  0000eb68        10   func ,g         * 
 FILE=scanf_sub
-                                  0000ee58  0000ee67        10
+                                  0000eb78  0000eb87        10
   ___sc
-                                  0000ee58        10   func ,g         * 
+                                  0000eb78        10   func ,g         * 
 FILE=sprintf_sub
-                                  0000ee68  0000ee7f        18
+                                  0000eb88  0000eb9f        18
   $__sp
-                                  0000ee68        18   func ,g         * 
+                                  0000eb88        18   func ,g         * 
 FILE=_f8add
-                                  0000ee80  0000f799       91a
+                                  0000eba0  0000f4b9       91a
   __f8add
-                                  0000ee80       6dc   func ,g         * 
+                                  0000eba0       6dc   func ,g         * 
   $_asr_n
-                                  0000f55c       23e   func ,l         * 
+                                  0000f27c       23e   func ,l         * 
 FILE=_f8eq
-                                  0000f79a  0000f815        7c
+                                  0000f4ba  0000f535        7c
   __f8eq
-                                  0000f79a        7c   func ,g         * 
+                                  0000f4ba        7c   func ,g         * 
 FILE=_f8ge
-                                  0000f816  0000f8bd        a8
+                                  0000f536  0000f5dd        a8
   __f8ge
-                                  0000f816        a8   func ,g         * 
+                                  0000f536        a8   func ,g         * 
 FILE=_f8lt
-                                  0000f8be  0000f965        a8
+                                  0000f5de  0000f685        a8
   __f8lt
-                                  0000f8be        a8   func ,g         * 
+                                  0000f5de        a8   func ,g         * 
 FILE=_f8ne
-                                  0000f966  0000f9e1        7c
+                                  0000f686  0000f701        7c
   __f8ne
-                                  0000f966        7c   func ,g         * 
+                                  0000f686        7c   func ,g         * 
 FILE=_i4mulu
-                                  0000f9e2  0000f9fd        1c
+                                  0000f702  0000f71d        1c
   __i4mulU
-                                  0000f9e2         0   none ,g         * 
+                                  0000f702         0   none ,g         * 
 FILE=_i4tof8
-                                  0000f9fe  0000fa1f        22
+                                  0000f71e  0000f73f        22
   __i4tof8
-                                  0000f9fe        22   func ,g         * 
+                                  0000f71e        22   func ,g         * 
 FILE=_i8divu
-                                  0000fa20  0000fb17        f8
+                                  0000f740  0000f837        f8
   __i8divU
-                                  0000fa20         0   none ,g         * 
+                                  0000f740         0   none ,g         * 
 FILE=_i8modu
-                                  0000fb18  0000fbe6        cf
+                                  0000f838  0000f906        cf
   __i8modU
-                                  0000fb18         0   none ,g         * 
+                                  0000f838         0   none ,g         * 
 FILE=_i8mulu
-                                  0000fbe8  0000fdbd       1d6
+                                  0000f908  0000fadd       1d6
   __i8mulU
-                                  0000fbe8         0   none ,g         * 
+                                  0000f908         0   none ,g         * 
 FILE=fprintf_sub
-                                  0000fdbe  0000fdcd        10
+                                  0000fade  0000faed        10
   $__fp
-                                  0000fdbe        10   func ,g         * 
+                                  0000fade        10   func ,g         * 
 FILE=fscanf_sub
-                                  0000fdce  0000fddd        10
+                                  0000faee  0000fafd        10
   ___fs
-                                  0000fdce        10   func ,g         * 
+                                  0000faee        10   func ,g         * 
 FILE=sscanf_sub
-                                  0000fdde  0000fdf9        1c
+                                  0000fafe  0000fb19        1c
   ___ss
-                                  0000fdde        1c   func ,g         * 
+                                  0000fafe        1c   func ,g         * 
 
 SECTION=interrupt
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  0000fdfa  0000fdfa         0
+                                  0000fb1a  0000fb1a         0
   __interrupt_top
-                                  0000fdfa         0   none ,l         * 
+                                  0000fb1a         0   none ,l         * 
 
 SECTION=vector
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
@@ -1021,19 +974,19 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj
                                   00010047  0001008b        45
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj
-                                  0001008c  000102f0       265
+                                  0001008c  00010322       297
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  000102f1  00010e45       b55
+                                  00010323  00010f87       c65
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00010e46  00010e6a        25
+                                  00010f88  00010fac        25
   _monthStr
-                                  00010e46        25   data ,l         * 
+                                  00010f88        25   data ,l         * 
 FILE=cdata
-                                  00010e6b  00010f6b       101
+                                  00010fad  000110ad       101
   __ctype
-                                  00010e6b       101   data ,g         * 
+                                  00010fad       101   data ,g         * 
 FILE=print
-                                  00010f6c  00010f75         a
+                                  000110ae  000110b7         a
 
 Absolute value symbols
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj
@@ -2927,951 +2880,6 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\data_flash_lib.obj
   _dtcvct51_addr
                                   00002c33         0   none ,l         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\drive.obj
-  _dtcct12_addr
-                                  00002ca2         0   none ,l         * 
-  _dtcvct41_addr
-                                  00002c29         0   none ,l         * 
-  _trcmr_addr
-                                  00000120         0   none ,l         * 
-  _dtcvct61_addr
-                                  00002c3d         0   none ,l         * 
-  _dtcct22_addr
-                                  00002cf2         0   none ,l         * 
-  _dtbls18_addr
-                                  00002cd1         0   none ,l         * 
-  _trcsr_addr
-                                  00000123         0   none ,l         * 
-  _dtbls7_addr
-                                  00002c79         0   none ,l         * 
-  _p8_addr
-                                  000000f0         0   none ,l         * 
-  _ssbr_addr
-                                  00000193         0   none ,l         * 
-  _intsr_addr
-                                  0000018e         0   none ,l         * 
-  _trd0_addr
-                                  00000146         0   none ,l         * 
-  _dtdar4_addr
-                                  00002c66         0   none ,l         * 
-  _trdier0_addr
-                                  00000144         0   none ,l         * 
-  _adinsel_addr
-                                  000000d5         0   none ,l         * 
-  _dtcvct1_addr
-                                  00002c01         0   none ,l         * 
-  _sser_addr
-                                  0000019b         0   none ,l         * 
-  _traioc_addr
-                                  00000101         0   none ,l         * 
-  _dtsar15_addr
-                                  00002cbc         0   none ,l         * 
-  _sar_addr
-                                  0000019d         0   none ,l         * 
-  _trcoer_addr
-                                  00000132         0   none ,l         * 
-  _ad2_addr
-                                  000000c4         0   none ,l         * 
-  _dtrld16_addr
-                                  00002cc3         0   none ,l         * 
-  _dtcen4_addr
-                                  0000008c         0   none ,l         * 
-  _dtccr15_addr
-                                  00002cb8         0   none ,l         * 
-  _dtrld6_addr
-                                  00002c73         0   none ,l         * 
-  _dtsar1_addr
-                                  00002c4c         0   none ,l         * 
-  _pd9_addr
-                                  000000f3         0   none ,l         * 
-  _dtdar19_addr
-                                  00002cde         0   none ,l         * 
-  _trdmr_addr
-                                  00000138         0   none ,l         * 
-  _trcgrc_addr
-                                  0000012c         0   none ,l         * 
-  _trcior1_addr
-                                  00000125         0   none ,l         * 
-  _dtccr6_addr
-                                  00002c70         0   none ,l         * 
-  _dtcvct17_addr
-                                  00002c11         0   none ,l         * 
-  _ssmr_addr
-                                  0000019a         0   none ,l         * 
-  _pd0_addr
-                                  000000e2         0   none ,l         * 
-  _adic_addr
-                                  0000004e         0   none ,l         * 
-  _dtcct6_addr
-                                  00002c72         0   none ,l         * 
-  _dtcvct37_addr
-                                  00002c25         0   none ,l         * 
-  _sssr_addr
-                                  0000019c         0   none ,l         * 
-  _trd1ic_addr
-                                  00000049         0   none ,l         * 
-  _dtcvct27_addr
-                                  00002c1b         0   none ,l         * 
-  _dtcvct57_addr
-                                  00002c39         0   none ,l         * 
-  _dtcvct47_addr
-                                  00002c2f         0   none ,l         * 
-  _sscrl_addr
-                                  00000199         0   none ,l         * 
-  _wdtr_addr
-                                  0000000d         0   none ,l         * 
-  _trehr_addr
-                                  0000011a         0   none ,l         * 
-  _dtcct19_addr
-                                  00002cda         0   none ,l         * 
-  _trdgrb1_addr
-                                  0000015a         0   none ,l         * 
-  _trddf0_addr
-                                  0000013e         0   none ,l         * 
-  _dtsar12_addr
-                                  00002ca4         0   none ,l         * 
-  _trdgrd1_addr
-                                  0000015e         0   none ,l         * 
-  _dtbls1_addr
-                                  00002c49         0   none ,l         * 
-  _iccr1_addr
-                                  00000198         0   none ,l         * 
-  _trdgra1_addr
-                                  00000158         0   none ,l         * 
-  _trdcr0_addr
-                                  00000140         0   none ,l         * 
-  _trfic_addr
-                                  0000005b         0   none ,l         * 
-  _dtsar22_addr
-                                  00002cf4         0   none ,l         * 
-  _dtrld13_addr
-                                  00002cab         0   none ,l         * 
-  _trdgrc1_addr
-                                  0000015c         0   none ,l         * 
-  _dtdar6_addr
-                                  00002c76         0   none ,l         * 
-  _trdecr_addr
-                                  00000135         0   none ,l         * 
-  _p1_addr
-                                  000000e1         0   none ,l         * 
-  _pm0_addr
-                                  00000004         0   none ,l         * 
-  _dtccr12_addr
-                                  00002ca0         0   none ,l         * 
-  _dtrld23_addr
-                                  00002cfb         0   none ,l         * 
-  _dtbls17_addr
-                                  00002cc9         0   none ,l         * 
-  _dtccr22_addr
-                                  00002cf0         0   none ,l         * 
-  _dtcvct8_addr
-                                  00002c08         0   none ,l         * 
-  _ad4_addr
-                                  000000c8         0   none ,l         * 
-  _dtcvct32_addr
-                                  00002c20         0   none ,l         * 
-  _fmr1_addr
-                                  000001b5         0   none ,l         * 
-  _trcpsr1_addr
-                                  00000183         0   none ,l         * 
-  _dtrld14_addr
-                                  00002cb3         0   none ,l         * 
-  _vca1_addr
-                                  00000033         0   none ,l         * 
-  _dtrld9_addr
-                                  00002c8b         0   none ,l         * 
-  _inten_addr
-                                  000001fa         0   none ,l         * 
-  _pur0_addr
-                                  000001e0         0   none ,l         * 
-  _tracr_addr
-                                  00000100         0   none ,l         * 
-  _dtcen6_addr
-                                  0000008e         0   none ,l         * 
-  _dtsar3_addr
-                                  00002c5c         0   none ,l         * 
-  _dtrld0_addr
-                                  00002c43         0   none ,l         * 
-  _ssuiicsr_addr
-                                  0000018c         0   none ,l         * 
-  _u0c1_addr
-                                  000000a5         0   none ,l         * 
-  _trcgra_addr
-                                  00000128         0   none ,l         * 
-  _dtccr0_addr
-                                  00002c40         0   none ,l         * 
-  _dtcvct22_addr
-                                  00002c16         0   none ,l         * 
-  _dtcvct15_addr
-                                  00002c0f         0   none ,l         * 
-  _intf_addr
-                                  000001fc         0   none ,l         * 
-  _pd2_addr
-                                  000000e6         0   none ,l         * 
-  _dtcct9_addr
-                                  00002c8a         0   none ,l         * 
-  _dtcvct12_addr
-                                  00002c0c         0   none ,l         * 
-  _dtcct0_addr
-                                  00002c42         0   none ,l         * 
-  _dtcvct42_addr
-                                  00002c2a         0   none ,l         * 
-  _dtcvct35_addr
-                                  00002c23         0   none ,l         * 
-  _s1ric_addr
-                                  00000054         0   none ,l         * 
-  _dtcvct25_addr
-                                  00002c19         0   none ,l         * 
-  _icmr_addr
-                                  0000019a         0   none ,l         * 
-  _dtcvct62_addr
-                                  00002c3e         0   none ,l         * 
-  _dtcvct55_addr
-                                  00002c37         0   none ,l         * 
-  _trgic_addr
-                                  0000006b         0   none ,l         * 
-  _dtdar20_addr
-                                  00002ce6         0   none ,l         * 
-  _dtsar8_addr
-                                  00002c84         0   none ,l         * 
-  _dtcvct52_addr
-                                  00002c34         0   none ,l         * 
-  _dtcvct45_addr
-                                  00002c2d         0   none ,l         * 
-  _icsr_addr
-                                  0000019c         0   none ,l         * 
-  _dtdar10_addr
-                                  00002c96         0   none ,l         * 
-  _cmpa_addr
-                                  00000030         0   none ,l         * 
-  _dtccr9_addr
-                                  00002c88         0   none ,l         * 
-  _trggrc_addr
-                                  0000017c         0   none ,l         * 
-  _trapre_addr
-                                  00000103         0   none ,l         * 
-  _trdoer2_addr
-                                  0000013c         0   none ,l         * 
-  _u2smr4_addr
-                                  000000bc         0   none ,l         * 
-  _dtbls3_addr
-                                  00002c59         0   none ,l         * 
-  _trecr2_addr
-                                  0000011d         0   none ,l         * 
-  _dtsar19_addr
-                                  00002cdc         0   none ,l         * 
-  _timsr_addr
-                                  00000186         0   none ,l         * 
-  _dtrld11_addr
-                                  00002c9b         0   none ,l         * 
-  _dtcct20_addr
-                                  00002ce2         0   none ,l         * 
-  _dtbls8_addr
-                                  00002c81         0   none ,l         * 
-  _dtdar0_addr
-                                  00002c46         0   none ,l         * 
-  _tresec_addr
-                                  00000118         0   none ,l         * 
-  _p3_addr
-                                  000000e5         0   none ,l         * 
-  _ocd_addr
-                                  0000000c         0   none ,l         * 
-  _dtcct10_addr
-                                  00002c92         0   none ,l         * 
-  _u1c1_addr
-                                  00000165         0   none ,l         * 
-  _dtrld21_addr
-                                  00002ceb         0   none ,l         * 
-  _dtbls15_addr
-                                  00002cb9         0   none ,l         * 
-  _dtccr19_addr
-                                  00002cd8         0   none ,l         * 
-  _trdstr_addr
-                                  00000137         0   none ,l         * 
-  _trfm1_addr
-                                  0000009e         0   none ,l         * 
-  _icier_addr
-                                  0000019b         0   none ,l         * 
-  _adcon1_addr
-                                  000000d7         0   none ,l         * 
-  _ad6_addr
-                                  000000cc         0   none ,l         * 
-  _dtcvct30_addr
-                                  00002c1e         0   none ,l         * 
-  _vcac_addr
-                                  00000031         0   none ,l         * 
-  _trecsr_addr
-                                  0000011e         0   none ,l         * 
-  _s0ric_addr
-                                  00000052         0   none ,l         * 
-  _dtdar9_addr
-                                  00002c8e         0   none ,l         * 
-  _dtcvct7_addr
-                                  00002c07         0   none ,l         * 
-  _pur2_addr
-                                  000001e2         0   none ,l         * 
-  _dtcen0_addr
-                                  00000088         0   none ,l         * 
-  _dtrld2_addr
-                                  00002c53         0   none ,l         * 
-  _inten1_addr
-                                  000001fb         0   none ,l         * 
-  _trdocr_addr
-                                  0000013d         0   none ,l         * 
-  _dtccr2_addr
-                                  00002c50         0   none ,l         * 
-  _dtcvct20_addr
-                                  00002c14         0   none ,l         * 
-  _pd4_addr
-                                  000000ea         0   none ,l         * 
-  _dtcvct10_addr
-                                  00002c0a         0   none ,l         * 
-  _dtcct2_addr
-                                  00002c52         0   none ,l         * 
-  _dtcvct40_addr
-                                  00002c28         0   none ,l         * 
-  _dacon_addr
-                                  000000dc         0   none ,l         * 
-  _dtcvct60_addr
-                                  00002c3c         0   none ,l         * 
-  _cm1_addr
-                                  00000007         0   none ,l         * 
-  _dtcvct50_addr
-                                  00002c32         0   none ,l         * 
-  _sscrh_addr
-                                  00000198         0   none ,l         * 
-  _dtdar16_addr
-                                  00002cc6         0   none ,l         * 
-  _trdier1_addr
-                                  00000154         0   none ,l         * 
-  _trggra_addr
-                                  00000178         0   none ,l         * 
-  _dtbls12_addr
-                                  00002ca1         0   none ,l         * 
-  _trbrcsr_addr
-                                  00000181         0   none ,l         * 
-  _da1_addr
-                                  000000d9         0   none ,l         * 
-  _u2smr2_addr
-                                  000000be         0   none ,l         * 
-  _trdsr0_addr
-                                  00000143         0   none ,l         * 
-  _dtbls22_addr
-                                  00002cf1         0   none ,l         * 
-  _s1tic_addr
-                                  00000053         0   none ,l         * 
-  _dtdar2_addr
-                                  00002c56         0   none ,l         * 
-  _p5_addr
-                                  000000e9         0   none ,l         * 
-  _dtrld18_addr
-                                  00002cd3         0   none ,l         * 
-  _dtcct16_addr
-                                  00002cc2         0   none ,l         * 
-  _trdpocr0_addr
-                                  00000145         0   none ,l         * 
-  _vlt0_addr
-                                  000001f5         0   none ,l         * 
-  _mstcr_addr
-                                  00000008         0   none ,l         * 
-  _dtsar20_addr
-                                  00002ce4         0   none ,l         * 
-  _rmad0_addr
-                                  000001c0         0   none ,l         * 
-  _trdpmr_addr
-                                  00000139         0   none ,l         * 
-  _u2bcnic_addr
-                                  0000005e         0   none ,l         * 
-  _dtsar10_addr
-                                  00002c94         0   none ,l         * 
-  _trdiorc1_addr
-                                  00000152         0   none ,l         * 
-  _u2c0_addr
-                                  000000ac         0   none ,l         * 
-  _dtcvct39_addr
-                                  00002c27         0   none ,l         * 
-  _dtcvct5_addr
-                                  00002c05         0   none ,l         * 
-  _aier0_addr
-                                  000001c3         0   none ,l         * 
-  _dtcen2_addr
-                                  0000008a         0   none ,l         * 
-  _trgior_addr
-                                  00000175         0   none ,l         * 
-  _vcmp1ic_addr
-                                  00000072         0   none ,l         * 
-  _dtccr20_addr
-                                  00002ce0         0   none ,l         * 
-  _dtdar13_addr
-                                  00002cae         0   none ,l         * 
-  _dtccr10_addr
-                                  00002c90         0   none ,l         * 
-  _dtrld5_addr
-                                  00002c6b         0   none ,l         * 
-  _dtsar4_addr
-                                  00002c64         0   none ,l         * 
-  _pd6_addr
-                                  000000ee         0   none ,l         * 
-  _trfcr1_addr
-                                  0000009b         0   none ,l         * 
-  _trd0ic_addr
-                                  00000048         0   none ,l         * 
-  _trdiora1_addr
-                                  00000151         0   none ,l         * 
-  _trcgrd_addr
-                                  0000012e         0   none ,l         * 
-  _s2ric_addr
-                                  0000004c         0   none ,l         * 
-  _dtdar23_addr
-                                  00002cfe         0   none ,l         * 
-  _dtccr5_addr
-                                  00002c68         0   none ,l         * 
-  _dtcvct29_addr
-                                  00002c1d         0   none ,l         * 
-  _trf_addr
-                                  00000090         0   none ,l         * 
-  _dtcvct19_addr
-                                  00002c13         0   none ,l         * 
-  _admod_addr
-                                  000000d4         0   none ,l         * 
-  _dtcct5_addr
-                                  00002c6a         0   none ,l         * 
-  _dtcvct49_addr
-                                  00002c31         0   none ,l         * 
-  _cm3_addr
-                                  00000009         0   none ,l         * 
-  _drr1_addr
-                                  000001f3         0   none ,l         * 
-  _s0tic_addr
-                                  00000051         0   none ,l         * 
-  _dtdar14_addr
-                                  00002cb6         0   none ,l         * 
-  _trbpre_addr
-                                  0000010c         0   none ,l         * 
-  _trbic_addr
-                                  00000058         0   none ,l         * 
-  _dtcct13_addr
-                                  00002caa         0   none ,l         * 
-  _dtcvct59_addr
-                                  00002c3b         0   none ,l         * 
-  _cmp1ic_addr
-                                  00000050         0   none ,l         * 
-  _icdrt_addr
-                                  00000194         0   none ,l         * 
-  _capic_addr
-                                  0000005f         0   none ,l         * 
-  _dtcct23_addr
-                                  00002cfa         0   none ,l         * 
-  _dtbls19_addr
-                                  00002cd9         0   none ,l         * 
-  _trdpsr0_addr
-                                  00000184         0   none ,l         * 
-  _dtbls4_addr
-                                  00002c61         0   none ,l         * 
-  _iccr2_addr
-                                  00000199         0   none ,l         * 
-  _u2sr1_addr
-                                  0000018b         0   none ,l         * 
-  _p7_addr
-                                  000000ed         0   none ,l         * 
-  _dtcct14_addr
-                                  00002cb2         0   none ,l         * 
-  _trccr1_addr
-                                  00000121         0   none ,l         * 
-  _dtdar5_addr
-                                  00002c6e         0   none ,l         * 
-  _vlt2_addr
-                                  000001f7         0   none ,l         * 
-  _dtcvct2_addr
-                                  00002c02         0   none ,l         * 
-  _dtsar16_addr
-                                  00002cc4         0   none ,l         * 
-  _dtctl_addr
-                                  00000080         0   none ,l         * 
-  _ad1_addr
-                                  000000c2         0   none ,l         * 
-  _u1mr_addr
-                                  00000160         0   none ,l         * 
-  _trbsc_addr
-                                  0000010d         0   none ,l         * 
-  _ssuic_addr
-                                  0000004f         0   none ,l         * 
-  _dtrld17_addr
-                                  00002ccb         0   none ,l         * 
-  _dtdar11_addr
-                                  00002c9e         0   none ,l         * 
-  _u1sr_addr
-                                  00000189         0   none ,l         * 
-  _u1tb_addr
-                                  00000162         0   none ,l         * 
-  _dtcen5_addr
-                                  0000008d         0   none ,l         * 
-  _trcic_addr
-                                  00000047         0   none ,l         * 
-  _dtccr16_addr
-                                  00002cc0         0   none ,l         * 
-  _dtrld7_addr
-                                  00002c7b         0   none ,l         * 
-  _dtsar6_addr
-                                  00002c74         0   none ,l         * 
-  _lincr2_addr
-                                  00000105         0   none ,l         * 
-  _pd8_addr
-                                  000000f2         0   none ,l         * 
-  _u1rb_addr
-                                  00000166         0   none ,l         * 
-  _trcgrb_addr
-                                  0000012a         0   none ,l         * 
-  _dtdar21_addr
-                                  00002cee         0   none ,l         * 
-  _dtccr7_addr
-                                  00002c78         0   none ,l         * 
-  _dtcvct16_addr
-                                  00002c10         0   none ,l         * 
-  _dtcct7_addr
-                                  00002c7a         0   none ,l         * 
-  _dtcvct36_addr
-                                  00002c24         0   none ,l         * 
-  _dtcvct26_addr
-                                  00002c1a         0   none ,l         * 
-  _dtcvct56_addr
-                                  00002c38         0   none ,l         * 
-  _iicic_addr
-                                  0000004f         0   none ,l         * 
-  _dtcct11_addr
-                                  00002c9a         0   none ,l         * 
-  _dtcvct46_addr
-                                  00002c2e         0   none ,l         * 
-  _icdrr_addr
-                                  00000196         0   none ,l         * 
-  _trggrd_addr
-                                  0000017e         0   none ,l         * 
-  _vw0c_addr
-                                  00000038         0   none ,l         * 
-  _dtcct21_addr
-                                  00002cea         0   none ,l         * 
-  _s2tic_addr
-                                  0000004b         0   none ,l         * 
-  _vw1c_addr
-                                  00000039         0   none ,l         * 
-  _dtsar13_addr
-                                  00002cac         0   none ,l         * 
-  _dtbls6_addr
-                                  00002c71         0   none ,l         * 
-  _p9_addr
-                                  000000f1         0   none ,l         * 
-  _u2mr_addr
-                                  000000a8         0   none ,l         * 
-  _dtsar23_addr
-                                  00002cfc         0   none ,l         * 
-  _trd1_addr
-                                  00000156         0   none ,l         * 
-  _dtdar7_addr
-                                  00002c7e         0   none ,l         * 
-  _p0_addr
-                                  000000e0         0   none ,l         * 
-  _u2tb_addr
-                                  000000aa         0   none ,l         * 
-  _vw2c_addr
-                                  0000003a         0   none ,l         * 
-  _dtbls20_addr
-                                  00002ce1         0   none ,l         * 
-  _dtccr13_addr
-                                  00002ca8         0   none ,l         * 
-  _prcr_addr
-                                  0000000a         0   none ,l         * 
-  _dtbls10_addr
-                                  00002c91         0   none ,l         * 
-  _trcier_addr
-                                  00000122         0   none ,l         * 
-  _u2rb_addr
-                                  000000ae         0   none ,l         * 
-  _int1ic_addr
-                                  00000059         0   none ,l         * 
-  _dtsar14_addr
-                                  00002cb4         0   none ,l         * 
-  _dtccr23_addr
-                                  00002cf8         0   none ,l         * 
-  _dtcvct9_addr
-                                  00002c09         0   none ,l         * 
-  _ad3_addr
-                                  000000c6         0   none ,l         * 
-  _fmr0_addr
-                                  000001b4         0   none ,l         * 
-  _trdfcr_addr
-                                  0000013a         0   none ,l         * 
-  _dtrld15_addr
-                                  00002cbb         0   none ,l         * 
-  _intcmp_addr
-                                  000001f8         0   none ,l         * 
-  _dtccr14_addr
-                                  00002cb0         0   none ,l         * 
-  _dtrld1_addr
-                                  00002c4b         0   none ,l         * 
-  _dtsar0_addr
-                                  00002c44         0   none ,l         * 
-  _u0c0_addr
-                                  000000a4         0   none ,l         * 
-  _dtdar18_addr
-                                  00002cd6         0   none ,l         * 
-  _intf1_addr
-                                  000001fd         0   none ,l         * 
-  _fst_addr
-                                  000001b2         0   none ,l         * 
-  _trgcr_addr
-                                  00000172         0   none ,l         * 
-  _dtccr1_addr
-                                  00002c48         0   none ,l         * 
-  _dtcvct14_addr
-                                  00002c0e         0   none ,l         * 
-  _pd1_addr
-                                  000000e3         0   none ,l         * 
-  _dtcct1_addr
-                                  00002c4a         0   none ,l         * 
-  _dtcvct34_addr
-                                  00002c22         0   none ,l         * 
-  _tra_addr
-                                  00000104         0   none ,l         * 
-  _rstfr_addr
-                                  0000000b         0   none ,l         * 
-  _dtcvct24_addr
-                                  00002c18         0   none ,l         * 
-  _dtcvct54_addr
-                                  00002c36         0   none ,l         * 
-  _wdtc_addr
-                                  0000000f         0   none ,l         * 
-  _dtsar9_addr
-                                  00002c8c         0   none ,l         * 
-  _dtcvct44_addr
-                                  00002c2c         0   none ,l         * 
-  _wdts_addr
-                                  0000000e         0   none ,l         * 
-  _treic_addr
-                                  0000004a         0   none ,l         * 
-  _dtcct18_addr
-                                  00002cd2         0   none ,l         * 
-  _pinsr_addr
-                                  0000018f         0   none ,l         * 
-  _trggrb_addr
-                                  0000017a         0   none ,l         * 
-  _trddf1_addr
-                                  0000013f         0   none ,l         * 
-  _fmrdyic_addr
-                                  00000041         0   none ,l         * 
-  _int2ic_addr
-                                  00000055         0   none ,l         * 
-  _dtsar11_addr
-                                  00002c9c         0   none ,l         * 
-  _dtbls0_addr
-                                  00002c41         0   none ,l         * 
-  _trdcr1_addr
-                                  00000150         0   none ,l         * 
-  _dtsar21_addr
-                                  00002cec         0   none ,l         * 
-  _dtrld12_addr
-                                  00002ca3         0   none ,l         * 
-  _trewk_addr
-                                  0000011b         0   none ,l         * 
-  _dtbls9_addr
-                                  00002c89         0   none ,l         * 
-  _dtdar1_addr
-                                  00002c4e         0   none ,l         * 
-  _trgmr_addr
-                                  00000170         0   none ,l         * 
-  _p2_addr
-                                  000000e4         0   none ,l         * 
-  _vd1ls_addr
-                                  00000036         0   none ,l         * 
-  _pm1_addr
-                                  00000005         0   none ,l         * 
-  _dtccr11_addr
-                                  00002c98         0   none ,l         * 
-  _ssrdr_addr
-                                  00000196         0   none ,l         * 
-  _u1c0_addr
-                                  00000164         0   none ,l         * 
-  _dtrld22_addr
-                                  00002cf3         0   none ,l         * 
-  _dtbls16_addr
-                                  00002cc1         0   none ,l         * 
-  _trgsr_addr
-                                  00000174         0   none ,l         * 
-  _trfm0_addr
-                                  0000009c         0   none ,l         * 
-  _dtccr21_addr
-                                  00002ce8         0   none ,l         * 
-  _trcdf_addr
-                                  00000131         0   none ,l         * 
-  _ad5_addr
-                                  000000ca         0   none ,l         * 
-  _dtcvct33_addr
-                                  00002c21         0   none ,l         * 
-  _fmr2_addr
-                                  000001b6         0   none ,l         * 
-  _trcadcr_addr
-                                  00000133         0   none ,l         * 
-  _vca2_addr
-                                  00000034         0   none ,l         * 
-  _dtrld8_addr
-                                  00002c83         0   none ,l         * 
-  _dtcvct0_addr
-                                  00002c00         0   none ,l         * 
-  _pur1_addr
-                                  000001e1         0   none ,l         * 
-  _dtcen1_addr
-                                  00000089         0   none ,l         * 
-  _dtrld3_addr
-                                  00002c5b         0   none ,l         * 
-  _dtsar2_addr
-                                  00002c54         0   none ,l         * 
-  _u0brg_addr
-                                  000000a1         0   none ,l         * 
-  _dtccr3_addr
-                                  00002c58         0   none ,l         * 
-  _dtcvct23_addr
-                                  00002c17         0   none ,l         * 
-  _trgier_addr
-                                  00000173         0   none ,l         * 
-  _pd3_addr
-                                  000000e7         0   none ,l         * 
-  _dtcct8_addr
-                                  00002c82         0   none ,l         * 
-  _dtcvct13_addr
-                                  00002c0d         0   none ,l         * 
-  _int3ic_addr
-                                  0000005a         0   none ,l         * 
-  _dtcct3_addr
-                                  00002c5a         0   none ,l         * 
-  _dtcvct43_addr
-                                  00002c2b         0   none ,l         * 
-  _kien_addr
-                                  000001fe         0   none ,l         * 
-  _trdpsr1_addr
-                                  00000185         0   none ,l         * 
-  _trc_addr
-                                  00000126         0   none ,l         * 
-  _traic_addr
-                                  00000056         0   none ,l         * 
-  _dtcvct63_addr
-                                  00002c3f         0   none ,l         * 
-  _cmp0ic_addr
-                                  0000005c         0   none ,l         * 
-  _cm0_addr
-                                  00000006         0   none ,l         * 
-  _dtcvct53_addr
-                                  00002c35         0   none ,l         * 
-  _dtdar17_addr
-                                  00002cce         0   none ,l         * 
-  _dtccr8_addr
-                                  00002c80         0   none ,l         * 
-  _vcmp2ic_addr
-                                  00000073         0   none ,l         * 
-  _dtbls13_addr
-                                  00002ca9         0   none ,l         * 
-  _ssmr2_addr
-                                  0000019d         0   none ,l         * 
-  _trdoer1_addr
-                                  0000013b         0   none ,l         * 
-  _trcior0_addr
-                                  00000124         0   none ,l         * 
-  _da0_addr
-                                  000000d8         0   none ,l         * 
-  _u2smr5_addr
-                                  000000bb         0   none ,l         * 
-  _dtbls2_addr
-                                  00002c51         0   none ,l         * 
-  _trdgrd0_addr
-                                  0000014e         0   none ,l         * 
-  _dtbls23_addr
-                                  00002cf9         0   none ,l         * 
-  _dtsar18_addr
-                                  00002cd4         0   none ,l         * 
-  _p2drr_addr
-                                  000001f1         0   none ,l         * 
-  _u2smr_addr
-                                  000000bf         0   none ,l         * 
-  _dtdar3_addr
-                                  00002c5e         0   none ,l         * 
-  _p4_addr
-                                  000000e8         0   none ,l         * 
-  _dtrld19_addr
-                                  00002cdb         0   none ,l         * 
-  _dtcct17_addr
-                                  00002cca         0   none ,l         * 
-  _trccr2_addr
-                                  00000130         0   none ,l         * 
-  _dtbls14_addr
-                                  00002cb1         0   none ,l         * 
-  _trdgra0_addr
-                                  00000148         0   none ,l         * 
-  _dtccr18_addr
-                                  00002cd0         0   none ,l         * 
-  _trdgrb0_addr
-                                  0000014a         0   none ,l         * 
-  _u0mr_addr
-                                  000000a0         0   none ,l         * 
-  _trdgrc0_addr
-                                  0000014c         0   none ,l         * 
-  _adcon0_addr
-                                  000000d6         0   none ,l         * 
-  _ad7_addr
-                                  000000ce         0   none ,l         * 
-  _int4ic_addr
-                                  00000046         0   none ,l         * 
-  _u0sr_addr
-                                  00000188         0   none ,l         * 
-  _trdiorc0_addr
-                                  00000142         0   none ,l         * 
-  _u0tb_addr
-                                  000000a2         0   none ,l         * 
-  _dtdar8_addr
-                                  00002c86         0   none ,l         * 
-  _dtcvct38_addr
-                                  00002c26         0   none ,l         * 
-  _dtcvct6_addr
-                                  00002c06         0   none ,l         * 
-  _u0rb_addr
-                                  000000a6         0   none ,l         * 
-  _dtcen3_addr
-                                  0000008b         0   none ,l         * 
-  _cspr_addr
-                                  0000001c         0   none ,l         * 
-  _tramr_addr
-                                  00000102         0   none ,l         * 
-  _dtsar5_addr
-                                  00002c6c         0   none ,l         * 
-  _sstdr_addr
-                                  00000194         0   none ,l         * 
-  _trgcntc_addr
-                                  00000171         0   none ,l         * 
-  _pd5_addr
-                                  000000eb         0   none ,l         * 
-  _trfcr0_addr
-                                  0000009a         0   none ,l         * 
-  _trasr_addr
-                                  00000180         0   none ,l         * 
-  _trdiora0_addr
-                                  00000141         0   none ,l         * 
-  _trbcr_addr
-                                  00000108         0   none ,l         * 
-  _dtcvct28_addr
-                                  00002c1c         0   none ,l         * 
-  _dtcvct18_addr
-                                  00002c12         0   none ,l         * 
-  _trbocr_addr
-                                  00000109         0   none ,l         * 
-  _u2brg_addr
-                                  000000a9         0   none ,l         * 
-  _dtcvct48_addr
-                                  00002c30         0   none ,l         * 
-  _trcpsr0_addr
-                                  00000182         0   none ,l         * 
-  _drr0_addr
-                                  000001f2         0   none ,l         * 
-  _dtdar15_addr
-                                  00002cbe         0   none ,l         * 
-  _p1drr_addr
-                                  000001f0         0   none ,l         * 
-  _dtcvct58_addr
-                                  00002c3a         0   none ,l         * 
-  _dtbls11_addr
-                                  00002c99         0   none ,l         * 
-  _cpsrf_addr
-                                  00000028         0   none ,l         * 
-  _u2smr3_addr
-                                  000000bd         0   none ,l         * 
-  _trdsr1_addr
-                                  00000153         0   none ,l         * 
-  _trecr1_addr
-                                  0000011c         0   none ,l         * 
-  _dtbls21_addr
-                                  00002ce9         0   none ,l         * 
-  _dtbls5_addr
-                                  00002c69         0   none ,l         * 
-  _tremin_addr
-                                  00000119         0   none ,l         * 
-  _linst_addr
-                                  00000107         0   none ,l         * 
-  _u2sr0_addr
-                                  0000018a         0   none ,l         * 
-  _p6_addr
-                                  000000ec         0   none ,l         * 
-  _int0ic_addr
-                                  0000005d         0   none ,l         * 
-  _dtcct15_addr
-                                  00002cba         0   none ,l         * 
-  _trdpocr1_addr
-                                  00000155         0   none ,l         * 
-  _trbpr_addr
-                                  0000010e         0   none ,l         * 
-  _vlt1_addr
-                                  000001f6         0   none ,l         * 
-  _trbmr_addr
-                                  0000010b         0   none ,l         * 
-  _dtcvct3_addr
-                                  00002c03         0   none ,l         * 
-  _rmad1_addr
-                                  000001c4         0   none ,l         * 
-  _dtsar17_addr
-                                  00002ccc         0   none ,l         * 
-  _urxdf_addr
-                                  000000b0         0   none ,l         * 
-  _u2c1_addr
-                                  000000ad         0   none ,l         * 
-  _kupic_addr
-                                  0000004d         0   none ,l         * 
-  _lincr_addr
-                                  00000106         0   none ,l         * 
-  _ad0_addr
-                                  000000c0         0   none ,l         * 
-  _dtrld20_addr
-                                  00002ce3         0   none ,l         * 
-  _dtcvct4_addr
-                                  00002c04         0   none ,l         * 
-  _aier1_addr
-                                  000001c7         0   none ,l         * 
-  _u1brg_addr
-                                  00000161         0   none ,l         * 
-  _dtrld10_addr
-                                  00002c93         0   none ,l         * 
-  _trfout_addr
-                                  00000187         0   none ,l         * 
-  _dtdar12_addr
-                                  00002ca6         0   none ,l         * 
-  _trdadcr_addr
-                                  00000136         0   none ,l         * 
-  _dtccr17_addr
-                                  00002cc8         0   none ,l         * 
-  _dtsar7_addr
-                                  00002c7c         0   none ,l         * 
-  _dtrld4_addr
-                                  00002c63         0   none ,l         * 
-  _trbioc_addr
-                                  0000010a         0   none ,l         * 
-  _pd7_addr
-                                  000000ef         0   none ,l         * 
-  __R8C__
-                                  00000001         0   none ,l         * 
-  _dtdar22_addr
-                                  00002cf6         0   none ,l         * 
-  _dtccr4_addr
-                                  00002c60         0   none ,l         * 
-  _dtcvct11_addr
-                                  00002c0b         0   none ,l         * 
-  _trg_addr
-                                  00000176         0   none ,l         * 
-  _ocvrefcr_addr
-                                  00000026         0   none ,l         * 
-  _dtcct4_addr
-                                  00002c62         0   none ,l         * 
-  _dtcvct31_addr
-                                  00002c1f         0   none ,l         * 
-  _dtcvct21_addr
-                                  00002c15         0   none ,l         * 
-  _drr2_addr
-                                  000001f4         0   none ,l         * 
-  _dtcvct51_addr
-                                  00002c33         0   none ,l         * 
-FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\i2c_eeprom_lib.obj
   _dtcct12_addr
                                   00002ca2         0   none ,l         * 
   _dtcvct41_addr
@@ -12426,13 +11434,13 @@ FILE=scanf
 FILE=sprintf
   __R8C__
                                   00000001         0   none ,l         * 
-FILE=memset
-  __R8C__
-                                  00000001         0   none ,l         * 
 FILE=strtol
   __R8C__
                                   00000001         0   none ,l         * 
-FILE=memcmp
+FILE=nmemcmp
+  __R8C__
+                                  00000001         0   none ,l         * 
+FILE=nmemset
   __R8C__
                                   00000001         0   none ,l         * 
 FILE=strncmp

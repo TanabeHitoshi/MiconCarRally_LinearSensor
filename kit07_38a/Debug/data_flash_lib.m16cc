@@ -3,6 +3,7 @@
 -D__UART0__
 -c
 -finfo
--dir "C:\WorkSpace\Atuta\kit07_38a\Debug"
+-dir "E:\Atuta\kit07_38a\Debug"
+-OS
 -R8CE
-"C:\WorkSpace\Atuta\kit07_38a\data_flash_lib.c"
+"E:\Atuta\kit07_38a\data_flash_lib.c"

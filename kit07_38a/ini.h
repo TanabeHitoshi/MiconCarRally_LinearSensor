@@ -5,7 +5,8 @@ extern unsigned long	cnt0;                   /* timer関数用                  */
 extern unsigned long	cnt1;                   /* main内で使用                 */
 extern unsigned long	cnt_lcd;                /* LCD処理で使用                */
 extern unsigned long	stop_timer;			   /* 走行タイマー					*/
-extern unsigned long	cnt_AD;                 /* センサーで使用　偶数でON  奇数でOFF  */
+extern unsigned int		cnt_Curve;				/* カーブで使用  */
+extern unsigned int   	cnt_Stright;			/* 直進で使用  */
 
 extern int				pattern;                /* パターン番号                 */
 extern int				Srevo_state;			/* サーボの制御あり -> 1　なり -> 0	*/

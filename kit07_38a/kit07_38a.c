@@ -164,32 +164,33 @@ void main( void )
             /* スタート！！ */
             led_out( 0x0 );
 			switch(data_buff[DF_RACE]){
-				case 0:
+				case 0:/* Trace */
 					pattern = 200;
 					set_Speed(MAX_SPEED);
 					timer(2000);
 				break;
-				case 1:
+				case 1:/* Sprint Left */
 					pattern = 300;
 					set_Speed(Sprint_SPEED);
 					handle(40);
 					timer(2000);
 				break;
-				case 2:
+				case 2:/* Sprint Right */
 					pattern = 400;
 					set_Speed(Sprint_SPEED);
 					handle(-30);
 					timer(2000);
 				break;
-				case 3:
+				case 3:/* Moniter */
 					pattern = 3000;
 				break;
 			    default:
 					pattern = 200;
 				break;
 			}
-//			pattern = 2000;
+
            if( msdError == 0 ) msdFlag = 1;    /* データ記録開始       */
+
             cnt1 = 0;
 			timer( 100 );
 			odometer_ini();		/* 走行距離をリセット */
@@ -197,7 +198,6 @@ void main( void )
 			Light_ON;
             break;
         }
-		//mem_ad = 0;
     break;
 /* Trace */
 	case 200:
@@ -214,15 +214,17 @@ void main( void )
         }
 		run(0,0);
 	break;
-	case 210:
+	case 210:/* ストレート */
 		/* カーブによってPIDを変える */
 //		Srevo_state = 1;
 		if(Center > 10){
 			LR = 1;
+			cnt_Curve = 0;
 			pattern = 220;
 			set_PID(CurvePID);
 		}else if(Center < -10){
 			LR = -1;
+			cnt_Curve = 0;
 			pattern = 220;
 			set_PID(CurvePID);
 		}else{
@@ -238,7 +240,7 @@ void main( void )
 		}
 		run(SPEED,pid_angle);
 	break;
-	case 220:
+	case 220:/* カーブ */
 //		Srevo_state = 0;
 		if(Center == 999){
 			pattern = 230;
@@ -254,10 +256,18 @@ void main( void )
 		}
 		SPEED = 100;
 		/* カメラのずれによる減速 */
-		if(pid_angle > 0){
-			SPEED -= pid_angle /2;
+		if(cnt_Curve < 50){
+			if(pid_angle > 0){
+				SPEED -= pid_angle *2;
+			}else{
+				 SPEED += pid_angle *2;
+			}
 		}else{
-			 SPEED += pid_angle /2;
+			if(pid_angle > 0){
+				SPEED -= pid_angle /4;
+			}else{
+				 SPEED += pid_angle /4;
+			}			
 		}
 		run(SPEED,pid_angle);
 	break;
@@ -318,7 +328,6 @@ void main( void )
 		run(100,0);
 		if(Center < -15 && Wide > 10){
 			pattern = 320;
-			set_PID(CurvePID);
 		}
 	break;
 	case 320:
@@ -326,6 +335,7 @@ void main( void )
 		if(Center > 0 && Wide > 10){
 			pattern = 500;
             cnt1 = 0;
+			set_PID(Sprint_2PID);
 			tripmeter_ini();
 		}		
 	break;
@@ -348,7 +358,6 @@ void main( void )
 		run(100,0);
 		if(Center > 15 && Wide > 10){
 			pattern = 420;
-			set_PID(CurvePID);
 		}		
 	break;
 	case 420:
@@ -356,27 +365,28 @@ void main( void )
 		if(Center < 0 && Wide > 10){
 			pattern = 500;
             cnt1 = 0;
+			set_PID(Sprint_2PID);
 			tripmeter_ini();
 		}		
 	break;
 /* Sprint */
 	case 500:/* 姿勢を整える */
  		run(75,pid_angle);
-		if(tripmeter() > 150 || cnt1 > 1000){
+		if(tripmeter() > 150 /*|| cnt1 > 1000 */){
 			set_Speed(Sprint_MAX_SPEED);
-			set_PID(StrightPID);
+			set_PID(SprintPID);
 			pattern = 510;
 		}
 	break;
 	case 510:
 		run(75,pid_angle);
-		if(tripmeter() > 450 || cnt1 > 2500){
+		if(tripmeter() > 450 /*|| cnt1 > 2500*/){
             cnt1 = 0;
 			pattern = 520;
 		}
 	break;
 	case 520:/* 直線を猛スピードで爆走 */
-		set_PID(SprintPID);
+//		set_PID(SprintPID);
 		SPEED = 100;
 		if(Center > 20){
 			pattern = 530;
@@ -386,27 +396,28 @@ void main( void )
 		}
 		/* カメラのずれによる減速 */
 		if(pid_angle > 0){
-			SPEED -= pid_angle*10;
+			SPEED -= pid_angle*7;
 		}else{
-			 SPEED += pid_angle*10;
+			 SPEED += pid_angle*7;
 		}
+		if(SPEED < 50)SPEED = 50;
 		run(SPEED,pid_angle);
-		if(tripmeter() > 3000)cnt1 = 0;
-		if(tripmeter() > data_buff[DF_DISTANCE]*100 || cnt1 > 3000){
+//		if(tripmeter() > 3000)cnt1 = 0;
+		if(tripmeter() > data_buff[DF_DISTANCE]*100 /*|| cnt1 > 3000*/){
 			tripmeter_ini();
 			pattern = 550;
 		}
 	break;
 	case 530:
-		set_PID(CurvePID);
-		SPEED = 60;
+		set_PID(Sprint_2PID);
+		SPEED = 40;
 		if(Center < 10 && White > 5){
 			pattern = 520;
 		}
 		if(Center > -10 && White > 5){
 			pattern = 520;
 		}
-		run(SPEED,pid_angle/4);
+		run(SPEED,pid_angle);
 	break;
 	case 550:/* ゴール手前で減速 */
 		if(tripmeter() < 100) run(90,pid_angle);
@@ -430,6 +441,7 @@ void main( void )
 		}
 		break;	
 	case 600:
+		run(0,0);
 		handle(30);
 		timer(1000);
 		handle(-30);
@@ -488,13 +500,12 @@ void main( void )
 		printf("\n");
 
 		printf("Camera parameter \n");
-		printf("   camera Stright Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_S]/10,data_buff[DF_KP_S]%10,data_buff[DF_KI_S]/10,data_buff[DF_KI_S]%10,data_buff[DF_KD_S]/10,data_buff[DF_KD_S]%10);
-		printf("   camera Curve   Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_C]/10,data_buff[DF_KP_C]%10,data_buff[DF_KI_C]/10,data_buff[DF_KI_C]%10,data_buff[DF_KD_C]/10,data_buff[DF_KD_C]%10);
 		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 		printf("\n");
 
 		printf("Trace parameter\n");	
-//		printf("   Speed  = %3d\n",data_buff[DF_start_motor]);
+		printf("   Trace Stright Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_S]/10,data_buff[DF_KP_S]%10,data_buff[DF_KI_S]/10,data_buff[DF_KI_S]%10,data_buff[DF_KD_S]/10,data_buff[DF_KD_S]%10);
+		printf("   Trace Curve   Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_C]/10,data_buff[DF_KP_C]%10,data_buff[DF_KI_C]/10,data_buff[DF_KI_C]%10,data_buff[DF_KD_C]/10,data_buff[DF_KD_C]%10);
 		printf("   Trace Speed = %d\n",data_buff[DF_PWM]);
 		printf("\n");
 
@@ -503,6 +514,7 @@ void main( void )
 		printf("   Sprint Speed = %d\n",data_buff[DF_PWM_S]);
 		printf("   Distance  = %2d00 mm\n",data_buff[DF_DISTANCE]);
 		printf("   Sprint Stright Kp %d.%d%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10,data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10,data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
+		printf("   Sprint 2       Kp %d.%d    Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP2]/10,data_buff[DF_KP_SP2]%10,data_buff[DF_KI_SP2]/10,data_buff[DF_KI_SP2]%10,data_buff[DF_KD_SP2]/10,data_buff[DF_KD_SP2]%10);
 		printf("\n");
 		
 		Light_ON;

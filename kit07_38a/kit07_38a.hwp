@@ -137,7 +137,6 @@
 "C:\WorkSpace\Atuta\kit07_38a\camera.c" "User" "C source file" 2 
 "C:\WorkSpace\Atuta\kit07_38a\data_flash_lib.c" "User" "C source file" 0 
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" "User" "C source file" 2 
-"C:\WorkSpace\Atuta\kit07_38a\i2c_eeprom_lib.c" "User" "C source file" 0 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" "User" "C source file" 2 
 "C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "User" "C source file" 2 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "User" "C source file" 0 
@@ -159,54 +158,54 @@
 "DefaultSession" "C:\WorkSpace\Atuta\kit07_38a\DefaultSession.hsf" 0 
 [GENERAL_DATA_SESSION_DefaultSession]
 [OPTIONS_Debug_Renesas M16C Assembler]
-"Assembly source file" "038f1b52289dfc10" 3 
+"Assembly source file" "038f1b52289dfc10" 4 
 [OPTIONS_Debug_Renesas M16C C/C++ Compiler]
-"C source file" "038f1b52289dfc10" 2 
-"C++ source file" "038f1b52289dfc10" 0 
-"C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\camera.c" "02d047576c0b4d10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\data_flash_lib.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\drive.c" "08590faacffdfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\i2c_eeprom_lib.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\ini.c" "09a9e5ace41efc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "0a2a6f1e46cc4d10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\lcd_lib.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\microsd_lib.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\printf_lib.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\startup.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\switch_lib.c" "038f1b52289dfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\trace.c" "0b654702a92b4d10" 2 
+"C source file" "0d0eac5fb77d4d10" 2 
+"C++ source file" "0d0eac5fb77d4d10" 3 
+"C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\camera.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\data_flash_lib.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\drive.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\ini.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\lcd_lib.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\microsd_lib.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\printf_lib.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\startup.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\switch_lib.c" "0d0eac5fb77d4d10" 2 
+"C:\WorkSpace\Atuta\kit07_38a\trace.c" "0d0eac5fb77d4d10" 2 
 [OPTIONS_Debug_Renesas M16C C/C++ Library Generator]
 "Single Shot" "038f1b52289dfc10" 1 
 [OPTIONS_Debug_Renesas M16C Configurator]
-"Single Shot" "0dbfc5ba895d4d10" 6 
+"Single Shot" "0576865cb77d4d10" 7 
 [OPTIONS_Debug_Renesas M16C ConfiguratorR8C]
-"Single Shot" "0dbfc5ba895d4d10" 5 
+"Single Shot" "0576865cb77d4d10" 6 
 [OPTIONS_Debug_Renesas OptLinker]
-"Single Shot" "0b35b6ba895d4d10" 4 
+"Single Shot" "0356585cb77d4d10" 5 
 [OPTIONS_Debug]
 "" 0 
-"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON3] " 6 
-"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON4] " 5 
+"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON3] " 7 
+"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON4] " 6 
 "[V|VERSION|1] [S|CPU|R8C2X] [S|OPTIMIZE|3] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"]" 1 
-"[V|VERSION|1] [S|INCLUDE|^"..\..\..\common_r8c38a^"] [S|DEFINE|__UART0__] [S|OUTPUT|OBJECTCODE] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [S|CPU|R8C2X]" 2 
-"[V|VERSION|1] [S|LIST|LM] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [S|CPU|R8C2X]" 3 
-"[V|VERSION|6] [B|DEBUG|1] [B|LIST|1] [S|LIST|^"$(CONFIGDIR)\$(PROJECTNAME).map^"] [S|SHOW|METHODCUSTOM|SYMBOL|TOTAL_SIZE] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).abs^"] [S|START|data_SE,bss_SE,data_SO,bss_SO,data_NE,bss_NE,data_NO,bss_NO,stack,istack,heap_NE(0400)|rom_NE,rom_NO,data_SEI,data_SOI,data_NEI,data_NOI,switch_table,program,interrupt(04000)|vector(0FED8)|rom_FE,rom_FO(010000)] [B|STACK|1] [B|TOTAL_SIZE|1] [S|OTHER|^"-change_message=information=1100,1322,1410 ^"] [B|BYTE_COUNT|1] [S|BYTE_COUNT_VALUE|20] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] [S|FORM|STYPE]" 4 
+"[V|VERSION|1] [S|INCLUDE|^"..\..\..\common_r8c38a^"] [S|DEFINE|__UART0__] [S|LANG|C] [S|OUTPUT|OBJECTCODE] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [B|OS|1] [S|MISRA|ALL] [S|CPU|R8C2X]
+" 2 
+"[V|VERSION|1] [S|LANG|CPP] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [B|OS|1] [S|MISRA|ALL]
+" 3 
+"[V|VERSION|1] [S|LIST|LM] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [S|CPU|R8C2X]" 4 
+"[V|VERSION|6] [B|DEBUG|1] [B|LIST|1] [S|LIST|^"$(CONFIGDIR)\$(PROJECTNAME).map^"] [S|SHOW|METHODCUSTOM|SYMBOL|TOTAL_SIZE] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).abs^"] [S|START|data_SE,bss_SE,data_SO,bss_SO,data_NE,bss_NE,data_NO,bss_NO,stack,istack,heap_NE(0400)|rom_NE,rom_NO,data_SEI,data_SOI,data_NEI,data_NOI,switch_table,program,interrupt(04000)|vector(0FED8)|rom_FE,rom_FO(010000)] [B|STACK|1] [B|TOTAL_SIZE|1] [S|OTHER|^"-change_message=information=1100,1322,1410 ^"] [B|BYTE_COUNT|1] [S|BYTE_COUNT_VALUE|20] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] [S|FORM|STYPE]" 5 
 [EXCLUDED_FILES_Debug]
-"C:\WorkSpace\Atuta\kit07_38a\isline.c" 
 [LINKAGE_ORDER_Debug]
 [GENERAL_DATA_CONFIGURATION_Debug]
 [OPTIONS_Release_Renesas M16C Assembler]
-"Assembly source file" "038f1b52289dfc10" 3 
+"Assembly source file" "038f1b52289dfc10" 4 
 [OPTIONS_Release_Renesas M16C C/C++ Compiler]
 "C source file" "038f1b52289dfc10" 2 
-"C++ source file" "038f1b52289dfc10" 0 
+"C++ source file" "03a69a794a6d4d10" 3 
 "C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\camera.c" "02d047576c0b4d10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\data_flash_lib.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" "08590faacffdfc10" 2 
-"C:\WorkSpace\Atuta\kit07_38a\i2c_eeprom_lib.c" "038f1b52289dfc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" "09a9e5ace41efc10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\isEncoder.c" "0a2a6f1e46cc4d10" 2 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" "038f1b52289dfc10" 2 
@@ -219,19 +218,21 @@
 [OPTIONS_Release_Renesas M16C C/C++ Library Generator]
 "Single Shot" "038f1b52289dfc10" 1 
 [OPTIONS_Release_Renesas M16C Configurator]
-"Single Shot" "0dbfc5ba895d4d10" 6 
+"Single Shot" "0576865cb77d4d10" 7 
 [OPTIONS_Release_Renesas M16C ConfiguratorR8C]
-"Single Shot" "0dbfc5ba895d4d10" 5 
+"Single Shot" "0576865cb77d4d10" 6 
 [OPTIONS_Release_Renesas OptLinker]
-"Single Shot" "0b35b6ba895d4d10" 4 
+"Single Shot" "0356585cb77d4d10" 5 
 [OPTIONS_Release]
 "" 0 
-"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON3] " 6 
-"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON4] " 5 
+"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON3] " 7 
+"[V|VERSION|1] [B|COMMAND|1] [S|SPEC|UITRON4] " 6 
 "[V|VERSION|1] [S|CPU|R8C2X] [S|OPTIMIZE|3] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(PROJECTNAME).lib^"]" 1 
-"[V|VERSION|1] [S|LIST|L|M] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [S|CPU|R8C2X]" 3 
+"[V|VERSION|1] [S|LANG|CPP] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [S|MISRA|ALL]
+" 3 
+"[V|VERSION|1] [S|LIST|L|M] [B|INSPECTOR|1] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [S|CPU|R8C2X]" 4 
 "[V|VERSION|1] [S|OUTPUT|OBJECTCODE] [S|OUTPUTPATH|^"$(CONFIGDIR)\$(FILELEAF).obj^"] [B|INSPECTOR|1] [S|CPU|R8C2X]" 2 
-"[V|VERSION|6] [B|DEBUG|1] [B|LIST|1] [S|LIST|^"$(CONFIGDIR)\$(PROJECTNAME).map^"] [S|SHOW|METHODCUSTOM|SYMBOL|TOTAL_SIZE] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).abs^"] [S|START|data_SE,bss_SE,data_SO,bss_SO,data_NE,bss_NE,data_NO,bss_NO,stack,istack,heap_NE(400)|rom_NE,rom_NO,data_SEI,data_SOI,data_NEI,data_NOI,switch_table,program,interrupt(04000)|vector(0fedc)|rom_FE,rom_FO(010000)] [B|STACK|1] [B|TOTAL_SIZE|1] [S|OTHER|^"-change_message=information=1100,1322,1410 ^"] [B|BYTE_COUNT|1] [S|BYTE_COUNT_VALUE|20] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] [S|FORM|STYPE]" 4 
+"[V|VERSION|6] [B|DEBUG|1] [B|LIST|1] [S|LIST|^"$(CONFIGDIR)\$(PROJECTNAME).map^"] [S|SHOW|METHODCUSTOM|SYMBOL|TOTAL_SIZE] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).abs^"] [S|START|data_SE,bss_SE,data_SO,bss_SO,data_NE,bss_NE,data_NO,bss_NO,stack,istack,heap_NE(400)|rom_NE,rom_NO,data_SEI,data_SOI,data_NEI,data_NOI,switch_table,program,interrupt(04000)|vector(0fedc)|rom_FE,rom_FO(010000)] [B|STACK|1] [B|TOTAL_SIZE|1] [S|OTHER|^"-change_message=information=1100,1322,1410 ^"] [B|BYTE_COUNT|1] [S|BYTE_COUNT_VALUE|20] [S|OUTPUT|^"$(CONFIGDIR)\$(PROJECTNAME).mot^"] [S|FORM|STYPE]" 5 
 [EXCLUDED_FILES_Release]
 [LINKAGE_ORDER_Release]
 [GENERAL_DATA_CONFIGURATION_Release]
