@@ -102,6 +102,7 @@ void main( void )
 //	LPF();				/* ローパスフィルター */
 	camera_Caputure();
 //	printf("pattern = %d  stop_timer = %d\n",pattern,stop_timer);
+//	printf("servo_angle = %d\n",servo_angle);
 	t = data_buff[DF_STOP]*1000;
 	if( t != 0 && stop_timer >= ((unsigned long)t) && pattern > 100 && pattern < 1000){
 		msdFlag = 0;
@@ -182,7 +183,7 @@ void main( void )
 					timer(2000);
 				break;
 				case 3:/* Moniter */
-					pattern = 3000;
+					pattern = 4000;
 				break;
 			    default:
 					pattern = 200;
@@ -203,7 +204,8 @@ void main( void )
 	case 200:
 //		Srevo_state = 1;
 		if( pushsw_get() ) {
-			pattern = 210;
+//			pattern = 210;
+			pattern = 700;
 		}
         if( cnt1 < 50 ) {               /* LED点滅処理                  */
             led_out( 0x1 );
@@ -212,11 +214,12 @@ void main( void )
         } else {
             cnt1 = 0;
         }
-		run(0,0);
+		motor( 0, 0 );
 	break;
 	case 210:/* ストレート */
 		/* カーブによってPIDを変える */
-//		Srevo_state = 1;
+		Srevo_state = 1;
+//		if(White > 45) pattern = 610;
 		if(Center > 10){
 			LR = 1;
 			cnt_Curve = 0;
@@ -238,10 +241,10 @@ void main( void )
 		}else{
 			 SPEED += pid_angle /4;
 		}
-		run(SPEED,pid_angle);
+		run(SPEED,pid_angle + servo_angle);
 	break;
 	case 220:/* カーブ */
-//		Srevo_state = 0;
+		Srevo_state = 0;
 		if(Center == 999){
 			pattern = 230;
 		}else{
@@ -372,15 +375,15 @@ void main( void )
 /* Sprint */
 	case 500:/* 姿勢を整える */
  		run(75,pid_angle);
-		if(tripmeter() > 150 /*|| cnt1 > 1000 */){
+		if(tripmeter() > 500 /*|| cnt1 > 1000 */){
 			set_Speed(Sprint_MAX_SPEED);
 			set_PID(SprintPID);
 			pattern = 510;
 		}
 	break;
 	case 510:
-		run(75,pid_angle);
-		if(tripmeter() > 450 /*|| cnt1 > 2500*/){
+		run(tripmeter()/10+25,pid_angle);
+		if(tripmeter() > 750 /*|| cnt1 > 2500*/){
             cnt1 = 0;
 			pattern = 520;
 		}
@@ -389,10 +392,10 @@ void main( void )
 //		set_PID(SprintPID);
 		SPEED = 100;
 		if(Center > 20){
-			pattern = 530;
+//			pattern = 530;
 		}
 		if(Center < -20){
-			pattern = 530;
+//			pattern = 530;
 		}
 		/* カメラのずれによる減速 */
 		if(pid_angle > 0){
@@ -441,7 +444,7 @@ void main( void )
 		}
 		break;	
 	case 600:
-		run(0,0);
+		motor( 0, 0 );
 		handle(30);
 		timer(1000);
 		handle(-30);
@@ -452,7 +455,15 @@ void main( void )
 	break;
 	case 610:
 		Light_OFF;
-		run(0,0);
+		motor( 0, 0 );
+	break;
+	case 700:
+		set_Speed(Sprint_MAX_SPEED);
+		run(100,0);
+		if(cnt1 > 500)pattern = 710;
+	break;
+	case 710:
+		motor( 0, 0 );
 	break;
     case 101:
         /* microSDの停止処理 */
@@ -497,6 +508,7 @@ void main( void )
 		printf("   servo_center = %d\n",servo_center);
 		printf("   servo   KSp %d.%d  KSi %d.%d  KSd  %d.%d \n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10,data_buff[DF_KSI]/10,data_buff[DF_KSI]%10,data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
 		printf("   machine KMp %d.%d  KMi %d.%d  KMd  %d.%d \n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10,data_buff[DF_KMI]/10,data_buff[DF_KMI]%10,data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
+		printf("   Motor Offset %d\n",data_buff[DF_OFFSET_ST]);
 		printf("\n");
 
 		printf("Camera parameter \n");

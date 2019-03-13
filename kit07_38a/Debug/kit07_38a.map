@@ -1,4 +1,4 @@
-Optimizing Linkage Editor (V.10.01.00.000)        11-Mar-2019 17:33:22
+Optimizing Linkage Editor (V.10.01.00.000)        13-Mar-2019 16:36:48
 
 *** Options ***
 
@@ -66,21 +66,21 @@ data_NEI
 data_NOI
                                   000040ee  000040f3         6   1
 program
-                                  000040f4  0000fb19      ba26   2
+                                  000040f4  0000fc59      bb66   2
 interrupt
-                                  0000fb1a  0000fb1a         0   2
+                                  0000fc5a  0000fc5a         0   2
 vector
                                   0000fed8  0000ffd7       100   2
 fvector
                                   0000ffd8  0000ffff        28   1
 rom_FO
-                                  00010000  000110b7      10b8   1
+                                  00010000  00011143      1144   1
 
 *** Total Section Size ***
 
 RAMDATA SECTION:  00002473 Byte(s)
-ROMDATA SECTION:  000012d4 Byte(s)
-PROGRAM SECTION:  0000ba26 Byte(s)
+ROMDATA SECTION:  00001360 Byte(s)
+PROGRAM SECTION:  0000bb66 Byte(s)
 
 *** ID code information ***
 
@@ -530,23 +530,23 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\data_flash_lib.obj
   $checkBlockAddress
                                   00004d64        4e   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\drive.obj
-                                  00004db2  00004f17       166
+                                  00004db2  00004f35       184
   $set_Speed
                                   00004db2         6   func ,g         * 
   $run
-                                  00004db8        64   func ,g         * 
+                                  00004db8        82   func ,g         * 
   $motor
-                                  00004e1c        cc   func ,g         * 
+                                  00004e3a        cc   func ,g         * 
   $handle
-                                  00004ee8        30   func ,g         * 
+                                  00004f06        30   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj
-                                  00004f18  00005435       51e
+                                  00004f36  00005435       500
   _init
-                                  00004f18        be   func ,g         * 
+                                  00004f36        be   func ,g         * 
   _intTRB
-                                  00004fd6       308   func ,g         * 
+                                  00004ff4       308   func ,g         * 
   _memPrint
-                                  000052de       13a   func ,g         * 
+                                  000052fc       11c   func ,g         * 
   _timer
                                   00005418        1e   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\isEncoder.obj
@@ -562,399 +562,399 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\isEncoder.obj
   _speedmeter
                                   00005500         6   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj
-                                  00005506  000063ed       ee8
+                                  00005506  0000645b       f56
   _main
-                                  00005506       eca   func ,g         * 
+                                  00005506       f38   func ,g         * 
   _dipsw_get
-                                  000063d0         6   func ,g         * 
+                                  0000643e         6   func ,g         * 
   _pushsw_get
-                                  000063d6         8   func ,g         * 
+                                  00006444         8   func ,g         * 
   $led_out
-                                  000063de        10   func ,g         * 
+                                  0000644c        10   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\lcd_lib.obj
-                                  000063ee  00006761       374
+                                  0000645c  000067cf       374
   $lcd_nop
-                                  000063ee        12   func ,l         * 
+                                  0000645c        12   func ,l         * 
   _lcdTimer
-                                  00006400        2a   func ,l         * 
+                                  0000646e        2a   func ,l         * 
   _lcdBusyStart
-                                  0000642a         e   func ,l         * 
+                                  00006498         e   func ,l         * 
   $lcdOut2
-                                  00006438        22   func ,l         * 
+                                  000064a6        22   func ,l         * 
   $lcdOut
-                                  0000645a        24   func ,l         * 
+                                  000064c8        24   func ,l         * 
   $lcdLocate
-                                  0000647e        32   func ,l         * 
+                                  000064ec        32   func ,l         * 
   _checkLcdBusy
-                                  000064b0        7e   func ,l         * 
+                                  0000651e        7e   func ,l         * 
   _initLcd
-                                  0000652e        e0   func ,g         * 
+                                  0000659c        e0   func ,g         * 
   _lcdShowProcess
-                                  0000660e        cc   func ,g         * 
+                                  0000667c        cc   func ,g         * 
   _lcdPrintf
-                                  000066da        68   func ,g         * 
+                                  00006748        68   func ,g         * 
   $lcdPosition
-                                  00006742        20   func ,g         * 
+                                  000067b0        20   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  00006762  00008a4b      22ea
+                                  000067d0  00008b8b      23bc
   _readDataFlashParameter
-                                  00006762        6e   func ,g         * 
+                                  000067d0        6e   func ,g         * 
   _writeDataFlashParameter
-                                  000067d0        56   func ,g         * 
+                                  0000683e        56   func ,g         * 
   _lcdProcess
-                                  00006826       f3c   func ,g         * 
+                                  00006894       f9a   func ,g         * 
   _sciProcess
-                                  00007762      12ea   func ,g         * 
+                                  0000782e      135e   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00008a4c  0000a587      1b3c
+                                  00008b8c  0000a6c7      1b3c
   $msd_write
-                                  00008a4c        14   func ,l         * 
+                                  00008b8c        14   func ,l         * 
   _msd_read
-                                  00008a60        1c   func ,l         * 
+                                  00008ba0        1c   func ,l         * 
   $sendCMD
-                                  00008a7c        54   func ,l         * 
+                                  00008bbc        54   func ,l         * 
   _initMicroSD
-                                  00008ad0       40a   func ,g         * 
+                                  00008c10       40a   func ,g         * 
   _getMsdType
-                                  00008eda         6   func ,g         * 
+                                  0000901a         6   func ,g         * 
   _getMsdSize
-                                  00008ee0         a   func ,g         * 
+                                  00009020         a   func ,g         * 
   $readMicroSD
-                                  00008eea       120   func ,g         * 
+                                  0000902a       120   func ,g         * 
   $writeMicroSD
-                                  0000900a       140   func ,g         * 
+                                  0000914a       140   func ,g         * 
   $getMicroSD_CSD
-                                  0000914a        92   func ,g         * 
+                                  0000928a        92   func ,g         * 
   _eraseMicroSD
-                                  000091dc       1b8   func ,g         * 
+                                  0000931c       1b8   func ,g         * 
   $setMicroSDdata
-                                  00009394        9e   func ,g         * 
+                                  000094d4        9e   func ,g         * 
   _microSDProcessStart
-                                  00009432        be   func ,g         * 
+                                  00009572        be   func ,g         * 
   _microSDProcessEnd
-                                  000094f0        32   func ,g         * 
+                                  00009630        32   func ,g         * 
   _microSDProcess
-                                  00009522       170   func ,g         * 
+                                  00009662       170   func ,g         * 
   _checkMicroSDProcess
-                                  00009692         6   func ,g         * 
+                                  000097d2         6   func ,g         * 
   _intS1T
-                                  00009698        28   func ,g         * 
+                                  000097d8        28   func ,g         * 
   $setMicroSDLedPort
-                                  000096c0        26   func ,g         * 
+                                  00009800        26   func ,g         * 
   $convertBinaryToLong
-                                  000096e6        24   func ,l         * 
+                                  00009826        24   func ,l         * 
   _mountMicroSD_FAT32
-                                  0000970a       1ae   func ,g         * 
+                                  0000984a       1ae   func ,g         * 
   _ClusterToSector
-                                  000098b8        26   func ,l         * 
+                                  000099f8        26   func ,l         * 
   _nextCluster
-                                  000098de       214   func ,l         * 
+                                  00009a1e       214   func ,l         * 
   _writeFile
-                                  00009af2       790   func ,g         * 
+                                  00009c32       790   func ,g         * 
   $convertDecimalToStr
-                                  0000a282        50   func ,g         * 
+                                  0000a3c2        50   func ,g         * 
   $convertHexToStr
-                                  0000a2d2        3c   func ,g         * 
+                                  0000a412        3c   func ,g         * 
   $convertBinaryToStr
-                                  0000a30e        32   func ,g         * 
+                                  0000a44e        32   func ,g         * 
   _getCompileYear
-                                  0000a340        36   func ,g         * 
+                                  0000a480        36   func ,g         * 
   _getCompileMonth
-                                  0000a376        4c   func ,g         * 
+                                  0000a4b6        4c   func ,g         * 
   _getCompileDay
-                                  0000a3c2        32   func ,g         * 
+                                  0000a502        32   func ,g         * 
   _getCompileHour
-                                  0000a3f4        2c   func ,g         * 
+                                  0000a534        2c   func ,g         * 
   _getCompilerMinute
-                                  0000a420        32   func ,g         * 
+                                  0000a560        32   func ,g         * 
   _getCompilerSecond
-                                  0000a452        32   func ,g         * 
+                                  0000a592        32   func ,g         * 
   $setDateStamp
-                                  0000a484        4e   func ,g         * 
+                                  0000a5c4        4e   func ,g         * 
   $setTimeStamp
-                                  0000a4d2        4c   func ,g         * 
+                                  0000a612        4c   func ,g         * 
   _readMicroSDNumber
-                                  0000a51e        28   func ,g         * 
+                                  0000a65e        28   func ,g         * 
   $writeMicroSDNumber
-                                  0000a546        42   func ,g         * 
+                                  0000a686        42   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\printf_lib.obj
-                                  0000a588  0000a81d       296
+                                  0000a6c8  0000a95d       296
   $init_uart0_printf
-                                  0000a588        ce   func ,g         * 
+                                  0000a6c8        ce   func ,g         * 
   $write
-                                  0000a656        4a   func ,g         * 
+                                  0000a796        4a   func ,g         * 
   _read
-                                  0000a6a0        8e   func ,g         * 
+                                  0000a7e0        8e   func ,g         * 
   $setSendBuff
-                                  0000a72e        2a   func ,g         * 
+                                  0000a86e        2a   func ,g         * 
   $getSendBuff
-                                  0000a758        36   func ,g         * 
+                                  0000a898        36   func ,g         * 
   __uart0_trance
-                                  0000a78e        32   func ,g         * 
+                                  0000a8ce        32   func ,g         * 
   $get_uart0
-                                  0000a7c0        42   func ,g         * 
+                                  0000a900        42   func ,g         * 
   $put_uart0
-                                  0000a802        10   func ,g         * 
+                                  0000a942        10   func ,g         * 
   __sget
-                                  0000a812         4   func ,g         * 
+                                  0000a952         4   func ,g         * 
   $_sput
-                                  0000a816         4   func ,g         * 
+                                  0000a956         4   func ,g         * 
   $_pput
-                                  0000a81a         4   func ,g         * 
+                                  0000a95a         4   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  0000a81e  0000a8c1        a4
+                                  0000a95e  0000aa01        a4
   __dummy_int
-                                  0000a81e         2   func ,g         * 
+                                  0000a95e         2   func ,g         * 
   _initsct
-                                  0000a820        66   func ,g         * 
+                                  0000a960        66   func ,g         * 
   __program_top
-                                  0000a820         0   none ,l         * 
+                                  0000a960         0   none ,l         * 
   _start
-                                  0000a886        3c   entry,g         * 
+                                  0000a9c6        3c   entry,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\switch_lib.obj
-                                  0000a8c2  0000aae3       222
+                                  0000aa02  0000ac23       222
   _initSwitch
-                                  0000a8c2        40   func ,g         * 
+                                  0000aa02        40   func ,g         * 
   _getSwNow
-                                  0000a902        22   func ,g         * 
+                                  0000aa42        22   func ,g         * 
   $getSwFlag
-                                  0000a924        5e   func ,g         * 
+                                  0000aa64        5e   func ,g         * 
   _switchProcess
-                                  0000a982       162   func ,g         * 
+                                  0000aac2       162   func ,g         * 
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\trace.obj
-                                  0000aae4  0000abbf        dc
+                                  0000ac24  0000acff        dc
   _servo_Trace
-                                  0000aae4        7e   func ,g         * 
+                                  0000ac24        7e   func ,g         * 
   _motor_Trace
-                                  0000ab62        5e   func ,g         * 
+                                  0000aca2        5e   func ,g         * 
 FILE=_f4adds
-                                  0000abc0  0000acf8       139
+                                  0000ad00  0000ae38       139
   __f4sub
-                                  0000abea         0   none ,g         * 
+                                  0000ad2a         0   none ,g         * 
   __f4add
-                                  0000abf0         0   none ,g         * 
+                                  0000ad30         0   none ,g         * 
 FILE=_f4muls
-                                  0000acfa  0000ada9        b0
+                                  0000ae3a  0000aee9        b0
   __f4mul
-                                  0000ad1e         0   none ,g         * 
+                                  0000ae5e         0   none ,g         * 
 FILE=_f4tof8
-                                  0000adaa  0000ae2f        86
+                                  0000aeea  0000af6f        86
   __f4tof8
-                                  0000adaa        86   func ,g         * 
+                                  0000aeea        86   func ,g         * 
 FILE=_f4toi4
-                                  0000ae30  0000ae55        26
+                                  0000af70  0000af95        26
   __f4toi4
-                                  0000ae30        26   func ,g         * 
+                                  0000af70        26   func ,g         * 
 FILE=_f8div
-                                  0000ae56  0000b11f       2ca
+                                  0000af96  0000b25f       2ca
   __f8div
-                                  0000ae56       2ca   func ,g         * 
+                                  0000af96       2ca   func ,g         * 
 FILE=_f8mul
-                                  0000b120  0000b3e7       2c8
+                                  0000b260  0000b527       2c8
   __f8mul
-                                  0000b120       2c8   func ,g         * 
+                                  0000b260       2c8   func ,g         * 
 FILE=_f8tof4
-                                  0000b3e8  0000b49b        b4
+                                  0000b528  0000b5db        b4
   __f8tof4
-                                  0000b3e8        b4   func ,g         * 
+                                  0000b528        b4   func ,g         * 
 FILE=_f8toi4
-                                  0000b49c  0000b4c1        26
+                                  0000b5dc  0000b601        26
   __f8toi4
-                                  0000b49c        26   func ,g         * 
+                                  0000b5dc        26   func ,g         * 
 FILE=_i4div
-                                  0000b4c2  0000b544        83
+                                  0000b602  0000b684        83
   __i4div
-                                  0000b4c2         0   none ,g         * 
+                                  0000b602         0   none ,g         * 
 FILE=_i4divu
-                                  0000b546  0000b592        4d
+                                  0000b686  0000b6d2        4d
   __i4divU
-                                  0000b546         0   none ,g         * 
+                                  0000b686         0   none ,g         * 
 FILE=_i4modu
-                                  0000b594  0000b5de        4b
+                                  0000b6d4  0000b71e        4b
   __i4modU
-                                  0000b594         0   none ,g         * 
+                                  0000b6d4         0   none ,g         * 
 FILE=_i4tof4
-                                  0000b5e0  0000b601        22
+                                  0000b720  0000b741        22
   __i4tof4
-                                  0000b5e0        22   func ,g         * 
+                                  0000b720        22   func ,g         * 
 FILE=_i4utof4
-                                  0000b602  0000b623        22
+                                  0000b742  0000b763        22
   __i4Utof4
-                                  0000b602        22   func ,g         * 
+                                  0000b742        22   func ,g         * 
 FILE=vsprintf
-                                  0000b624  0000b6c9        a6
+                                  0000b764  0000b809        a6
   _vsprintf
-                                  0000b624        a6   func ,g         * 
+                                  0000b764        a6   func ,g         * 
 FILE=printf
-                                  0000b6ca  0000b787        be
+                                  0000b80a  0000b8c7        be
   _printf
-                                  0000b6ca        be   func ,g         * 
+                                  0000b80a        be   func ,g         * 
 FILE=scanf
-                                  0000b788  0000b955       1ce
+                                  0000b8c8  0000ba95       1ce
   _scanf
-                                  0000b788       1ce   func ,g         * 
+                                  0000b8c8       1ce   func ,g         * 
 FILE=sprintf
-                                  0000b956  0000ba15        c0
+                                  0000ba96  0000bb55        c0
   _sprintf
-                                  0000b956        c0   func ,g         * 
+                                  0000ba96        c0   func ,g         * 
 FILE=strtol
-                                  0000ba16  0000bcd7       2c2
+                                  0000bb56  0000be17       2c2
   _strtol
-                                  0000ba16       2c2   func ,g         * 
+                                  0000bb56       2c2   func ,g         * 
 FILE=nmemcmp
-                                  0000bcd8  0000bd11        3a
+                                  0000be18  0000be51        3a
   $_n_n_memcmp
-                                  0000bcd8        3a   func ,g         * 
+                                  0000be18        3a   func ,g         * 
 FILE=nmemset
-                                  0000bd12  0000bd3b        2a
+                                  0000be52  0000be7b        2a
   $_n_memset
-                                  0000bd12        2a   func ,g         * 
+                                  0000be52        2a   func ,g         * 
 FILE=strncmp
-                                  0000bd3c  0000bd9d        62
+                                  0000be7c  0000bedd        62
   _strncmp
-                                  0000bd3c        62   func ,g         * 
+                                  0000be7c        62   func ,g         * 
 FILE=_f4rets
-                                  0000bd9e  0000bdcd        30
+                                  0000bede  0000bf0d        30
   __f4retNaN
-                                  0000bd9e         0   none ,g         * 
+                                  0000bede         0   none ,g         * 
   __f4retZero
-                                  0000bda4         0   none ,g         * 
+                                  0000bee4         0   none ,g         * 
   __f4retInf
-                                  0000bda6         0   none ,g         * 
+                                  0000bee6         0   none ,g         * 
   __f4retNum
-                                  0000bdb6         0   none ,g         * 
+                                  0000bef6         0   none ,g         * 
 FILE=_f4ltor
-                                  0000bdce  0000be13        46
+                                  0000bf0e  0000bf53        46
   $_f4ltor
-                                  0000bdce        46   func ,g         * 
+                                  0000bf0e        46   func ,g         * 
 FILE=_f4rtol
-                                  0000be14  0000be51        3e
+                                  0000bf54  0000bf91        3e
   $_f4rtol
-                                  0000be14        3e   func ,g         * 
+                                  0000bf54        3e   func ,g         * 
 FILE=_f8ltor
-                                  0000be52  0000bea5        54
+                                  0000bf92  0000bfe5        54
   $_f8ltor
-                                  0000be52        54   func ,g         * 
+                                  0000bf92        54   func ,g         * 
 FILE=_f8rtol
-                                  0000bea6  0000bee7        42
+                                  0000bfe6  0000c027        42
   $_f8rtol
-                                  0000bea6        42   func ,g         * 
+                                  0000bfe6        42   func ,g         * 
 FILE=_ftol
-                                  0000bee8  0000bff7       110
+                                  0000c028  0000c137       110
   $_ftol
-                                  0000bee8       110   func ,g         * 
+                                  0000c028       110   func ,g         * 
 FILE=_i4i2mul
-                                  0000bff8  0000c00a        13
+                                  0000c138  0000c14a        13
   __i4i2mul
-                                  0000bff8         0   none ,g         * 
+                                  0000c138         0   none ,g         * 
 FILE=_ltof
-                                  0000c00c  0000c0df        d4
+                                  0000c14c  0000c21f        d4
   $_ltof
-                                  0000c00c        d4   func ,g         * 
+                                  0000c14c        d4   func ,g         * 
 FILE=print
-                                  0000c0e0  0000da3f      1960
+                                  0000c220  0000db7f      1960
   __print
-                                  0000c0e0       f3a   func ,g         * 
+                                  0000c220       f3a   func ,g         * 
   __f8prn
-                                  0000d01a       55a   func ,l         * 
+                                  0000d15a       55a   func ,l         * 
   $henkan1
-                                  0000d574        42   func ,l         * 
+                                  0000d6b4        42   func ,l         * 
   $henkan2
-                                  0000d5b6        54   func ,l         * 
+                                  0000d6f6        54   func ,l         * 
   __pri
-                                  0000d60a       10e   func ,l         * 
+                                  0000d74a       10e   func ,l         * 
   $_f8geti
-                                  0000d718       20c   func ,l         * 
+                                  0000d858       20c   func ,l         * 
   $_inmod
-                                  0000d924       11c   func ,l         * 
+                                  0000da64       11c   func ,l         * 
 FILE=fgetc
-                                  0000da40  0000dc47       208
+                                  0000db80  0000dd87       208
   _fgetc
-                                  0000da40       208   func ,g         * 
+                                  0000db80       208   func ,g         * 
 FILE=fputc
-                                  0000dc48  0000dcc7        80
+                                  0000dd88  0000de07        80
   $fputc
-                                  0000dc48        80   func ,g         * 
+                                  0000dd88        80   func ,g         * 
 FILE=scan
-                                  0000dcc8  0000eb2b       e64
+                                  0000de08  0000ec6b       e64
   $__scan
-                                  0000dcc8       e64   func ,g         * 
+                                  0000de08       e64   func ,g         * 
 FILE=ungetc
-                                  0000eb2c  0000eb67        3c
+                                  0000ec6c  0000eca7        3c
   $ungetc
-                                  0000eb2c        3c   func ,g         * 
+                                  0000ec6c        3c   func ,g         * 
 FILE=printf_sub
-                                  0000eb68  0000eb77        10
+                                  0000eca8  0000ecb7        10
   $__pc
-                                  0000eb68        10   func ,g         * 
+                                  0000eca8        10   func ,g         * 
 FILE=scanf_sub
-                                  0000eb78  0000eb87        10
+                                  0000ecb8  0000ecc7        10
   ___sc
-                                  0000eb78        10   func ,g         * 
+                                  0000ecb8        10   func ,g         * 
 FILE=sprintf_sub
-                                  0000eb88  0000eb9f        18
+                                  0000ecc8  0000ecdf        18
   $__sp
-                                  0000eb88        18   func ,g         * 
+                                  0000ecc8        18   func ,g         * 
 FILE=_f8add
-                                  0000eba0  0000f4b9       91a
+                                  0000ece0  0000f5f9       91a
   __f8add
-                                  0000eba0       6dc   func ,g         * 
+                                  0000ece0       6dc   func ,g         * 
   $_asr_n
-                                  0000f27c       23e   func ,l         * 
+                                  0000f3bc       23e   func ,l         * 
 FILE=_f8eq
-                                  0000f4ba  0000f535        7c
+                                  0000f5fa  0000f675        7c
   __f8eq
-                                  0000f4ba        7c   func ,g         * 
+                                  0000f5fa        7c   func ,g         * 
 FILE=_f8ge
-                                  0000f536  0000f5dd        a8
+                                  0000f676  0000f71d        a8
   __f8ge
-                                  0000f536        a8   func ,g         * 
+                                  0000f676        a8   func ,g         * 
 FILE=_f8lt
-                                  0000f5de  0000f685        a8
+                                  0000f71e  0000f7c5        a8
   __f8lt
-                                  0000f5de        a8   func ,g         * 
+                                  0000f71e        a8   func ,g         * 
 FILE=_f8ne
-                                  0000f686  0000f701        7c
+                                  0000f7c6  0000f841        7c
   __f8ne
-                                  0000f686        7c   func ,g         * 
+                                  0000f7c6        7c   func ,g         * 
 FILE=_i4mulu
-                                  0000f702  0000f71d        1c
+                                  0000f842  0000f85d        1c
   __i4mulU
-                                  0000f702         0   none ,g         * 
+                                  0000f842         0   none ,g         * 
 FILE=_i4tof8
-                                  0000f71e  0000f73f        22
+                                  0000f85e  0000f87f        22
   __i4tof8
-                                  0000f71e        22   func ,g         * 
+                                  0000f85e        22   func ,g         * 
 FILE=_i8divu
-                                  0000f740  0000f837        f8
+                                  0000f880  0000f977        f8
   __i8divU
-                                  0000f740         0   none ,g         * 
+                                  0000f880         0   none ,g         * 
 FILE=_i8modu
-                                  0000f838  0000f906        cf
+                                  0000f978  0000fa46        cf
   __i8modU
-                                  0000f838         0   none ,g         * 
+                                  0000f978         0   none ,g         * 
 FILE=_i8mulu
-                                  0000f908  0000fadd       1d6
+                                  0000fa48  0000fc1d       1d6
   __i8mulU
-                                  0000f908         0   none ,g         * 
+                                  0000fa48         0   none ,g         * 
 FILE=fprintf_sub
-                                  0000fade  0000faed        10
+                                  0000fc1e  0000fc2d        10
   $__fp
-                                  0000fade        10   func ,g         * 
+                                  0000fc1e        10   func ,g         * 
 FILE=fscanf_sub
-                                  0000faee  0000fafd        10
+                                  0000fc2e  0000fc3d        10
   ___fs
-                                  0000faee        10   func ,g         * 
+                                  0000fc2e        10   func ,g         * 
 FILE=sscanf_sub
-                                  0000fafe  0000fb19        1c
+                                  0000fc3e  0000fc59        1c
   ___ss
-                                  0000fafe        1c   func ,g         * 
+                                  0000fc3e        1c   func ,g         * 
 
 SECTION=interrupt
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
-                                  0000fb1a  0000fb1a         0
+                                  0000fc5a  0000fc5a         0
   __interrupt_top
-                                  0000fb1a         0   none ,l         * 
+                                  0000fc5a         0   none ,l         * 
 
 SECTION=vector
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\startup.obj
@@ -974,19 +974,19 @@ FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\ini.obj
                                   00010047  0001008b        45
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\kit07_38a.obj
-                                  0001008c  00010322       297
+                                  0001008c  00010336       2ab
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\LcdProcess.obj
-                                  00010323  00010f87       c65
+                                  00010337  00011013       cdd
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\microsd_lib.obj
-                                  00010f88  00010fac        25
+                                  00011014  00011038        25
   _monthStr
-                                  00010f88        25   data ,l         * 
+                                  00011014        25   data ,l         * 
 FILE=cdata
-                                  00010fad  000110ad       101
+                                  00011039  00011139       101
   __ctype
-                                  00010fad       101   data ,g         * 
+                                  00011039       101   data ,g         * 
 FILE=print
-                                  000110ae  000110b7         a
+                                  0001113a  00011143         a
 
 Absolute value symbols
 FILE=C:\WorkSpace\Atuta\kit07_38a\Debug\camera.obj

@@ -3,7 +3,7 @@
 -D__UART0__
 -c
 -finfo
--dir "E:\Atuta\kit07_38a\Debug"
+-dir "C:\WorkSpace\Atuta\kit07_38a\Debug"
 -OS
 -R8CE
-"E:\Atuta\kit07_38a\switch_lib.c"
+"C:\WorkSpace\Atuta\kit07_38a\switch_lib.c"

@@ -53,8 +53,12 @@ void run(int speed, int turn_speed)
 
     d1 = d1 * setSpeed / 100;
     d2 = d2 * setSpeed / 100;
-
-	motor(d1,d2);
+	
+	if(speed == 0){
+		motor(0,0);
+	}else{
+		motor(d1-data_buff[DF_OFFSET_ST],d2+data_buff[DF_OFFSET_ST]);
+	}
 
 }
 /************************************************************************/

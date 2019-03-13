@@ -30,13 +30,11 @@ int             msdTimer;               /* æ“¾ŠÔŠuŒvZ—p               */
 int             msdError;               /* ƒGƒ‰[”Ô†‹L˜^               */
 /* “à•”‹L˜^ */
 struct MEM{
-	unsigned char pattern;
+	unsigned int pattern;
 	unsigned int distance;
-	unsigned int sensor;
-//	float pos;
+	unsigned int center;
 	int PID;
 	char white;
-	char power;
 	char speed;
 };
 int				memCnt = 0;					/* “à•”‹L˜^‚Ì”Ô† */
@@ -240,17 +238,16 @@ void memPrint(void)
 	for(i = 0; i < 500; i++){
 		printf("%d,",mem[i].pattern);		
 		printf("%d,",mem[i].distance);
-		printf("0x%4x,",mem[i].sensor);
+		printf("0x%4x,",mem[i].center);
 		for(j = 0; j < 16; j++){
-			if(mem[i].sensor & 0x8000)printf("1");
+			if(mem[i].center & 0x8000)printf("1");
 			else					printf("0");
-			mem[i].sensor = mem[i].sensor << 1;
+			mem[i].center = mem[i].center << 1;
 		}
 		printf(",");
 //		float_printf(pos,3);printf(",");
 		printf("%d,",mem[i].PID);
 		printf("%d,",mem[i].white);
-		printf("%d,",mem[i].power);
 		printf("%d\n",mem[i].speed);
 	}
 

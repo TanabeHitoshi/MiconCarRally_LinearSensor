@@ -23,7 +23,7 @@ int		lcd_pattern = 0;
 int		lcd_count = 0;
 int		lcd_item[3][30]={	0,2,10,11,12,13,14,15,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 							0,3,18,19,20,21,22,23,24,25,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-							0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,-1,0,0,0,0,0};		/* 設定項目 			*/
+							0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,-1,0};		/* 設定項目 			*/
 /************************************************************************/
 /* DataFlashのパラメータ読み込み                                        */
 /* 引数         なし                                                    */
@@ -782,6 +782,24 @@ int lcdProcess( void )
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
         lcdPrintf( "26  stop time       %2d s", i );
         break;
+	case 27:
+        /* 直進補正 */
+		i = data_buff[DF_OFFSET_ST];
+        if( getSwFlag(SW_1) ) {
+            i++;
+            if( i > 30 ) i = 30;
+        }
+        if( getSwFlag(SW_0) ) {
+            i--;
+            if( i < -30 ) i = -30;
+        }
+        data_buff[DF_OFFSET_ST] = i;
+		
+        /* LCD処理 */
+        lcdPosition( 0, 0 );
+                 /* 0123456789abcdef0123456789abcdef 1行16文字 */
+        lcdPrintf( "27  Offset         %2d", i );
+        break;
 
 	}
 }
@@ -802,6 +820,7 @@ void sciProcess( void )
 	printf("   Stop Timer = %dS\n",data_buff[DF_STOP]);
 	printf("   Servo  parameter KSp %d.%d   KSi %d.%d   KSd %d.%d\n",data_buff[DF_KSP]/10,data_buff[DF_KSP]%10,data_buff[DF_KSI]/10,data_buff[DF_KSI]%10,data_buff[DF_KSD]/10,data_buff[DF_KSD]%10);
 	printf("   Macine parameter KMp %d.%d   KMi %d.%d   KMd %d.%d\n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10,data_buff[DF_KMI]/10,data_buff[DF_KMI]%10,data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
+	printf("   Motor Offset %d\n",data_buff[DF_OFFSET_ST]);
 //	printf("   Log time %dms\n",data_buff[DF_log_time]);
 //	printf("   Log start Number %d\n",data_buff[DF_log_potion]);
 //	printf("\n");
@@ -836,6 +855,7 @@ void sciProcess( void )
 			printf("   6: Machine parameter KMp %d.%d\n",data_buff[DF_KMP]/10,data_buff[DF_KMP]%10);
 			printf("   7: Machine parameter KMi %d.%d\n",data_buff[DF_KMI]/10,data_buff[DF_KMI]%10);
 			printf("   8: Machine parameter KMd %d.%d\n",data_buff[DF_KMD]/10,data_buff[DF_KMD]%10);
+			printf("   9: Motor Offset %d\n",data_buff[DF_OFFSET_ST]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
@@ -914,6 +934,15 @@ void sciProcess( void )
 					if(s > 100) s = 100;
 					if(s < 0) s = 0;
 			        data_buff[DF_KMD] = s;
+					writeDataFlashParameter();
+				break;
+				case 9:
+					printf("9: Motor Offset %d\n",data_buff[DF_OFFSET_ST]);
+					printf("parameter value? (-30 <-> 30) >> ");
+					scanf("%d",&s);
+					if(s > 30) s = 30;
+					if(s < -30) s = -30;
+			        data_buff[DF_OFFSET_ST] = s;
 					writeDataFlashParameter();
 				break;
 				default:

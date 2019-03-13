@@ -55,3 +55,5 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 #define DF_KP_SP2		0x1A			/* 比例値 Kp 				*/
 #define DF_KI_SP2		0x1B			/* 積分値 Ki				*/
 #define DF_KD_SP2		0x1C			/* 微分値 Kd					*/
+
+#define DF_OFFSET_ST	0x1D			/* 直進安定性		*/

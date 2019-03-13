@@ -7,13 +7,21 @@
 [GENERAL_DATA]
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
+"C:\WorkSpace\Atuta\kit07_38a\drive.c" 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" 
 "C:\WorkSpace\Atuta\kit07_38a\ini.h" 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" 
+"C:\WorkSpace\Atuta\kit07_38a\lcd_lib.h" 
+"C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" 
+"C:\WorkSpace\Atuta\kit07_38a\trace.c" 
 [WORKSPACE_FILE_STATES]
+"C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" 104 104 682 287 0 4 
+"C:\WorkSpace\Atuta\kit07_38a\drive.c" 0 0 682 287 0 6 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" 26 26 682 287 0 1 
 "C:\WorkSpace\Atuta\kit07_38a\ini.h" 52 52 682 287 0 2 
 "C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c" -8 -31 828 456 1 0 
+"C:\WorkSpace\Atuta\kit07_38a\lcd_lib.h" 130 130 682 287 0 5 
+"C:\WorkSpace\Atuta\kit07_38a\trace.c" 78 78 682 287 0 3 
 [LOADED_PROJECTS]
 "kit07_38a" 
 [END]
