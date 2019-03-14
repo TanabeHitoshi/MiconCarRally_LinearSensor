@@ -183,7 +183,7 @@ void main( void )
 					timer(2000);
 				break;
 				case 3:/* Moniter */
-					pattern = 4000;
+					pattern = 3000;
 				break;
 			    default:
 					pattern = 200;
@@ -204,8 +204,8 @@ void main( void )
 	case 200:
 //		Srevo_state = 1;
 		if( pushsw_get() ) {
-//			pattern = 210;
-			pattern = 700;
+			pattern = 210;
+//			pattern = 700;
 		}
         if( cnt1 < 50 ) {               /* LED点滅処理                  */
             led_out( 0x1 );
@@ -218,17 +218,17 @@ void main( void )
 	break;
 	case 210:/* ストレート */
 		/* カーブによってPIDを変える */
-		Srevo_state = 1;
+//		Srevo_state = 1;
 //		if(White > 45) pattern = 610;
-		if(Center > 10){
+		if(Center > 15){
 			LR = 1;
 			cnt_Curve = 0;
-			pattern = 220;
+//			pattern = 220;
 			set_PID(CurvePID);
-		}else if(Center < -10){
+		}else if(Center < -15){
 			LR = -1;
 			cnt_Curve = 0;
-			pattern = 220;
+//			pattern = 220;
 			set_PID(CurvePID);
 		}else{
 			LR = 0;
@@ -237,9 +237,9 @@ void main( void )
 		SPEED = 100;
 		/* カメラのずれによる減速 */
 		if(pid_angle > 0){
-			SPEED -= pid_angle /4;
+			SPEED -= pid_angle /2;
 		}else{
-			 SPEED += pid_angle /4;
+			 SPEED += pid_angle /2;
 		}
 		run(SPEED,pid_angle + servo_angle);
 	break;
@@ -329,13 +329,14 @@ void main( void )
 	break;
 	case 310:
 		run(100,0);
-		if(Center < -15 && Wide > 10){
+		if(Center < -12 && Wide > 5){
+			cnt1 = 0;
 			pattern = 320;
 		}
 	break;
 	case 320:
-		run(75,50);
-		if(Center > 0 && Wide > 10){
+		run(80,80);
+		if(Center > 0 && Wide > 5 ){
 			pattern = 500;
             cnt1 = 0;
 			set_PID(Sprint_2PID);
@@ -359,13 +360,13 @@ void main( void )
 	break;
 	case 410:
 		run(100,0);
-		if(Center > 15 && Wide > 10){
+		if(Center > 12 && Wide > 5){
 			pattern = 420;
 		}		
 	break;
 	case 420:
-		run(75,-50);
-		if(Center < 0 && Wide > 10){
+		run(80,-80);
+		if(Center < 0 && Wide > 5){
 			pattern = 500;
             cnt1 = 0;
 			set_PID(Sprint_2PID);
@@ -391,17 +392,11 @@ void main( void )
 	case 520:/* 直線を猛スピードで爆走 */
 //		set_PID(SprintPID);
 		SPEED = 100;
-		if(Center > 20){
-//			pattern = 530;
-		}
-		if(Center < -20){
-//			pattern = 530;
-		}
 		/* カメラのずれによる減速 */
 		if(pid_angle > 0){
-			SPEED -= pid_angle*7;
+			SPEED -= pid_angle*10;
 		}else{
-			 SPEED += pid_angle*7;
+			 SPEED += pid_angle*10;
 		}
 		if(SPEED < 50)SPEED = 50;
 		run(SPEED,pid_angle);
@@ -410,17 +405,6 @@ void main( void )
 			tripmeter_ini();
 			pattern = 550;
 		}
-	break;
-	case 530:
-		set_PID(Sprint_2PID);
-		SPEED = 40;
-		if(Center < 10 && White > 5){
-			pattern = 520;
-		}
-		if(Center > -10 && White > 5){
-			pattern = 520;
-		}
-		run(SPEED,pid_angle);
 	break;
 	case 550:/* ゴール手前で減速 */
 		if(tripmeter() < 100) run(90,pid_angle);
@@ -458,9 +442,8 @@ void main( void )
 		motor( 0, 0 );
 	break;
 	case 700:
-		set_Speed(Sprint_MAX_SPEED);
-		run(100,0);
-		if(cnt1 > 500)pattern = 710;
+		run(50,0);
+		if(cnt1 > 1500)pattern = 710;
 	break;
 	case 710:
 		motor( 0, 0 );

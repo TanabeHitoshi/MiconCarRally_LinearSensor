@@ -685,7 +685,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789..bcdef0123456789..bcdef 1行16文字 */
-        lcdPrintf( "22 Sprint SPEED     %03d        ", i );
+        lcdPrintf( "22 Sprint MAX      %03d        ", i );
                  /* 01234567..89abcde.f 1行16文字 */
         break;
     case 23:/* スプリント比例値2 Kp_SP2 */
