@@ -220,19 +220,20 @@ void main( void )
 		/* カーブによってPIDを変える */
 //		Srevo_state = 1;
 //		if(White > 45) pattern = 610;
-		if(Center > 15){
+		if(Center > 5){
 			LR = 1;
 			cnt_Curve = 0;
-//			pattern = 220;
+			pattern = 220;
 			set_PID(CurvePID);
-		}else if(Center < -15){
+		}else if(Center < -5){
 			LR = -1;
 			cnt_Curve = 0;
-//			pattern = 220;
+			pattern = 220;
 			set_PID(CurvePID);
 		}else{
 			LR = 0;
 			set_PID(StrightPID);
+			set_PID(CurvePID);
 		}
 		SPEED = 100;
 		/* カメラのずれによる減速 */
@@ -394,9 +395,9 @@ void main( void )
 		SPEED = 100;
 		/* カメラのずれによる減速 */
 		if(pid_angle > 0){
-			SPEED -= pid_angle*10;
+			SPEED -= pid_angle*20;
 		}else{
-			 SPEED += pid_angle*10;
+			 SPEED += pid_angle*20;
 		}
 		if(SPEED < 50)SPEED = 50;
 		run(SPEED,pid_angle);
@@ -495,13 +496,13 @@ void main( void )
 		printf("\n");
 
 		printf("Camera parameter \n");
-		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 		printf("\n");
 
 		printf("Trace parameter\n");	
 		printf("   Trace Stright Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_S]/10,data_buff[DF_KP_S]%10,data_buff[DF_KI_S]/10,data_buff[DF_KI_S]%10,data_buff[DF_KD_S]/10,data_buff[DF_KD_S]%10);
 		printf("   Trace Curve   Kp %d.%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_C]/10,data_buff[DF_KP_C]%10,data_buff[DF_KI_C]/10,data_buff[DF_KI_C]%10,data_buff[DF_KD_C]/10,data_buff[DF_KD_C]%10);
 		printf("   Trace Speed = %d\n",data_buff[DF_PWM]);
+		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 		printf("\n");
 
 		printf("Sprint parameter\n");	
@@ -510,6 +511,7 @@ void main( void )
 		printf("   Distance  = %2d00 mm\n",data_buff[DF_DISTANCE]);
 		printf("   Sprint Stright Kp %d.%d%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10,data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10,data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
 		printf("   Sprint 2       Kp %d.%d    Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP2]/10,data_buff[DF_KP_SP2]%10,data_buff[DF_KI_SP2]/10,data_buff[DF_KI_SP2]%10,data_buff[DF_KD_SP2]/10,data_buff[DF_KD_SP2]%10);
+		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart_S],data_buff[DF_LineStop_S]);
 		printf("\n");
 		
 		Light_ON;

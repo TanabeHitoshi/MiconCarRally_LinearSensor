@@ -4,6 +4,6 @@
 -c
 -finfo
 -dir "C:\WorkSpace\Atuta\kit07_38a\Debug"
--OS
+-OR
 -R8CE
 "C:\WorkSpace\Atuta\kit07_38a\microsd_lib.c"

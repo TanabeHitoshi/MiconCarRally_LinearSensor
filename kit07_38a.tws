@@ -7,6 +7,8 @@
 [GENERAL_DATA]
 [BREAKPOINTS]
 [OPEN_WORKSPACE_FILES]
+"C:\WorkSpace\Atuta\kit07_38a\camera.c" 
+"C:\WorkSpace\Atuta\kit07_38a\camera.h" 
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" 
 "C:\WorkSpace\Atuta\kit07_38a\ini.h" 
@@ -16,6 +18,8 @@
 "C:\WorkSpace\Atuta\kit07_38a\trace.c" 
 [WORKSPACE_FILE_STATES]
 "C:\WorkSpace\Atuta\kit07_38a\LcdProcess.c" 104 104 682 287 0 4 
+"C:\WorkSpace\Atuta\kit07_38a\camera.c" 26 26 682 287 0 7 
+"C:\WorkSpace\Atuta\kit07_38a\camera.h" 52 52 682 287 0 8 
 "C:\WorkSpace\Atuta\kit07_38a\drive.c" 0 0 682 287 0 6 
 "C:\WorkSpace\Atuta\kit07_38a\ini.c" 26 26 682 287 0 1 
 "C:\WorkSpace\Atuta\kit07_38a\ini.h" 52 52 682 287 0 2 

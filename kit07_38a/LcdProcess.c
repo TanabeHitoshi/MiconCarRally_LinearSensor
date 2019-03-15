@@ -21,9 +21,9 @@ signed char     data_buff[ DF_PARA_SIZE ];
 /* LCD関連 */
 int		lcd_pattern = 0;
 int		lcd_count = 0;
-int		lcd_item[3][30]={	0,2,10,11,12,13,14,15,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-							0,3,18,19,20,21,22,23,24,25,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
-							0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,-1,0};		/* 設定項目 			*/
+int		lcd_item[3][40]={	0,2,10,11,12,13,14,15,16,17,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+							0,3,18,19,20,21,22,23,24,25,28,29,-1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+							0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,-1,0,0,0,0,0,0,0,0,0};		/* 設定項目 			*/
 /************************************************************************/
 /* DataFlashのパラメータ読み込み                                        */
 /* 引数         なし                                                    */
@@ -559,7 +559,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
-        lcdPrintf( "16 LineStart       %03d", i );
+        lcdPrintf( "16 LineStart Tr    %03d", i );
         break;
 	case 17:/* カメラストップ位置 */
 			i = data_buff[DF_LineStop];
@@ -576,7 +576,7 @@ int lcdProcess( void )
         /* LCD処理 */
         lcdPosition( 0, 0 );
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
-        lcdPrintf( "17 LineStop       %03d", i );
+        lcdPrintf( "17 LineStop Tr    %03d", i );
         break;
 	case 18:
         /* スプリント走行距離 */
@@ -800,6 +800,40 @@ int lcdProcess( void )
                  /* 0123456789abcdef0123456789abcdef 1行16文字 */
         lcdPrintf( "27  Offset         %2d", i );
         break;
+	case 28:/* カメラスタート位置 */
+			i = data_buff[DF_LineStart_S];
+        	if( getSwFlag(SW_1) ) {
+            	i++;
+            	if( i > 127 ) i = 127;
+        	}
+        	if( getSwFlag(SW_0) ) {
+            	i--;
+            	if( i < 0 ) i = 0;
+        	}
+       	data_buff[DF_LineStart_S] = i;
+
+        /* LCD処理 */
+        lcdPosition( 0, 0 );
+                 /* 0123456789abcdef0123456789abcdef 1行16文字 */
+        lcdPrintf( "28 LineStart Sp    %03d", i );
+        break;
+	case 29:/* カメラストップ位置 */
+			i = data_buff[DF_LineStop_S];
+        	if( getSwFlag(SW_1) ) {
+            	i++;
+            	if( i > 127 ) i = 127;
+        	}
+        	if( getSwFlag(SW_0) ) {
+            	i--;
+            	if( i < 0 ) i = 0;
+        	}
+       	data_buff[DF_LineStop_S] = i;
+
+        /* LCD処理 */
+        lcdPosition( 0, 0 );
+                 /* 0123456789abcdef0123456789abcdef 1行16文字 */
+        lcdPrintf( "29 LineStop Sp      %03d", i );
+        break;
 
 	}
 }
@@ -826,13 +860,14 @@ void sciProcess( void )
 //	printf("\n");
 
 	printf("2:Camera parameter\n");	
-	printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
+//	printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 //	printf("\n");
 
 	printf("3:Trace parameter\n");	
 	printf("   Trace  Stright parameter Kp %d.%d   Ki %d.%d   Kd %d.%d\n",data_buff[DF_KP_S]/10,data_buff[DF_KP_S]%10,data_buff[DF_KI_S]/10,data_buff[DF_KI_S]%10,data_buff[DF_KD_S]/10,data_buff[DF_KD_S]%10);
 	printf("   Trace  Curve parameter   Kp %d.%d   Ki %d.%d   Kd %d.%d\n",data_buff[DF_KP_C]/10,data_buff[DF_KP_C]%10,data_buff[DF_KI_C]/10,data_buff[DF_KI_C]%10,data_buff[DF_KD_C]/10,data_buff[DF_KD_C]%10);
 	printf("   Trace Speed = %d\n",data_buff[DF_PWM]);
+	printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 //	printf("\n");
 
 	printf("4:Sprint parameter\n");	
@@ -841,6 +876,7 @@ void sciProcess( void )
 	printf("   Distance = %d00 mm\n",data_buff[DF_DISTANCE]);
 	printf("   Sprint PID  KSp %d.%d%d   KSi %d.%d   KSd %d.%d\n",data_buff[DF_KI_SP]/10,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10,data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10,data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
 	printf("   Sprint 2     Kp %d.%d     Ki  %d.%d   Kd  %d.%d \n",data_buff[DF_KP_SP2]/10,data_buff[DF_KP_SP2]%10,data_buff[DF_KI_SP2]/10,data_buff[DF_KI_SP2]%10,data_buff[DF_KD_SP2]/10,data_buff[DF_KD_SP2]%10);
+	printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart_S],data_buff[DF_LineStop_S]);
 	printf("\n");
 	printf("change parameter number? >> ");
 	scanf("%d",&s);
@@ -990,6 +1026,8 @@ void sciProcess( void )
 			printf("   5: Trace Curve parameter Kp %d.%d\n",data_buff[DF_KP_C]/10,data_buff[DF_KP_C]%10);
 			printf("   6: Trace Curve parameter Ki %d.%d\n",data_buff[DF_KI_C]/10,data_buff[DF_KI_C]%10);
 			printf("   7: Trace Curve parameter Kd %d.%d\n",data_buff[DF_KD_C]/10,data_buff[DF_KD_C]%10);
+			printf("   8: Camera LineStart %d\n",data_buff[DF_LineStart]);
+			printf("   9: Camera LineStop  %d\n",data_buff[DF_LineStop]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
@@ -1057,6 +1095,24 @@ void sciProcess( void )
 			        data_buff[DF_KD_C] = s;
 					writeDataFlashParameter();
 				break;
+				case 8:
+					printf("8: Camera LineStart %d\n",data_buff[DF_LineStart]);
+					printf("parameter value? (0 <-> 127) >> ");
+					scanf("%d",&s);
+					if(s > 127) s = 127;
+					if(s < 0) s = 0;
+			        data_buff[DF_LineStart] = s;
+					writeDataFlashParameter();
+				break;
+				case 9:
+					printf("9: Camera LineStop %d\n",data_buff[DF_LineStop]);
+					printf("parameter value? (0 <-> 127) >> ");
+					scanf("%d",&s);
+					if(s > 127) s = 127;
+					if(s < 0) s = 0;
+			        data_buff[DF_LineStop] = s;
+					writeDataFlashParameter();
+				break;
 				default:
 					printf("NOT !!!\n");
 				break;
@@ -1073,6 +1129,8 @@ void sciProcess( void )
 			printf("   7: Sprint Kp 2 %d.%d\n",data_buff[DF_KP_SP2]/10,data_buff[DF_KP_SP2]%10);
 			printf("   8: Sprint Ki 2 %d.%d\n",data_buff[DF_KI_SP2]/10,data_buff[DF_KI_SP2]%10);
 			printf("   9: Sprint Kd 2 %d.%d\n",data_buff[DF_KD_SP2]/10,data_buff[DF_KD_SP2]%10);
+			printf("   10: Camera LineStart %d\n",data_buff[DF_LineStart]);
+			printf("   11: Camera LineStop  %d\n",data_buff[DF_LineStop]);
 			printf("\n");
 			printf("change parameter number? >> ");
 			scanf("%d",&s);
@@ -1156,6 +1214,24 @@ void sciProcess( void )
 					if(s > 100) s = 100;
 					if(s < 0) s = 0;
 			        data_buff[DF_KD_SP2] = s;
+					writeDataFlashParameter();
+				break;
+				case 10:
+					printf("10: Camera LineStart %d\n",data_buff[DF_LineStart_S]);
+					printf("parameter value? (0 <-> 127) >> ");
+					scanf("%d",&s);
+					if(s > 127) s = 127;
+					if(s < 0) s = 0;
+			        data_buff[DF_LineStart_S] = s;
+					writeDataFlashParameter();
+				break;
+				case 11:
+					printf("11: Camera LineStop %d\n",data_buff[DF_LineStop_S]);
+					printf("parameter value? (0 <-> 127) >> ");
+					scanf("%d",&s);
+					if(s > 127) s = 127;
+					if(s < 0) s = 0;
+			        data_buff[DF_LineStop_S] = s;
 					writeDataFlashParameter();
 				break;
 

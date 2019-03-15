@@ -57,3 +57,6 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 #define DF_KD_SP2		0x1C			/* ”÷•ª’l Kd					*/
 
 #define DF_OFFSET_ST	0x1D			/* ’¼iˆÀ’è«		*/
+
+#define DF_LineStart_S	0x1E	
+#define DF_LineStop_S	0x1F
