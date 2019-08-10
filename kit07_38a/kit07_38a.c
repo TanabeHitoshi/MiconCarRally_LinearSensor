@@ -1,6 +1,6 @@
 /************************************************************************/
 /* ëŒè€É}ÉCÉRÉì R8C/38A                                                 */
-/* Ãß≤Ÿì‡óe     îMìcÇÃêX								*/
+/* Ãß≤Ÿì‡óe     ä÷êºëÂâÔ								*/
 /* Date         2019.2.17                                              */
 /* Copyright    ëÂç„ï{óßèÈìåçHâ»çÇçZ									*/
 /************************************************************************/
@@ -223,12 +223,12 @@ void main( void )
 		if(Center > 5){
 			LR = 1;
 			cnt_Curve = 0;
-			pattern = 220;
+//			pattern = 220;
 			set_PID(CurvePID);
 		}else if(Center < -5){
 			LR = -1;
 			cnt_Curve = 0;
-			pattern = 220;
+//			pattern = 220;
 			set_PID(CurvePID);
 		}else{
 			LR = 0;
@@ -236,13 +236,19 @@ void main( void )
 			set_PID(CurvePID);
 		}
 		SPEED = 100;
+		set_PID(CurvePID);
 		/* ÉJÉÅÉâÇÃÇ∏ÇÍÇ…ÇÊÇÈå∏ë¨ */
 		if(pid_angle > 0){
 			SPEED -= pid_angle /2;
 		}else{
 			 SPEED += pid_angle /2;
 		}
-		run(SPEED,pid_angle + servo_angle);
+/*		if(Center > 0){
+			SPEED -= Center /10;
+		}else{
+			 SPEED += Center /10;
+		}
+*/		run(SPEED,pid_angle);
 	break;
 	case 220:/* ÉJÅ[Éu */
 		Srevo_state = 0;
@@ -511,7 +517,7 @@ void main( void )
 		printf("   Distance  = %2d00 mm\n",data_buff[DF_DISTANCE]);
 		printf("   Sprint Stright Kp %d.%d%d  Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP]/100,(data_buff[DF_KP_SP]/10)%10,(data_buff[DF_KP_SP]%100)%10,data_buff[DF_KI_SP]/10,data_buff[DF_KI_SP]%10,data_buff[DF_KD_SP]/10,data_buff[DF_KD_SP]%10);
 		printf("   Sprint 2       Kp %d.%d    Ki %d.%d  Kd  %d.%d \n",data_buff[DF_KP_SP2]/10,data_buff[DF_KP_SP2]%10,data_buff[DF_KI_SP2]/10,data_buff[DF_KI_SP2]%10,data_buff[DF_KD_SP2]/10,data_buff[DF_KD_SP2]%10);
-		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart_S],data_buff[DF_LineStop_S]);
+		printf("   Camera  LineStart %d   LineStop %d\n",data_buff[DF_LineStart],data_buff[DF_LineStop]);
 		printf("\n");
 		
 		Light_ON;
