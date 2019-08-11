@@ -1,0 +1,9 @@
+-lang=c
+-I"..\..\..\common_r8c38a"
+-D__UART0__
+-c
+-finfo
+-dir "C:\WorkSpace\kanasai2019\kit07_38a\Debug"
+-OR
+-R8CE
+"C:\WorkSpace\kanasai2019\kit07_38a\camera.c"
