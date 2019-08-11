@@ -48,6 +48,7 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 /* スプリントの設定 */
 #define DF_PWM_S		0x14			/* スプリントの入り速度	*/
 #define DF_DISTANCE		0x15			/* スプリントの距離	*/
+<<<<<<< HEAD
 #define DF_KP_SP1		0x16			/* 比例値 Kp 				*/
 #define DF_KI_SP1		0x17			/* 積分値 Ki				*/
 #define DF_KD_SP1		0x18			/* 微分値 Kd					*/
@@ -105,3 +106,17 @@ extern signed char     data_buff[ DF_PARA_SIZE ];
 
 //#define DF_prgram_Address 0x20
 
+=======
+#define DF_KP_SP		0x16			/* 比例値 Kp 				*/
+#define DF_KI_SP		0x17			/* 積分値 Ki				*/
+#define DF_KD_SP		0x18			/* 微分値 Kd					*/
+#define DF_PWM_SP		0x19			/* スプリントの速度	*/
+#define DF_KP_SP2		0x1A			/* 比例値 Kp 				*/
+#define DF_KI_SP2		0x1B			/* 積分値 Ki				*/
+#define DF_KD_SP2		0x1C			/* 微分値 Kd					*/
+
+#define DF_OFFSET_ST	0x1D			/* 直進安定性		*/
+
+#define DF_LineStart_S	0x1E	
+#define DF_LineStop_S	0x1F
+>>>>>>> remotes/origin/atuta

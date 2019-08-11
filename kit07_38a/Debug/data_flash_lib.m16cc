@@ -4,5 +4,6 @@
 -c
 -finfo
 -dir "C:\WorkSpace\Atuta\kit07_38a\Debug"
+-OR
 -R8CE
 "C:\WorkSpace\Atuta\kit07_38a\data_flash_lib.c"

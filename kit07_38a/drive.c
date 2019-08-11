@@ -8,7 +8,6 @@
 #include "lcd_lib.h"                    /* LCD表示用追加                */
 #include "switch_lib.h"                 /* スイッチ追加                 */
 #include "data_flash_lib.h"             /* データフラッシュライブラリ   */
-#include "isline.h"
 #include "drive.h"
 
 /* 現在の状態保存用 */
@@ -40,7 +39,9 @@ void set_Speed(int speed)
 void run(int speed, int turn_speed)
 {
 	int d1,d2;
-
+	
+    speed = speed * setSpeed / 100;
+	
 	// 前進速度+回転速度から左右のモーターのduty比を決める
 	d1 = speed - turn_speed;
 	d2 = speed + turn_speed;
@@ -52,10 +53,14 @@ void run(int speed, int turn_speed)
 	if(d2 >= 100) d2 = 100;
 	else if(d2 <= -100) d2 = -100;
 
-    d1 = d1 * setSpeed / 100;
-    d2 = d2 * setSpeed / 100;
-
-	motor(d1,d2);
+//    d1 = d1 * setSpeed / 100;
+//    d2 = d2 * setSpeed / 100;
+	
+	if(speed == 0){
+		motor(0,0);
+	}else{
+		motor(d1-data_buff[DF_OFFSET_ST],d2+data_buff[DF_OFFSET_ST]);
+	}
 
 }
 /************************************************************************/
@@ -67,6 +72,7 @@ void run(int speed, int turn_speed)
 void motor( int accele_l, int accele_r )
 {
 	accele_r = -accele_r;
+	accele_l = -accele_l;
 	if( accele_l >= 100) accele_l = 100;
 	if( accele_r >= 100) accele_r = 100;
 	if( accele_l <= -100) accele_l = -100;

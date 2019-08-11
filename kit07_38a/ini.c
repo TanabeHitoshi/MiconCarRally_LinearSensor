@@ -8,17 +8,18 @@
 #include "lcd_lib.h"                    /* LCD表示用追加                */
 #include "switch_lib.h"                 /* スイッチ追加                 */
 #include "data_flash_lib.h"             /* データフラッシュライブラリ   */
-#include "isline.h"
+#include "camera.h"
 #include "drive.h"
 #include "ini.h"
 #include "trace.h"
 #include "isEncoder.h"
 
-unsigned long   cnt0;                   /* timer関数用                  */
-unsigned long   cnt1;                   /* main内で使用                 */
-unsigned long   cnt_lcd;                /* LCD処理で使用                */
-unsigned long   stop_timer;				/* 走行タイマー					*/
-unsigned long   cnt_AD;                 /* センサーで使用　偶数でON  奇数でOFF  */
+volatile unsigned long   cnt0;					/* timer関数用                  */
+volatile unsigned long   cnt1;					/* main内で使用                 */
+volatile unsigned long   cnt_lcd;				/* LCD処理で使用                */
+volatile unsigned long   stop_timer;			/* 走行タイマー					*/
+volatile unsigned int   cnt_Curve;				/* カーブで使用  */
+volatile unsigned int   cnt_Stright;			/* 直進で使用  */
 
 int             pattern;                /* パターン番号                 */
 int				Srevo_state;			/* サーボの制御あり -> 1　なり -> 0	*/
@@ -29,13 +30,11 @@ int             msdTimer;               /* 取得間隔計算用               */
 int             msdError;               /* エラー番号記録               */
 /* 内部記録 */
 struct MEM{
-	unsigned char pattern;
+	unsigned int pattern;
 	unsigned int distance;
-	unsigned int sensor;
-//	float pos;
+	unsigned int center;
 	int PID;
 	char white;
-	char power;
 	char speed;
 };
 int				memCnt = 0;					/* 内部記録の番号 */
@@ -121,7 +120,7 @@ void intTRB( void )
     cnt0++;
     cnt1++;
     cnt_lcd++;
-	cnt_AD++;
+	cnt_Curve++;
 	if(pattern > 10)stop_timer++;
 					
 	// エンコーダ制御 + 走行データ制御
@@ -159,7 +158,7 @@ void intTRB( void )
             convertDecimalToStr( pattern, 3, p );
             p += 3;*p++ = ',';
             // 4 センサ
-            convertHexToStr( 0, 4, p );
+            convertDecimalToStr( Center, 4, p );
             p += 4;*p++ = ',';
             // 9 白
             convertDecimalToStr( White, 2, p );
@@ -239,17 +238,16 @@ void memPrint(void)
 	for(i = 0; i < 500; i++){
 		printf("%d,",mem[i].pattern);		
 		printf("%d,",mem[i].distance);
-		printf("0x%4x,",mem[i].sensor);
+		printf("0x%4x,",mem[i].center);
 		for(j = 0; j < 16; j++){
-			if(mem[i].sensor & 0x8000)printf("1");
+			if(mem[i].center & 0x8000)printf("1");
 			else					printf("0");
-			mem[i].sensor = mem[i].sensor << 1;
+			mem[i].center = mem[i].center << 1;
 		}
 		printf(",");
 //		float_printf(pos,3);printf(",");
 		printf("%d,",mem[i].PID);
 		printf("%d,",mem[i].white);
-		printf("%d,",mem[i].power);
 		printf("%d\n",mem[i].speed);
 	}
 
@@ -260,8 +258,9 @@ void memPrint(void)
 /************************************************************************/
 void timer( unsigned long timer_set )
 {
+	int i;
     cnt0 = 0;
-    while( cnt0 < timer_set );
+    while( cnt0 < timer_set )i=0;
 }
 /************************************************************************/
 /* end of file                                                          */

@@ -3,6 +3,7 @@
 -D__UART0__
 -c
 -finfo
--dir "C:\WorkSpace\Atuta\kit07_38a\Debug"
+-dir "C:\WorkSpace\kanasai2019\kit07_38a\Debug"
+-OR
 -R8CE
-"C:\WorkSpace\Atuta\kit07_38a\kit07_38a.c"
+"C:\WorkSpace\kanasai2019\kit07_38a\kit07_38a.c"

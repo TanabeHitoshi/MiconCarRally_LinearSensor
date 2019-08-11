@@ -3,6 +3,7 @@
 
 #define SERVO_CENTER    3863            /* サーボのセンタ値             */
 #define MAX_SPEED		data_buff[DF_PWM]
+#define Sprint_MAX_SPEED	data_buff[DF_PWM_SP]
 #define Sprint_SPEED	data_buff[DF_PWM_S]
 
 
